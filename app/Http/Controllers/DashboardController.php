@@ -16,12 +16,12 @@ class DashboardController extends Controller
         } else if (Auth::user()->hasRole('admin')) {
             return view('dashboard.admindashboard');
         } else if (Auth::user()->hasRole('superadmin')) {
-            return view('');
+            return view('dashboard.superadmindashboard');
         }
     }
 
     public function myprofile()
     {
-        return view('layouts.myprofile');
+        return view('profile.myprofile');
     }
 }
