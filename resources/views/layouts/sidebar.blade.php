@@ -1,197 +1,477 @@
-<!-- <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Nav Bar</title>
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" integrity="sha512-OdEXQYCOldjqUEsuMKsZRj93Ht23QRlhIb8E/X0sbwZhme8eUw6g8q7AdxGJKakcBbv7+/PX0Gc2btf7Ru8cZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--========== BOX ICONS ==========-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="assets/css/styles.css">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        /*========== GOOGLE FONTS ==========*/
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
+        /*========== VARIABLES CSS ==========*/
+        :root {
+
+            --nav-width: 219px;
+
+            /*========== Colors ==========*/
+            --first-color: #6923D0;
+            --first-color-light: #F4F0FA;
+            --title-color: #19181B;
+            --text-color: #58555E;
+            --text-color-light: #A5A1AA;
+            --body-color: #F9F6FD;
+            --container-color: #FFFFFF;
+
+            /*========== Font and typography ==========*/
+            --body-font: 'Poppins', sans-serif;
+            --normal-font-size: .938rem;
+            --small-font-size: .75rem;
+            --smaller-font-size: .75rem;
+
+            /*========== Font weight ==========*/
+            --font-medium: 500;
+            --font-semi-bold: 600;
+
+            /*========== z index ==========*/
+            --z-fixed: 100;
+        }
+
+        @media screen and (min-width: 1024px) {
+            :root {
+                --normal-font-size: 1rem;
+                --small-font-size: .875rem;
+                --smaller-font-size: .813rem;
+            }
+        }
+
+        /*========== BASE ==========*/
+        *,
+        ::before,
+        ::after {
+            box-sizing: border-box;
         }
 
         body {
-            display: flex;
-            /* justify-content: center; */
-            /* align-items: center; */
-            min-height: 100vh;
-            background-color: #6843d1;
+            /* margin: var(--header-height) 0 0 0; */
+            /* padding: 1rem 1rem 0; */
+            margin: 0;
+            padding: 0;
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+            background-color: var(--body-color);
+            color: var(--text-color);
         }
 
-        .container {
-            position: relative;
+        h3 {
+            margin: 0;
         }
 
-        .container .navigation {
-            position: relative;
-            width: 80px;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: 0.5s;
-            height: 100%;
+        a {
+            text-decoration: none;
         }
 
-        .container .navigation.active {
-            width: 230px;
+        img {
+            max-width: 100%;
+            height: auto;
         }
 
-        .container .navigation ul {
-            position: absolute;
+        /* ========== HEADER ==========
+        .header {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
+            background-color: var(--container-color);
+            box-shadow: 0 1px 0 rgba(22, 8, 43, 0.1);
+            padding: 0 1rem;
+            z-index: var(--z-fixed);
         }
 
-        .container .navigation ul li {
-            position: relative;
-            list-style: none;
-            width: 100%;
-
-        }
-
-        .container .navigation ul li a {
-            position: relative;
-            display: block;
-            width: 100%;
+        .header__container {
             display: flex;
-            text-decoration: none;
-            color: #6843cf;
-            font-weight: 500;
             align-items: center;
+            height: var(--header-height);
+            justify-content: space-between;
         }
 
-        .container .navigation ul li:hover {
-            background: #6843cf;
-            opacity: 0.6;
-        }
-
-        .container .navigation ul li:hover .navbar-title,
-        .container .navigation ul li:hover .icon {
-            color: white;
-        }
-
-        .container .navigation ul li a .icon {
-            position: relative;
-            display: block;
-            min-width: 80px;
-            text-align: center;
-            font-size: 24px;
-        }
-
-        .container .navigation ul li a .navbar-title {
-            position: relative;
-            display: block;
-            font-size: 20px;
-            height: 60px;
-            line-height: 60px;
-            text-align: center;
-            white-space: nowrap;
-        }
-
-
-        .toggle {
-            position: absolute;
-            top: calc(50% - 20px);
-            right: -20px;
-            width: 40px;
-            height: 40px;
-            background: #f5f5f5;
-            cursor: pointer;
-            border: 5px solid #6843d1;
+        .header__img {
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
         }
 
-        .toggle:before {
-            content: '\f054';
-            font-family: fontAwesome;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            line-height: 30px;
-            text-align: center;
-            font-size: 16px;
-            color: #6843d1;
+        .header__logo {
+            color: var(--title-color);
+            font-weight: var(--font-medium);
+            display: none;
         }
 
-        .toggle.active:before {
-            content: '\f053';
+        .header__search {
+            display: flex;
+            padding: .40rem .75rem;
+            background-color: var(--first-color-light);
+            border-radius: .25rem;
+        }
 
+        .header__input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background-color: var(--first-color-light);
+        }
+
+        .header__input::placeholder {
+            font-family: var(--body-font);
+            color: var(--text-color);
+        }
+
+        .header__icon,
+        .header__toggle {
+            font-size: 1.2rem;
+        }
+
+        .header__toggle {
+            color: var(--title-color);
+            cursor: pointer;
+        } */
+
+        /*========== NAV ==========*/
+        .nav {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            height: 100vh;
+            padding: 1rem 1rem 0;
+            background-color: var(--container-color);
+            box-shadow: 1px 0 0 rgba(22, 8, 43, 0.1);
+            z-index: var(--z-fixed);
+            transition: .4s;
+        }
+
+        .nav__container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-bottom: 3rem;
+            overflow: auto;
+            scrollbar-width: none;
+            /* For mozilla */
+        }
+
+        /* For Google Chrome and others */
+        .nav__container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav__logo {
+            font-weight: var(--font-semi-bold);
+            margin-bottom: 2.5rem;
+        }
+
+        .nav__list,
+        .nav__items {
+            display: grid;
+        }
+
+        .nav__list {
+            row-gap: 2.5rem;
+        }
+
+        .nav__items {
+            row-gap: 1.5rem;
+        }
+
+        .nav__subtitle {
+            font-size: var(--normal-font-size);
+            text-transform: uppercase;
+            letter-spacing: .1rem;
+            color: var(--text-color-light);
+        }
+
+        .nav__link {
+            display: flex;
+            align-items: center;
+            color: var(--text-color);
+        }
+
+        .nav__link:hover {
+            color: var(--first-color);
+        }
+
+        .nav__icon {
+            font-size: 1.2rem;
+            margin-right: .5rem;
+        }
+
+        .nav__name {
+            font-size: var(--small-font-size);
+            font-weight: var(--font-medium);
+            white-space: nowrap;
+        }
+
+        .nav__logout {
+            margin-top: 5rem;
+        }
+
+        /* Dropdown */
+        .nav__dropdown {
+            overflow: hidden;
+            max-height: 21px;
+            transition: .4s ease-in-out;
+        }
+
+        .nav__dropdown-collapse {
+            background-color: var(--first-color-light);
+            border-radius: .25rem;
+            margin-top: 1rem;
+        }
+
+        .nav__dropdown-content {
+            display: grid;
+            row-gap: .5rem;
+            padding: .75rem 2.5rem .75rem 1.8rem;
+        }
+
+        .nav__dropdown-item {
+            font-size: var(--smaller-font-size);
+            font-weight: var(--font-medium);
+            color: var(--text-color);
+        }
+
+        .nav__dropdown-item:hover {
+            color: var(--first-color);
+        }
+
+        .nav__dropdown-icon {
+            margin-left: auto;
+            transition: .4s;
+        }
+
+        /* Show dropdown collapse */
+        .nav__dropdown:hover {
+            max-height: 100rem;
+        }
+
+        /* Rotate icon arrow */
+        .nav__dropdown:hover .nav__dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        /*===== Show menu =====*/
+        .show-menu {
+            left: 0;
+        }
+
+        /*===== Active link =====*/
+        .active {
+            color: var(--first-color);
+        }
+
+        /* ========== MEDIA QUERIES ==========*/
+        /* For small devices reduce search*/
+        @media screen and (max-width: 320px) {
+            .header__search {
+                width: 70%;
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            body {
+                padding: 1rem 3rem 0 6rem;
+            }
+
+            .header {
+                padding: 0 3rem 0 6rem;
+            }
+
+            .header__container {
+                height: calc(var(--header-height) + .5rem);
+            }
+
+            .header__search {
+                width: 300px;
+                padding: .55rem .75rem;
+            }
+
+            .header__toggle {
+                display: none;
+            }
+
+            .header__logo {
+                display: block;
+            }
+
+            .header__img {
+                width: 40px;
+                height: 40px;
+                order: 1;
+            }
+
+            .nav {
+                left: 0;
+                padding: 1.2rem 1.5rem 0;
+                width: 68px;
+                /* Reduced navbar */
+            }
+
+            .nav__items {
+                row-gap: 1.7rem;
+            }
+
+            .nav__icon {
+                font-size: 1.3rem;
+            }
+
+            /* Element opacity */
+            .nav__logo-name,
+            .nav__name,
+            .nav__subtitle,
+            .nav__dropdown-icon {
+                opacity: 0;
+                transition: .3s;
+            }
+
+
+            /* Navbar expanded */
+            .nav:hover {
+                width: var(--nav-width);
+            }
+
+            /* Visible elements */
+            .nav:hover .nav__logo-name {
+                opacity: 1;
+            }
+
+            .nav:hover .nav__subtitle {
+                opacity: 1;
+            }
+
+            .nav:hover .nav__name {
+                opacity: 1;
+            }
+
+            .nav:hover .nav__dropdown-icon {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!--========== NAV ==========-->
+    <div class="nav" id="navbar">
+        <nav class="nav__container">
+            <div>
+                <div class="nav__list">
+                    <div class="nav__items">
+                        <h3 class="nav__subtitle">Profile</h3>
 
-    <div class="container">
-        <div class="navigation">
-            <ul>
-                <li>
-                    <a href="#">
-                        <span class="icon"><i class="fas fa-home"></i></span>
-                        <span class="navbar-title">Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="icon"><i class="fas fa-user"></i></span>
-                        <span class="navbar-title">Profile</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="icon"><i class="fas fa-comment"></i></span>
-                        <span class="navbar-title">Message</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="icon"><i class="fas fa-question-circle"></i></span>
-                        <span class="navbar-title">Help</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="icon"><i class="fas fa-cog"></i></span>
-                        <span class="navbar-title">Setting</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="icon"><i class="fas fa-lock"></i></span>
-                        <span class="navbar-title">Password</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="icon"><i class="fas fa-sign"></i></span>
-                        <span class="navbar-title">Sign Out</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="toggle">
+                        <a href="#" class="nav__link active">
+                            <i class='bx bx-home nav__icon'></i>
+                            <span class="nav__name">Home</span>
+                        </a>
 
-        </div>
+                        <div class="nav__dropdown">
+                            <a href="#" class="nav__link">
+                                <i class='bx bx-user nav__icon'></i>
+                                <span class="nav__name">Profile</span>
+                                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                            </a>
+
+                            <div class="nav__dropdown-collapse">
+                                <div class="nav__dropdown-content">
+                                    <a href="#" class="nav__dropdown-item">Passwords</a>
+                                    <a href="#" class="nav__dropdown-item">Mail</a>
+                                    <a href="#" class="nav__dropdown-item">Accounts</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#" class="nav__link">
+                            <i class='bx bx-message-rounded nav__icon'></i>
+                            <span class="nav__name">Messages</span>
+                        </a>
+                    </div>
+
+                    <div class="nav__items">
+                        <h3 class="nav__subtitle">Menu</h3>
+
+                        <div class="nav__dropdown">
+                            <a href="#" class="nav__link">
+                                <i class='bx bx-bell nav__icon'></i>
+                                <span class="nav__name">Notifications</span>
+                                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                            </a>
+
+                            <div class="nav__dropdown-collapse">
+                                <div class="nav__dropdown-content">
+                                    <a href="#" class="nav__dropdown-item">Blocked</a>
+                                    <a href="#" class="nav__dropdown-item">Silenced</a>
+                                    <a href="#" class="nav__dropdown-item">Publish</a>
+                                    <a href="#" class="nav__dropdown-item">Program</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <a href="#" class="nav__link">
+                            <i class='bx bx-compass nav__icon'></i>
+                            <span class="nav__name">Explore</span>
+                        </a>
+                        <a href="#" class="nav__link">
+                            <i class='bx bx-bookmark nav__icon'></i>
+                            <span class="nav__name">Saved</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#" class="nav__link nav__logout">
+                <i class='bx bx-log-out nav__icon'></i>
+                <span class="nav__name">Log Out</span>
+            </a>
+        </nav>
     </div>
 
-    <script>
-        const navigation = document.querySelector('.navigation');
-        document.querySelector('.toggle').onclick = function() {
-            this.classList.toggle('active');
-            navigation.classList.toggle('active');
-        }
-    </script>
+    <!--========== MAIN JS ==========-->
+    <script src="assets/js/main.js"></script>
 
+    <script>
+        /*==================== SHOW NAVBAR ====================*/
+        const showMenu = (headerToggle, navbarId) => {
+            const toggleBtn = document.getElementById(headerToggle),
+                nav = document.getElementById(navbarId)
+
+            // Validate that variables exist
+            if (headerToggle && navbarId) {
+                toggleBtn.addEventListener('click', () => {
+                    // We add the show-menu class to the div tag with the nav__menu class
+                    nav.classList.toggle('show-menu')
+                    // change icon
+                    toggleBtn.classList.toggle('bx-x')
+                })
+            }
+        }
+        showMenu('header-toggle', 'navbar')
+
+        /*==================== LINK ACTIVE ====================*/
+        const linkColor = document.querySelectorAll('.nav__link')
+
+        function colorLink() {
+            linkColor.forEach(l => l.classList.remove('active'))
+            this.classList.add('active')
+        }
+
+        linkColor.forEach(l => l.addEventListener('click', colorLink))
+    </script>
 </body>
 
-</html> -->
+</html>
