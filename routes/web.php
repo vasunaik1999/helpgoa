@@ -27,4 +27,28 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name('dashboard.myprofile');
 });
+
+//for SuperAdmin
+Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
+    Route::get('/dashboard/view-superadmin', 'App\Http\Controllers\SuperadminController@index')->name('superadmin.view');
+
+    Route::get('/dashboard/add-superadmin', 'App\Http\Controllers\SuperadminController@add')->name('superadmin.add');
+    Route::post('/dashboard/add-superadmin', 'App\Http\Controllers\SuperadminController@store')->name('superadmin.store');
+
+    //View and Add admin
+    Route::get('/dashboard/view-admin', 'App\Http\Controllers\AdminController@index')->name('admin.view');
+    Route::get('/dashboard/add-admin', 'App\Http\Controllers\AdminController@add')->name('admin.add');
+    Route::post('/dashboard/add-admin', 'App\Http\Controllers\AdminController@store')->name('admin.store');
+
+    //View and Add Warrior
+    Route::get('/dashboard/view-warrior', 'App\Http\Controllers\WarriorController@index')->name('warrior.view');
+    Route::get('/dashboard/add-warrior', 'App\Http\Controllers\WarriorController@add')->name('warrior.add');
+    Route::post('/dashboard/add-warrior', 'App\Http\Controllers\WarriorController@store')->name('warrior.store');
+
+    //View and Add Warrior
+    Route::get('/dashboard/view-user', 'App\Http\Controllers\UserController@index')->name('user.view');
+    Route::get('/dashboard/add-user', 'App\Http\Controllers\UserController@add')->name('user.add');
+    Route::post('/dashboard/add-user', 'App\Http\Controllers\UserController@store')->name('user.store');
+});
+
 require __DIR__ . '/auth.php';

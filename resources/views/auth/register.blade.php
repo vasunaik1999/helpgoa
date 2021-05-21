@@ -45,6 +45,7 @@
                 <select name="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                     <option value="user">User</option>
                     <option value="warrior">Warrior</option>
+                    <option value="superadmin">Super Admin</option>
                 </select>
             </div>
 

@@ -15,9 +15,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
 </head>
 
 <body class="font-sans antialiased" style="padding:0; margin:0;">
@@ -32,8 +34,10 @@
         </header>
 
         <main>
-            @include('layouts.side')
-            {{ $slot }}
+            @include('layouts.sidebar')
+            <div class="page-content" id="content">
+                {{ $slot }}
+            </div>
         </main>
     </div>
 
