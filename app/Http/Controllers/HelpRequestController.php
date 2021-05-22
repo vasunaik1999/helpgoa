@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Request;
+use App\Models\HelpRequest;
 use Illuminate\Http\Request;
 
-class RequestController extends Controller
+class HelpRequestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class RequestController extends Controller
      */
     public function index()
     {
-        //
+        return view('request.createrequest');
     }
 
     /**
@@ -35,7 +35,7 @@ class RequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -67,7 +67,7 @@ class RequestController extends Controller
      * @param  \App\Models\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Request $request)
+    public function update(Request $request)
     {
         //
     }

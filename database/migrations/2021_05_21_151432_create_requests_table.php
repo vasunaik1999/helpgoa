@@ -16,13 +16,13 @@ class CreateRequestsTable extends Migration
         Schema::create('requests', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->string('taluka')->nullable();
-            $table->string('city')->nullable();
-            $table->string('village')->nullable();
-            $table->string('landmark')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('name');
+            $table->string('phone');
+            $table->string('address')->nullable();
             $table->string('pincode')->nullable();
             $table->dateTime('needed_by');
-            $table->integer('approaches');
+            $table->integer('approaches')->nullable();
             $table->string('status');
             $table->string('urgency_status');
             $table->json('items');
