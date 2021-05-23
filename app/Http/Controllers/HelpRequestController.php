@@ -36,7 +36,7 @@ class HelpRequestController extends Controller
     public function store(Request $request)
     {
         //dd($request);
-        validator([
+        $request->validate([
             'name' => 'required',
             'phone' => 'required',
             'taluka' => 'required',

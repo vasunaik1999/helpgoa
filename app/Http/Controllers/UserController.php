@@ -39,6 +39,6 @@ class UserController extends Controller
         $user->attachRole($request->role_id);
         event(new Registered($user));
 
-        return redirect()->back()->with('status', 'Created Successfully');
+        return redirect()->back()->with('status', 'User Registered Successfully');
     }
 }

@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="table" class="table table-bordered table-striped hover" style="width:100%">
+                            <table id="table" class="table table-striped hover">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -35,12 +35,18 @@
                                             {{$req->city}}, {{$req->taluka}}, {{$req->pincode}}
                                             <br>{{$req->address}}
                                         </td>
-                                        <td>{{$req->items}}</td>
+                                        <td>
+                                            @foreach($req->items as $c=>$item)
+                                            {{$item}} <br>
+                                            @endforeach
+                                        </td>
                                         <td>
                                             {{$req->urgency_status}} <br>
                                             Needed By:- {{$req->needed_by}}
                                         </td>
-                                        <td>{{$req->status}}</td>
+                                        <td>
+                                            <span class="badge badge-primary">{{$req->status}}</span>
+                                        </td>
                                         <td>
                                             {{$req->special_instructions}}
                                         </td>
