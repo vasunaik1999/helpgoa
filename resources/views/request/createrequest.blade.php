@@ -8,13 +8,31 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+
                 <div class="card">
                     <div class="card-body">
                         <form method="POST" action="{{ route('request.store') }}">
                             @csrf
+                            @if (session('status'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('status') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            @endif
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
                             <div class="row">
                                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                <input type="hidden" name="status" value="pending">
+                                <input type="hidden" name="status" value="open">
                                 <div class="form-group col-md-4">
                                     <label for="name">Name</label>
                                     <input type="text" class="form-control rounded" id="name" placeholder="Enter Name..." name="name" value="{{Auth::user()->name}}">
@@ -28,7 +46,21 @@
                             <div class="row mt-3">
                                 <div class="form-group col-md-4">
                                     <label for="taluka">Taluka</label>
-                                    <input type="text" class="form-control rounded" id="taluka" placeholder="Enter Taluka..." name="taluka">
+                                    <input type="text" class="form-control rounded" id="taluka" list="talukaList" placeholder="Enter Taluka..." name="taluka">
+                                    <datalist id="talukaList">
+                                        <option value="Bardez">Bardez</option>
+                                        <option value="Bicholim">Bicholim</option>
+                                        <option value="Pernem">Pernem</option>
+                                        <option value="Sattari">Sattari</option>
+                                        <option value="Tiswadi">Tiswadi</option>
+                                        <option value="Ponda">Ponda</option>
+                                        <option value="Canacona">Canacona</option>
+                                        <option value="Mormugao">Mormugao</option>
+                                        <option value="Salcette">Salcette</option>
+                                        <option value="Sanguem">Sanguem</option>
+                                        <option value="Quepem">Quepem</option>
+                                        <option value="Dharbandora">Dharbandora</option>
+                                    </datalist>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="city">City</label>
@@ -58,31 +90,28 @@
                                 </div>
                             </div>
                             <hr>
-                            <div class="row mt-3">
-                                <div class="form-group col-md-12">
-                                    <label for="items">Items Required</label>
-                                    <textarea name="items" class="form-control rounded" rows="5" placeholder="Enter Items"></textarea>
-                                </div>
-                            </div>
-                            <div class="row">
+                            <div class="row mt-4">
                                 <div class="col-md-6 col-sm-12">
-                                    <table class="table table-responsive table-bordered">
+                                    <label for="special_instructions">Items (Eg: Rice - 2kg)</label>
+                                    <table class="table table-responsive table-borderless">
                                         <thead>
                                             <tr>
-                                                <th>Items</th>
-                                                <th style="text-align:center;"><a class="btn btn-primary btn-sm addRow">+</a></th>
+                                                <th>Item Name</th>
+                                                <th style="text-align:center;"><a style="color:white;" class="btn btn-primary btn-sm addRow">+ Add Item</a></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td><input type="text" name="items[]" class="form-control rounded"></td>
-                                                <td style="text-align:center;"><a class="btn btn-danger btn-sm">-</a></td>
+                                                <td><input type="text" name="items[]" class="form-control rounded" required></td>
+                                                <td style="text-align:center;"><a style="color:white;" class="btn btn-danger btn-sm remove">- Remove</a></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
+
                             <button type="submit" class="btn btn-primary">Submit</button>
+
                         </form>
                     </div>
                 </div>
@@ -102,10 +131,10 @@
         function addRow() {
             var tr = '<tr>' +
                 '<td>' +
-                '<input type="text" name = "items[]" class = "form-control rounded">' +
+                '<input type="text" name = "items[]" class = "form-control rounded" required>' +
                 '</td>' +
                 '<td style="text-align:center;">' +
-                '<a class="btn btn-danger btn-sm remove"> - </a>' +
+                '<a style="color:white;" class="btn btn-danger btn-sm remove"> - Remove</a>' +
                 '</td>' +
                 '</tr>';
 

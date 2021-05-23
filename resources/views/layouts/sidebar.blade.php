@@ -64,11 +64,11 @@
             <li class="nav-item">
                 <div class="dropdown show">
                     <a class="btn dropdown-toggle text-dark" role="button" id="ddrequest" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user-cog ml-2 mr-3 text-primary fa-fw"></i>Requests
+                        <i class="fa fa-address-card ml-2 mr-3 text-primary fa-fw"></i>Requests
                     </a>
                     <div class="dropdown-menu" aria-labelledby="ddrequest">
                         <a class="dropdown-item nav-link text-dark" href="{{route('request.create')}}">Create Request</a>
-                        <a class="dropdown-item nav-link text-dark" href="">View Requests</a>
+                        <a class="dropdown-item nav-link text-dark" href="{{route('request.show')}}">View Requests</a>
                     </div>
                 </div>
             </li>

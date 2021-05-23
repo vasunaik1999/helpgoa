@@ -19,16 +19,17 @@ class CreateRequestsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->string('phone');
-            $table->string('address')->nullable();
             $table->string('city');
             $table->string('taluka');
+            $table->string('address')->nullable();
             $table->string('pincode')->nullable();
             $table->dateTime('needed_by');
             $table->json('approached_by')->nullable();
-            $table->string('special_instructions');
+            $table->string('special_instructions')->nullable();
             $table->string('status');
             $table->string('urgency_status');
             $table->json('items');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

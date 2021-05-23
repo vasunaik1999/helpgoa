@@ -10,8 +10,12 @@ class HelpRequest extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
     protected $table = 'requests';
 
+    protected $casts = [
+        'items' => 'array',
+        'approached_by' => 'array',
+    ];
     protected $fillable = ['user_id', 'name', 'phone', 'address', 'taluka', 'city', 'pincode', 'needed_by', 'approached_by', 'status', 'urgency_status', 'items', 'special_instructions'];
+    protected $dates = ['deleted_at'];
 }

@@ -39,6 +39,6 @@ class SuperadminController extends Controller
         $user->attachRole($request->role_id);
         event(new Registered($user));
 
-        return redirect()->back()->with('status', 'Created Successfully');
+        return redirect()->back()->with('status', 'SuperAdmin Registered Successfully');
     }
 }
