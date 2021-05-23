@@ -29,6 +29,7 @@ class CreateRequestsTable extends Migration
             $table->string('status');
             $table->string('urgency_status');
             $table->json('items');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

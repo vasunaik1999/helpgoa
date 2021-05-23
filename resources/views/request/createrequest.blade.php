@@ -46,7 +46,21 @@
                             <div class="row mt-3">
                                 <div class="form-group col-md-4">
                                     <label for="taluka">Taluka</label>
-                                    <input type="text" class="form-control rounded" id="taluka" placeholder="Enter Taluka..." name="taluka">
+                                    <input type="text" class="form-control rounded" id="taluka" list="talukaList" placeholder="Enter Taluka..." name="taluka">
+                                    <datalist id="talukaList">
+                                        <option value="Bardez">Bardez</option>
+                                        <option value="Bicholim">Bicholim</option>
+                                        <option value="Pernem">Pernem</option>
+                                        <option value="Sattari">Sattari</option>
+                                        <option value="Tiswadi">Tiswadi</option>
+                                        <option value="Ponda">Ponda</option>
+                                        <option value="Canacona">Canacona</option>
+                                        <option value="Mormugao">Mormugao</option>
+                                        <option value="Salcette">Salcette</option>
+                                        <option value="Sanguem">Sanguem</option>
+                                        <option value="Quepem">Quepem</option>
+                                        <option value="Dharbandora">Dharbandora</option>
+                                    </datalist>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="city">City</label>
