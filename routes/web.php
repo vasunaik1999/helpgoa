@@ -55,6 +55,7 @@ Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
 Route::group(['middleware' => ['auth', 'role:superadmin|admin']], function () {
     Route::get('/dashboard/create-request', 'App\Http\Controllers\HelpRequestController@index')->name('request.create');
     Route::post('/dashboard/store-request', 'App\Http\Controllers\HelpRequestController@store')->name('request.store');
+    Route::get('/dashboard/show-request', 'App\Http\Controllers\HelpRequestController@show')->name('request.show');
 });
 
 require __DIR__ . '/auth.php';

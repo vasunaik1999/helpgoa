@@ -35,7 +35,36 @@ class HelpRequestController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        //dd($request);
+        validator([
+            'name' => 'required',
+            'phone' => 'required',
+            'taluka' => 'required',
+            'city' => 'required',
+            'address' => 'required',
+            'pincode' => 'nullable',
+            'needed_by' => 'required',
+            'special_instructions' => 'nullable',
+            'status' => 'required',
+        ]);
+
+        $helpRequest = new HelpRequest();
+        $helpRequest->user_id = $request->input('user_id');
+        $helpRequest->name = $request->input('name');
+        $helpRequest->phone = $request->input('phone');
+        $helpRequest->address = $request->input('address');
+        $helpRequest->taluka = $request->input('taluka');
+        $helpRequest->city = $request->input('city');
+        $helpRequest->pincode = $request->input('pincode');
+        $helpRequest->needed_by = $request->input('needed_by');
+        $helpRequest->status = $request->input('status');
+        $helpRequest->special_instructions = $request->input('special_instructions');
+        $helpRequest->items = json_encode($request->input('items'));
+        $helpRequest->urgency_status = 'urgent';
+        //dd($helpRequest);
+
+        $helpRequest->save();
+        return redirect()->back()->with('status', 'Request Successfully Created');
     }
 
     /**
@@ -46,7 +75,9 @@ class HelpRequestController extends Controller
      */
     public function show(Request $request)
     {
-        //
+        $reqs = HelpRequest::all();
+        //dd($reqs);
+        return view('request.viewrequests', compact('reqs'));
     }
 
     /**
