@@ -15,14 +15,17 @@ class CreateRequestsTable extends Migration
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->unsignedBiginteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->string('phone');
             $table->string('address')->nullable();
+            $table->string('city');
+            $table->string('taluka');
             $table->string('pincode')->nullable();
             $table->dateTime('needed_by');
-            $table->integer('approaches')->nullable();
+            $table->json('approached_by')->nullable();
+            $table->string('special_instructions');
             $table->string('status');
             $table->string('urgency_status');
             $table->json('items');
