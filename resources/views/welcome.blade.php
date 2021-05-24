@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
 
@@ -30,34 +32,53 @@
     @endif
   </nav>
   <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center">
-    <div class="container d-flex flex-column align-items-center">
+  <header id="header" class="row">
+      <div class="d-flex flex-column align-items-center col-lg-8 col-md-12">
+        <img src="<?php echo asset('img/help.png') ?>" alt="">
+      </div>
+    <div class="d-flex flex-column align-items-center col-lg-4 col-md-12">
       <h1>Covid Help</h1>
       <h2>Let's Help Goa Breathe!</h2>
+      <br>
+      <ul class="py-5">
+          <li>Use this platform to request for your needs.</li>
+          <li>Use this platform to help those in need.</li>
+          <li>Use this platform to volunteer and help those affected by covid.</li>
+      </ul>
+      <button type="button" class="btn btn-secondary">Create Request</button>
     </div>
   </header>
   <!-- End #header -->
-  <div class="d-flex justify-content-around px-6 sm-2">
-    <div class="card border-secondary mb-3 text-center" style="width: 18rem;">
-      <div class="card-body text-info">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+  <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+        <div class="card border-secondary mb-5 text-center " style="width: 18rem;">
+            <div class="card-body text-info">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
       </div>
-    </div>
-    <div class="card border-secondary mb-3 text-center text-bold" style="width: 18rem;">
-      <div class="card-body text-info">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+      <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+        <div class="card border-secondary mb-5 text-center " style="width: 18rem;">
+            <div class="card-body text-info">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
       </div>
-    </div>
-    <div class="card border-secondary mb-3 text-center" style="width: 18rem;">
-      <div class="card-body text-info">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+      <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+        <div class="card border-secondary mb-5 text-center " style="width: 18rem;">
+            <div class="card-body text-info">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
       </div>
+    
+    
     </div>
   </div>
 
