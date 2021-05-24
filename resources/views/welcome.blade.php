@@ -12,24 +12,38 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
   <!-- Template Main CSS File -->
-  <!-- <link rel="stylesheet" href="{{asset('css/welcome.css')}}" type="text/css"> -->
-  <link rel="stylesheet" href="<?php echo asset('css/welcome.css') ?>" type="text/css">
+  <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+  <script src="{{ asset('js/welcome.js') }}" defer></script>
 </head>
 
 <body>
-  <nav class="navbar navbar-dark bg-secondary" style="justify-content:left; position: relative;">
-    <a class="navbar-brand" href="#">CovidWarrior</a>
-    <a class="nav-item nav-link text-dark" href="#about">About</a>
-    @if (Route::has('login'))
-    @auth
-    <a href="{{ url('/dashboard') }}" class="text-sm text-dark " style="right: 5%; position: absolute;">Dashboard</a>
-    @else
-    <a href="{{ route('login') }}" class="text-sm text-dark align-text-center" style="right: 5%; position: absolute;">Log in</a>
-    <!-- @if (Route::has('register'))
+  <!-- #1e6f5c -->
+  <!-- #29bb89 -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#289672">
+    <a class="navbar-brand text-white" href="#">CovidWarrior</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active ml-3">
+          <a class="text-white" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="text-white" href="#about">About</a>
+        </li>
+        @if (Route::has('login'))
+        @auth
+        <a href="{{ url('/dashboard') }}" class="text-sm text-white " style="right: 5%; position: absolute;">Dashboard</a>
+        @else
+        <a href="{{ route('login') }}" class="text-sm text-white align-text-center" style="right: 5%; position: absolute;">Log in</a>
+        <!-- @if (Route::has('register'))
             <a href="{{ route('register') }}" class="ml-4 text-sm" style="float: right;">Register</a>
             @endif -->
-    @endauth
-    @endif
+        @endauth
+        @endif
+      </ul>
+    </div>
   </nav>
   <!-- ======= Header ======= -->
   <header id="header" class="row">
@@ -117,32 +131,16 @@
 
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Maundy</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/maundy-free-coming-soon-bootstrap-theme/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End #footer -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <!-- Vendor JS Files -->
+  <!-- <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <link href="<?php echo asset('js/welcome.js') ?>" type="javascript">
-
 </body>
 
 </html>
