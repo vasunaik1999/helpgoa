@@ -15,13 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('frontend.home');
-});
+})->name('home');
 Route::get('/requests', 'App\Http\Controllers\FrontendController@index');
 
-
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/request-create', 'App\Http\Controllers\FrontendController@createreq');
+    Route::post('store-request', 'App\Http\Controllers\HelpRequestController@store')->name('request.store');
+});
 
 //Auth Route for both
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth', 'role:warrior|admin|superadmin']], function () {
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
 });
 
@@ -57,7 +60,7 @@ Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
 //For SuperAdmin | Admin 
 Route::group(['middleware' => ['auth', 'role:superadmin|admin']], function () {
     Route::get('/dashboard/create-request', 'App\Http\Controllers\HelpRequestController@index')->name('request.create');
-    Route::post('/dashboard/store-request', 'App\Http\Controllers\HelpRequestController@store')->name('request.store');
+    // Route::post('store-request', 'App\Http\Controllers\HelpRequestController@store')->name('request.store');
     Route::get('/dashboard/show-request', 'App\Http\Controllers\HelpRequestController@show')->name('request.show');
     Route::get('/dashboard/{helprequest}/delete', 'App\Http\Controllers\HelpRequestController@destroy');
 });

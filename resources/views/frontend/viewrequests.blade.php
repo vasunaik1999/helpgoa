@@ -5,44 +5,46 @@ Home | Covid Help
 @endsection
 
 @section('content')
-<div class="card">
+<div class="card mt-5 shadow" style="top: 20px;">
     <div class="card-body">
         <h1>Need Help?</h1>
         <p>Don't worry, just create a request of items needed and our Goan warriors will help you</p>
 
-        <button class="btn btn-sm text-white" style="background-color: #00BFA6;">Create Request</button>
+        <a class="btn btn-sm text-white shadow-sm" href="{{url('/request-create')}}" style="background-color: #00BFA6;">Create Request</a>
     </div>
 </div>
 
-<div class="card mt-4">
+<div class="card mt-5 shadow">
+    <div class="card-header" style="background-color: white;">
+        <h5><strong>Recent Requests</strong> </h5>
+    </div>
     <div class="card-body">
         <div class="row">
+            @foreach($reqs as $req)
             <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body" style="background-color:whitesmoke;">
-                        <strong>Vasu Naik </strong> - Colvale, Bardez <span class="badge badge-danger float-right">Urgent</span><br>
-                        <p class="mt-2">Need <span class="badge badge-primary ">Ivermectin</span>
-                            <span class="badge badge-primary">Doxycycline</span>
-                            <span class="badge badge-primary">Paracetamol</span>
+                <div class="card mt-2 shadow-sm">
+                    <div class="card-body">
+                        @auth
+                        @if(Auth::user()->hasRole('user'))
+
+                        @else
+                        <strong>{{$req->name}} </strong> -
+
+                        @endif
+                        @endauth
+                        <i class="fas fa-map-marker-alt mr-2"></i>{{$req->city}}, {{$req->taluka}} <span class="badge badge-danger float-right">Urgent</span><br>
+                        <p class="mt-2"><strong> Need :-</strong>
+                            @foreach( json_decode($req->items) as $item)
+                            <span class="badge badge-primary p-2 mt-2">{{$item}}</span>
+                            @endforeach
                         </p>
+                        <!-- <p>Special Instruction:- {{$req->special_instructions}}</p> -->
                         <button class="btn btn-sm text-white float-right" style="background-color: #00BFA6;">Help</button>
-                        <span> <em> Needed by Today, 5pm</em></span>
+                        <span> <em><strong> Needed by :- </strong></em>{{$req->needed_by}}</span>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body" style="background-color:whitesmoke;">
-                        <strong> Munna Bhai </strong>- Mapusa, Bardez <span class="badge badge-success float-right">Not So Urgent</span><br>
-                        <p class="mt-2">Need <span class="badge badge-primary ">Rice</span>
-                            <span class="badge badge-primary">Eggs</span>
-                            <span class="badge badge-primary">Milk</span>
-                        </p>
-                        <button class="btn btn-sm text-white float-right" style="background-color: #00BFA6;">Help</button>
-                        <span> <em> Needed by Tomarrow, 1pm</em></span>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>

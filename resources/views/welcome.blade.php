@@ -18,18 +18,19 @@
 </head>
 
 <body>
+
   <!-- #289672 -->
   <!-- #00BFA6 -->
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#00BFA6">
-    <a class="navbar-brand text-white" href="#">CovidWarrior</a>
+    <a class="navbar-brand text-white" href="{{url('/')}}">Covid Help</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active ml-3">
-          <a class="text-white" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="text-white" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item ml-3">
           <a class="text-white" href="#about">About</a>
@@ -39,14 +40,40 @@
         </li>
         @if (Route::has('login'))
         @auth
-        <a href="{{ url('/dashboard') }}" class="text-sm text-white " style="right: 5%; position: absolute;">Dashboard</a>
+        @if(Auth::user()->hasRole('user'))
+        <!-- Authentication -->
+        <form method="POST" style="right: 5%; position: absolute;" action="{{ route('logout') }}">
+          @csrf
+
+          <x-dropdown-link :href="route('logout')" class="text-white" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+            {{ __('Log Out') }}
+          </x-dropdown-link>
+        </form>
         @else
-        <a href="{{ route('login') }}" class="text-sm text-white align-text-center" style="right: 5%; position: absolute;">Log in</a>
+        <!-- Dashboard -->
+        <li class="nav-item ml-3">
+          <a href="{{ url('/dashboard') }}" class="text-sm text-white">Dashboard</a>
+        </li>
+        <!-- Authentication -->
+        <form method="POST" style="right: 2%; position: absolute;" action="{{ route('logout') }}">
+          @csrf
+          <!-- 
+          <x-dropdown-link :href="route('logout')" class="text-white" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+            {{ __('Log Out') }}
+          </x-dropdown-link> -->
+          <a href="{{route('logout')}}" class="text-white" onclick="event.preventDefault(); this.closest('form').submit();">Log Out</a>
+        </form>
+        @endif
+        @else
+        <a href=" {{ route('login') }}" class="text-sm text-white align-text-center" style="right: 5%; position: absolute;">Log in</a>
         <!-- @if (Route::has('register'))
             <a href="{{ route('register') }}" class="ml-4 text-sm" style="float: right;">Register</a>
             @endif -->
         @endauth
         @endif
+
       </ul>
     </div>
   </nav>

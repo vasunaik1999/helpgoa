@@ -19,7 +19,7 @@ Home | Covid Help
             <li>Use this platform to help those in need.</li>
             <li>Use this platform to volunteer and help those affected by covid.</li>
         </ul>
-        <button type="button" class="btn text-white" style="background-color:#00BFA6">Create Request</button>
+        <a type="button" class="btn text-white" href="{{url('/request-create')}}" style="background-color:#00BFA6">Create Request</a>
     </div>
 </header>
 <!-- End #header -->
