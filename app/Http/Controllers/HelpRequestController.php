@@ -76,8 +76,9 @@ class HelpRequestController extends Controller
     public function show(Request $request)
     {
         $reqs = HelpRequest::all();
-        //dd($reqs);
+        // dd($reqs);
         return view('request.viewrequests', compact('reqs'));
+        // return view('request.viewrequests')->with('reqs', json_decode($reqs, true));
     }
 
     /**

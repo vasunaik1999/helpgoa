@@ -26,10 +26,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if($reqs)
-                                    @foreach($reqs as $key=>$req)
+                                    @foreach($reqs as $req)
                                     <tr>
-                                        <td>{{$key + 1}}</td>
+                                        <td>{{$req->id}}</td>
                                         <td>{{$req->name}}</td>
                                         <td>{{$req->phone}}</td>
                                         <td>
@@ -37,8 +36,7 @@
                                             <br>{{$req->address}}
                                         </td>
                                         <td>
-                                            <!-- {{$req->items}} -->
-                                            @foreach($req->items as $item)
+                                            @foreach( json_decode($req->items) as $item)
                                             {{$item}} <br>
                                             @endforeach
                                         </td>
@@ -58,7 +56,7 @@
                                         </td>
                                     </tr>
                                     @endforeach
-                                    @endif
+
                                 </tbody>
                             </table>
                         </div>

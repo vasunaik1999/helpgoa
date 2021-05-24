@@ -6,57 +6,58 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
   <!-- Template Main CSS File -->
-  <link rel="stylesheet" href="<?php echo asset('css/welcome.css')?>" type="text/css">
+  <!-- <link rel="stylesheet" href="{{asset('css/welcome.css')}}" type="text/css"> -->
+  <link rel="stylesheet" href="<?php echo asset('css/welcome.css') ?>" type="text/css">
 </head>
 
-<body> 
-    <nav class="navbar navbar-dark bg-secondary" style="justify-content:left; position: relative;">
-        <a class="navbar-brand" href="#">CovidWarrior</a>
-        <a class="nav-item nav-link text-dark" href="#about">About</a>
-        @if (Route::has('login'))
-            @auth
-            <a href="{{ url('/dashboard') }}" class="text-sm text-dark " style="right: 5%; position: absolute;">Dashboard</a>
-            @else
-            <a href="{{ route('login') }}" class="text-sm text-dark align-text-center" style="right: 5%; position: absolute;">Log in</a>
-            <!-- @if (Route::has('register'))
+<body>
+  <nav class="navbar navbar-dark bg-secondary" style="justify-content:left; position: relative;">
+    <a class="navbar-brand" href="#">CovidWarrior</a>
+    <a class="nav-item nav-link text-dark" href="#about">About</a>
+    @if (Route::has('login'))
+    @auth
+    <a href="{{ url('/dashboard') }}" class="text-sm text-dark " style="right: 5%; position: absolute;">Dashboard</a>
+    @else
+    <a href="{{ route('login') }}" class="text-sm text-dark align-text-center" style="right: 5%; position: absolute;">Log in</a>
+    <!-- @if (Route::has('register'))
             <a href="{{ route('register') }}" class="ml-4 text-sm" style="float: right;">Register</a>
             @endif -->
-            @endauth
-        @endif
-    </nav>
+    @endauth
+    @endif
+  </nav>
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex flex-column align-items-center">
-        <h1>Covid Help</h1>
-        <h2>Let's Help Goa Breathe!</h2>
+      <h1>Covid Help</h1>
+      <h2>Let's Help Goa Breathe!</h2>
     </div>
   </header>
   <!-- End #header -->
   <div class="d-flex justify-content-around px-6 sm-2">
     <div class="card border-secondary mb-3 text-center" style="width: 18rem;">
-        <div class="card-body text-info">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
+      <div class="card-body text-info">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
     </div>
     <div class="card border-secondary mb-3 text-center text-bold" style="width: 18rem;">
-        <div class="card-body text-info">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
+      <div class="card-body text-info">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
     </div>
     <div class="card border-secondary mb-3 text-center" style="width: 18rem;">
-        <div class="card-body text-info">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
+      <div class="card-body text-info">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
     </div>
   </div>
 
@@ -115,10 +116,11 @@
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <link href="<?php echo asset('js/welcome.js')?>" type="javascript">
+  <link href="<?php echo asset('js/welcome.js') ?>" type="javascript">
 
 </body>
 
