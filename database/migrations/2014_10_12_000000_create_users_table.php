@@ -16,9 +16,21 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->integer('contact_num')->unsigned()->unique();
+            $table->timestamp('contact_verified_at')->nullable();
             $table->string('password');
+            $table->string('email')->unique()->nullable();
+            $table->string('addressLine1')->nullable();
+            $table->string('city1')->nullable();
+            $table->string('taluka1')->nullable();
+            $table->string('addressLine2')->nullable();
+            $table->string('city2')->nullable();
+            $table->string('taluka2')->nullable();
+            $table->boolean('isVolun')->default(0);
+            $table->boolean('isCovidPos')->default(0);
+            $table->boolean('isCovidPosFamily')->default(0);
+            $table->boolean('isCovidSymptoms')->default(0);
+            $table->integer('ipAddress')->unsigned();
             $table->rememberToken();
             $table->timestamps();
         });
