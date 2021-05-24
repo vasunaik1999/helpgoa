@@ -23,10 +23,12 @@ class CreateRequestsTable extends Migration
             $table->string('taluka');
             $table->string('address')->nullable();
             $table->string('pincode')->nullable();
+            $table->string('special_instructions')->nullable();
             $table->dateTime('needed_by');
             $table->json('approached_by')->nullable();
-            $table->string('special_instructions')->nullable();
-            $table->string('status');
+            $table->unsignedBiginteger('vol_id');
+            $table->foreign('vol_id')->references('id')->on('users');
+            $table->string('reqStatus');
             $table->string('urgency_status');
             $table->json('items');
             $table->softDeletes();
