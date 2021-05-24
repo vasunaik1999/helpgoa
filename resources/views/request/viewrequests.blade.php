@@ -45,7 +45,7 @@
                                             Needed By:- {{$req->needed_by}}
                                         </td>
                                         <td>
-                                            <span class="badge badge-primary">{{$req->status}}</span>
+                                            <span class="badge badge-primary">{{$req->reqStatus}}</span>
                                         </td>
                                         <td>
                                             {{$req->special_instructions}}

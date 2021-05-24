@@ -14,14 +14,14 @@
                             <thead>
                                 <th>Id</th>
                                 <th>Name</th>
-                                <th>Email</th>
+                                <th>Phone</th>
                             </thead>
                             <tbody>
                                 @foreach($warriors as $key => $warrior)
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>{{$warrior->name}}</td>
-                                    <td>{{$warrior->email}}</td>
+                                    <td>{{$warrior->phone}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

@@ -19,7 +19,7 @@ Home | Covid Help
             <li>Use this platform to help those in need.</li>
             <li>Use this platform to volunteer and help those affected by covid.</li>
         </ul>
-        <button type="button" class="btn text-white justify-content-center" href="{{url('/request-create')}}" style="background-color:#00BFA6; display:block; margin:auto;">Create Request</button>
+        <a type="button" class="btn text-white justify-content-center" href="{{url('/request-create')}}" style="background-color:#00BFA6; display:block; margin:auto;">Create Request</a>
     </div>
 
     <!-- Carousel -->
@@ -31,22 +31,22 @@ Home | Covid Help
         </ol>
         <div class="carousel-inner align-items-center">
             <div class="carousel-item active">
-            <div class="card border-secondary text-center " style="width: 18rem; height: 18rem;">
+                <div class="card border-secondary text-center " style="width: 18rem; height: 18rem;">
                     <img src="<?php echo asset('img/oxy.png') ?>" alt="">
                 </div>
             </div>
             <div class="carousel-item ">
-            <div class="card border-secondary text-center " style="width: 18rem; height: 18rem;">
+                <div class="card border-secondary text-center " style="width: 18rem; height: 18rem;">
                     <img src="<?php echo asset('img/oxy.png') ?>" alt="">
                 </div>
             </div>
             <div class="carousel-item">
-            <div class="card border-secondary text-center " style="width: 18rem; height: 18rem;">
+                <div class="card border-secondary text-center " style="width: 18rem; height: 18rem;">
                     <img src="<?php echo asset('img/oxy.png') ?>" alt="">
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 </header>
 <!-- End #header -->
 <div id="cards" class="row">
@@ -67,7 +67,7 @@ Home | Covid Help
     </div>
 </div>
 
-  
+
 </div>
 
 

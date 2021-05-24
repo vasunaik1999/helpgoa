@@ -16,9 +16,10 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('contact_num')->unsigned()->unique();
-            $table->timestamp('contact_verified_at')->nullable();
+            $table->string('phone')->unique();
+            $table->timestamp('phone_verified_at')->nullable();
             $table->string('password');
+            $table->string('secondaryPhone')->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('addressLine1')->nullable();
             $table->string('city1')->nullable();
@@ -26,11 +27,11 @@ class CreateUsersTable extends Migration
             $table->string('addressLine2')->nullable();
             $table->string('city2')->nullable();
             $table->string('taluka2')->nullable();
-            $table->boolean('isVolun')->default(0);
+            $table->boolean('isBanned')->default(0);
             $table->boolean('isCovidPos')->default(0);
             $table->boolean('isCovidPosFamily')->default(0);
             $table->boolean('isCovidSymptoms')->default(0);
-            $table->integer('ipAddress')->unsigned();
+            $table->integer('ipAddress')->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

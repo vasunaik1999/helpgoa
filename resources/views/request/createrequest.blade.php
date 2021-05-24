@@ -32,14 +32,14 @@
                             @endif
                             <div class="row">
                                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                <input type="hidden" name="status" value="open">
+                                <input type="hidden" name="reqStatus" value="open">
                                 <div class="form-group col-md-4">
                                     <label for="name">Name</label>
                                     <input type="text" class="form-control rounded" id="name" placeholder="Enter Name..." name="name" value="{{Auth::user()->name}}">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="phone">Phone Number</label>
-                                    <input type="text" class="form-control rounded" id="phone" placeholder="Enter Phone no..." name="phone">
+                                    <input type="text" class="form-control rounded" id="phone" placeholder="Enter Phone no..." name="phone" value="{{Auth::user()->phone}}">
                                 </div>
                             </div>
                             <hr>

@@ -28,7 +28,7 @@ Home | Covid Help
             @endif
             <div class="row">
                 <input type="hidden" name="user_id" @auth value="{{Auth::user()->id}}" @endauth>
-                <input type="hidden" name="status" value="open">
+                <input type="hidden" name="reqStatus" value="open">
                 <div class="form-group col-md-4">
                     <label for="name">Name</label>
                     <input type="text" class="form-control rounded" id="name" placeholder="Enter Name..." name="name" value="{{Auth::user()->name}}">

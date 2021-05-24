@@ -26,7 +26,7 @@ class CreateRequestsTable extends Migration
             $table->string('special_instructions')->nullable();
             $table->dateTime('needed_by');
             $table->json('approached_by')->nullable();
-            $table->unsignedBiginteger('vol_id');
+            $table->unsignedBiginteger('vol_id')->nullable();
             $table->foreign('vol_id')->references('id')->on('users');
             $table->string('reqStatus');
             $table->string('urgency_status');

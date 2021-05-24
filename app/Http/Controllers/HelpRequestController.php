@@ -45,7 +45,7 @@ class HelpRequestController extends Controller
             'pincode' => 'nullable',
             'needed_by' => 'required',
             'special_instructions' => 'nullable',
-            'status' => 'required',
+            'reqStatus' => 'required',
         ]);
 
         $helpRequest = new HelpRequest();
@@ -57,7 +57,7 @@ class HelpRequestController extends Controller
         $helpRequest->city = $request->input('city');
         $helpRequest->pincode = $request->input('pincode');
         $helpRequest->needed_by = $request->input('needed_by');
-        $helpRequest->status = $request->input('status');
+        $helpRequest->reqStatus = $request->input('reqStatus');
         $helpRequest->special_instructions = $request->input('special_instructions');
         $helpRequest->items = json_encode($request->input('items'));
         $helpRequest->urgency_status = 'urgent';

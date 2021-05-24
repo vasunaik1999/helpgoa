@@ -40,7 +40,7 @@ Home | Covid Help
                         </p>
                         <!-- <p>Special Instruction:- {{$req->special_instructions}}</p> -->
                         <button class="btn btn-sm text-white float-right" style="background-color: #00BFA6;">Help</button>
-                        <span> <em><strong> Needed by :- </strong></em>{{$req->needed_by}}</span>
+                        <span style="background-color: transparent;"><strong> Needed by :- </strong>{{$req->needed_by}}</span>
                     </div>
                 </div>
             </div>
