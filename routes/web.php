@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('frontend.home');
 });
+Route::get('/requests', 'App\Http\Controllers\FrontendController@index');
+
+
 
 //Auth Route for both
 Route::group(['middleware' => ['auth']], function () {

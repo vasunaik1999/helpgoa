@@ -20,6 +20,7 @@
 <body>
   <!-- #289672 -->
   <!-- #00BFA6 -->
+  <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#00BFA6">
     <a class="navbar-brand text-white" href="#">CovidWarrior</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,6 +33,9 @@
         </li>
         <li class="nav-item ml-3">
           <a class="text-white" href="#about">About</a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="text-white" href="{{url('/requests')}}">Requests</a>
         </li>
         @if (Route::has('login'))
         @auth
@@ -47,7 +51,7 @@
     </div>
   </nav>
 
-  <div class="container">
+  <div class="container mt-5">
     @yield('content')
   </div>
 
