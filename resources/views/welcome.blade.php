@@ -54,12 +54,12 @@
       <h1>Covid Help</h1>
       <h2>Let's Help Goa Breathe!</h2>
       <br>
-      <ul class="py-5">
+      <ul class="pb-5" style="line-height: 2;">
           <li>Use this platform to request for your needs.</li>
           <li>Use this platform to help those in need.</li>
           <li>Use this platform to volunteer and help those affected by covid.</li>
       </ul>
-      <button type="button" class="btn btn-secondary">Create Request</button>
+      <button type="button" class="btn text-white" style="background-color:#289672">Create Request</button>
     </div>
   </header>
   <!-- End #header -->
