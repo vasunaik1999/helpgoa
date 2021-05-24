@@ -7,53 +7,67 @@ Home | Covid Help
 @section('content')
 <!-- ======= Header ======= -->
 <header id="header" class="row">
-    <div class="d-flex flex-column align-items-center col-lg-8 col-md-12">
-        <img style="height:70vh;" src="<?php echo asset('img/home.svg') ?>" alt="">
+    <div class="d-flex flex-column align-items-center col-lg-8 col-md-12 mb-5">
+        <img style="max-height:70vh; width:60vw;" src="<?php echo asset('img/home.svg') ?>" alt="">
     </div>
-    <div class="d-flex flex-column align-items-center col-lg-4 col-md-12">
+    <div class="col-lg-4 col-md-12 mb-5">
         <h1>Covid Help</h1>
         <h2>Let's Help Goa Breathe!</h2>
         <br>
-        <ul class="pb-5" style="line-height: 2;">
+        <ul class="pb-2" style="line-height: 2;">
             <li>Use this platform to request for your needs.</li>
             <li>Use this platform to help those in need.</li>
             <li>Use this platform to volunteer and help those affected by covid.</li>
         </ul>
-        <button type="button" class="btn text-white" style="background-color:#00BFA6">Create Request</button>
+        <button type="button" class="btn text-white justify-content-center" style="background-color:#00BFA6; display:block; margin:auto;">Create Request</button>
     </div>
+
+    <!-- Carousel -->
+    <div id="slider" class="carousel slide" data-ride="carousel" style="background: color #000; display:block; margin:auto;">
+        <ol class="carousel-indicators">
+            <li data-target="#slider" data-slide-to="0" class="active"></li>
+            <li data-target="#slider" data-slide-to="1"></li>
+            <li data-target="#slider" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner align-items-center">
+            <div class="carousel-item active">
+            <div class="card border-secondary text-center " style="width: 18rem; height: 18rem;">
+                    <img src="<?php echo asset('img/oxy.png') ?>" alt="">
+                </div>
+            </div>
+            <div class="carousel-item ">
+            <div class="card border-secondary text-center " style="width: 18rem; height: 18rem;">
+                    <img src="<?php echo asset('img/oxy.png') ?>" alt="">
+                </div>
+            </div>
+            <div class="carousel-item">
+            <div class="card border-secondary text-center " style="width: 18rem; height: 18rem;">
+                    <img src="<?php echo asset('img/oxy.png') ?>" alt="">
+                </div>
+            </div>
+        </div>
+        </div>
 </header>
 <!-- End #header -->
-<div class="row">
+<div id="cards" class="row">
     <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-        <div class="card border-secondary mb-5 text-center " style="width: 18rem;">
-            <div class="card-body text-info">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+        <div class="card border-secondary mb-5 text-center " style="width: 18rem; height: 18rem;">
+            <img src="<?php echo asset('img/oxy.png') ?>" alt="">
         </div>
     </div>
     <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-        <div class="card border-secondary mb-5 text-center " style="width: 18rem;">
-            <div class="card-body text-info">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+        <div class="card border-secondary mb-5 text-center " style="width: 18rem; height: 18rem;">
+            <img src="<?php echo asset('img/oxy.png') ?>" alt="">
         </div>
     </div>
     <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-        <div class="card border-secondary mb-5 text-center " style="width: 18rem;">
-            <div class="card-body text-info">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+        <div class="card border-secondary mb-5 text-center " style="width: 18rem; height: 18rem;">
+            <img src="<?php echo asset('img/oxy.png') ?>" alt="">
         </div>
     </div>
-
-
 </div>
+
+  
 </div>
 
 
