@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span> <a href="">View Requests</a>
+            <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span> <a href="">Manage Requests</a>
         </h2>
     </x-slot>
 

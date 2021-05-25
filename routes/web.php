@@ -23,9 +23,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('store-request', 'App\Http\Controllers\HelpRequestController@store')->name('request.store');
 });
 
-//Auth Route for both
+//Auth Route for Warrior | Admin | Superadmin
 Route::group(['middleware' => ['auth', 'role:warrior|admin|superadmin']], function () {
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+    //Requests from dashboard
+    Route::get('/dashboard/create-request', 'App\Http\Controllers\HelpRequestController@index')->name('request.create');
+    Route::get('/dashboard/show-request', 'App\Http\Controllers\HelpRequestController@show')->name('request.show');
+    Route::get('/dashboard/{helpRequest}/view-request', 'App\Http\Controllers\HelpRequestController@view')->name('request.view');
+    Route::get('/dashboard/{helpRequest}/view-request/{user}/accept', 'App\Http\Controllers\HelpRequestController@acceptRequest');
+    Route::post('/dashboard/{helpRequest}/view-request/{user}/decline', 'App\Http\Controllers\HelpRequestController@declineRequest');
 });
 
 
@@ -59,9 +65,9 @@ Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
 
 //For SuperAdmin | Admin 
 Route::group(['middleware' => ['auth', 'role:superadmin|admin']], function () {
-    Route::get('/dashboard/create-request', 'App\Http\Controllers\HelpRequestController@index')->name('request.create');
+    // Route::get('/dashboard/create-request', 'App\Http\Controllers\HelpRequestController@index')->name('request.create');
     // Route::post('store-request', 'App\Http\Controllers\HelpRequestController@store')->name('request.store');
-    Route::get('/dashboard/show-request', 'App\Http\Controllers\HelpRequestController@show')->name('request.show');
+    Route::get('/dashboard/manage-request', 'App\Http\Controllers\HelpRequestController@manageRequest')->name('request.manage');
     Route::get('/dashboard/{helprequest}/delete', 'App\Http\Controllers\HelpRequestController@destroy');
 });
 
