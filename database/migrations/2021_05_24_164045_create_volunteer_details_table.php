@@ -19,7 +19,7 @@ class CreateVolunteerDetailsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBiginteger('verified_by')->nullable();
             $table->foreign('verified_by')->references('id')->on('users');
-            $table->integer('aadhaar_num')->unsigned()->unique();
+            $table->string('aadhaar_num')->unique();
             $table->json('serviceAreas');
             $table->json('supplyTypes');
             $table->string('organization')->nullable();

@@ -30,13 +30,15 @@
                             <td>{{$warrior->aadhaar_num}}</td>
                             <td>{{$warrior->organization}}</td>
                             <td>
-                                @foreach( json_decode($warrior->serviceAreas) as $serviceArea)
-                                <span>{{$serviceArea}} </span>
+                                <?php $i = json_decode($warrior->serviceAreas, true) ?>
+                                @foreach(json_decode($i) as $serviceArea)
+                                <span>{{$serviceArea}}</span><br>
                                 @endforeach
                             </td>
                             <td>
-                                @foreach(json_decode($warrior->supplyType) as $supplyType)
-                                <span>{{$supplyType}}</span>
+                                <?php $j = json_decode($warrior->supplyTypes, true) ?>
+                                @foreach(json_decode($j) as $supplyType)
+                                <span>{{$supplyType}}</span><br>
                                 @endforeach
                             </td>
                             <td>

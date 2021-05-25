@@ -49,7 +49,7 @@ Register Warrior | Covid Help
             <div class="row mt-4">
                 <div class="form-group col-md-4">
                     <label for="aadhaar_num">Aadhaar Number (For Verification Only)</label>
-                    <input type="text" class="form-control rounded" id="aadhaar_num" placeholder="Enter Aadhaar Number..." name="aadhaar_num">
+                    <input type="text" pattern="[1-9]{1}[0-9]{11}" class="form-control rounded" id="aadhaar_num" placeholder="Enter Aadhaar Number..." name="aadhaar_num">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="organization">Organization/NGO Name (Optional)</label>
@@ -103,7 +103,7 @@ Register Warrior | Covid Help
                         <tbody id="tbody2" class="tbody2">
                             <tr>
                                 <td>
-                                    <input type="text" name="supplyType[]" list="supplyTypeList" class="form-control rounded">
+                                    <input type="text" name="supplyType[]" list="supplyTypeList" class="form-control rounded" required>
                                     <datalist id="supplyTypeList">
                                         <option value="Oxygen Cylinder">Oxygen Cylinder</option>
                                         <option value="Oxygen Concentrators">Oxygen Concentrators</option>
