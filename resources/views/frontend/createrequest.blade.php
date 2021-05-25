@@ -88,7 +88,7 @@ Home | Covid Help
             <hr>
             <div class="row mt-4">
                 <div class="col-md-6 col-sm-12">
-                    <label for="special_instructions">Items (Eg: Rice - 2kg)</label>
+                    <label for="items">Items (Eg: Rice - 2kg)</label>
                     <table class="table table-responsive table-borderless">
                         <thead>
                             <tr>
