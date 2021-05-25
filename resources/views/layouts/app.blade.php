@@ -25,7 +25,7 @@
     <script src="{{ asset('js/main.js') }}" defer></script>
 </head>
 
-<body class="font-sans antialiased" style="padding:0; margin:0;">
+<body class="font-sans antialiased" style="padding:0; margin:0; overflow-y:hidden;">
     <div class="min-h-screen bg-gray-100">
 
         @include('layouts.navigation')
@@ -39,7 +39,15 @@
         <main>
             @include('layouts.sidebar')
             <div class="page-content" id="content">
-                {{ $slot }}
+            <div class="py-6">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="card shadow" style="height: 70vh; overflow-y:auto;">
+                        {{ $card }}
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </main>
     </div>
