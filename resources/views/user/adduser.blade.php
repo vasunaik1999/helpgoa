@@ -13,7 +13,7 @@
                         <!-- Validation Errors -->
                         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                        <form method="POST" action="{{ route('warrior.store') }}">
+                        <form method="POST" action="{{ route('user.store') }}">
                             @csrf
                             @if (session('status'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">

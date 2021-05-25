@@ -68,7 +68,10 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="ddrequest">
                         <a class="dropdown-item nav-link text-dark" href="{{route('request.create')}}">Create Request</a>
-                        <a class="dropdown-item nav-link text-dark" href="{{route('request.show')}}">View Requests</a>
+                        <a class="dropdown-item nav-link text-dark" href="{{route('request.show')}}">View Request</a>
+                        @if(Auth::user()->hasRole('superadmin','admin'))
+                        <a class="dropdown-item nav-link text-dark" href="{{route('request.manage')}}">Manage Requests</a>
+                        @endif
                     </div>
                 </div>
             </li>

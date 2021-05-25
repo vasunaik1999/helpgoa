@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\HelpRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Null_;
+use PhpParser\Node\Stmt\Else_;
 
 class HelpRequestController extends Controller
 {
@@ -73,14 +76,61 @@ class HelpRequestController extends Controller
      * @param  \App\Models\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function manageRequest(Request $request)
+    {
+        $reqs = HelpRequest::all();
+        // dd($reqs);
+        return view('request.managerequests', compact('reqs'));
+        // return view('request.viewrequests')->with('reqs', json_decode($reqs, true));
+    }
+
     public function show(Request $request)
     {
         $reqs = HelpRequest::all();
         // dd($reqs);
-        return view('request.viewrequests', compact('reqs'));
-        // return view('request.viewrequests')->with('reqs', json_decode($reqs, true));
+        return view('request.viewrequest', compact('reqs'));
     }
 
+    public function view($helpRequest)
+    {
+        $req = HelpRequest::find($helpRequest);
+        //dd($req);
+        $user = NULL;
+        if ($req->vol_id == NULL) {
+        } else {
+            $user = User::find($req->vol_id);
+        }
+        //dd($user);
+        return view('request.checkrequest', compact('req', 'user'));
+    }
+
+    public function acceptRequest($helpRequest, $user)
+    {
+        $req = HelpRequest::find($helpRequest);
+        if ($req->vol_id == Null) {
+            $req->vol_id = $user;
+        } else {
+            return redirect()->back()->with('message', 'Request Already Accepted by Someone else');
+        }
+        // dd($req);
+        $req->update();
+        return redirect()->back()->with('status', 'Accepted Successfully');
+    }
+
+    public function declineRequest(Request $request, $helpRequest, $user)
+    {
+        // dd($helpRequest, $user, $request->reason);
+        //Need to store Reason
+        $req = HelpRequest::find($helpRequest);
+        if ($req->vol_id == Null) {
+            return redirect()->back();
+        } else {
+            $req->vol_id = NULL;
+        }
+        // dd($req);
+        $req->update();
+        return redirect()->back()->with('status', 'Request Declined');
+    }
     /**
      * Show the form for editing the specified resource.
      *
