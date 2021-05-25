@@ -75,6 +75,9 @@ Route::group(['middleware' => ['auth', 'role:superadmin|admin']], function () {
     // Route::post('store-request', 'App\Http\Controllers\HelpRequestController@store')->name('request.store');
     Route::get('/dashboard/manage-request', 'App\Http\Controllers\HelpRequestController@manageRequest')->name('request.manage');
     Route::get('/dashboard/{helprequest}/delete', 'App\Http\Controllers\HelpRequestController@destroy');
+
+    //Verify Warrior
+    Route::get('/dashboard/verify-warrior', 'App\Http\Controllers\WarriorController@verifyindex')->name('warrior.verifyindex');
 });
 
 require __DIR__ . '/auth.php';

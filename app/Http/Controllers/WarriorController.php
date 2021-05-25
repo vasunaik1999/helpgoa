@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\WarriorDetail;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class WarriorController extends Controller
@@ -49,6 +51,27 @@ class WarriorController extends Controller
 
     public function storewarrior(Request $request)
     {
-        dd($request);
+        // dd($request);
+        $warrior = new WarriorDetail();
+        $warrior->user_id = $request->user_id;
+        $warrior->status = 'Pending';
+        $warrior->aadhaar_num = $request->aadhaar_num;
+        $warrior->organization = $request->organization;
+        $warrior->serviceAreas = json_encode($request->input('serviceArea'));
+        $warrior->supplyTypes = json_encode($request->input('supplyType'));
+        $warrior->save();
+        // dd($warrior);
+        return redirect()->back()->with('status', 'Details Submitted Successfully, Verification will take a short time');
+    }
+
+    public function verifyindex()
+    {
+        $d = DB::table('volunteer_details')
+            ->join('users', 'users.id', '=', 'volunteer_details.user_id')
+            ->select('users.*', 'volunteer_details.*')
+            ->get();
+
+        $warriors = json_decode($d);
+        return view('warrior.verifywarrior', compact('warriors'));
     }
 }

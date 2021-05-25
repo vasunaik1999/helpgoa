@@ -69,12 +69,19 @@
                     <div class="dropdown-menu" aria-labelledby="ddrequest">
                         <a class="dropdown-item nav-link text-dark" href="{{route('request.create')}}">Create Request</a>
                         <a class="dropdown-item nav-link text-dark" href="{{route('request.show')}}">View Request</a>
-                        @if(Auth::user()->hasRole('superadmin','admin'))
+                        @if(Auth::user()->hasRole('superadmin') || Auth::user()->hasRole('admin'))
                         <a class="dropdown-item nav-link text-dark" href="{{route('request.manage')}}">Manage Requests</a>
                         @endif
                     </div>
                 </div>
             </li>
+            @if(Auth::user()->hasRole('superadmin') || Auth::user()->hasRole('admin'))
+            <li class="nav-item">
+                <a href="{{route('warrior.verifyindex')}}" class="nav-link text-dark">
+                    <i class="fa fa-user mr-3 text-primary fa-fw"></i>Verify Warriors
+                </a>
+            </li>
+            @endif
             <li class="nav-item">
                 <a href="#" class="nav-link text-dark">
                     <i class="fa fa-area-chart mr-3 text-primary fa-fw"></i>
