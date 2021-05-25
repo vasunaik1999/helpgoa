@@ -35,13 +35,23 @@
         <li class="nav-item active ml-3">
           <a class="text-white" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
         </li>
+        @if (Route::has('login'))
+        @auth
+        @if(Auth::user()->hasRole('user'))
         <li class="nav-item ml-3">
-          <a class="text-white" href="#about">About</a>
+          <a class="text-white" href="{{url('/profile')}}">Profile</a>
         </li>
+        @endif
+        @endauth
+        @endif
         <li class="nav-item ml-3">
           <a class="text-white" href="{{url('/requests')}}">Requests</a>
         </li>
-
+        @if (\Route::current()->getName() == 'home')
+        <li class="nav-item ml-3">
+          <a class="text-white" href="#about">About</a>
+        </li>
+        @endif
         @if (Route::has('login'))
         @auth
         <li class="nav-item ml-3">

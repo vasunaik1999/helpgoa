@@ -72,7 +72,32 @@ Home | Covid Help
                         </p>
                         <!-- #ffbe0f orange -->
                         <!-- <p>Special Instruction:- {{$req->special_instructions}}</p> -->
-                        <span style="background-color: transparent;"><strong> Needed by :- </strong>{{$req->needed_by}}</span>
+                        <?php
+                            $date1= date('Y-m-d H:i:s');
+                            $date2 = $req->needed_by;
+                            $dteStart = new DateTime($date1);
+                            $dteEnd   = new DateTime($date2);
+                            $dteDiff  = $dteStart->diff($dteEnd);  
+
+                            $diff = abs(strtotime($date2) - strtotime($date1));
+
+                            $years = $dteDiff->format("About %Y Years left");
+                            $months = $dteDiff->format("About %m Months left");
+                            $days = $dteDiff->format("About %d days left");
+                            $message="Long time";
+                            if ($years!=0) {
+                                $message=$years;
+                            } elseif ($months!=0) {
+                                $message=$months;
+                            } elseif($days!=0) {
+                                $message=$days;
+                            } else{
+                                $message=$dteDiff->format("%H Hours and %I Minutes left");
+                            }
+                        ?>
+                        <span style="background-color: transparent;"><strong> Needed by :- {{$req->needed_by}}</span>
+                        <br>
+                        <span style="background-color: transparent;"><strong> Deadline :- </strong><?php echo $message ?></span>
                         <div class="row mt-2">
                             <div class="col">
                                 @auth
