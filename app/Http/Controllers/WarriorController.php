@@ -41,4 +41,14 @@ class WarriorController extends Controller
 
         return redirect()->back()->with('status', 'Warrior Registered Successfully');
     }
+
+    public function warriorregistration()
+    {
+        return view('frontend.warrior.warriorregistration');
+    }
+
+    public function storewarrior(Request $request)
+    {
+        dd($request);
+    }
 }

@@ -21,6 +21,10 @@ Route::get('/requests', 'App\Http\Controllers\FrontendController@index');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/request-create', 'App\Http\Controllers\FrontendController@createreq');
     Route::post('store-request', 'App\Http\Controllers\HelpRequestController@store')->name('request.store');
+
+    //Profile
+    Route::get('myprofile', 'App\Http\Controllers\ProfileController@index')->name('myprofile.index');
+    Route::post('myprofile/store', 'App\Http\Controllers\ProfileController@store')->name('myprofile.store');
 });
 
 //Auth Route for Warrior | Admin | Superadmin
@@ -37,7 +41,9 @@ Route::group(['middleware' => ['auth', 'role:warrior|admin|superadmin']], functi
 
 //for users
 Route::group(['middleware' => ['auth', 'role:user']], function () {
-    Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name('dashboard.myprofile');
+    // Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name('dashboard.myprofile');
+    Route::get('/warrior-registration', 'App\Http\Controllers\WarriorController@warriorregistration')->name('warriorregistration.index');
+    Route::post('/warrior-registration/store', 'App\Http\Controllers\WarriorController@storewarrior')->name('warriorregistration.store');
 });
 
 //for SuperAdmin
