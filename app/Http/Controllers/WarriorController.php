@@ -60,18 +60,18 @@ class WarriorController extends Controller
         $warrior->serviceAreas = json_encode($request->input('serviceArea'));
         $warrior->supplyTypes = json_encode($request->input('supplyType'));
         $warrior->save();
-        // dd($warrior);
+        //dd($warrior);
         return redirect()->back()->with('status', 'Details Submitted Successfully, Verification will take a short time');
     }
 
     public function verifyindex()
     {
-        $d = DB::table('volunteer_details')
+        $warriors = DB::table('volunteer_details')
             ->join('users', 'users.id', '=', 'volunteer_details.user_id')
             ->select('users.*', 'volunteer_details.*')
             ->get();
 
-        $warriors = json_decode($d);
+        // dd($warriors);
         return view('warrior.verifywarrior', compact('warriors'));
     }
 }

@@ -28,6 +28,7 @@
                                 {{$warrior->secondaryPhone}}
                             </td>
                             <td>{{$warrior->aadhaar_num}}</td>
+                            <td>{{$warrior->organization}}</td>
                             <td>
                                 @foreach( json_decode($warrior->serviceAreas) as $serviceArea)
                                 <span>{{$serviceArea}} </span>
