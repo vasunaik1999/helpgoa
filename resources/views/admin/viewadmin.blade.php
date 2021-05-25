@@ -24,6 +24,6 @@
                 </tbody>
             </table>
         </div>
-    <x-slot>
+    </x-slot>
                 
 </x-app-layout>
