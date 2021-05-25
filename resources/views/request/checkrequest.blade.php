@@ -27,12 +27,36 @@
                                 </button>
                             </div>
                             @endif
+                            <?php
+                                $date1= date('Y-m-d H:i:s');
+                                $date2 = $req->needed_by;
+                                $dteStart = new DateTime($date1);
+                                $dteEnd   = new DateTime($date2);
+                                $dteDiff  = $dteStart->diff($dteEnd);  
+
+                                $diff = abs(strtotime($date2) - strtotime($date1));
+
+                                $years = $dteDiff->format("About %Y Years left");
+                                $months = $dteDiff->format("About %m Months left");
+                                $days = $dteDiff->format("About %d days left");
+                                $message="Long time";
+                                if ($years!=0) {
+                                    $message=$years;
+                                } elseif ($months!=0) {
+                                    $message=$months;
+                                } elseif($days!=0) {
+                                    $message=$days;
+                                } else{
+                                    $message=$dteDiff->format("%H Hours and %I Minutes left");
+                                }
+                            ?>
                             <span><i class="fas fa-user mr-2"></i>{{$req->name}}</span>
                             <span><i class="fas fa-map-marker-alt ml-4 mr-2"></i> {{$req->city}}, {{$req->taluka}}</span>
                             <span class="badge badge-danger float-right">{{$req->urgency_status}}</span>
                             <p><i class="fas fa-map-marked-alt mt-2 mr-2"></i>{{$req->address}}</p>
                             <p><i class="fas fa-phone mt-2 mr-2"></i>{{$req->phone}}</p>
                             <span class="mt-2"><em> Need by {{$req->needed_by}}</em></span>
+                            <span class="mt-2"><em> <?php echo $message ?> </em></span>
                             <p class="mt-2"><strong> Items Needed :-</strong>
                                 @foreach( json_decode($req->items) as $item)
                                 <span class="badge badge-primary p-2 mt-2" style="font-size: 15px;">{{$item}}</span>
