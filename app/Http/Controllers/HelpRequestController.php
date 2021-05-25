@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HelpRequest;
+use App\Models\Reason;
 use App\Models\User;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Null_;
@@ -63,7 +64,7 @@ class HelpRequestController extends Controller
         $helpRequest->reqStatus = $request->input('reqStatus');
         $helpRequest->special_instructions = $request->input('special_instructions');
         $helpRequest->items = json_encode($request->input('items'));
-        $helpRequest->urgency_status = 'urgent';
+        $helpRequest->urgency_status = 'noturgent';
         //dd($helpRequest);
 
         $helpRequest->save();
@@ -119,13 +120,23 @@ class HelpRequestController extends Controller
 
     public function declineRequest(Request $request, $helpRequest, $user)
     {
+
         // dd($helpRequest, $user, $request->reason);
-        //Need to store Reason
+        $request->validate([
+            'reason' => 'required',
+        ]);
+
         $req = HelpRequest::find($helpRequest);
         if ($req->vol_id == Null) {
             return redirect()->back();
         } else {
             $req->vol_id = NULL;
+            $reason = new Reason();
+            $reason->user_id = $user;
+            $reason->request_id = $helpRequest;
+            $reason->reason = $request->reason;
+            $reason->save();
+            // dd($reason);
         }
         // dd($req);
         $req->update();
