@@ -22,6 +22,19 @@ class User extends Authenticatable
         'name',
         'phone',
         'password',
+        'secondaryPhone',
+        'email',
+        'addressLine1',
+        'city1',
+        'taluka1',
+        'addressLine2',
+        'city2',
+        'taluka2',
+        'isBanned',
+        'isCovidPos',
+        'isCovidPosFamily',
+        'isCovidSymptoms',
+        'ipAddress',
     ];
 
     /**
