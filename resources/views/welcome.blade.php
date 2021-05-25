@@ -37,11 +37,11 @@
         </li>
         @if (Route::has('login'))
         @auth
-        @if(Auth::user()->hasRole('user'))
+        <!-- @if(Auth::user()->hasRole('user'))
         <li class="nav-item ml-3">
           <a class="text-white" href="{{url('/profile')}}">Profile</a>
         </li>
-        @endif
+        @endif -->
         @endauth
         @endif
         <li class="nav-item ml-3">

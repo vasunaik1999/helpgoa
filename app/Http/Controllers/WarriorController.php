@@ -51,6 +51,10 @@ class WarriorController extends Controller
 
     public function storewarrior(Request $request)
     {
+        $request->validate([
+            'aadhaar_num' => 'required|digits:12',
+            'organization' => 'required',
+        ]);
         // dd($request);
         $warrior = new WarriorDetail();
         $warrior->user_id = $request->user_id;
