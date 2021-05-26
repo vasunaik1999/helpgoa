@@ -25,6 +25,12 @@ Route::group(['middleware' => ['auth']], function () {
     //Profile
     Route::get('myprofile', 'App\Http\Controllers\ProfileController@index')->name('myprofile.index');
     Route::post('myprofile/store', 'App\Http\Controllers\ProfileController@store')->name('myprofile.store');
+
+    //My Requests
+    Route::get('myrequests', 'App\Http\Controllers\FrontendController@myrequests')->name('frontend.myrequest');
+    Route::post('myrequests-delete', 'App\Http\Controllers\FrontendController@deletemyrequest')->name('frontend.deletemyrequest');
+    Route::post('myrequests-edit', 'App\Http\Controllers\FrontendController@editmyrequest')->name('frontend.editmyrequest');
+    Route::put('myrequests-update', 'App\Http\Controllers\FrontendController@updatemyrequest')->name('frontend.updatemyrequest');
 });
 
 //Auth Route for Warrior | Admin | Superadmin

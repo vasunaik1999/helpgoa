@@ -110,10 +110,11 @@ class HelpRequestController extends Controller
         $req = HelpRequest::find($helpRequest);
         if ($req->vol_id == Null) {
             $req->vol_id = $user;
+            $req->reqStatus = 'Accepted';
         } else {
             return redirect()->back()->with('message', 'Request Already Accepted by Someone else');
         }
-        // dd($req);
+        //dd($req);
         $req->update();
         return redirect()->back()->with('status', 'Accepted Successfully');
     }
@@ -131,6 +132,7 @@ class HelpRequestController extends Controller
             return redirect()->back();
         } else {
             $req->vol_id = NULL;
+            $req->reqStatus = 'Open';
             $reason = new Reason();
             $reason->user_id = $user;
             $reason->request_id = $helpRequest;

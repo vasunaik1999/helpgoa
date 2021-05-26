@@ -57,6 +57,9 @@
         <li class="nav-item ml-3">
           <a class="text-white" href="{{url('/myprofile')}}">My Profile</a>
         </li>
+        <li class="nav-item ml-3">
+          <a class="text-white" href="{{url('/myrequests')}}">My Request</a>
+        </li>
         @if(Auth::user()->hasRole('user'))
         <!-- Authentication -->
         <li class="nav-item ml-3">
