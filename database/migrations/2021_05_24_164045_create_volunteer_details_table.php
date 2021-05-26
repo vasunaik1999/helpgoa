@@ -22,6 +22,8 @@ class CreateVolunteerDetailsTable extends Migration
             $table->string('aadhaar_num')->unique();
             $table->json('serviceAreas');
             $table->json('supplyTypes');
+            $table->string('note')->nullable();
+            $table->string('reason')->nullable();
             $table->string('organization')->nullable();
             $table->string('status');
             $table->timestamps();

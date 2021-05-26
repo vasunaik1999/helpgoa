@@ -26,8 +26,8 @@ Register Warrior | Covid Help
         @endif
 
         @if($warrior)
-        @if(($warrior) && ($warrior->status != 'Rejected'))
-        @if($warrior->status == 'Pending' || $warrior->status == 'Inprogress')
+        @if(($warrior) and ($warrior->status != 'Rejected'))
+        @if($warrior->status == 'Pending' or $warrior->status == 'Inprogress')
         <div class="alert alert-primary" role="alert">
             Request Submitted Successfully! Your Details will be verified shortly
         </div>
@@ -39,11 +39,9 @@ Register Warrior | Covid Help
         @else
         @if($warrior->status == 'Rejected')
         <div class="alert alert-danger" role="alert">
-            Sorry!! Your Request got rejected due to invaild data, Please try again with vaild data.
+            Sorry!! Your Request got rejected due to {{$warrior->reason}}
         </div>
         @endif
-        @endif
-        @else
         <form method="POST" action="{{route('warriorregistration.store')}}">
             @csrf
 
@@ -145,6 +143,7 @@ Register Warrior | Covid Help
             <hr>
             <button type="submit" class="btn btn-primary mt-4">Submit</button>
         </form>
+        @endif
         @endif
     </div>
 </div>

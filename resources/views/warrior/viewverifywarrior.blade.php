@@ -7,7 +7,23 @@
 
     <x-slot name="card">
         <div class="card-body">
-
+            @if (session('status'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('status') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @endif
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="row mt-4">
                 <div class="col-md-6">
 
@@ -15,7 +31,7 @@
                         <div class="col-md-12 col-12">
                             <div class="card">
                                 <div class="card-body" style="font-size: 18px;">
-                                    <h3><strong style="font-size: 25px;">User Details</strong> </h3>
+                                    <h3><strong style="font-size: 25px;">User Details</strong></h3>
                                     <p class="mt-2"><b>Name:</b> <span>{{$user->name}}</span></p>
                                     <p class="mt-2"><b>Phone No.:</b> {{$user->phone}}</p>
                                     @if($user->secondaryPhone != NULL)
@@ -23,6 +39,15 @@
                                     @endif
                                     @if($user->email != NULL)
                                     <p class="mt-2"><b>Email:</b> {{$user->email}}</p>
+                                    @endif
+                                    @if($warrior_registration->status == "Pending")
+                                    <span class="badge badge-primary">{{$warrior_registration->status}}</span>
+                                    @elseif($warrior_registration->status == "Inprogress")
+                                    <span class="badge badge-warning">{{$warrior_registration->status}}</span>
+                                    @elseif($warrior_registration->status == "Accepted")
+                                    <span class="badge badge-success">{{$warrior_registration->status}}</span>
+                                    @elseif($warrior_registration->status == "Rejected")
+                                    <span class="badge badge-danger">{{$warrior_registration->status}}</span>
                                     @endif
                                     <p class="mt-2"><b>Address 1:</b> {{$user->addressLine1}}</p>
                                     @if($user->addressLine2 != NULL)
@@ -111,6 +136,7 @@
                     </div>
                     @endif
                     <!-- Accept User -->
+                    @if($warrior_registration->status != 'Accepted')
                     <div class="row mt-4">
                         <div class="col-md-12 col-12">
                             <div class="card">
@@ -118,8 +144,10 @@
                                     <h3><strong style="font-size: 20px;">Do you want to Accept?</strong> </h3>
                                     <div class="row">
                                         <div class="col-12">
-                                            <form action="">
-                                                <input type="hidden" name="user_id" value="Auth::user()-id">
+                                            <form method="post" action="{{route('warrior.verifyaccept')}}">
+                                                @csrf
+                                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                <input type="hidden" name="reg_id" value="{{$warrior_registration->id}}">
                                                 <div class="form-group mt-2">
                                                     <label for="note">Note (Optional) </label>
                                                     <textarea rows="2" name="note" class="form-control rounded" placeholder="Enter note..."></textarea>
@@ -132,6 +160,8 @@
                             </div>
                         </div>
                     </div>
+                    @endif
+                    @if($warrior_registration->status != 'Rejected')
                     <div class="row mt-4">
                         <div class="col-md-12 col-12">
                             <div class="card">
@@ -139,11 +169,13 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <h3><strong style="font-size: 20px;">Do you want to Reject?</strong> </h3>
-                                            <form action="">
-                                                <input type="hidden" name="user_id" value="Auth::user()-id">
+                                            <form method="post" action="{{route('warrior.verifyreject')}}">
+                                                @csrf
+                                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                <input type="hidden" name="reg_id" value="{{$warrior_registration->id}}">
                                                 <div class="form-group mt-2">
-                                                    <label for="reject_reason">Reason for Rejection</label>
-                                                    <input type="text" name="reject_reason" class="form-control rounded" placeholder="Enter reason for rejection...">
+                                                    <label for="reason">Reason for Rejection</label>
+                                                    <input type="text" name="reason" class="form-control rounded" placeholder="Enter reason for rejection...">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="note">Note (Optional)</label>
@@ -157,6 +189,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

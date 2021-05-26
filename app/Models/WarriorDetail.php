@@ -15,5 +15,5 @@ class WarriorDetail extends Model
         'serviceAreas' => 'array',
         'supplyTypes' => 'array',
     ];
-    protected $fillable = ['user_id', 'aadhaar_num', 'serviceAreas', 'supplyTypes', 'organization', 'status'];
+    protected $fillable = ['user_id', 'aadhaar_num', 'serviceAreas', 'supplyTypes', 'organization', 'status', 'note', 'reason'];
 }

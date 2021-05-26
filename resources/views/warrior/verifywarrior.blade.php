@@ -44,7 +44,31 @@
                                 <span>{{$supplyType}}</span><br>
                                 @endforeach
                             </td>
-                            <td>{{$warrior->status}}</td>
+                            <td>
+                                @if($warrior->status == 'Pending')
+                                <span class="badge badge-primary p-2">{{$warrior->status}}</span>
+                                @elseif($warrior->status == 'Inprogress')
+                                <span class="badge badge-warning p-2">{{$warrior->status}}</span>
+                                <?php
+                                $verification_done_by = App\Models\User::find($warrior->verified_by)
+                                ?>
+                                <p>{{$verification_done_by->name}} is doing Verification</p>
+                                @elseif($warrior->status == 'Accepted')
+                                <span class="badge badge-success p-2">{{$warrior->status}}</span>
+                                <?php
+                                $verification_done_by = App\Models\User::find($warrior->verified_by)
+                                ?>
+                                <p>Verified By {{$verification_done_by->name}} <br> {{$verification_done_by->phone}}</p>
+                                @elseif($warrior->status == 'Rejected')
+                                <span class="badge badge-danger p-2">{{$warrior->status}}</span>
+                                <?php
+                                $verification_done_by = App\Models\User::find($warrior->verified_by)
+                                ?>
+                                <p>Rejected by {{$verification_done_by->name}}
+                                    <br> {{$verification_done_by->phone}}
+                                </p>
+                                @endif
+                            </td>
                             <td>
                                 <a href="{{url('dashboard/verify-warrior/'.$warrior->id)}}" class="btn btn-primary btn-sm">More Details</a>
                             </td>
