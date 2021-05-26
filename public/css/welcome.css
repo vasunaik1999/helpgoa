@@ -105,7 +105,7 @@ body {
     margin-bottom: 0;
   }
 
-  .carousel .carousel-indicators li, span {  
+  .carousel .carousel-indicators li {  
     background:rgba(40, 150, 114,0.4)
   }
 
