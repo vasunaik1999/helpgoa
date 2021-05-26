@@ -52,19 +52,18 @@
                 <x-label for="role_id" :value="__('Register as')" />
                 <select name="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                     <option value="user">User</option>
-                    <option value="warrior">Warrior</option>
                     <option value="superadmin">Super Admin</option>
                 </select>
             </div>
 
             <div class="flex items-center justify-end mt-4">
                 <div class="text-sm text-gray-600">
-                Already Registered?
+                    Already Registered?
                     <a class="underline  hover:text-gray-900" href="{{ route('login') }}">
                         {{ __('Try logging in.') }}
                     </a>
                 </div>
-                
+
 
                 <x-button class="ml-4" style="background-color:#00BFA6">
                     {{ __('Register') }}

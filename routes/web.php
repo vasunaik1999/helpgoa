@@ -44,9 +44,16 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     // Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name('dashboard.myprofile');
 
     //Warrior Registration
-    Route::get('/warrior-registration/{volunteer_Detail}', 'App\Http\Controllers\WarriorController@warriorregistration')->name('warriorregistration.index');
+    // Route::get('/warrior-registration/{volunteer_Detail}', 'App\Http\Controllers\WarriorController@warriorregistration')->name('warriorregistration.index');
     Route::post('/warrior-registration/store', 'App\Http\Controllers\WarriorController@storewarrior')->name('warriorregistration.store');
 });
+//for users and Warrior
+Route::group(['middleware' => ['auth', 'role:user|warrior']], function () {
+
+    //Warrior Registration
+    Route::get('/warrior-registration/{volunteer_Detail}', 'App\Http\Controllers\WarriorController@warriorregistration')->name('warriorregistration.index');
+});
+
 
 //for SuperAdmin
 Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
@@ -80,6 +87,11 @@ Route::group(['middleware' => ['auth', 'role:superadmin|admin']], function () {
 
     //Verify Warrior
     Route::get('/dashboard/verify-warrior', 'App\Http\Controllers\WarriorController@verifyindex')->name('warrior.verifyindex');
+    Route::get('/dashboard/verify-warrior/{id}', 'App\Http\Controllers\WarriorController@verifyview')->name('warrior.verifyview');
+    Route::post('/dashboard/verify-warrior/agree', 'App\Http\Controllers\WarriorController@verifyagree')->name('warrior.verifyagree');
+    Route::post('/dashboard/verify-warrior/disagree', 'App\Http\Controllers\WarriorController@verifydisagree')->name('warrior.verifydisagree');
+    Route::post('/dashboard/verify-warrior/accept', 'App\Http\Controllers\WarriorController@verifyaccept')->name('warrior.verifyaccept');
+    Route::post('/dashboard/verify-warrior/reject', 'App\Http\Controllers\WarriorController@verifyreject')->name('warrior.verifyreject');
 });
 
 require __DIR__ . '/auth.php';

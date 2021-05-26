@@ -5,7 +5,7 @@ Home | Covid Help
 @endsection
 
 @section('content')
-<div class="card mt-5 shadow" style="top: 20px;">
+<div class="card mt-5 shadow" style="top: 25px">
     <div class="card-body">
         <h1>Need Help?</h1>
         <p>Don't worry, just create a request of items needed and our Goan warriors will help you</p>
@@ -30,7 +30,7 @@ Home | Covid Help
         </div>
     </div>
     <div class="card-body">
-        <div class="row mt-2">
+        <div class="row">
             @foreach($reqs as $req)
                 <?php
                     date_default_timezone_set('Asia/Kolkata');
@@ -55,7 +55,7 @@ Home | Covid Help
                     }
                 ?>
             <div class="col-md-6">
-                <div class="card mt-2 shadow-sm text-light" style=" 
+                <div class="card mt-2 shadow-sm text-light" style=" height:100%
                     <?php
                         $status="";
                         if($dteStart>$dteEnd){
@@ -130,7 +130,7 @@ Home | Covid Help
                             <div class="col">
                                 @auth
                                 @if(Auth::user()->hasRole('user'))
-                                <a class="btn btn-sm btn-dark text-light float-right" style="font-weight: bold;">Want to help?</a>
+                                <a href="{{url('/warrior-registration/'.Auth::user()->id)}}" class="btn btn-sm btn-dark text-light float-right" style="font-weight: bold;">Want to help?</a>
                                 <p><em><strong>Note: Register as a warrior to help others!</strong></em></p>
                                 @else
                                 <a href="{{url('dashboard/'.$req->id.'/view-request')}}" class="btn btn-sm btn-dark text-light float-right" style="font-weight: bold;">

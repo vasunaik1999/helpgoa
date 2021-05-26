@@ -46,7 +46,7 @@
                         }
                     ?>
                 <div class="col-md-6">
-                    <div class="card mt-2 shadow-sm text-light" style=" 
+                    <div class="card mt-2 shadow-sm text-light" style=" height:100%
                         <?php
                             $status="";
                             if($dteStart>$dteEnd){
@@ -118,16 +118,16 @@
                             </div>
                             <div class="row mt-2">
                                 <div class="col">
-                                    @auth
+                                    <!-- @auth
                                     @if(Auth::user()->hasRole('user'))
-                                    <a class="btn btn-sm btn-dark text-light float-right" style="font-weight: bold;">Want to help?</a>
+                                    <a  href="{{url('/warrior-registration/'.Auth::user()->id)}} class="btn btn-sm btn-dark text-light float-right" style="font-weight: bold;">Want to help?</a>
                                     <p><em><strong>Note: Register as a warrior to help others!</strong></em></p>
                                     @else
                                     <a href="{{url('dashboard/'.$req->id.'/view-request')}}" class="btn btn-sm btn-dark text-light float-right" style="font-weight: bold;">
                                         Approach
                                     </a>
                                     @endif
-                                    @endauth
+                                    @endauth -->
                                 </div>
                             </div>
 

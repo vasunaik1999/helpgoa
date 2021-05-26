@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use App\Models\WarriorDetail;
 use Illuminate\Http\Request;
@@ -46,7 +47,7 @@ class WarriorController extends Controller
 
     public function warriorregistration($id)
     {
-        $warrior = WarriorDetail::where('user_id', '=', $id)->first();
+        $warrior = WarriorDetail::where('user_id', '=', $id)->orderBy('id', 'desc')->first();
         //dd($warrior);
         // $warrior = NULL;
         return view('frontend.warrior.warriorregistration', compact('warrior'));
@@ -67,7 +68,7 @@ class WarriorController extends Controller
         $warrior->serviceAreas = json_encode($request->input('serviceArea'));
         $warrior->supplyTypes = json_encode($request->input('supplyType'));
         $warrior->save();
-        //dd($warrior);
+        // dd($warrior);
         return redirect()->back()->with('status', 'Details Submitted Successfully, Verification will take a short time');
     }
 
@@ -80,5 +81,84 @@ class WarriorController extends Controller
 
         // dd($warriors);
         return view('warrior.verifywarrior', compact('warriors'));
+    }
+
+    public function verifyview($id)
+    {
+        $warrior_registration = WarriorDetail::find($id);
+        $user = User::find($warrior_registration->user_id);
+        // dd($warrior_registration);
+        return view('warrior.viewverifywarrior', compact('user', 'warrior_registration'));
+    }
+
+    public function verifyagree(Request $request)
+    {
+        $warrior = WarriorDetail::find($request->reg_id);
+
+        $warrior->status = 'Inprogress';
+        $warrior->verified_by = $request->user_id;
+        $warrior->update();
+        // dd($warrior);
+
+        return redirect()->back();
+    }
+
+    public function verifydisagree(Request $request)
+    {
+        $warrior = WarriorDetail::find($request->reg_id);
+
+        $warrior->status = 'Pending';
+        $warrior->verified_by = null;
+        $warrior->update();
+        // dd($warrior);
+
+        return redirect()->back();
+    }
+
+    public function verifyaccept(Request $request)
+    {
+        $warrior = WarriorDetail::find($request->reg_id);
+
+        $warrior->status = 'Accepted';
+        $warrior->verified_by = $request->user_id;
+        $warrior->note = $request->note;
+        // dd($warrior);
+        $warrior->update();
+
+        $user = User::find($warrior->user_id);
+
+        if ($user->hasRole('user')) {
+            $user->detachRole('user');
+            $user->attachRole('warrior');
+        }
+
+
+        return redirect()->back();
+    }
+    public function verifyreject(Request $request)
+    {
+        // dd($request);
+        $request->validate([
+            'reason' => 'required',
+        ]);
+
+        $warrior = WarriorDetail::find($request->reg_id);
+
+        $warrior->status = 'Rejected';
+        $warrior->verified_by = $request->user_id;
+        $warrior->note = $request->note;
+        $warrior->reason = $request->reason;
+        // dd($warrior);
+        $warrior->update();
+
+
+        $user = User::find($warrior->user_id);
+
+        if ($user->hasRole('warrior')) {
+            $user->detachRole('warrior');
+            $user->attachRole('user');
+        }
+
+        return redirect()->back();
     }
 }
