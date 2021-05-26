@@ -78,7 +78,7 @@ My Request - Update | Covid Help
                         $need_by = new DateTime($req->needed_by);
                     ?>
                     <label for="needed_by">Need by</label>
-                    <input type="datetime-local" class="form-control rounded" id="needed_by" placeholder="Enter Date..." name="needed_by" value="<?php echo $dteDiff->format("%Y-%m-%d %H:%i:%s "); ?>">
+                    <input type="datetime-local" class="form-control rounded" id="needed_by" placeholder="Enter Date..." name="needed_by" value="<?php echo $need_by->format("Y-m-d H:i:s "); ?>">
                 </div>
             </div>
             <hr>
