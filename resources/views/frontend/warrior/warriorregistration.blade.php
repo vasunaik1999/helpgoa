@@ -7,25 +7,45 @@ Register Warrior | Covid Help
 @section('content')
 <div class="card" style="margin-top:9%;">
     <div class="card-body">
+        @if (session('status'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('status') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
+        @if($warrior)
+        @if(($warrior) && ($warrior->status != 'Rejected'))
+        @if($warrior->status == 'Pending')
+        <div class="alert alert-primary" role="alert">
+            Request Submitted Successfully! Your Details will be verified shortly
+        </div>
+        @elseif($warrior->status == 'Accepted')
+        <div class="alert alert-success" role="alert">
+            Congralutions!! You are an warrior now. Stay Safe
+        </div>
+        @endif
+        @else
+        @if($warrior->status == 'Rejected')
+        <div class="alert alert-danger" role="alert">
+            Sorry!! Your Request got rejected due to invaild data, Please try again with vaild data.
+        </div>
+        @endif
+        @endif
+        @else
         <form method="POST" action="{{route('warriorregistration.store')}}">
             @csrf
-            @if (session('status'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('status') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            @endif
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
 
             <div class="row">
                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
@@ -49,7 +69,7 @@ Register Warrior | Covid Help
             <div class="row mt-4">
                 <div class="form-group col-md-4">
                     <label for="aadhaar_num">Aadhaar Number (For Verification Only)</label>
-                    <input type="text" pattern="[1-9]{1}[0-9]{11}" class="form-control rounded" id="aadhaar_num" placeholder="Enter Aadhaar Number..." name="aadhaar_num">
+                    <input type="text" class="form-control rounded" id="aadhaar_num" placeholder="Enter Aadhaar Number..." name="aadhaar_num">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="organization">Organization/NGO Name (Optional)</label>
@@ -125,6 +145,7 @@ Register Warrior | Covid Help
             <hr>
             <button type="submit" class="btn btn-primary mt-4">Submit</button>
         </form>
+        @endif
     </div>
 </div>
 @endsection

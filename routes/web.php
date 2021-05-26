@@ -42,7 +42,9 @@ Route::group(['middleware' => ['auth', 'role:warrior|admin|superadmin']], functi
 //for users
 Route::group(['middleware' => ['auth', 'role:user']], function () {
     // Route::get('/dashboard/myprofile', 'App\Http\Controllers\DashboardController@myprofile')->name('dashboard.myprofile');
-    Route::get('/warrior-registration', 'App\Http\Controllers\WarriorController@warriorregistration')->name('warriorregistration.index');
+
+    //Warrior Registration
+    Route::get('/warrior-registration/{volunteer_Detail}', 'App\Http\Controllers\WarriorController@warriorregistration')->name('warriorregistration.index');
     Route::post('/warrior-registration/store', 'App\Http\Controllers\WarriorController@storewarrior')->name('warriorregistration.store');
 });
 

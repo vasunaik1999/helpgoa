@@ -44,15 +44,18 @@ class WarriorController extends Controller
         return redirect()->back()->with('status', 'Warrior Registered Successfully');
     }
 
-    public function warriorregistration()
+    public function warriorregistration($id)
     {
-        return view('frontend.warrior.warriorregistration');
+        $warrior = WarriorDetail::where('user_id', '=', $id)->first();
+        //dd($warrior);
+        // $warrior = NULL;
+        return view('frontend.warrior.warriorregistration', compact('warrior'));
     }
 
     public function storewarrior(Request $request)
     {
         $request->validate([
-            'aadhaar_num' => 'required|digits:12',
+            'aadhaar_num' => 'required|digits:12|numeric|unique:volunteer_details',
             'organization' => 'required',
         ]);
         // dd($request);

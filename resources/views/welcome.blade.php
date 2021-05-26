@@ -60,7 +60,7 @@
         @if(Auth::user()->hasRole('user'))
         <!-- Authentication -->
         <li class="nav-item ml-3">
-          <a class="text-white" href="{{url('/warrior-registration')}}">Register as Warrior</a>
+          <a class="text-white" href="{{url('/warrior-registration/'.Auth::user()->id)}}">Register as Warrior</a>
         </li>
         <form method="POST" style="right: 5%; position: absolute;" action="{{ route('logout') }}">
           @csrf
