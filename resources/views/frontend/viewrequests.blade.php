@@ -55,7 +55,7 @@ Home | Covid Help
                     }
                 ?>
             <div class="col-md-6">
-                <div class="card mt-2 shadow-sm text-light" style=" height:100%
+                <div class="card mt-2 shadow-sm text-light" style="
                     <?php
                         $status="";
                         if($dteStart>$dteEnd){
