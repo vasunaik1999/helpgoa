@@ -5,7 +5,7 @@ Home | Covid Help
 @endsection
 
 @section('content')
-<div class="card mt-5 shadow" style="top: 20px;">
+<div class="card mt-5 shadow" style="top: 25px">
     <div class="card-body">
         <h1>Need Help?</h1>
         <p>Don't worry, just create a request of items needed and our Goan warriors will help you</p>
@@ -30,15 +30,15 @@ Home | Covid Help
         </div>
     </div>
     <div class="card-body">
-        <div class="row mt-2">
+        <div class="row">
             @foreach($reqs as $req)
-            <div class="col-md-6">
-                <div class="card mt-2 shadow-sm" @if($req->urgency_status == 'critical')
-                    style="background-color:#fb3640; color:#f5f7b2;"
+            <div class="col-md-6 pt-4">
+                <div class="card shadow-sm" @if($req->urgency_status == 'critical')
+                    style="background-color:#fb3640; color:#f5f7b2; height:100%"
                     @elseif($req->urgency_status == 'urgent')
-                    style="background-color:#ffbe0f; color:#f5f7b2;"
+                    style="background-color:#ffbe0f; color:#f5f7b2; height:100%"
                     @else
-                    style="background-color:#21bf73; color:#f5f7b2;"
+                    style="background-color:#21bf73; color:#f5f7b2; height:100%"
                     @endif>
                     <div class="card-body">
                         @auth
@@ -107,7 +107,13 @@ Home | Covid Help
                             <div class="col">
                                 @auth
                                 @if(Auth::user()->hasRole('user'))
-                                <button class="btn btn-sm text-white float-right" style="background-color: #00BFA6;">Want to help?</button>
+                                <button href="{{url('/warrior-registration/'.Auth::user()->id)}}" class="btn btn-sm float-right" @if($req->urgency_status == 'critical')
+                                    style="background-color: #f5f7b2; color:#fb3640;"
+                                    @elseif($req->urgency_status == 'urgent')
+                                    style="background-color:#f5f7b2; color:#ffbe0f;"
+                                    @else
+                                    style="background-color:#f5f7b2; color:#21bf73;"
+                                    @endif>Want to help?</button>
                                 <p><em><strong>Note:- </strong> Register as a warrior to help others</em></p>
                                 @else
                                 <a href="{{url('dashboard/'.$req->id.'/view-request')}}" class="btn btn-sm float-right" @if($req->urgency_status == 'critical')

@@ -80,6 +80,9 @@ Route::group(['middleware' => ['auth', 'role:superadmin|admin']], function () {
 
     //Verify Warrior
     Route::get('/dashboard/verify-warrior', 'App\Http\Controllers\WarriorController@verifyindex')->name('warrior.verifyindex');
+    Route::get('/dashboard/verify-warrior/{id}', 'App\Http\Controllers\WarriorController@verifyview')->name('warrior.verifyview');
+    Route::post('/dashboard/verify-warrior/agree', 'App\Http\Controllers\WarriorController@verifyagree')->name('warrior.verifyagree');
+    Route::post('/dashboard/verify-warrior/disagree', 'App\Http\Controllers\WarriorController@verifydisagree')->name('warrior.verifydisagree');
 });
 
 require __DIR__ . '/auth.php';

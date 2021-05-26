@@ -27,7 +27,7 @@ Register Warrior | Covid Help
 
         @if($warrior)
         @if(($warrior) && ($warrior->status != 'Rejected'))
-        @if($warrior->status == 'Pending')
+        @if($warrior->status == 'Pending' || $warrior->status == 'Inprogress')
         <div class="alert alert-primary" role="alert">
             Request Submitted Successfully! Your Details will be verified shortly
         </div>
@@ -106,7 +106,7 @@ Register Warrior | Covid Help
                                     </select>
                                     <!-- <input type="text" name="serviceArea[]" class="form-control rounded" required> -->
                                 </td>
-                                <td style="text-align:center;"><a style="color:white;" class="btn btn-danger btn-sm remove">- Remove</a></td>
+                                <td style="text-align:center;"><a style="color:white;" class="btn btn-danger btn-sm">- Remove</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -134,7 +134,7 @@ Register Warrior | Covid Help
                                         <option value="Medicine">Medicine</option>
                                     </datalist>
                                 </td>
-                                <td style="text-align:center;"><a style="color:white;" class="btn btn-danger btn-sm remove">- Remove</a></td>
+                                <td style="text-align:center;"><a style="color:white;" class="btn btn-danger btn-sm">- Remove</a></td>
                             </tr>
                         </tbody>
                     </table>

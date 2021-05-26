@@ -67,7 +67,7 @@ class WarriorController extends Controller
         $warrior->serviceAreas = json_encode($request->input('serviceArea'));
         $warrior->supplyTypes = json_encode($request->input('supplyType'));
         $warrior->save();
-        //dd($warrior);
+        // dd($warrior);
         return redirect()->back()->with('status', 'Details Submitted Successfully, Verification will take a short time');
     }
 
@@ -80,5 +80,37 @@ class WarriorController extends Controller
 
         // dd($warriors);
         return view('warrior.verifywarrior', compact('warriors'));
+    }
+
+    public function verifyview($id)
+    {
+        $warrior_registration = WarriorDetail::find($id);
+        $user = User::find($warrior_registration->user_id);
+        // dd($warrior_registration);
+        return view('warrior.viewverifywarrior', compact('user', 'warrior_registration'));
+    }
+
+    public function verifyagree(Request $request)
+    {
+        $warrior = WarriorDetail::find($request->reg_id);
+
+        $warrior->status = 'Inprogress';
+        $warrior->verified_by = $request->user_id;
+        $warrior->update();
+        // dd($warrior);
+
+        return redirect()->back();
+    }
+
+    public function verifydisagree(Request $request)
+    {
+        $warrior = WarriorDetail::find($request->reg_id);
+
+        $warrior->status = 'Pending';
+        $warrior->verified_by = null;
+        $warrior->update();
+        // dd($warrior);
+
+        return redirect()->back();
     }
 }

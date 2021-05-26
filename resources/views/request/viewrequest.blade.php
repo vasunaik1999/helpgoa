@@ -23,13 +23,13 @@
         <div class="card-body">
             <div class="row mt-2">
                 @foreach($reqs as $req)
-                <div class="col-md-6">
-                    <div class="card mt-2 shadow-sm" @if($req->urgency_status == 'critical')
-                        style="background-color:#fb3640; color:#f5f7b2;"
+                <div class="col-md-6 pt-4">
+                    <div class="card shadow-sm" @if($req->urgency_status == 'critical')
+                        style="background-color:#fb3640; color:#f5f7b2; height:100%"
                         @elseif($req->urgency_status == 'urgent')
-                        style="background-color:#ffbe0f; color:#f5f7b2;"
+                        style="background-color:#ffbe0f; color:#f5f7b2; height:100%;"
                         @else
-                        style="background-color:#21bf73; color:#f5f7b2;"
+                        style="background-color:#21bf73; color:#f5f7b2; height:100%"
                         @endif>
                         <div class="card-body">
                             @auth
@@ -64,27 +64,27 @@
                             <!-- #ffbe0f orange -->
                             <!-- <p>Special Instruction:- {{$req->special_instructions}}</p> -->
                             <?php
-                                $date1= date('Y-m-d H:i:s');
-                                $date2 = $req->needed_by;
-                                $dteStart = new DateTime($date1);
-                                $dteEnd   = new DateTime($date2);
-                                $dteDiff  = $dteStart->diff($dteEnd);  
+                            $date1 = date('Y-m-d H:i:s');
+                            $date2 = $req->needed_by;
+                            $dteStart = new DateTime($date1);
+                            $dteEnd   = new DateTime($date2);
+                            $dteDiff  = $dteStart->diff($dteEnd);
 
-                                $diff = abs(strtotime($date2) - strtotime($date1));
+                            $diff = abs(strtotime($date2) - strtotime($date1));
 
-                                $years = $dteDiff->format("About %Y Years left");
-                                $months = $dteDiff->format("About %m Months left");
-                                $days = $dteDiff->format("About %d days left");
-                                $message="Long time";
-                                if ($years!=0) {
-                                    $message=$years;
-                                } elseif ($months!=0) {
-                                    $message=$months;
-                                } elseif($days!=0) {
-                                    $message=$days;
-                                } else{
-                                    $message=$dteDiff->format("%H Hours and %I Minutes left");
-                                }
+                            $years = $dteDiff->format("About %Y Years left");
+                            $months = $dteDiff->format("About %m Months left");
+                            $days = $dteDiff->format("About %d days left");
+                            $message = "Long time";
+                            if ($years != 0) {
+                                $message = $years;
+                            } elseif ($months != 0) {
+                                $message = $months;
+                            } elseif ($days != 0) {
+                                $message = $days;
+                            } else {
+                                $message = $dteDiff->format("%H Hours and %I Minutes left");
+                            }
                             ?>
 
                             <div class="row mt-2">
@@ -96,11 +96,17 @@
                             </div>
                             <div class="row mt-2">
                                 <div class="col">
-                                    @auth
+                                    <!-- @auth
                                     @if(Auth::user()->hasRole('user'))
-                                    <button class="btn btn-sm text-white float-right" style="background-color: #00BFA6;">Want to help?</button>
+                                    <button href="{{url('/warrior-registration/'.Auth::user()->id)}}" class="btn btn-sm float-right" @if($req->urgency_status == 'critical')
+                                        style="background-color: #f5f7b2; color:#fb3640;"
+                                        @elseif($req->urgency_status == 'urgent')
+                                        style="background-color:#f5f7b2; color:#ffbe0f;"
+                                        @else
+                                        style="background-color:#f5f7b2; color:#21bf73;"
+                                        @endif>Want to help?</button>
                                     <p><em><strong>Note:- </strong> Register as a warrior to help others</em></p>
-                                    @else
+                                    @else -->
                                     <a href="{{url('dashboard/'.$req->id.'/view-request')}}" class="btn btn-sm float-right" @if($req->urgency_status == 'critical')
                                         style="background-color: #f5f7b2; color:#fb3640;"
                                         @elseif($req->urgency_status == 'urgent')
@@ -109,8 +115,8 @@
                                         style="background-color:#f5f7b2; color:#21bf73;"
                                         @endif>Approach
                                     </a>
-                                    @endif
-                                    @endauth
+                                    <!-- @endif
+                                    @endauth -->
                                 </div>
                             </div>
 

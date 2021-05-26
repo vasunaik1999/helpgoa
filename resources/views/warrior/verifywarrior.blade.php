@@ -16,6 +16,7 @@
                         <th>Organization</th>
                         <th>service Area</th>
                         <th>Supply</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
@@ -26,6 +27,8 @@
                                 {{$warrior->name}} <br>
                                 {{$warrior->phone}} <br>
                                 {{$warrior->secondaryPhone}}
+                                {{$warrior->city1}}
+                                {{$warrior->taluka1}}
                             </td>
                             <td>{{$warrior->aadhaar_num}}</td>
                             <td>{{$warrior->organization}}</td>
@@ -41,8 +44,9 @@
                                 <span>{{$supplyType}}</span><br>
                                 @endforeach
                             </td>
+                            <td>{{$warrior->status}}</td>
                             <td>
-                                <a href="" class="btn btn-primary">More Details</a>
+                                <a href="{{url('dashboard/verify-warrior/'.$warrior->id)}}" class="btn btn-primary btn-sm">More Details</a>
                             </td>
                         </tr>
                         @endforeach
