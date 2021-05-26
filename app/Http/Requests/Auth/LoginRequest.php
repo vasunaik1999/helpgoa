@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -45,17 +46,24 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (!Auth::attempt($this->only('phone', 'password'), $this->boolean('remember'))) {
-            RateLimiter::hit($this->throttleKey());
+        $userdata = User::where('phone', '=', $this->phone)->select('isBanned')->first();
+        // dd($userdata);
+        if ($userdata->isBanned == '1') {
+            // return redirect('/you-are-banned');
+            return redirect()->back()->with('bannedMessage', 'You are banned, Contact Support');
+        } else {
 
-            throw ValidationException::withMessages([
-                'phone' => __('auth.failed'),
-            ]);
+
+            if (!Auth::attempt($this->only('phone', 'password'), $this->boolean('remember'))) {
+                RateLimiter::hit($this->throttleKey());
+
+                throw ValidationException::withMessages([
+                    'phone' => __('auth.failed'),
+                ]);
+            }
         }
-
         RateLimiter::clear($this->throttleKey());
     }
-
     /**
      * Ensure the login request is not rate limited.
      *

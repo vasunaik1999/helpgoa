@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('frontend.home');
 })->name('home');
 Route::get('/requests', 'App\Http\Controllers\FrontendController@index');
+Route::get('/you-are-banned', 'App\Http\Controllers\FrontendController@bannedpage');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/request-create', 'App\Http\Controllers\FrontendController@createreq');
@@ -77,11 +78,15 @@ Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
     Route::get('/dashboard/view-warrior', 'App\Http\Controllers\WarriorController@index')->name('warrior.view');
     Route::get('/dashboard/add-warrior', 'App\Http\Controllers\WarriorController@add')->name('warrior.add');
     Route::post('/dashboard/add-warrior', 'App\Http\Controllers\WarriorController@store')->name('warrior.store');
+    Route::get('/dashboard/view-warrior/{user}/more-details', 'App\Http\Controllers\WarriorController@moredetails')->name('warrior.moredetails');
+    Route::post('/dashboard/warrior-ban', 'App\Http\Controllers\WarriorController@banuser')->name('warrior.ban');
 
-    //View and Add Warrior
+    //View and Add User
     Route::get('/dashboard/view-user', 'App\Http\Controllers\UserController@index')->name('user.view');
     Route::get('/dashboard/add-user', 'App\Http\Controllers\UserController@add')->name('user.add');
     Route::post('/dashboard/add-user', 'App\Http\Controllers\UserController@store')->name('user.store');
+    Route::get('/dashboard/view-user/{user}/more-details', 'App\Http\Controllers\UserController@moredetails')->name('user.moredetails');
+    Route::post('/dashboard/user-ban', 'App\Http\Controllers\UserController@banuser')->name('user.ban');
 });
 
 //For SuperAdmin | Admin 
