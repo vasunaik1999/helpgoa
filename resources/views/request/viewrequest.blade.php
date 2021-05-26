@@ -23,14 +23,52 @@
         <div class="card-body">
             <div class="row mt-2">
                 @foreach($reqs as $req)
+                    <?php
+                        date_default_timezone_set('Asia/Kolkata');
+                        $dteStart = new DateTime(date('Y-m-d H:i:s'));
+                        $dteEnd   = new DateTime($req->needed_by);
+                        $dteDiff  = $dteStart->diff($dteEnd);
+
+                        $years = $dteDiff->format("%Y");
+                        $months = $dteDiff->format("%m");;
+                        $days = $dteDiff->format("%d");;
+                        $message = "Long time";
+
+                        if ($years != 0) {
+                            $message = $dteDiff->format("About %Y Years");
+                        } elseif ($months != 0) {
+                            $message = $dteDiff->format("About %m Months");
+                        } elseif ($days != 0) {
+                            $message = $dteDiff->format("About %d days");
+                        } else {
+                            $message = $dteDiff->format("%H Hours and %I Minutes");
+                            //$message=($dteStart>=$dteEnd);
+                        }
+                    ?>
                 <div class="col-md-6">
-                    <div class="card mt-2 shadow-sm" @if($req->urgency_status == 'critical')
-                        style="background-color:#fb3640; color:#f5f7b2;"
-                        @elseif($req->urgency_status == 'urgent')
-                        style="background-color:#ffbe0f; color:#f5f7b2;"
-                        @else
-                        style="background-color:#21bf73; color:#f5f7b2;"
-                        @endif>
+                    <div class="card mt-2 shadow-sm text-light" style=" 
+                        <?php
+                            $status="";
+                            if($dteStart>$dteEnd){
+                                echo "background-color:#fb3640;";
+                                $status="Critical";
+                            }elseif($message == $dteDiff->format("%H Hours and %I Minutes")){
+                                if($dteDiff->format("%H")<=6){
+                                    echo "background-color:#fb3640;"; 
+                                    $status="Critical";
+                                }elseif($dteDiff->format("%H")>6 && $dteDiff->format("%H")<12){
+                                    echo "background-color:#ffbe0f;";
+                                    $status="Urgent";
+                                }elseif($dteDiff->format("%H")>12 && $dteDiff->format("%H")<18){
+                                    echo "background-color:#21bf73;";
+                                    $status="Non-urgent";
+                                }
+                            }else{
+                                echo "background-color:#21bf73;";
+                                $status="Non-urgent";
+                            }                        
+                        ?>"
+                    >
                         <div class="card-body">
                             @auth
                             @if(Auth::user()->hasRole('user'))
@@ -41,73 +79,52 @@
                             @endif
                             @endauth
                             <i class="fas fa-map-marker-alt mr-2"></i>{{$req->city}}, {{$req->taluka}}
-                            <!-- @if($req->urgency_status == 'critical')
-                        <span class="badge badge-danger float-right">Critical</span><br>
-                        @elseif($req->urgency_status == 'urgent')
-                        <span class="badge badge-warning float-right">Urgent</span><br>
-                        @else
-                        <span class="badge badge-success float-right">Not Urgent</span><br>
-                        @endif -->
+                            <span class="badge badge-dark float-right"> <?php echo $status?> </span><br>
                             <p class="mt-2"><strong> Need :-</strong>
                                 @foreach( json_decode($req->items) as $item)
-                                <span class="badge p-2 mt-2" @if($req->urgency_status == 'critical')
-                                    style="background-color: #f5f7b2; color:#fb3640; font-size:14px;"
-                                    @elseif($req->urgency_status == 'urgent')
-                                    style="background-color:#f5f7b2; color:#ffbe0f; font-size:14px;"
-                                    @else
-                                    style="background-color:#f5f7b2; color:#21bf73; font-size:14px;"
-                                    @endif>
+                                <span class="badge bg-light p-2 mt-2" style="font-size:14px;
+                                    <?php
+                                        if($status == 'Critical')
+                                            echo "color:#fb3640;";
+                                        elseif($status == 'Urgent')
+                                            echo "color:#ffbe0f;";
+                                        else
+                                            echo "color:#21bf73;";
+                                            
+                                    ?>"
+                                >
                                     {{$item}}
                                 </span>
                                 @endforeach
                             </p>
                             <!-- #ffbe0f orange -->
                             <!-- <p>Special Instruction:- {{$req->special_instructions}}</p> -->
-                            <?php
-                                $date1= date('Y-m-d H:i:s');
-                                $date2 = $req->needed_by;
-                                $dteStart = new DateTime($date1);
-                                $dteEnd   = new DateTime($date2);
-                                $dteDiff  = $dteStart->diff($dteEnd);  
-
-                                $diff = abs(strtotime($date2) - strtotime($date1));
-
-                                $years = $dteDiff->format("About %Y Years left");
-                                $months = $dteDiff->format("About %m Months left");
-                                $days = $dteDiff->format("About %d days left");
-                                $message="Long time";
-                                if ($years!=0) {
-                                    $message=$years;
-                                } elseif ($months!=0) {
-                                    $message=$months;
-                                } elseif($days!=0) {
-                                    $message=$days;
-                                } else{
-                                    $message=$dteDiff->format("%H Hours and %I Minutes left");
-                                }
-                            ?>
 
                             <div class="row mt-2">
                                 <div class="col">
-                                    <span style="background-color: transparent;"><strong> Needed by :- </strong>{{$req->needed_by}}</span>
-                                    <br>
-                                    <span style="background-color: transparent;"><strong> Deadline :- </strong><?php echo $message ?></span>
+                                <span style="background-color: transparent;">
+                                    <?php
+                                        if($dteStart<$dteEnd){
+                                            echo "<strong> Deadline :- </strong>$message left";
+                                        }elseif($dteStart>=$dteEnd){    
+                                            echo "<strong> Deadline :- </strong>$message ago";          
+                                        }
+                                    
+                                    ?>
+                                </span>
+                                <br>
+                                <span style="background-color: transparent;"><strong> Needed by :- </strong>{{$req->needed_by}}</span>
                                 </div>
                             </div>
                             <div class="row mt-2">
                                 <div class="col">
                                     @auth
                                     @if(Auth::user()->hasRole('user'))
-                                    <button class="btn btn-sm text-white float-right" style="background-color: #00BFA6;">Want to help?</button>
-                                    <p><em><strong>Note:- </strong> Register as a warrior to help others</em></p>
+                                    <a class="btn btn-sm btn-dark text-light float-right" style="font-weight: bold;">Want to help?</a>
+                                    <p><em><strong>Note: Register as a warrior to help others!</strong></em></p>
                                     @else
-                                    <a href="{{url('dashboard/'.$req->id.'/view-request')}}" class="btn btn-sm float-right" @if($req->urgency_status == 'critical')
-                                        style="background-color: #f5f7b2; color:#fb3640;"
-                                        @elseif($req->urgency_status == 'urgent')
-                                        style="background-color:#f5f7b2; color:#ffbe0f;"
-                                        @else
-                                        style="background-color:#f5f7b2; color:#21bf73;"
-                                        @endif>Approach
+                                    <a href="{{url('dashboard/'.$req->id.'/view-request')}}" class="btn btn-sm btn-dark text-light float-right" style="font-weight: bold;">
+                                        Approach
                                     </a>
                                     @endif
                                     @endauth

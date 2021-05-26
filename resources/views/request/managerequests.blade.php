@@ -8,6 +8,28 @@
     <x-slot name="card">
         <div class="card-body">
             <div class="table-responsive">
+                <?php
+                    date_default_timezone_set('Asia/Kolkata');
+                    $dteStart = new DateTime(date('Y-m-d H:i:s'));
+                    $dteEnd   = new DateTime($req->needed_by);
+                    $dteDiff  = $dteStart->diff($dteEnd);
+
+                    $years = $dteDiff->format("%Y");
+                    $months = $dteDiff->format("%m");;
+                    $days = $dteDiff->format("%d");;
+                    $message = "Long time";
+
+                    if ($years != 0) {
+                        $message = $dteDiff->format("About %Y Years");
+                    } elseif ($months != 0) {
+                        $message = $dteDiff->format("About %m Months");
+                    } elseif ($days != 0) {
+                        $message = $dteDiff->format("About %d days");
+                    } else {
+                        $message = $dteDiff->format("%H Hours and %I Minutes");
+                        //$message=($dteStart>=$dteEnd);
+                    }
+                ?>
                 <table id="table" class="table table-striped hover">
                     <thead>
                         <tr>
@@ -38,8 +60,15 @@
                                 @endforeach
                             </td>
                             <td>
-                                {{$req->urgency_status}} <br>
-                                Needed By:- {{$req->needed_by}}
+                                Needed By:- {{$req->needed_by}}<br>
+                                <?php
+                                    if($dteStart<$dteEnd){
+                                        echo "$message left";
+                                    }elseif($dteStart>=$dteEnd){    
+                                        echo "$message ago";          
+                                    }
+                                
+                                ?>
                             </td>
                             <td>
                                 <span class="badge badge-primary">{{$req->reqStatus}}</span>

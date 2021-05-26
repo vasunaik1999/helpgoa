@@ -28,26 +28,25 @@
                             </div>
                             @endif
                             <?php
-                                $date1= date('Y-m-d H:i:s');
-                                $date2 = $req->needed_by;
-                                $dteStart = new DateTime($date1);
-                                $dteEnd   = new DateTime($date2);
-                                $dteDiff  = $dteStart->diff($dteEnd);  
+                                date_default_timezone_set('Asia/Kolkata');
+                                $dteStart = new DateTime(date('Y-m-d H:i:s'));
+                                $dteEnd   = new DateTime($req->needed_by);
+                                $dteDiff  = $dteStart->diff($dteEnd);
 
-                                $diff = abs(strtotime($date2) - strtotime($date1));
+                                $years = $dteDiff->format("%Y");
+                                $months = $dteDiff->format("%m");;
+                                $days = $dteDiff->format("%d");;
+                                $message = "Long time";
 
-                                $years = $dteDiff->format("About %Y Years left");
-                                $months = $dteDiff->format("About %m Months left");
-                                $days = $dteDiff->format("About %d days left");
-                                $message="Long time";
-                                if ($years!=0) {
-                                    $message=$years;
-                                } elseif ($months!=0) {
-                                    $message=$months;
-                                } elseif($days!=0) {
-                                    $message=$days;
-                                } else{
-                                    $message=$dteDiff->format("%H Hours and %I Minutes left");
+                                if ($years != 0) {
+                                    $message = $dteDiff->format("About %Y Years");
+                                } elseif ($months != 0) {
+                                    $message = $dteDiff->format("About %m Months");
+                                } elseif ($days != 0) {
+                                    $message = $dteDiff->format("About %d days");
+                                } else {
+                                    $message = $dteDiff->format("%H Hours and %I Minutes");
+                                    //$message=($dteStart>=$dteEnd);
                                 }
                             ?>
                             <span><i class="fas fa-user mr-2"></i>{{$req->name}}</span>
