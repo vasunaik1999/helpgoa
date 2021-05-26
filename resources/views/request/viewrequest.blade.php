@@ -45,8 +45,8 @@
                             //$message=($dteStart>=$dteEnd);
                         }
                     ?>
-                <div class="col-md-6">
-                    <div style=" height:100%
+                <div class="col-md-6 pb-4">
+                    <div style=" height:100%;
                         <?php
                             $status="";
                             if($dteStart>$dteEnd){
