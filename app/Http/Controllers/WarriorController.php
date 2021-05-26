@@ -47,6 +47,7 @@ class WarriorController extends Controller
 
     public function warriorregistration($id)
     {
+        
         $warrior = WarriorDetail::where('user_id', '=', $id)->orderBy('id', 'desc')->first();
         //dd($warrior);
         // $warrior = NULL;

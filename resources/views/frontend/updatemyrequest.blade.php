@@ -1,14 +1,15 @@
 @extends('welcome')
 
 @section('title')
-Home | Covid Help
+My Request - Update | Covid Help
 @endsection
 
 @section('content')
 <div class="card" style="margin-top:9%;">
     <div class="card-body">
-        <form method="POST" action="{{ route('request.store') }}">
+        <form method="POST" action="{{ route('frontend.updatemyrequest') }}">
             @csrf
+            @method('put')
             @if (session('status'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('status') }}
@@ -27,22 +28,21 @@ Home | Covid Help
             </div>
             @endif
             <div class="row">
-                <input type="hidden" name="user_id" @auth value="{{Auth::user()->id}}" @endauth>
-                <input type="hidden" name="reqStatus" value="Open">
+                <input type="hidden" name="req_id" @auth value="{{$req->id}}" @endauth>
                 <div class="form-group col-md-4">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control rounded" id="name" placeholder="Enter Name..." name="name" value="{{Auth::user()->name}}">
+                    <input type="text" class="form-control rounded" id="name" placeholder="Enter Name..." name="name" value="{{$req->name}}">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="phone">Phone Number</label>
-                    <input type="text" class="form-control rounded" id="phone" placeholder="Enter Phone no..." name="phone">
+                    <input type="text" class="form-control rounded" id="phone" placeholder="Enter Phone no..." value="{{$req->phone}}" name="phone">
                 </div>
             </div>
             <hr>
             <div class="row mt-3">
                 <div class="form-group col-md-4">
                     <label for="taluka">Taluka</label>
-                    <input type="text" class="form-control rounded" id="taluka" list="talukaList" placeholder="Enter Taluka..." name="taluka">
+                    <input type="text" class="form-control rounded" id="taluka" list="talukaList" placeholder="Enter Taluka..." value="{{$req->taluka}}" name="taluka">
                     <datalist id="talukaList">
                         <option value="Bardez">Bardez</option>
                         <option value="Bicholim">Bicholim</option>
@@ -60,29 +60,33 @@ Home | Covid Help
                 </div>
                 <div class="form-group col-md-4">
                     <label for="city">City</label>
-                    <input type="text" class="form-control rounded" id="city" placeholder="Enter City..." name="city">
+                    <input type="text" class="form-control rounded" id="city" placeholder="Enter City..." name="city" value="{{$req->city}}">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control rounded" id="address" placeholder="Enter Address..." name="address">
+                    <input type="text" class="form-control rounded" id="address" placeholder="Enter Address..." name="address" value="{{$req->address}}">
                 </div>
             </div>
             <hr>
             <div class="row mt-3">
                 <div class="form-group col-md-4">
                     <label for="pincode">Pincode (Optional)</label>
-                    <input type="number" class="form-control rounded" id="pincode" placeholder="Enter Pincode..." name="pincode">
+                    <input type="number" class="form-control rounded" id="pincode" placeholder="Enter Pincode..." name="pincode" value="{{$req->pincode}}">
                 </div>
                 <div class="form-group col-md-4">
+                    <?php
+                    // $dateold = new DateTime();
+
+                    ?>
                     <label for="needed_by">Need by</label>
-                    <input type="datetime-local" class="form-control rounded" id="needed_by" placeholder="Enter Date..." name="needed_by">
+                    <input type="datetime-local" class="form-control rounded" id="needed_by" placeholder="Enter Date..." name="needed_by" value="{{$req->needed_by}}">
                 </div>
             </div>
             <hr>
             <div class="row mt-3">
                 <div class="form-group col-md-12">
                     <label for="special_instructions">Special Instructions (Optional)</label>
-                    <textarea name="special_instructions" class="form-control rounded" rows="3" placeholder="Enter special instructions if any..."></textarea>
+                    <textarea name="special_instructions" class="form-control rounded" rows="3" placeholder="Enter special instructions if any...">{{$req->special_instructions}}</textarea>
                 </div>
             </div>
             <hr>
@@ -97,10 +101,12 @@ Home | Covid Help
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach( json_decode($req->items) as $item)
                             <tr>
-                                <td><input type="text" name="items[]" class="form-control rounded" required></td>
+                                <td><input type="text" name="items[]" class="form-control rounded" value="{{$item}}" required></td>
                                 <td style="text-align:center;"><a style="color:white;" class="btn btn-danger btn-sm remove">- Remove</a></td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

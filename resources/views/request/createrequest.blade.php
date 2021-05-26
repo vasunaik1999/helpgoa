@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    
+
     <x-slot name="card">
         <div class="card-body">
             <form method="POST" action="{{ route('request.store') }}">
@@ -29,7 +29,7 @@
                 @endif
                 <div class="row">
                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                    <input type="hidden" name="reqStatus" value="open">
+                    <input type="hidden" name="reqStatus" value="Open">
                     <div class="form-group col-md-4">
                         <label for="name">Name</label>
                         <input type="text" class="form-control rounded" id="name" placeholder="Enter Name..." name="name" value="{{Auth::user()->name}}">
