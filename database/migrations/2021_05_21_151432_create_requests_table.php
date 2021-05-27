@@ -29,7 +29,6 @@ class CreateRequestsTable extends Migration
             $table->unsignedBiginteger('vol_id')->nullable();
             $table->foreign('vol_id')->references('id')->on('users');
             $table->string('reqStatus');
-            $table->string('urgency_status');
             $table->json('items');
             $table->softDeletes();
             $table->timestamps();

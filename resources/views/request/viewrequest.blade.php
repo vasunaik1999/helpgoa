@@ -40,9 +40,10 @@
                 </div>
                 <div class="col-md-6">
                     <div class="float-right">
-                        <button class="btn mx-2" style="background-color:#fb3640;"></button><span style="background-color: transparent;">Critical</span>
-                        <button class="btn mx-2" style="background-color:#ffbe0f"></button><span style="background-color: transparent;">Urgent</span>
-                        <button class="btn mx-2" style="background-color:#21bf73;"></button><span style="background-color: transparent;">Not Urgent</span>
+                    <button class="btn mx-2" style="background-color:#fb3640;"></button><span style="background-color: transparent;">Critical</span>
+                    <button class="btn mx-2" style="background-color:#fd6104"></button><span style="background-color: transparent;">Urgent</span>
+                    <button class="btn mx-2" style="background-color:#ffce03;"></button><span style="background-color: transparent;">Standard</span>
+                    <button class="btn mx-2" style="background-color:#fffe80;"></button><span style="background-color: transparent;">Casual</span>
                     </div>
                 </div>
             </div>
@@ -59,6 +60,7 @@
                 $years = $dteDiff->format("%Y");
                 $months = $dteDiff->format("%m");;
                 $days = $dteDiff->format("%d");;
+                $hours = $dteDiff->format("%H");
                 $message = "Long time";
 
                 if ($years != 0) {
@@ -67,9 +69,11 @@
                     $message = $dteDiff->format("About %m Months");
                 } elseif ($days != 0) {
                     $message = $dteDiff->format("About %d days");
-                } else {
+                } elseif ($hours != 0) {
                     $message = $dteDiff->format("%H Hours and %I Minutes");
                     //$message=($dteStart>=$dteEnd);
+                } else {
+                    $message = $dteDiff->format("%I Minutes");
                 }
                 ?>
                 <div class="col-md-6 pb-4">
@@ -79,7 +83,7 @@
                         if ($dteStart > $dteEnd) {
                             echo "background-color:#fb3640;";
                             $status = "Critical";
-                        } elseif ($message == $dteDiff->format("%H Hours and %I Minutes")) {
+                        } elseif ($message == $dteDiff->format("%H Hours and %I Minutes")||$message == $dteDiff->format("%I Minutes")) {
                             if ($dteDiff->format("%H") <= 1) {
                                 echo "background-color:#fb3640;";
                                 $status = "Critical";
@@ -150,16 +154,11 @@
                             </div>
                             <div class="row mt-2">
                                 <div class="col">
-                                    <!-- @auth
-                                    @if(Auth::user()->hasRole('user'))
-                                    <a  href="{{url('/warrior-registration/'.Auth::user()->id)}} class="btn btn-sm btn-dark text-light float-right" style="font-weight: bold;">Want to help?</a>
-                                    <p><em><strong>Note: Register as a warrior to help others!</strong></em></p>
-                                    @else
+                                    @auth 
                                     <a href="{{url('dashboard/'.$req->id.'/view-request')}}" class="btn btn-sm btn-dark text-light float-right" style="font-weight: bold;">
                                         Approach
                                     </a>
-                                    @endif
-                                    @endauth -->
+                                    @endauth
                                 </div>
                             </div>
 

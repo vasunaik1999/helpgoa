@@ -69,6 +69,7 @@ Home | Covid Help
             $years = $dteDiff->format("%Y");
             $months = $dteDiff->format("%m");;
             $days = $dteDiff->format("%d");;
+            $hours = $dteDiff->format("%H");
             $message = "Long time";
 
             if ($years != 0) {
@@ -77,9 +78,11 @@ Home | Covid Help
                 $message = $dteDiff->format("About %m Months");
             } elseif ($days != 0) {
                 $message = $dteDiff->format("About %d days");
-            } else {
+            } elseif ($hours != 0) {
                 $message = $dteDiff->format("%H Hours and %I Minutes");
                 //$message=($dteStart>=$dteEnd);
+            } else {
+                $message = $dteDiff->format("%I Minutes");
             }
             ?>
             <div class="col-md-6 pb-4">
@@ -89,7 +92,7 @@ Home | Covid Help
                     if ($dteStart > $dteEnd) {
                         echo "background-color:#fb3640;";
                         $status = "Critical";
-                    } elseif ($message == $dteDiff->format("%H Hours and %I Minutes")) {
+                    } elseif ($message == $dteDiff->format("%H Hours and %I Minutes") ||$message == $dteDiff->format("%I Minutes") ) {
                         if ($dteDiff->format("%H") <= 1) {
                             echo "background-color:#fb3640;";
                             $status = "Critical";
@@ -105,7 +108,7 @@ Home | Covid Help
                         }
                     } else {
                         echo "background-color:#fffe80;";
-                        $status = "Casual";
+                        $status = $dteDiff->format("%H");
                     }
                     ?>" class="card shadow-sm <?php if ($status == "Casual") echo "text-dark";
                                                 else echo "text-light"; ?>">

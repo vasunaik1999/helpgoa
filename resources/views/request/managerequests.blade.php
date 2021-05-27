@@ -8,28 +8,6 @@
     <x-slot name="card">
         <div class="card-body">
             <div class="table-responsive">
-                <?php
-                    date_default_timezone_set('Asia/Kolkata');
-                    $dteStart = new DateTime(date('Y-m-d H:i:s'));
-                    $dteEnd   = new DateTime($req->needed_by);
-                    $dteDiff  = $dteStart->diff($dteEnd);
-
-                    $years = $dteDiff->format("%Y");
-                    $months = $dteDiff->format("%m");;
-                    $days = $dteDiff->format("%d");;
-                    $message = "Long time";
-
-                    if ($years != 0) {
-                        $message = $dteDiff->format("About %Y Years");
-                    } elseif ($months != 0) {
-                        $message = $dteDiff->format("About %m Months");
-                    } elseif ($days != 0) {
-                        $message = $dteDiff->format("About %d days");
-                    } else {
-                        $message = $dteDiff->format("%H Hours and %I Minutes");
-                        //$message=($dteStart>=$dteEnd);
-                    }
-                ?>
                 <table id="table" class="table table-striped hover">
                     <thead>
                         <tr>
@@ -46,6 +24,31 @@
                     </thead>
                     <tbody>
                         @foreach($reqs as $req)
+                        <?php
+                            date_default_timezone_set('Asia/Kolkata');
+                            $dteStart = new DateTime(date('Y-m-d H:i:s'));
+                            $dteEnd   = new DateTime($req->needed_by);
+                            $dteDiff  = $dteStart->diff($dteEnd);
+
+                            $years = $dteDiff->format("%Y");
+                            $months = $dteDiff->format("%m");;
+                            $days = $dteDiff->format("%d");;
+                            $hours = $dteDiff->format("%H");
+                            $message = "Long time";
+
+                            if ($years != 0) {
+                                $message = $dteDiff->format("About %Y Years");
+                            } elseif ($months != 0) {
+                                $message = $dteDiff->format("About %m Months");
+                            } elseif ($days != 0) {
+                                $message = $dteDiff->format("About %d days");
+                            } elseif ($hours != 0) {
+                                $message = $dteDiff->format("%H Hours and %I Minutes");
+                                //$message=($dteStart>=$dteEnd);
+                            } else {
+                                $message = $dteDiff->format("%I Minutes");
+                            }
+                        ?>
                         <tr>
                             <td>{{$req->id}}</td>
                             <td>{{$req->name}}</td>

@@ -33,34 +33,64 @@
                             $dteEnd   = new DateTime($req->needed_by);
                             $dteDiff  = $dteStart->diff($dteEnd);
 
-                            $years = $dteDiff->format("%Y");
-                            $months = $dteDiff->format("%m");;
-                            $days = $dteDiff->format("%d");;
-                            $message = "Long time";
+                                $years = $dteDiff->format("%Y");
+                                $months = $dteDiff->format("%m");;
+                                $days = $dteDiff->format("%d");;
+                                $hours = $dteDiff->format("%H");
+                                $message = "Long time";
+                                $status = "";
 
-                            if ($years != 0) {
-                                $message = $dteDiff->format("About %Y Years");
-                            } elseif ($months != 0) {
-                                $message = $dteDiff->format("About %m Months");
-                            } elseif ($days != 0) {
-                                $message = $dteDiff->format("About %d days");
-                            } else {
-                                $message = $dteDiff->format("%H Hours and %I Minutes");
-                                //$message=($dteStart>=$dteEnd);
-                            }
+                                if ($years != 0) {
+                                    $message = $dteDiff->format("About %Y Years");
+                                } elseif ($months != 0) {
+                                    $message = $dteDiff->format("About %m Months");
+                                } elseif ($days != 0) {
+                                    $message = $dteDiff->format("About %d days");
+                                } elseif ($hours != 0) {
+                                    $message = $dteDiff->format("%H Hours and %I Minutes");
+                                    //$message=($dteStart>=$dteEnd);
+                                } else {
+                                    $message = $dteDiff->format("%I Minutes");
+                                }
+
+                                
+                                if ($dteStart > $dteEnd) {
+                                    $status = "Critical";
+                                } elseif ($message == $dteDiff->format("%H Hours and %I Minutes")||$message == $dteDiff->format("%I Minutes")) {
+                                    if ($dteDiff->format("%H") <= 1) {
+                                        $status = "Critical";
+                                    } elseif ($dteDiff->format("%H") > 1 && $dteDiff->format("%H") <= 5) {
+                                        $status = "Urgent";
+                                    } elseif ($dteDiff->format("%H") > 5 && $dteDiff->format("%H") <= 15) {
+                                        $status = "Standard";
+                                    } else {
+                                        $status = "Casual";
+                                    }
+                                } else {
+                                    $status = "Casual";
+                                }
                             ?>
                             <span><i class="fas fa-user mr-2"></i>{{$req->name}}</span>
                             <span><i class="fas fa-map-marker-alt ml-4 mr-2"></i> {{$req->city}}, {{$req->taluka}}</span>
-                            <span class="badge badge-danger float-right">{{$req->urgency_status}}</span>
+                            <span class="badge badge-danger float-right"><?php echo $status?></span>
                             <p><i class="fas fa-map-marked-alt mt-2 mr-2"></i>{{$req->address}}</p>
                             <p><i class="fas fa-phone mt-2 mr-2"></i>{{$req->phone}}</p>
-                            <span class="mt-2"><em> Need by {{$req->needed_by}}</em></span>
-                            <span class="mt-2"><em> <?php echo $message ?> </em></span>
+                            <span class="mt-2"><em> <b>Need by</b> {{$req->needed_by}}</em></span>
                             <p class="mt-2"><strong> Items Needed :-</strong>
                                 @foreach( json_decode($req->items) as $item)
                                 <span class="badge badge-primary mt-2" style="font-size: 15px; padding:7px 10px 7px 10px; border-radius:20px;">{{$item}}</span>
                                 @endforeach
                             </p>
+                            <span class="mt-2"><em>
+                                <?php
+                                    if ($dteStart < $dteEnd) {
+                                        echo "<strong> Deadline :- </strong>$message left";
+                                    } elseif ($dteStart >= $dteEnd) {
+                                        echo "<strong> Deadline :- </strong>$message ago";
+                                    }
+                                ?>
+                            </em></span>
+                            
                             @if($req->special_instructions == NULL)
 
                             @else
