@@ -75,11 +75,11 @@ Register Warrior | Covid Help
             <div class="row mt-4">
                 <div class="form-group col-md-4">
                     <label for="aadhaar_num">Aadhaar Number (For Verification Only)</label>
-                    <input type="text" class="form-control rounded" id="aadhaar_num" placeholder="Enter Aadhaar Number..." name="aadhaar_num">
+                    <input required type="text" class="form-control rounded" id="aadhaar_num" placeholder="Enter Aadhaar Number..." name="aadhaar_num" pattern="[1-9]{1}[0-9]{11}">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="organization">Organization/NGO Name (Optional)</label>
-                    <input type="text" class="form-control rounded" id="organization" placeholder="Enter Organization/NGO name..." name="organization">
+                    <input required type="text" class="form-control rounded" id="organization" placeholder="Enter Organization/NGO name..." name="organization">
                 </div>
             </div>
             <hr>
