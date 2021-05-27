@@ -25,6 +25,7 @@ class ProfileController extends Controller
         $user->name = $request->input('name');
         $user->secondaryPhone = $request->input('secondaryPhone');
         $user->email = $request->input('email');
+        $user->pincode = $request->input('pincode');
         $user->city1 = $request->input('city1');
         $user->taluka1 = $request->input('taluka1');
         $user->addressLine1 = $request->input('addressLine1');

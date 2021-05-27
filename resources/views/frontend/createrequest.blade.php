@@ -35,14 +35,14 @@ Home | Covid Help
                 </div>
                 <div class="form-group col-md-4">
                     <label for="phone">Phone Number</label>
-                    <input type="text" class="form-control rounded" id="phone" placeholder="Enter Phone no..." name="phone">
+                    <input type="text" class="form-control rounded" id="phone" placeholder="Enter Phone no..." name="phone" value="{{Auth::user()->phone}}">
                 </div>
             </div>
             <hr>
             <div class="row mt-3">
                 <div class="form-group col-md-4">
                     <label for="taluka">Taluka</label>
-                    <input type="text" class="form-control rounded" id="taluka" list="talukaList" placeholder="Enter Taluka..." name="taluka">
+                    <input type="text" class="form-control rounded" id="taluka" list="talukaList" placeholder="Enter Taluka..." name="taluka" value="{{Auth::user()->taluka1}}">
                     <datalist id="talukaList">
                         <option value="Bardez">Bardez</option>
                         <option value="Bicholim">Bicholim</option>
@@ -60,18 +60,27 @@ Home | Covid Help
                 </div>
                 <div class="form-group col-md-4">
                     <label for="city">City</label>
-                    <input type="text" class="form-control rounded" id="city" placeholder="Enter City..." name="city">
+                    <input type="text" class="form-control rounded" id="city" list="cityList" placeholder="Enter City..." name="city" value="{{Auth::user()->city1}}">
+                    <datalist id="cityList">
+                        <option value="{{Auth::user()->city1}}">{{Auth::user()->city1}}</option>
+                        <option value="{{Auth::user()->city2}}">{{Auth::user()->city2}}</option>
+                    </datalist>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control rounded" id="address" placeholder="Enter Address..." name="address">
+                    <input type="text" class="form-control rounded" list="addressList" value="{{Auth::user()->addressLine1}}" id="address" placeholder="Enter Address..." name="address">
+                    <datalist id="addressList">
+                        <option value="{{Auth::user()->addressLine1}}">{{Auth::user()->addressLine1}}</option>
+                        <option value="{{Auth::user()->addressLine2}}">{{Auth::user()->addressLine2}}</option>
+                    </datalist>
+
                 </div>
             </div>
             <hr>
             <div class="row mt-3">
                 <div class="form-group col-md-4">
                     <label for="pincode">Pincode (Optional)</label>
-                    <input type="number" class="form-control rounded" id="pincode" placeholder="Enter Pincode..." name="pincode">
+                    <input type="number" class="form-control rounded" id="pincode" placeholder="Enter Pincode..." name="pincode" value="{{Auth::user()->pincode}}">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="needed_by">Need by</label>

@@ -5,16 +5,16 @@ Home | Covid Help
 @endsection
 
 @section('content')
-<div class="card mt-5 shadow" style="top: 25px">
+<div class="card mt-5 shadow" style="top: 25px; border-radius:30px;">
     <div class="card-body">
         <h1>Need Help?</h1>
         <p>Don't worry, just create a request of items needed and our Goan warriors will help you</p>
 
-        <a class="btn btn-sm text-white shadow-sm" href="{{url('/request-create')}}" style="background-color: #00BFA6;">Create Request</a>
+        <a class="btn btn-sm text-white shadow-sm" href="{{url('/request-create')}}" style="background-color: #00BFA6; border-radius:25px; padding:7px 12px;">Create Request</a>
     </div>
 </div>
 
-<div class="card mt-5 shadow">
+<div class="card mt-5 shadow" style="border-radius:30px;">
     <div class="card-header" style="background-color: white;">
         <div class="row">
             <div class="col-md-3">
@@ -89,26 +89,30 @@ Home | Covid Help
                 <div style="height:100%; 
                     <?php
                     $status = "";
-                    if ($dteStart > $dteEnd) {
-                        echo "background-color:#fb3640;";
-                        $status = "Critical";
-                    } elseif ($message == $dteDiff->format("%H Hours and %I Minutes") ||$message == $dteDiff->format("%I Minutes") ) {
-                        if ($dteDiff->format("%H") <= 1) {
+                    if ($req->reqStatus == 'MarkedCompletedByWarrior' || $req->reqStatus == 'MarkedCompletedByUser') {
+                        echo "background-color:#28df99;";
+                    } else {
+                        if ($dteStart > $dteEnd) {
                             echo "background-color:#fb3640;";
                             $status = "Critical";
-                        } elseif ($dteDiff->format("%H") > 1 && $dteDiff->format("%H") <= 5) {
-                            echo "background-color:#fd6104;";
-                            $status = "Urgent";
-                        } elseif ($dteDiff->format("%H") > 5 && $dteDiff->format("%H") <= 15) {
-                            echo "background-color:#ffce03;";
-                            $status = "Standard";
+                        } elseif ($message == $dteDiff->format("%H Hours and %I Minutes") || $message == $dteDiff->format("%I Minutes")) {
+                            if ($dteDiff->format("%H") <= 1) {
+                                echo "background-color:#fb3640;";
+                                $status = "Critical";
+                            } elseif ($dteDiff->format("%H") > 1 && $dteDiff->format("%H") <= 5) {
+                                echo "background-color:#fd6104;";
+                                $status = "Urgent";
+                            } elseif ($dteDiff->format("%H") > 5 && $dteDiff->format("%H") <= 15) {
+                                echo "background-color:#ffce03;";
+                                $status = "Standard";
+                            } else {
+                                echo "background-color:#fffe80;";
+                                $status = "Casual";
+                            }
                         } else {
                             echo "background-color:#fffe80;";
-                            $status = "Casual";
+                            $status = $dteDiff->format("%H");
                         }
-                    } else {
-                        echo "background-color:#fffe80;";
-                        $status = $dteDiff->format("%H");
                     }
                     ?>" class="card shadow-sm <?php if ($status == "Casual") echo "text-dark";
                                                 else echo "text-light"; ?>">
@@ -125,8 +129,10 @@ Home | Covid Help
                         <span class="badge badge-dark float-right"> <?php echo $status ?> </span><br>
                         <p class="mt-2"><strong> Need :-</strong>
                             @foreach( json_decode($req->items) as $item)
-                            <span class="badge <?php if ($status == "Casual") echo "bg-dark";
-                                                else echo "bg-light"; ?> p-2 mt-2" style="font-size:14px;
+                            <span class="badge p-2 mt-2
+                            <?php
+                            if ($status == "Casual") echo "bg-dark";
+                            else echo "bg-light"; ?>" style="font-size:14px;
                                 <?php
                                 if ($status == 'Critical')
                                     echo "color:#fb3640;";
