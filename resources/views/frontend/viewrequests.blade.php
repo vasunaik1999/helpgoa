@@ -92,7 +92,7 @@ Home | Covid Help
                     if ($dteStart > $dteEnd) {
                         echo "background-color:#fb3640;";
                         $status = "Critical";
-                    } elseif ($message == $dteDiff->format("%H Hours and %I Minutes")) {
+                    } elseif ($message == $dteDiff->format("%H Hours and %I Minutes") ||$message == $dteDiff->format("%I Minutes") ) {
                         if ($dteDiff->format("%H") <= 1) {
                             echo "background-color:#fb3640;";
                             $status = "Critical";
@@ -108,7 +108,7 @@ Home | Covid Help
                         }
                     } else {
                         echo "background-color:#fffe80;";
-                        $status = "Casual";
+                        $status = $dteDiff->format("%H");
                     }
                     ?>" class="card shadow-sm <?php if ($status == "Casual") echo "text-dark";
                                                 else echo "text-light"; ?>">
