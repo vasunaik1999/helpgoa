@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('frontend.home');
 })->name('home');
 Route::get('/requests', 'App\Http\Controllers\FrontendController@index');
+Route::post('/requests', 'App\Http\Controllers\FrontendController@index')->name('request.viewrequestfrontend.search'); //search
 Route::get('/you-are-banned', 'App\Http\Controllers\FrontendController@bannedpage');
 
 Route::group(['middleware' => ['auth']], function () {
@@ -43,6 +44,7 @@ Route::group(['middleware' => ['auth', 'role:warrior|admin|superadmin']], functi
     Route::get('/dashboard/{helpRequest}/view-request', 'App\Http\Controllers\HelpRequestController@view')->name('request.view');
     Route::get('/dashboard/{helpRequest}/view-request/{user}/accept', 'App\Http\Controllers\HelpRequestController@acceptRequest');
     Route::post('/dashboard/{helpRequest}/view-request/{user}/decline', 'App\Http\Controllers\HelpRequestController@declineRequest');
+    Route::post('/dashboard/show-request', 'App\Http\Controllers\HelpRequestController@show')->name('request.viewrequestdashboard.search');
 });
 
 
@@ -68,11 +70,15 @@ Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
 
     Route::get('/dashboard/add-superadmin', 'App\Http\Controllers\SuperadminController@add')->name('superadmin.add');
     Route::post('/dashboard/add-superadmin', 'App\Http\Controllers\SuperadminController@store')->name('superadmin.store');
+    Route::get('/dashboard/view-superadmin/{user}/more-details', 'App\Http\Controllers\SuperadminController@moredetails')->name('admin.moredetails');
+    Route::post('/dashboard/superadmin-ban', 'App\Http\Controllers\SuperadminController@banuser')->name('superadmin.ban');
 
     //View and Add admin
     Route::get('/dashboard/view-admin', 'App\Http\Controllers\AdminController@index')->name('admin.view');
     Route::get('/dashboard/add-admin', 'App\Http\Controllers\AdminController@add')->name('admin.add');
     Route::post('/dashboard/add-admin', 'App\Http\Controllers\AdminController@store')->name('admin.store');
+    Route::get('/dashboard/view-admin/{user}/more-details', 'App\Http\Controllers\AdminController@moredetails')->name('admin.moredetails');
+    Route::post('/dashboard/admin-ban', 'App\Http\Controllers\AdminController@banuser')->name('admin.ban');
 
     //View and Add Warrior
     Route::get('/dashboard/view-warrior', 'App\Http\Controllers\WarriorController@index')->name('warrior.view');

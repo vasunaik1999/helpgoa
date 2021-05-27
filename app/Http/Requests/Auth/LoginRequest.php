@@ -50,7 +50,7 @@ class LoginRequest extends FormRequest
         // dd($userdata);
         if ($userdata->isBanned == '1') {
             // return redirect('/you-are-banned');
-            return redirect()->back()->with('bannedMessage', 'You are banned, Contact Support');
+            return redirect()->back()->with('bannedMessage', 'Your account has been banned, Contact Support');
         } else {
 
 

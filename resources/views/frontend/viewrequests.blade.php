@@ -17,8 +17,35 @@ Home | Covid Help
 <div class="card mt-5 shadow">
     <div class="card-header" style="background-color: white;">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <h5><strong>Recent Requests</strong></h5>
+            </div>
+            <div class="col-md-3 items-center">
+                <form mthod="post" action="{{route('request.viewrequestfrontend.search')}}">
+                    <div class="input-group">
+                        <select name="search" class="form-control" aria-placeholder="Enter Location">
+                            @if($search != null)
+                            <option value="{{$search}}">{{$search}}</option>
+                            @endif
+                            <option value="All">All</option>
+                            <option value="Bardez">Bardez</option>
+                            <option value="Bicholim">Bicholim</option>
+                            <option value="Pernem">Pernem</option>
+                            <option value="Sattari">Sattari</option>
+                            <option value="Tiswadi">Tiswadi</option>
+                            <option value="Ponda">Ponda</option>
+                            <option value="Canacona">Canacona</option>
+                            <option value="Mormugao">Mormugao</option>
+                            <option value="Salcette">Salcette</option>
+                            <option value="Sanguem">Sanguem</option>
+                            <option value="Quepem">Quepem</option>
+                            <option value="Dharbandora">Dharbandora</option>
+                        </select>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search mr-2"></i>Search</button>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="col-md-6">
                 <div class="float-right">
@@ -32,7 +59,7 @@ Home | Covid Help
     </div>
     <div class="card-body">
         <div class="row">
-            @foreach($reqs as $req)
+            @forelse($reqs as $req)
             <?php
             date_default_timezone_set('Asia/Kolkata');
             $dteStart = new DateTime(date('Y-m-d H:i:s'));
@@ -150,7 +177,22 @@ Home | Covid Help
                     </div>
                 </div>
             </div>
-            @endforeach
+            @empty
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="{{asset('/img/no-result-found.svg')}}" class="mx-auto" style="width:200px;" alt="">
+                            </div>
+                            <div class="col-md-6">
+                                <h1 class="text-center align-middle"><strong>No Results Found</strong></h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforelse
         </div>
     </div>
 </div>

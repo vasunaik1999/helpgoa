@@ -7,10 +7,20 @@ use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $reqs = HelpRequest::all();
-        return view('frontend.viewrequests', compact('reqs'));
+        if ($request->has('search')) {
+            $search = $request->search;
+            if ($search == 'All') {
+                $reqs = HelpRequest::all();
+            } else {
+                $reqs = HelpRequest::where('taluka', '=', $search)->get();
+            }
+        } else {
+            $reqs = HelpRequest::all();
+            $search = null;
+        }
+        return view('frontend.viewrequests', compact('reqs', 'search'));
     }
 
     public function createreq()
