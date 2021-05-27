@@ -59,7 +59,7 @@
                                     <form method="post" action="{{route('superadmin.ban')}}">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="hidden" name="user_id" value="{{$user->id}}">
+                                            <input required type="hidden" name="user_id" value="{{$user->id}}">
                                             <label for="isBanned">Is User Banned</label>
                                             <select name="isBanned" class="form-control" id="isBanned">
                                                 <option value="0" @if($user->isBanned == 0)selected @endif>Not Banned</option>

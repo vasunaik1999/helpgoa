@@ -31,18 +31,18 @@ My Request - Update | Covid Help
                 <input type="hidden" name="req_id" @auth value="{{$req->id}}" @endauth>
                 <div class="form-group col-md-4">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control rounded" id="name" placeholder="Enter Name..." name="name" value="{{$req->name}}">
+                    <input required type="text" class="form-control rounded" id="name" placeholder="Enter Name..." name="name" value="{{$req->name}}">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="phone">Phone Number</label>
-                    <input type="text" class="form-control rounded" id="phone" placeholder="Enter Phone no..." value="{{$req->phone}}" name="phone">
+                    <input required  type="text" class="form-control rounded" id="phone" placeholder="Enter Phone no..." value="{{$req->phone}}" name="phone">
                 </div>
             </div>
             <hr>
             <div class="row mt-3">
                 <div class="form-group col-md-4">
                     <label for="taluka">Taluka</label>
-                    <input type="text" class="form-control rounded" id="taluka" list="talukaList" placeholder="Enter Taluka..." value="{{$req->taluka}}" name="taluka">
+                    <input required type="text" class="form-control rounded" id="taluka" list="talukaList" placeholder="Enter Taluka..." value="{{$req->taluka}}" name="taluka">
                     <datalist id="talukaList">
                         <option value="Bardez">Bardez</option>
                         <option value="Bicholim">Bicholim</option>
@@ -59,12 +59,12 @@ My Request - Update | Covid Help
                     </datalist>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="city">City</label>
+                    <label required for="city">City</label>
                     <input type="text" class="form-control rounded" id="city" placeholder="Enter City..." name="city" value="{{$req->city}}">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control rounded" id="address" placeholder="Enter Address..." name="address" value="{{$req->address}}">
+                    <input required type="text" class="form-control rounded" id="address" placeholder="Enter Address..." name="address" value="{{$req->address}}">
                 </div>
             </div>
             <hr>
@@ -81,7 +81,7 @@ My Request - Update | Covid Help
                     ?>
                     <label for="needed_by">Need by</label>
 
-                    <input type="datetime-local" value="<?php echo $req->needed_by->format("yyyy-MM-ddThh:mm"); ?>" class="form-control rounded" id="needed_by" placeholder="Enter Date..." name="needed_by">
+                    <input required type="datetime-local" value="<?php echo $req->needed_by->format("yyyy-MM-ddThh:mm"); ?>" class="form-control rounded" id="needed_by" placeholder="Enter Date..." name="needed_by">
                 </div>
             </div>
             <hr>
@@ -105,7 +105,7 @@ My Request - Update | Covid Help
                         <tbody>
                             @foreach( json_decode($req->items) as $item)
                             <tr>
-                                <td><input type="text" name="items[]" class="form-control rounded" value="{{$item}}" required></td>
+                                <td><input required type="text" name="items[]" class="form-control rounded" value="{{$item}}" required></td>
                                 <td style="text-align:center;"><a style="color:white;" class="btn btn-danger btn-sm remove">- Remove</a></td>
                             </tr>
                             @endforeach
