@@ -44,6 +44,7 @@ Route::group(['middleware' => ['auth', 'role:warrior|admin|superadmin']], functi
     Route::get('/dashboard/{helpRequest}/view-request', 'App\Http\Controllers\HelpRequestController@view')->name('request.view');
     Route::get('/dashboard/{helpRequest}/view-request/{user}/accept', 'App\Http\Controllers\HelpRequestController@acceptRequest');
     Route::post('/dashboard/{helpRequest}/view-request/{user}/decline', 'App\Http\Controllers\HelpRequestController@declineRequest');
+    Route::post('/dashboard/view-request/completed', 'App\Http\Controllers\HelpRequestController@requestCompleted')->name('request.mark.completed');
     Route::post('/dashboard/show-request', 'App\Http\Controllers\HelpRequestController@show')->name('request.viewrequestdashboard.search');
 });
 

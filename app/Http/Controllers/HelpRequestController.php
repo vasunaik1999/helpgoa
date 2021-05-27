@@ -154,6 +154,15 @@ class HelpRequestController extends Controller
         $req->update();
         return redirect()->back()->with('status', 'Request Declined');
     }
+
+    public function requestCompleted(Request $request)
+    {
+        $req = HelpRequest::find($request->req_id);
+        $req->reqStatus = 'CompletedByWarrior';
+        $req->vol_id = $request->user_id;
+        $req->update();
+        return redirect()->back()->with('status', 'Congratulations!! You have completed this request, Stay Safe!');
+    }
     /**
      * Show the form for editing the specified resource.
      *
