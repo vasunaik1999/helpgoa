@@ -88,7 +88,10 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
             <div style="height:100%; 
                 <?php
                 $status = "";
-                if ($dteStart > $dteEnd) {
+                if ($req->reqStatus == 'MarkedCompletedByWarrior' || $req->reqStatus == 'MarkedCompletedByUser') {
+                    echo "background-color:#28df99;";
+                    $status="Completed";
+                } elseif($dteStart > $dteEnd) {
                     echo "background-color:#fb3640;";
                     $status = "Critical";
                 } elseif ($message == $dteDiff->format("%H Hours and %I Minutes")||$message == $dteDiff->format("%I Minutes")) {
@@ -109,7 +112,7 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                     echo "background-color:#fffe80;";
                     $status = "Casual";
                 }
-                ?>" class="card shadow-sm <?php if ($status == "Casual") echo "text-dark";
+                ?>" class="card shadow-sm <?php if ($status == "Casual" || $status=="Completed" ) echo "text-dark";
                                             else echo "text-light"; ?>">
                 <div class="card-body">
                     @auth
@@ -124,7 +127,7 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                     <span class="badge badge-dark float-right"> <?php echo $status ?> </span><br>
                     <p class="mt-2"><strong> Need :-</strong>
                         @foreach( json_decode($req->items) as $item)
-                        <span class="badge <?php if ($status == "Casual") echo "bg-dark";
+                        <span class="badge <?php if ($status == "Casual"|| $status=="Completed") echo "bg-dark";
                                             else echo "bg-light"; ?> p-2 mt-2" style="font-size:14px;
                             <?php
                             if ($status == 'Critical')
@@ -133,8 +136,10 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                                 echo "color:#fd6104;";
                             elseif ($status == 'Standard')
                                 echo "color:#ffce03;";
-                            else
+                            elseif ($status == 'Casual')
                                 echo "color:#fffe80;";
+                            else 
+                                echo "color:#28df99;"
 
                             ?>">
                             {{$item}}
@@ -176,14 +181,18 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                 <button type="submit" class="btn btn-sm btn-dark text-light float-right mr-2" style="font-weight: bold;">Update </button>
                             </form>
-                            @elseif($req->reqStatus == 'Accepted')
+                            @elseif($req->reqStatus == 'Accepted'|| $req->reqStatus == 'MarkedCompletedByWarrior' || $req->reqStatus == 'MarkedCompletedByUser' )
                             <?php
                             $user = App\Models\User::find($req->vol_id);
                             ?>
                             <div class="row">
                                 <div class="col" style="background-color: black; border-radius: 5px; padding:5px; margin:5px 5px 0px 5px;">
+                                    @if($req->reqStatus == 'MarkedCompletedByWarrior' || $req->reqStatus == 'MarkedCompletedByUser')
+                                    <span class="text-light" style="background-color: transparent; padding-left:6px; "><strong> Completed By :- </strong>{{$user->name}}</span>
+                                    @else
                                     <span style="background-color: transparent; padding-left:6px; "><strong> Accepted By :- </strong>{{$user->name}}</span>
                                     <br> <span style="background-color: transparent; padding-left:6px; "><strong> Contact :- </strong>{{$user->phone}}</span>
+                                    @endif
                                 </div>
                             </div>
                             @endif

@@ -89,32 +89,32 @@ Home | Covid Help
                 <div style="height:100%; 
                     <?php
                     $status = "";
-                    if ($req->reqStatus == 'MarkedCompletedByWarrior' || $req->reqStatus == 'MarkedCompletedByUser') {
-                        echo "background-color:#28df99;";
-                    } else {
-                        if ($dteStart > $dteEnd) {
+                    // if ($req->reqStatus == 'MarkedCompletedByWarrior' || $req->reqStatus == 'MarkedCompletedByUser') {
+                    //     echo "background-color:#28df99;";
+                    //     $status = "Completed";
+                    // } else
+                    if($dteStart > $dteEnd) {
+                        echo "background-color:#fb3640;";
+                        $status = "Critical";
+                    } elseif ($message == $dteDiff->format("%H Hours and %I Minutes") || $message == $dteDiff->format("%I Minutes")) {
+                        if ($dteDiff->format("%H") <= 1) {
                             echo "background-color:#fb3640;";
                             $status = "Critical";
-                        } elseif ($message == $dteDiff->format("%H Hours and %I Minutes") || $message == $dteDiff->format("%I Minutes")) {
-                            if ($dteDiff->format("%H") <= 1) {
-                                echo "background-color:#fb3640;";
-                                $status = "Critical";
-                            } elseif ($dteDiff->format("%H") > 1 && $dteDiff->format("%H") <= 5) {
-                                echo "background-color:#fd6104;";
-                                $status = "Urgent";
-                            } elseif ($dteDiff->format("%H") > 5 && $dteDiff->format("%H") <= 15) {
-                                echo "background-color:#ffce03;";
-                                $status = "Standard";
-                            } else {
-                                echo "background-color:#fffe80;";
-                                $status = "Casual";
-                            }
+                        } elseif ($dteDiff->format("%H") > 1 && $dteDiff->format("%H") <= 5) {
+                            echo "background-color:#fd6104;";
+                            $status = "Urgent";
+                        } elseif ($dteDiff->format("%H") > 5 && $dteDiff->format("%H") <= 15) {
+                            echo "background-color:#ffce03;";
+                            $status = "Standard";
                         } else {
                             echo "background-color:#fffe80;";
-                            $status = $dteDiff->format("%H");
+                            $status = "Casual";
                         }
+                    } else {
+                        echo "background-color:#fffe80;";
+                        $status = $dteDiff->format("%H");
                     }
-                    ?>" class="card shadow-sm <?php if ($status == "Casual") echo "text-dark";
+                    ?>" class="card shadow-sm <?php if ($status == "Casual"|| $status=="Completed") echo "text-dark";
                                                 else echo "text-light"; ?>">
                     <div class="card-body">
                         @auth
@@ -140,8 +140,10 @@ Home | Covid Help
                                     echo "color:#fd6104;";
                                 elseif ($status == 'Standard')
                                     echo "color:#ffce03;";
-                                else
+                                elseif ($status == 'Casual')
                                     echo "color:#fffe80;";
+                                else 
+                                    echo "color:#28df99;"
 
                                 ?>">
                                 {{$item}}

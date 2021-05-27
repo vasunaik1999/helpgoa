@@ -80,6 +80,10 @@
                     <div style=" height:100%;
                         <?php
                         $status = "";
+                        // if ($req->reqStatus == 'MarkedCompletedByWarrior' || $req->reqStatus == 'MarkedCompletedByUser') {
+                        //     echo "background-color:#28df99;";
+                        //     $status = "Completed";
+                        // } else
                         if ($dteStart > $dteEnd) {
                             echo "background-color:#fb3640;";
                             $status = "Critical";
@@ -101,7 +105,7 @@
                             echo "background-color:#fffe80;";
                             $status = "Casual";
                         }
-                        ?>" class="card shadow-sm <?php if ($status == "Casual") echo "text-dark";
+                        ?>" class="card shadow-sm <?php if ($status == "Casual"|| $status=="Completed") echo "text-dark";
                                                     else echo "text-light"; ?>">
                         <div class="card-body">
                             @auth
@@ -125,8 +129,10 @@
                                         echo "color:#fd6104;";
                                     elseif ($status == 'Standard')
                                         echo "color:#ffce03;";
-                                    else
+                                    elseif ($status == 'Casual')
                                         echo "color:#fffe80;";
+                                    else 
+                                        echo "color:#28df99;"
 
                                     ?>">
                                     {{$item}}
