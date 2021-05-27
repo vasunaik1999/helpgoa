@@ -32,18 +32,18 @@
                     <input type="hidden" name="reqStatus" value="Open">
                     <div class="form-group col-md-4">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control rounded" id="name" placeholder="Enter Name..." name="name" value="{{Auth::user()->name}}">
+                        <input required type="text" class="form-control rounded" id="name" placeholder="Enter Name..." name="name" value="{{Auth::user()->name}}">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="phone">Phone Number</label>
-                        <input type="text" class="form-control rounded" id="phone" placeholder="Enter Phone no..." name="phone" value="{{Auth::user()->phone}}">
+                        <input required type="text" class="form-control rounded" id="phone" placeholder="Enter Phone no..." name="phone" value="{{Auth::user()->phone}}">
                     </div>
                 </div>
                 <hr>
                 <div class="row mt-3">
                     <div class="form-group col-md-4">
                         <label for="taluka">Taluka</label>
-                        <input type="text" class="form-control rounded" id="taluka" list="talukaList" placeholder="Enter Taluka..." name="taluka">
+                        <input required type="text" class="form-control rounded" id="taluka" list="talukaList" placeholder="Enter Taluka..." name="taluka">
                         <datalist id="talukaList">
                             <option value="Bardez">Bardez</option>
                             <option value="Bicholim">Bicholim</option>
@@ -61,11 +61,11 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="city">City</label>
-                        <input type="text" class="form-control rounded" id="city" placeholder="Enter City..." name="city">
+                        <input required type="text" class="form-control rounded" id="city" placeholder="Enter City..." name="city">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="address">Address</label>
-                        <input type="text" class="form-control rounded" id="address" placeholder="Enter Address..." name="address">
+                        <input required type="text" class="form-control rounded" id="address" placeholder="Enter Address..." name="address">
                     </div>
                 </div>
                 <hr>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="needed_by">Need by</label>
-                        <input type="datetime-local" class="form-control rounded" id="needed_by" placeholder="Enter Date..." name="needed_by">
+                        <input required type="datetime-local" class="form-control rounded" id="needed_by" placeholder="Enter Date..." name="needed_by">
                     </div>
                 </div>
                 <hr>
@@ -99,7 +99,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><input type="text" name="items[]" class="form-control rounded" required></td>
+                                    <td><input required type="text" name="items[]" class="form-control rounded" required></td>
                                     <td style="text-align:center;"><a style="color:white;" class="btn btn-danger btn-sm remove">- Remove</a></td>
                                 </tr>
                             </tbody>

@@ -31,7 +31,7 @@ My Profile | Covid Help
                 <input type="hidden" name="id" value="{{Auth::user()->id}}">
                 <div class="form-group col-md-4">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control rounded" id="name" placeholder="Enter Name..." name="name" value="{{Auth::user()->name}}">
+                    <input required type="text" class="form-control rounded" id="name" placeholder="Enter Name..." name="name" value="{{Auth::user()->name}}">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="phone">Phone Number</label>
@@ -43,7 +43,7 @@ My Profile | Covid Help
                 </div>
                 <div class="form-group col-md-4">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control rounded" id="email" placeholder="Enter Email Id..." value="{{Auth::user()->email}}" name="email">
+                    <input required type="email" class="form-control rounded" id="email" placeholder="Enter Email Id..." value="{{Auth::user()->email}}" name="email">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="pincode">Pincode</label>
@@ -84,21 +84,21 @@ My Profile | Covid Help
             <div class="row mt-4">
                 <div class="form-group col-md-4">
                     <label for="isCovidPos">Are you Covid Positive?</label>
-                    <select name="isCovidPos" class="form-control" id="isCovidPos">
+                    <select required name="isCovidPos" class="form-control" id="isCovidPos">
                         <option value="1" @if(Auth::user()->isCovidPos == 1) selected @endif>Yes</option>
                         <option value="0" @if(Auth::user()->isCovidPos == 0) selected @endif>No</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="isCovidPosFamily">Is your family Covid Positive?</label>
-                    <select name="isCovidPosFamily" class="form-control" id="isCovidPosFamily">
+                    <select required name="isCovidPosFamily" class="form-control" id="isCovidPosFamily">
                         <option value="1" @if(Auth::user()->isCovidPosFamily == 1) selected @endif>Yes</option>
                         <option value="0" @if(Auth::user()->isCovidPosFamily == 0) selected @endif>No</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="isCovidSymptoms">Do you have any Symptoms?</label>
-                    <select name="isCovidSymptoms" class="form-control" id="isCovidSymptoms">
+                    <select required name="isCovidSymptoms" class="form-control" id="isCovidSymptoms">
                         <option value="1" @if(Auth::user()->isCovidSymptoms == 1) selected @endif>Yes</option>
                         <option value="0" @if(Auth::user()->isCovidSymptoms == 0) selected @endif>No</option>
                     </select>
