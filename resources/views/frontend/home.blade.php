@@ -97,24 +97,25 @@ Home | Covid Help
 
             <div class="section-title">
                 <h2>About Us</h2>
-                <p>Illo velit quae dolorem voluptate pireda notila set. Corrupti voluptatum tempora iste ratione deleniti corrupti nostrum ut</p>
+                <p>This is an initiative by two engineering students to help those affected by Covid-19.
+                <br>While our doctors are on the frontlines fighting 24x7 to save our lives, we thought of starting this initiative to help those in need. We have been blessed with a community full of volunteers, helping people get access to meals, groceries and medical support as and when needed. This is a Request and Response portal to facilitate our Volunteer-Warriors help the community in the best way possible. </p>
             </div>
 
             <div class="row mt-2">
                 <div class="col-lg-4 col-md-6 icon-box">
                     <div class="icon"><i class="bi bi-briefcase"></i></div>
-                    <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-                    <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                    <h4 class="title"><a href="">Need help?</a></h4>
+                    <p class="description">One who is in need of help can reach out to the volunteers through our portal. Verified volunteers will view and reach out to you via your registered Contact Information. </p>
                 </div>
                 <div class="col-lg-4 col-md-6 icon-box">
                     <div class="icon"><i class="bi bi-bar-chart"></i></div>
-                    <h4 class="title"><a href="">Dolor Sitema</a></h4>
-                    <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+                    <h4 class="title"><a href="">Want to Volunteer?</a></h4>
+                    <p class="description">Through all these tough times, we have witnessed warriors from our community come forth and be pillars of support to us. Use the "Register as Warrior" feature and use this portal to reach out to those in need. </p>
                 </div>
                 <div class="col-lg-4 col-md-6 icon-box">
                     <div class="icon"><i class="bi bi-brightness-high"></i></div>
-                    <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-                    <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                    <h4 class="title"><a href="">Want to join hands in this endeavour?</a></h4>
+                    <p class="description">We would be glad to collaborate with folks who wish to contribute in helping the society! Please reach out to us at <a href="mailto:help.goa.breathe@gmail.com" >help.goa.breathe@gmail.com</a> !! </p>
                 </div>
             </div>
 
