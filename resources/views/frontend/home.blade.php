@@ -103,17 +103,14 @@ Home | Covid Help
 
             <div class="row mt-2">
                 <div class="col-lg-4 col-md-6 icon-box">
-                    <div class="icon"><i class="bi bi-briefcase"></i></div>
                     <h4 class="title"><a href="">Need help?</a></h4>
                     <p class="description">One who is in need of help can reach out to the volunteers through our portal. Verified volunteers will view and reach out to you via your registered Contact Information. </p>
                 </div>
                 <div class="col-lg-4 col-md-6 icon-box">
-                    <div class="icon"><i class="bi bi-bar-chart"></i></div>
                     <h4 class="title"><a href="">Want to Volunteer?</a></h4>
                     <p class="description">Through all these tough times, we have witnessed warriors from our community come forth and be pillars of support to us. Use the "Register as Warrior" feature and use this portal to reach out to those in need. </p>
                 </div>
                 <div class="col-lg-4 col-md-6 icon-box">
-                    <div class="icon"><i class="bi bi-brightness-high"></i></div>
                     <h4 class="title"><a href="">Want to join hands in this endeavour?</a></h4>
                     <p class="description">We would be glad to collaborate with folks who wish to contribute in helping the society! Please reach out to us at <a href="mailto:help.goa.breathe@gmail.com" >help.goa.breathe@gmail.com</a> !! </p>
                 </div>
