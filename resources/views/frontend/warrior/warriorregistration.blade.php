@@ -25,8 +25,11 @@ Register Warrior | Covid Help
         </div>
         @endif
 
+        <?php
+        $formflag = 0;
+        ?>
+        <!-- NEw -->
         @if($warrior)
-        @if(($warrior) and ($warrior->status != 'Rejected'))
         @if($warrior->status == 'Pending' or $warrior->status == 'Inprogress')
         <div class="alert alert-primary" role="alert">
             Request Submitted Successfully! Your Details will be verified shortly
@@ -35,13 +38,18 @@ Register Warrior | Covid Help
         <div class="alert alert-success" role="alert">
             Congralutions!! You are an warrior now. Stay Safe
         </div>
-        @endif
-        @else
-        @if($warrior->status == 'Rejected')
+        @elseif($warrior and $warrior->status == 'Rejected')
         <div class="alert alert-danger" role="alert">
             Sorry!! Your Request got rejected due to {{$warrior->reason}}
         </div>
+        <?php $formflag = 1; ?>
         @endif
+        @else
+        <?php $formflag = 1; ?>
+        @endif
+
+        @if($formflag == 1)
+        <!-- display form -->
         <form method="POST" action="{{route('warriorregistration.store')}}">
             @csrf
 
@@ -144,7 +152,7 @@ Register Warrior | Covid Help
             <button type="submit" class="btn btn-primary mt-4">Submit</button>
         </form>
         @endif
-        @endif
+
     </div>
 </div>
 @endsection

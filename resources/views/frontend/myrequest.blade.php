@@ -20,7 +20,7 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
             </div>
             <div class="col-md-6">
                 <div class="float-right">
-                <button class="btn mx-2" style="background-color:#fb3640;"></button><span style="background-color: transparent;">Critical</span>
+                    <button class="btn mx-2" style="background-color:#fb3640;"></button><span style="background-color: transparent;">Critical</span>
                     <button class="btn mx-2" style="background-color:#fd6104"></button><span style="background-color: transparent;">Urgent</span>
                     <button class="btn mx-2" style="background-color:#ffce03;"></button><span style="background-color: transparent;">Standard</span>
                     <button class="btn mx-2" style="background-color:#fffe80;"></button><span style="background-color: transparent;">Casual</span>
@@ -84,31 +84,30 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
         <div class="col-md-6 pb-4">
             <div style="height:100%; 
                 <?php
-                    $status="";
-                    if($dteStart>$dteEnd){
+                $status = "";
+                if ($dteStart > $dteEnd) {
+                    echo "background-color:#fb3640;";
+                    $status = "Critical";
+                } elseif ($message == $dteDiff->format("%H Hours and %I Minutes")) {
+                    if ($dteDiff->format("%H") <= 1) {
                         echo "background-color:#fb3640;";
-                        $status="Critical";
-                    }elseif($message == $dteDiff->format("%H Hours and %I Minutes")){
-                        if($dteDiff->format("%H")<=1){
-                            echo "background-color:#fb3640;"; 
-                            $status="Critical";
-                        }elseif($dteDiff->format("%H")>1 && $dteDiff->format("%H")<=5){
-                            echo "background-color:#fd6104;";
-                            $status="Urgent";
-                        }elseif($dteDiff->format("%H")>5 && $dteDiff->format("%H")<=15){
-                            echo "background-color:#ffce03;";
-                            $status="Standard";
-                        }else{
-                            echo "background-color:#fffe80;";
-                            $status="Casual";
-                        }
-                    }else{
+                        $status = "Critical";
+                    } elseif ($dteDiff->format("%H") > 1 && $dteDiff->format("%H") <= 5) {
+                        echo "background-color:#fd6104;";
+                        $status = "Urgent";
+                    } elseif ($dteDiff->format("%H") > 5 && $dteDiff->format("%H") <= 15) {
+                        echo "background-color:#ffce03;";
+                        $status = "Standard";
+                    } else {
                         echo "background-color:#fffe80;";
-                        $status="Casual";
-                    }                        
-                ?>"
-                class="card shadow-sm <?php if($status=="Casual") echo "text-dark"; else echo "text-light"; ?>"
-            >
+                        $status = "Casual";
+                    }
+                } else {
+                    echo "background-color:#fffe80;";
+                    $status = "Casual";
+                }
+                ?>" class="card shadow-sm <?php if ($status == "Casual") echo "text-dark";
+                                            else echo "text-light"; ?>">
                 <div class="card-body">
                     @auth
                     @if(Auth::user()->hasRole('user'))
@@ -122,19 +121,19 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                     <span class="badge badge-dark float-right"> <?php echo $status ?> </span><br>
                     <p class="mt-2"><strong> Need :-</strong>
                         @foreach( json_decode($req->items) as $item)
-                        <span class="badge <?php if($status=="Casual") echo "bg-dark"; else echo "bg-light"; ?> p-2 mt-2" style="font-size:14px;
+                        <span class="badge <?php if ($status == "Casual") echo "bg-dark";
+                                            else echo "bg-light"; ?> p-2 mt-2" style="font-size:14px;
                             <?php
-                                if($status == 'Critical')
-                                    echo "color:#fb3640;";
-                                elseif($status == 'Urgent')
-                                    echo "color:#fd6104;";
-                                elseif($status == 'Standard')
-                                    echo "color:#ffce03;";
-                                else
-                                    echo "color:#fffe80;";
-                                    
-                            ?>"
-                        >
+                            if ($status == 'Critical')
+                                echo "color:#fb3640;";
+                            elseif ($status == 'Urgent')
+                                echo "color:#fd6104;";
+                            elseif ($status == 'Standard')
+                                echo "color:#ffce03;";
+                            else
+                                echo "color:#fffe80;";
+
+                            ?>">
                             {{$item}}
                         </span>
                         @endforeach

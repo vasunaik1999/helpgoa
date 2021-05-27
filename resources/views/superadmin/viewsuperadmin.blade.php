@@ -7,18 +7,36 @@
 
     <x-slot name="card">
         <div class="card-body">
-            <table class="table table-striped">
+            <table id="table" class="table table-striped">
                 <thead>
                     <th>Id</th>
                     <th>Name</th>
-                    <th>Phone</th>
+                    <th>Contact</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </thead>
                 <tbody>
                     @foreach($superadmins as $key => $superadmin)
                     <tr>
                         <td>{{$key+1}}</td>
                         <td>{{$superadmin->name}}</td>
-                        <td>{{$superadmin->phone}}</td>
+                        <td>
+                            {{$superadmin->phone}}
+                            @if($superadmin->secondaryPhone)<br>
+                            {{$superadmin->secondaryPhone}}
+                            @endif<br>
+                            {{$superadmin->email}}
+                        </td>
+                        <td>
+                            @if($superadmin->isBanned == 0)
+                            <span class="badge badge-success p-2">Not Banned</span>
+                            @else
+                            <span class="badge badge-danger p-2">Banned</span>
+                            @endif
+                        </td>
+                        <td>
+                            <a href="{{url('dashboard/view-superadmin/'.$superadmin->id.'/more-details')}}" class="btn btn-primary btn-sm">More Details</a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

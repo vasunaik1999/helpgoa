@@ -47,7 +47,7 @@ class WarriorController extends Controller
 
     public function warriorregistration($id)
     {
-        
+
         $warrior = WarriorDetail::where('user_id', '=', $id)->orderBy('id', 'desc')->first();
         //dd($warrior);
         // $warrior = NULL;
@@ -161,5 +161,25 @@ class WarriorController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function moredetails(User $user)
+    {
+        // dd($user);
+        $warriordetails = WarriorDetail::where('user_id', '=', $user->id)->orderBy('id', 'desc')->first();
+        // dd($warriordetails);
+        return view('warrior.moredetails', compact('user', 'warriordetails'));
+    }
+
+    public function banuser(Request $request)
+    {
+        // dd($request);
+        $user = User::find($request->user_id);
+        // dd($user);
+
+        $user->isBanned = $request->isBanned;
+        $user->update();
+
+        return redirect()->back()->with('status', 'Updated Successfully');
     }
 }

@@ -74,11 +74,14 @@ My Request - Update | Covid Help
                     <input type="number" class="form-control rounded" id="pincode" placeholder="Enter Pincode..." name="pincode" value="{{$req->pincode}}">
                 </div>
                 <div class="form-group col-md-4">
-                    <?php 
-                        $need_by = new DateTime($req->needed_by);
+                    <?php
+                    $dteDiff = new DateTime($req->needed_by);
+                    //                    $da = $req->needed_by->format("yyyy-MM-ddThh:mm");
+
                     ?>
                     <label for="needed_by">Need by</label>
-                    <input type="datetime-local" class="form-control rounded" id="needed_by" placeholder="Enter Date..." name="needed_by" value="<?php echo $need_by->format("Y-m-d H:i:s "); ?>">
+
+                    <input type="datetime-local" value="<?php echo $req->needed_by->format("yyyy-MM-ddThh:mm"); ?>" class="form-control rounded" id="needed_by" placeholder="Enter Date..." name="needed_by">
                 </div>
             </div>
             <hr>

@@ -5,8 +5,19 @@ Home | Covid Help
 @endsection
 
 @section('content')
+
 <!-- ======= Header ======= -->
 <header id="header" class="row">
+    @if (session('bannedMessage'))
+    <div class="col-12">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('bannedMessage') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+    @endif
     <div class="d-flex flex-column align-items-center col-lg-8 col-md-12 mb-5">
         <img style="max-height:70vh; width:60vw;" src="<?php echo asset('img/home.svg') ?>" alt="">
     </div>

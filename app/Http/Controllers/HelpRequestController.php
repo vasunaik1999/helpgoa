@@ -87,9 +87,19 @@ class HelpRequestController extends Controller
 
     public function show(Request $request)
     {
-        $reqs = HelpRequest::all();
-        // dd($reqs);
-        return view('request.viewrequest', compact('reqs'));
+
+        if ($request->has('search')) {
+            $search = $request->search;
+            if ($search == 'All') {
+                $reqs = HelpRequest::all();
+            } else {
+                $reqs = HelpRequest::where('taluka', '=', $search)->get();
+            }
+        } else {
+            $reqs = HelpRequest::all();
+            $search = null;
+        }
+        return view('request.viewrequest', compact('reqs', 'search'));
     }
 
     public function view($helpRequest)

@@ -41,4 +41,21 @@ class AdminController extends Controller
 
         return redirect()->back()->with('status', 'Admin Registered Successfully');
     }
+
+    public function moredetails(User $user)
+    {
+        return view('admin.moredetails', compact('user'));
+    }
+
+    public function banuser(Request $request)
+    {
+        // dd($request);
+        $user = User::find($request->user_id);
+        // dd($user);
+
+        $user->isBanned = $request->isBanned;
+        $user->update();
+
+        return redirect()->back()->with('status', 'Updated Successfully');
+    }
 }
