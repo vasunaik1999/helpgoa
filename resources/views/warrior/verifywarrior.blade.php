@@ -20,9 +20,9 @@
                         <th>Action</th>
                     </thead>
                     <tbody>
-                        @foreach($warriors as $warrior)
+                        @foreach($warriors as $key => $warrior)
                         <tr>
-                            <td>{{$warrior->id}}</td>
+                            <td>{{$key+1}}</td>
                             <td>
                                 {{$warrior->name}} <br>
                                 {{$warrior->phone}} <br>

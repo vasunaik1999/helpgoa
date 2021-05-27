@@ -78,7 +78,7 @@ class WarriorController extends Controller
         $warriors = DB::table('volunteer_details')
             ->join('users', 'users.id', '=', 'volunteer_details.user_id')
             ->select('users.*', 'volunteer_details.*')
-            ->get();
+            ->orderBy('volunteer_details.id', 'desc')->get();
 
         // dd($warriors);
         return view('warrior.verifywarrior', compact('warriors'));

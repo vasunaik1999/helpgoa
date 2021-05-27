@@ -43,7 +43,11 @@ My Profile | Covid Help
                 </div>
                 <div class="form-group col-md-4">
                     <label for="email">Email</label>
-                    <input required type="email" class="form-control rounded" id="email" placeholder="Enter Email Id..." value="{{Auth::user()->email}}" name="email">
+                    <input type="email" class="form-control rounded" id="email" placeholder="Enter Email Id..." value="{{Auth::user()->email}}" name="email">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="pincode">Pincode</label>
+                    <input type="number" name="pincode" class="form-control rounded" id="pincode" placeholder="Enter Pincode..." value="{{Auth::user()->pincode}}">
                 </div>
             </div>
             <hr>

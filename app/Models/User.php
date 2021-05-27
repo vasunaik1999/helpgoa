@@ -24,6 +24,8 @@ class User extends Authenticatable
         'password',
         'secondaryPhone',
         'email',
+        'pincode',
+        'verifiedBy',
         'addressLine1',
         'city1',
         'taluka1',

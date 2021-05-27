@@ -75,7 +75,6 @@ class FrontendController extends Controller
         $helpRequest->needed_by = $request->needed_by;
         $helpRequest->special_instructions = $request->special_instructions;
         $helpRequest->items = json_encode($request->items);
-        $helpRequest->urgency_status = 'noturgent';
 
         // dd($helpRequest);
         $helpRequest->update();

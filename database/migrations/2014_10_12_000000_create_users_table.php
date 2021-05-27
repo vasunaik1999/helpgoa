@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('phone')->unique();
             $table->timestamp('phone_verified_at')->nullable();
+            $table->unsignedBiginteger('verifiedBy')->nullable();
+            $table->foreign('verifiedBy')->references('id')->on('users');
             $table->string('password');
             $table->string('secondaryPhone')->nullable();
             $table->string('email')->unique()->nullable();
@@ -27,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('addressLine2')->nullable();
             $table->string('city2')->nullable();
             $table->string('taluka2')->nullable();
+            $table->string('pincode')->nullable();
             $table->boolean('isBanned')->default(0);
             $table->boolean('isCovidPos')->default(0);
             $table->boolean('isCovidPosFamily')->default(0);

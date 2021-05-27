@@ -64,7 +64,6 @@ class HelpRequestController extends Controller
         $helpRequest->reqStatus = $request->input('reqStatus');
         $helpRequest->special_instructions = $request->input('special_instructions');
         $helpRequest->items = json_encode($request->input('items'));
-        $helpRequest->urgency_status = 'noturgent';
         //dd($helpRequest);
 
         $helpRequest->save();
@@ -79,7 +78,7 @@ class HelpRequestController extends Controller
      */
     public function manageRequest(Request $request)
     {
-        $reqs = HelpRequest::all();
+        $reqs = HelpRequest::orderBy('id', 'desc')->get();
         //dd($reqs);
         return view('request.managerequests', compact('reqs'));
         // return view('request.viewrequests')->with('reqs', json_decode($reqs, true));
@@ -158,7 +157,7 @@ class HelpRequestController extends Controller
     public function requestCompleted(Request $request)
     {
         $req = HelpRequest::find($request->req_id);
-        $req->reqStatus = 'CompletedByWarrior';
+        $req->reqStatus = 'MarkedCompletedByWarrior';
         $req->vol_id = $request->user_id;
         $req->update();
         return redirect()->back()->with('status', 'Congratulations!! You have completed this request, Stay Safe!');

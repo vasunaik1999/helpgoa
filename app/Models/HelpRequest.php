@@ -16,5 +16,5 @@ class HelpRequest extends Model
         'approached_by' => 'array',
     ];
     protected $dates = ['deleted_at'];
-    protected $fillable = ['user_id', 'name', 'phone', 'address', 'taluka', 'items', 'city', 'pincode', 'needed_by', 'approached_by', 'status', 'urgency_status', 'special_instructions'];
+    protected $fillable = ['user_id', 'name', 'phone', 'address', 'taluka', 'items', 'city', 'pincode', 'needed_by', 'approached_by', 'status', 'special_instructions'];
 }
