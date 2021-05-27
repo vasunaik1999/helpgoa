@@ -127,7 +127,7 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                     <span class="badge badge-dark float-right"> <?php echo $status ?> </span><br>
                     <p class="mt-2"><strong> Need :-</strong>
                         @foreach( json_decode($req->items) as $item)
-                        <span class="badge <?php if ($status == "Casual") echo "bg-dark";
+                        <span class="badge <?php if ($status == "Casual"|| $status=="Completed") echo "bg-dark";
                                             else echo "bg-light"; ?> p-2 mt-2" style="font-size:14px;
                             <?php
                             if ($status == 'Critical')
