@@ -36,6 +36,7 @@
                                 $years = $dteDiff->format("%Y");
                                 $months = $dteDiff->format("%m");;
                                 $days = $dteDiff->format("%d");;
+                                $hours = $dteDiff->format("%H");
                                 $message = "Long time";
 
                                 if ($years != 0) {
@@ -44,9 +45,11 @@
                                     $message = $dteDiff->format("About %m Months");
                                 } elseif ($days != 0) {
                                     $message = $dteDiff->format("About %d days");
-                                } else {
+                                } elseif ($hours != 0) {
                                     $message = $dteDiff->format("%H Hours and %I Minutes");
                                     //$message=($dteStart>=$dteEnd);
+                                } else {
+                                    $message = $dteDiff->format("%I Minutes");
                                 }
                             ?>
                             <span><i class="fas fa-user mr-2"></i>{{$req->name}}</span>
@@ -55,7 +58,15 @@
                             <p><i class="fas fa-map-marked-alt mt-2 mr-2"></i>{{$req->address}}</p>
                             <p><i class="fas fa-phone mt-2 mr-2"></i>{{$req->phone}}</p>
                             <span class="mt-2"><em> Need by {{$req->needed_by}}</em></span>
-                            <span class="mt-2"><em> <?php echo $message ?> </em></span>
+                            <span class="mt-2"><em>
+                                <?php
+                                    if ($dteStart < $dteEnd) {
+                                        echo "<strong> Deadline :- </strong>$message left";
+                                    } elseif ($dteStart >= $dteEnd) {
+                                        echo "<strong> Deadline :- </strong>$message ago";
+                                    }
+                                ?>
+                            </em></span>
                             <p class="mt-2"><strong> Items Needed :-</strong>
                                 @foreach( json_decode($req->items) as $item)
                                 <span class="badge badge-primary p-2 mt-2" style="font-size: 15px;">{{$item}}</span>

@@ -33,6 +33,7 @@
                             $years = $dteDiff->format("%Y");
                             $months = $dteDiff->format("%m");;
                             $days = $dteDiff->format("%d");;
+                            $hours = $dteDiff->format("%H");
                             $message = "Long time";
 
                             if ($years != 0) {
@@ -41,9 +42,11 @@
                                 $message = $dteDiff->format("About %m Months");
                             } elseif ($days != 0) {
                                 $message = $dteDiff->format("About %d days");
-                            } else {
+                            } elseif ($hours != 0) {
                                 $message = $dteDiff->format("%H Hours and %I Minutes");
                                 //$message=($dteStart>=$dteEnd);
+                            } else {
+                                $message = $dteDiff->format("%I Minutes");
                             }
                         ?>
                         <tr>
