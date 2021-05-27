@@ -40,9 +40,10 @@
                 </div>
                 <div class="col-md-6">
                     <div class="float-right">
-                        <button class="btn mx-2" style="background-color:#fb3640;"></button><span style="background-color: transparent;">Critical</span>
-                        <button class="btn mx-2" style="background-color:#ffbe0f"></button><span style="background-color: transparent;">Urgent</span>
-                        <button class="btn mx-2" style="background-color:#21bf73;"></button><span style="background-color: transparent;">Not Urgent</span>
+                    <button class="btn mx-2" style="background-color:#fb3640;"></button><span style="background-color: transparent;">Critical</span>
+                    <button class="btn mx-2" style="background-color:#fd6104"></button><span style="background-color: transparent;">Urgent</span>
+                    <button class="btn mx-2" style="background-color:#ffce03;"></button><span style="background-color: transparent;">Standard</span>
+                    <button class="btn mx-2" style="background-color:#fffe80;"></button><span style="background-color: transparent;">Casual</span>
                     </div>
                 </div>
             </div>
@@ -153,16 +154,11 @@
                             </div>
                             <div class="row mt-2">
                                 <div class="col">
-                                    <!-- @auth
-                                    @if(Auth::user()->hasRole('user'))
-                                    <a  href="{{url('/warrior-registration/'.Auth::user()->id)}} class="btn btn-sm btn-dark text-light float-right" style="font-weight: bold;">Want to help?</a>
-                                    <p><em><strong>Note: Register as a warrior to help others!</strong></em></p>
-                                    @else
+                                    @auth 
                                     <a href="{{url('dashboard/'.$req->id.'/view-request')}}" class="btn btn-sm btn-dark text-light float-right" style="font-weight: bold;">
                                         Approach
                                     </a>
-                                    @endif
-                                    @endauth -->
+                                    @endauth
                                 </div>
                             </div>
 
