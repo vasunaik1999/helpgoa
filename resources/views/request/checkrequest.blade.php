@@ -38,6 +38,7 @@
                                 $days = $dteDiff->format("%d");;
                                 $hours = $dteDiff->format("%H");
                                 $message = "Long time";
+                                $status = "";
 
                                 if ($years != 0) {
                                     $message = $dteDiff->format("About %Y Years");
@@ -51,13 +52,35 @@
                                 } else {
                                     $message = $dteDiff->format("%I Minutes");
                                 }
+
+                                
+                                if ($dteStart > $dteEnd) {
+                                    $status = "Critical";
+                                } elseif ($message == $dteDiff->format("%H Hours and %I Minutes")||$message == $dteDiff->format("%I Minutes")) {
+                                    if ($dteDiff->format("%H") <= 1) {
+                                        $status = "Critical";
+                                    } elseif ($dteDiff->format("%H") > 1 && $dteDiff->format("%H") <= 5) {
+                                        $status = "Urgent";
+                                    } elseif ($dteDiff->format("%H") > 5 && $dteDiff->format("%H") <= 15) {
+                                        $status = "Standard";
+                                    } else {
+                                        $status = "Casual";
+                                    }
+                                } else {
+                                    $status = "Casual";
+                                }
                             ?>
                             <span><i class="fas fa-user mr-2"></i>{{$req->name}}</span>
                             <span><i class="fas fa-map-marker-alt ml-4 mr-2"></i> {{$req->city}}, {{$req->taluka}}</span>
-                            <span class="badge badge-danger float-right">{{$req->urgency_status}}</span>
+                            <span class="badge badge-danger float-right"><?php echo $status?></span>
                             <p><i class="fas fa-map-marked-alt mt-2 mr-2"></i>{{$req->address}}</p>
                             <p><i class="fas fa-phone mt-2 mr-2"></i>{{$req->phone}}</p>
-                            <span class="mt-2"><em> Need by {{$req->needed_by}}</em></span>
+                            <span class="mt-2"><em> <b>Need by</b> {{$req->needed_by}}</em></span>
+                            <p class="mt-2"><strong> Items Needed :-</strong>
+                                @foreach( json_decode($req->items) as $item)
+                                <span class="badge badge-primary p-2 mt-2" style="font-size: 15px;">{{$item}}</span>
+                                @endforeach
+                            </p>
                             <span class="mt-2"><em>
                                 <?php
                                     if ($dteStart < $dteEnd) {
@@ -67,11 +90,7 @@
                                     }
                                 ?>
                             </em></span>
-                            <p class="mt-2"><strong> Items Needed :-</strong>
-                                @foreach( json_decode($req->items) as $item)
-                                <span class="badge badge-primary p-2 mt-2" style="font-size: 15px;">{{$item}}</span>
-                                @endforeach
-                            </p>
+                            
                             @if($req->special_instructions == NULL)
 
                             @else
