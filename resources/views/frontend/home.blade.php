@@ -25,15 +25,19 @@ Home | Covid Help
         <h1>Covid Help</h1>
         <h2>Let's Help Goa Breathe!</h2>
         <br>
-        <ul class="pb-2" style="line-height: 2;">
-            <li>Use this platform to request for your needs.</li>
-            <li>Use this platform to help those in need.</li>
-            <li>Use this platform to volunteer and help those affected by covid.</li>
+        <ul class="fa-ul pb-2" style="line-height:2;">
+            <li><span class="fa-li" style="color:#00BFA6;"><i class="fas fa-medkit"></i></span>Use this platform to request for your needs.</li>
+            <li><span class="fa-li" style="color:#00BFA6;"><i class="fas fa-medkit"></i></span>Use this platform to help those in need.</li>
+            <li><span class="fa-li" style="color:#00BFA6;"><i class="fas fa-medkit"></i></span>Use this platform to volunteer and help those affected by covid.</li>
         </ul>
         <a type="button" class="btn text-white justify-content-center" href="{{url('/request-create')}}" style="background-color:#00BFA6; display:block; margin:auto;">Create Request</a>
     </div>
 
+    
     <!-- Carousel -->
+    <div id="slider" class="section-title align-items-center" style="display:block; margin:auto; padding:0;">
+        <h2 style="margin:20px; padding:10px;">Crucial Information</h2>
+    </div>
     <div id="slider" class="carousel slide" data-ride="carousel" style="background: color #000; display:block; margin:auto;">
         <ol class="carousel-indicators">
             <li data-target="#slider" data-slide-to="0" class="active"></li>
@@ -60,23 +64,26 @@ Home | Covid Help
     </div>
 </header>
 <!-- End #header -->
-<div id="cards" class="row">
-    <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-        <div class="card border-secondary mb-5 text-center " style="width: 18rem; height: 18rem;">
-            <img src="<?php echo asset('img/oxy.png') ?>" alt="">
+    <div id="cards" class="section-title align-items-center" style="display:block; margin:auto; padding:0;">
+        <h2>Crucial Information</h2>
+    </div>
+    <div id="cards" class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+            <div class="card border-secondary mb-5 text-center " style="width: 18rem; height: 18rem;">
+                <img src="<?php echo asset('img/oxy.png') ?>" alt="">
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+            <div class="card border-secondary mb-5 text-center " style="width: 18rem; height: 18rem;">
+                <img src="<?php echo asset('img/oxy.png') ?>" alt="">
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+            <div class="card border-secondary mb-5 text-center " style="width: 18rem; height: 18rem;">
+                <img src="<?php echo asset('img/oxy.png') ?>" alt="">
+            </div>
         </div>
     </div>
-    <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-        <div class="card border-secondary mb-5 text-center " style="width: 18rem; height: 18rem;">
-            <img src="<?php echo asset('img/oxy.png') ?>" alt="">
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-        <div class="card border-secondary mb-5 text-center " style="width: 18rem; height: 18rem;">
-            <img src="<?php echo asset('img/oxy.png') ?>" alt="">
-        </div>
-    </div>
-</div>
 
 
 </div>
