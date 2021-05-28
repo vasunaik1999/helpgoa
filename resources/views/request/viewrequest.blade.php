@@ -176,11 +176,11 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <img src="{{asset('/img/no-result-found.svg')}}" class="mx-auto" style="width:200px;" alt="">
+                                <div class="col-md-4">
+                                    <img src="{{asset('/img/no-result-found.svg')}}" style="width:200px; display:block; margin:auto;" alt="">
                                 </div>
-                                <div class="col-md-6" class="d-flex justify-content-center ">
-                                    <h1 class="text-center"><strong>No Results Found</strong></h1>
+                                <div class="col-md-8" style="display:block; margin:auto;">
+                                    <h1 class="text-center align-middle"><strong>No Results Found</strong></h1>
                                 </div>
                             </div>
                         </div>

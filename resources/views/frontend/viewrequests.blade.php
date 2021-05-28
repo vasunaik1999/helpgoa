@@ -17,8 +17,8 @@ Home | Covid Help
 <div class="card mt-5 shadow" style="border-radius:30px;">
     <div class="card-header" style="background-color: white;">
         <div class="row">
-            <div class="col-md-3 mt-2">
-                <h4><strong>Recent Requests</strong></h4>
+            <div class="col-md-3" style="display:block; margin:auto;">
+                <h5><strong>Recent Requests</strong></h5>
             </div>
             <div class="col-md-3 items-center">
                 <form mthod="post" action="{{route('request.viewrequestfrontend.search')}}">
@@ -112,7 +112,7 @@ Home | Covid Help
                         }
                     } else {
                         echo "background-color:#fffe80;";
-                        $status = $dteDiff->format("%H");
+                        $status = "Casual";
                     }
                     ?>" class="card shadow-sm <?php if ($status == "Casual" || $status == "Completed") echo "text-dark";
                                                 else echo "text-light"; ?>">
@@ -192,12 +192,12 @@ Home | Covid Help
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row ">
-                            <div class="col-md-6 mx-auto mb-md-0 mb-4 ">
-                                <img src="{{asset('/img/no-result-found.svg')}}" class="" style="height:200px; margin:auto;  display: block;" alt="">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="{{asset('/img/no-result-found.svg')}}" style="width:200px; display:block; margin:auto;" alt="">
                             </div>
-                            <div class="col-md-6 my-auto ">
-                                <h1 class="text-center "><strong>No Results Found</strong></h1>
+                            <div class="col-md-8" style="display:block; margin:auto;">
+                                <h1 class="text-center align-middle"><strong>No Results Found</strong></h1>
                             </div>
                         </div>
                     </div>
