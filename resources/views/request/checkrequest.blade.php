@@ -123,8 +123,8 @@
                     <div class="card shadow-sm" style="border-radius:25px;  background-color:#F3F4F6;">
                         @if($user == NULL)
                             <div class="card-body" style="margin:7px;">
-                                <p><strong><em>Note:-</em></strong> Always a better option to Call User before accepting the Request</p>
-                                <p class="mt-2"> <strong> Accept Request only if you will be able to deliver it</p></strong>
+                                <p><strong><em>Note:-</em></strong>Please call and confirm on the number provided, before your accept any request. </p>
+                                <p class="mt-2"> <strong> Accept Request only if you will be able to deliver it.</strong></p>
                             </div>
                         @else
                         @if($user->id == Auth::user()->id)
