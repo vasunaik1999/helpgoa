@@ -35,7 +35,7 @@ My Request - Update | Covid Help
                 </div>
                 <div class="form-group col-md-4">
                     <label for="phone">Phone Number</label>
-                    <input required  type="text" class="form-control rounded" id="phone" placeholder="Enter Phone no..." value="{{$req->phone}}" name="phone">
+                    <input required  type="text" class="form-control rounded" id="phone" placeholder="Enter Phone no..." value="{{$req->phone}}" name="phone" pattern="[1-9]{1}[0-9]{9}">
                 </div>
             </div>
             <hr>
@@ -75,13 +75,13 @@ My Request - Update | Covid Help
                 </div>
                 <div class="form-group col-md-4">
                     <?php
-                    $dteDiff = new DateTime($req->needed_by);
-                    //                    $da = $req->needed_by->format("yyyy-MM-ddThh:mm");
+                    $need_by = new DateTime($req->needed_by);
+                    
 
                     ?>
                     <label for="needed_by">Need by</label>
 
-                    <input required type="datetime-local" value="<?php echo $req->needed_by->format("yyyy-MM-ddThh:mm"); ?>" class="form-control rounded" id="needed_by" placeholder="Enter Date..." name="needed_by">
+                    <input required type="datetime-local" value="<?php echo $need_by->format("Y-m-d")."T".$need_by->format("H:i") ?>" class="form-control rounded" id="needed_by" placeholder="Enter Date..." name="needed_by">
                 </div>
             </div>
             <hr>

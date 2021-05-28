@@ -5,7 +5,7 @@ Home | Covid Help
 @endsection
 
 @section('content')
-<div class="card mt-5 shadow" style="top: 25px; border-radius:30px;">
+<div class="card mt-5 shadow" style="top: 30px; border-radius:30px;">
     <div class="card-body">
         <h1>Need Help?</h1>
         <p>Don't worry, just create a request of items needed and our Goan warriors will help you</p>
@@ -17,7 +17,7 @@ Home | Covid Help
 <div class="card mt-5 shadow" style="border-radius:30px;">
     <div class="card-header" style="background-color: white;">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3" style="display:block; margin:auto;">
                 <h5><strong>Recent Requests</strong></h5>
             </div>
             <div class="col-md-3 items-center">
@@ -112,7 +112,7 @@ Home | Covid Help
                         }
                     } else {
                         echo "background-color:#fffe80;";
-                        $status = $dteDiff->format("%H");
+                        $status = "Casual";
                     }
                     ?>" class="card shadow-sm <?php if ($status == "Casual"|| $status=="Completed") echo "text-dark";
                                                 else echo "text-light"; ?>">
@@ -193,10 +193,10 @@ Home | Covid Help
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6">
-                                <img src="{{asset('/img/no-result-found.svg')}}" class="mx-auto" style="width:200px;" alt="">
+                            <div class="col-md-4">
+                                <img src="{{asset('/img/no-result-found.svg')}}" style="width:200px; display:block; margin:auto;" alt="">
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-8" style="display:block; margin:auto;">
                                 <h1 class="text-center align-middle"><strong>No Results Found</strong></h1>
                             </div>
                         </div>
