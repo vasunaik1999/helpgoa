@@ -8,7 +8,7 @@
     <x-slot name="card">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table id="table" class="table table-striped">
                     <thead>
                         <th>#</th>
                         <th>Name</th>

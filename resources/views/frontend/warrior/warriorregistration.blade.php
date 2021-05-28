@@ -53,6 +53,9 @@ Register Warrior | Covid Help
         <form method="POST" action="{{route('warriorregistration.store')}}">
             @csrf
 
+            @if($warrior)
+            <input type="hidden" name="warrior_reg_id" value="{{$warrior->id}}">
+            @endif
             <div class="row">
                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                 <div class="form-group col-md-4">

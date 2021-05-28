@@ -56,20 +56,35 @@ class WarriorController extends Controller
 
     public function storewarrior(Request $request)
     {
-        $request->validate([
-            'aadhaar_num' => 'required|digits:12|numeric|unique:volunteer_details',
-            'organization' => 'required',
-        ]);
-        // dd($request);
-        $warrior = new WarriorDetail();
-        $warrior->user_id = $request->user_id;
-        $warrior->status = 'Pending';
-        $warrior->aadhaar_num = $request->aadhaar_num;
-        $warrior->organization = $request->organization;
-        $warrior->serviceAreas = json_encode($request->input('serviceArea'));
-        $warrior->supplyTypes = json_encode($request->input('supplyType'));
-        $warrior->save();
-        // dd($warrior);
+
+        if ($request->has('warrior_reg_id')) {
+            $request->validate([
+                'aadhaar_num' => 'required|digits:12|numeric',
+                'organization' => 'required',
+            ]);
+            $warrior = WarriorDetail::find($request->warrior_reg_id);
+            $warrior->user_id = $request->user_id;
+            $warrior->status = 'Pending';
+            $warrior->aadhaar_num = $request->aadhaar_num;
+            $warrior->organization = $request->organization;
+            $warrior->serviceAreas = json_encode($request->input('serviceArea'));
+            $warrior->supplyTypes = json_encode($request->input('supplyType'));
+            $warrior->update();
+        } else {
+            $request->validate([
+                'aadhaar_num' => 'required|digits:12|numeric|unique:volunteer_details',
+                'organization' => 'required',
+            ]);
+            $warrior = new WarriorDetail();
+            $warrior->user_id = $request->user_id;
+            $warrior->status = 'Pending';
+            $warrior->aadhaar_num = $request->aadhaar_num;
+            $warrior->organization = $request->organization;
+            $warrior->serviceAreas = json_encode($request->input('serviceArea'));
+            $warrior->supplyTypes = json_encode($request->input('supplyType'));
+            $warrior->save();
+            // dd($warrior);
+        }
         return redirect()->back()->with('status', 'Details Submitted Successfully, Verification will take a short time');
     }
 

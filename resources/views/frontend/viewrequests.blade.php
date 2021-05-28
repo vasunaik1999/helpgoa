@@ -177,9 +177,11 @@ Home | Covid Help
                                 <a href="{{url('/warrior-registration/'.Auth::user()->id)}}" class="btn btn-sm btn-dark text-light float-right" style="font-weight: bold;">Want to help?</a>
                                 <p><em><strong>Note: Register as a warrior to help others!</strong></em></p>
                                 @else
+                                @if($req->user_id != Auth::user()->id)
                                 <a href="{{url('dashboard/'.$req->id.'/view-request')}}" class="btn btn-sm btn-dark text-light float-right" style="font-weight: bold;">
                                     Approach
                                 </a>
+                                @endif
                                 @endif
                                 @endauth
                             </div>
@@ -196,8 +198,8 @@ Home | Covid Help
                             <div class="col-md-4">
                                 <img src="{{asset('/img/no-result-found.svg')}}" style="width:200px; display:block; margin:auto;" alt="">
                             </div>
-                            <div class="col-md-8" style="display:block; margin:auto;">
-                                <h1 class="text-center align-middle"><strong>No Results Found</strong></h1>
+                            <div class="col-md-8 mx-auto my-md-auto mt-4" style="display:block; margin:auto;">
+                                <h1 class="text-center"><strong>No Results Found</strong></h1>
                             </div>
                         </div>
                     </div>
