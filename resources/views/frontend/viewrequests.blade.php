@@ -112,7 +112,7 @@ Home | Covid Help
                         }
                     } else {
                         echo "background-color:#fffe80;";
-                        $status = $dteDiff->format("%H");
+                        $status = "Casual";
                     }
                     ?>" class="card shadow-sm <?php if ($status == "Casual"|| $status=="Completed") echo "text-dark";
                                                 else echo "text-light"; ?>">

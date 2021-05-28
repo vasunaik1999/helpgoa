@@ -35,7 +35,7 @@ My Request - Update | Covid Help
                 </div>
                 <div class="form-group col-md-4">
                     <label for="phone">Phone Number</label>
-                    <input required  type="text" class="form-control rounded" id="phone" placeholder="Enter Phone no..." value="{{$req->phone}}" name="phone">
+                    <input required  type="text" class="form-control rounded" id="phone" placeholder="Enter Phone no..." value="{{$req->phone}}" name="phone" pattern="[1-9]{1}[0-9]{9}">
                 </div>
             </div>
             <hr>
