@@ -35,7 +35,7 @@
         <!-- Page Heading -->
         <div class="row">
             <div class=" col">
-                <header class="bg-white shadow" style="position:fixed; z-index:10; width:100%;">
+                <header class="bg-white shadow" style="position:fixed; z-index:10; width:100%; max-width:100% !important; overflow-x:hidden !important;">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
