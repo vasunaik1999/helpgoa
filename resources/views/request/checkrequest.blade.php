@@ -121,12 +121,13 @@
                 @else
                 <div class="col-md-6">
                     <div class="card shadow-sm" style="border-radius:25px;  background-color:#F3F4F6;">
-                        <div class="card-body" style="margin:7px;">
-                            @if($user == NULL)
-                            <p><strong><em>Note:-</em></strong> Always a better option to Call User before accepting the Request</p>
-                            <p class="mt-2"> <strong> Accept Request only if you will be able to deliver it</p></strong>
-                            @else
-                            @if($user->id == Auth::user()->id)
+                        @if($user == NULL)
+                            <div class="card-body" style="margin:7px;">
+                                <p><strong><em>Note:-</em></strong> Always a better option to Call User before accepting the Request</p>
+                                <p class="mt-2"> <strong> Accept Request only if you will be able to deliver it</p></strong>
+                            </div>
+                        @else
+                        @if($user->id == Auth::user()->id)
                             <div class="card" style="border-radius:25px; margin:5px;">
                                 <div class="card-body">
                                     <p><strong>If you want to decline this Request, please give reason for it</strong></p>
@@ -159,12 +160,11 @@
                                     </form>
                                 </div>
                             </div>
-                            @else
-
-                            @endif
-                            @endif
-
-                        </div>
+                        @else
+                        
+                        @endif
+                        
+                        @endif
                     </div>
                 </div>
                 @endif
