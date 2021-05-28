@@ -33,8 +33,8 @@ Home | Covid Help
         <a type="button" class="btn text-white justify-content-center" href="{{url('/request-create')}}" style="background-color:#00BFA6; display:block; margin:auto;">Create Request</a>
     </div>
 
-    
-    <!-- Carousel -->
+
+    <!-- Carousel
     <div id="slider" class="section-title align-items-center" style="display:block; margin:auto; padding:0;">
         <h2 style="margin:20px; padding:10px;">Crucial Information</h2>
     </div>
@@ -61,30 +61,51 @@ Home | Covid Help
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </header>
 <!-- End #header -->
-    <div id="cards" class="section-title align-items-center" style="display:block; margin:auto; padding:0;">
-        <h2>Crucial Information</h2>
+<div id="cards" class="section-title align-items-center" style="display:block; margin:auto; padding:0;">
+    <h2>Crucial Information</h2>
+</div>
+<!-- <div id="cards" class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+            <div class="card border-secondary mb-5 text-center " style="width: 18rem; height: 18rem;">
+                <img src="<?php echo asset('img/oxy.png') ?>" alt="">
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+            <div class="card border-secondary mb-5 text-center " style="width: 18rem; height: 18rem;">
+                <img src="<?php echo asset('img/oxy.png') ?>" alt="">
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+            <div class="card border-secondary mb-5 text-center " style="width: 18rem; height: 18rem;">
+                <img src="<?php echo asset('img/oxy.png') ?>" alt="">
+            </div>
+        </div>
+    </div> -->
+<div class="owl-carousel owl-theme">
+    <div>
+        <div class="card">
+            <div class="card-body"><img src="{{asset('/img/oxy.png')}}" alt=""></div>
+        </div>
     </div>
-    <div id="cards" class="row">
-        <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-            <div class="card border-secondary mb-5 text-center " style="width: 18rem; height: 18rem;">
-                <img src="<?php echo asset('img/oxy.png') ?>" alt="">
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-            <div class="card border-secondary mb-5 text-center " style="width: 18rem; height: 18rem;">
-                <img src="<?php echo asset('img/oxy.png') ?>" alt="">
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-            <div class="card border-secondary mb-5 text-center " style="width: 18rem; height: 18rem;">
-                <img src="<?php echo asset('img/oxy.png') ?>" alt="">
-            </div>
+    <div>
+        <div class="card">
+            <div class="card-body"><img src="{{asset('/img/oxy.png')}}" alt=""></div>
         </div>
     </div>
-
+    <div>
+        <div class="card">
+            <div class="card-body"><img src="{{asset('/img/oxy.png')}}" alt=""></div>
+        </div>
+    </div>
+    <div>
+        <div class="card">
+            <div class="card-body"><img src="{{asset('/img/oxy.png')}}" alt=""></div>
+        </div>
+    </div>
+</div>
 
 </div>
 
@@ -98,7 +119,8 @@ Home | Covid Help
             <div class="section-title">
                 <h2>About Us</h2>
                 <p>This is an initiative by two engineering students to help those affected by Covid-19.
-                <br>While our doctors are on the frontlines fighting 24x7 to save our lives, we thought of starting this initiative to help those in need. We have been blessed with a community full of volunteers, helping people get access to meals, groceries and medical support as and when needed. This is a Request and Response portal to facilitate our Volunteer-Warriors help the community in the best way possible. </p>
+                    <br>While our doctors are on the frontlines fighting 24x7 to save our lives, we thought of starting this initiative to help those in need. We have been blessed with a community full of volunteers, helping people get access to meals, groceries and medical support as and when needed. This is a Request and Response portal to facilitate our Volunteer-Warriors help the community in the best way possible.
+                </p>
             </div>
 
             <div class="row mt-2">
@@ -112,7 +134,7 @@ Home | Covid Help
                 </div>
                 <div class="col-lg-4 col-md-6 icon-box">
                     <h4 class="title"><a href="">Want to join hands in this endeavour?</a></h4>
-                    <p class="description">We would be glad to collaborate with folks who wish to contribute in helping the society! Please reach out to us at <a href="mailto:help.goa.breathe@gmail.com" >help.goa.breathe@gmail.com</a> !! </p>
+                    <p class="description">We would be glad to collaborate with folks who wish to contribute in helping the society! Please reach out to us at <a href="mailto:help.goa.breathe@gmail.com">help.goa.breathe@gmail.com</a> !! </p>
                 </div>
             </div>
 
@@ -123,5 +145,31 @@ Home | Covid Help
 @endsection
 
 @section('script')
-
+<script>
+    $(document).ready(function() {
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            autoplayTimeout: 3500,
+            autoplayHoverPause: true,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: true,
+                },
+                600: {
+                    items: 3,
+                    nav: false
+                },
+                1000: {
+                    items: 3,
+                    nav: false,
+                    loop: true
+                }
+            }
+        })
+    });
+</script>
 @endsection

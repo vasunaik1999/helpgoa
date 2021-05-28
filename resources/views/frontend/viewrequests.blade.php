@@ -5,7 +5,7 @@ Home | Covid Help
 @endsection
 
 @section('content')
-<div class="card mt-5 shadow" style="top: 25px; border-radius:30px;">
+<div class="card my-5 shadow " style="top: 35px; border-radius:30px;">
     <div class="card-body">
         <h1>Need Help?</h1>
         <p>Don't worry, just create a request of items needed and our Goan warriors will help you</p>
@@ -17,12 +17,12 @@ Home | Covid Help
 <div class="card mt-5 shadow" style="border-radius:30px;">
     <div class="card-header" style="background-color: white;">
         <div class="row">
-            <div class="col-md-3">
-                <h5><strong>Recent Requests</strong></h5>
+            <div class="col-md-3 mt-2">
+                <h4><strong>Recent Requests</strong></h4>
             </div>
             <div class="col-md-3 items-center">
                 <form mthod="post" action="{{route('request.viewrequestfrontend.search')}}">
-                    <div class="input-group">
+                    <div class="input-group my-3 my-md-0">
                         <select name="search" class="form-control" aria-placeholder="Enter Location">
                             @if($search != null)
                             <option value="{{$search}}">{{$search}}</option>
@@ -47,7 +47,7 @@ Home | Covid Help
                     </div>
                 </form>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mt-md-2 mt-2">
                 <div class="float-right">
                     <button class="btn mx-2" style="background-color:#fb3640;"></button><span style="background-color: transparent;">Critical</span>
                     <button class="btn mx-2" style="background-color:#fd6104"></button><span style="background-color: transparent;">Urgent</span>
@@ -93,7 +93,7 @@ Home | Covid Help
                     //     echo "background-color:#28df99;";
                     //     $status = "Completed";
                     // } else
-                    if($dteStart > $dteEnd) {
+                    if ($dteStart > $dteEnd) {
                         echo "background-color:#fb3640;";
                         $status = "Critical";
                     } elseif ($message == $dteDiff->format("%H Hours and %I Minutes") || $message == $dteDiff->format("%I Minutes")) {
@@ -114,7 +114,7 @@ Home | Covid Help
                         echo "background-color:#fffe80;";
                         $status = $dteDiff->format("%H");
                     }
-                    ?>" class="card shadow-sm <?php if ($status == "Casual"|| $status=="Completed") echo "text-dark";
+                    ?>" class="card shadow-sm <?php if ($status == "Casual" || $status == "Completed") echo "text-dark";
                                                 else echo "text-light"; ?>">
                     <div class="card-body">
                         @auth
@@ -142,7 +142,7 @@ Home | Covid Help
                                     echo "color:#ffce03;";
                                 elseif ($status == 'Casual')
                                     echo "color:#fffe80;";
-                                else 
+                                else
                                     echo "color:#28df99;"
 
                                 ?>">
@@ -192,12 +192,12 @@ Home | Covid Help
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <img src="{{asset('/img/no-result-found.svg')}}" class="mx-auto" style="width:200px;" alt="">
+                        <div class="row ">
+                            <div class="col-md-6 mx-auto mb-md-0 mb-4 ">
+                                <img src="{{asset('/img/no-result-found.svg')}}" class="" style="height:200px; margin:auto;  display: block;" alt="">
                             </div>
-                            <div class="col-md-6">
-                                <h1 class="text-center align-middle"><strong>No Results Found</strong></h1>
+                            <div class="col-md-6 my-auto ">
+                                <h1 class="text-center "><strong>No Results Found</strong></h1>
                             </div>
                         </div>
                     </div>
