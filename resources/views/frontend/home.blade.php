@@ -84,25 +84,20 @@ Home | Covid Help
             </div>
         </div>
     </div> -->
-<div class="owl-carousel owl-theme">
+<div id="crucial-info-carousel" class="owl-carousel owl-theme my-5">
     <div>
         <div class="card">
-            <div class="card-body"><img src="{{asset('/img/oxy.png')}}" alt=""></div>
+            <div class="card-body"><img src="{{asset('/img/home-carousel/oxygen_level.png')}}" alt=""></div>
         </div>
     </div>
     <div>
         <div class="card">
-            <div class="card-body"><img src="{{asset('/img/oxy.png')}}" alt=""></div>
+            <div class="card-body"><img src="{{asset('/img/home-carousel/pulse_rate.png')}}" alt=""></div>
         </div>
     </div>
     <div>
         <div class="card">
-            <div class="card-body"><img src="{{asset('/img/oxy.png')}}" alt=""></div>
-        </div>
-    </div>
-    <div>
-        <div class="card">
-            <div class="card-body"><img src="{{asset('/img/oxy.png')}}" alt=""></div>
+            <div class="card-body"><img src="{{asset('/img/home-carousel/temperature.png')}}" alt=""></div>
         </div>
     </div>
 </div>
@@ -147,7 +142,7 @@ Home | Covid Help
 @section('script')
 <script>
     $(document).ready(function() {
-        $('.owl-carousel').owlCarousel({
+        $('#crucial-info-carousel').owlCarousel({
             loop: true,
             margin: 10,
             autoplay: true,
@@ -165,6 +160,7 @@ Home | Covid Help
                 },
                 1000: {
                     items: 3,
+                    margin: 20,
                     nav: false,
                     loop: true
                 }
