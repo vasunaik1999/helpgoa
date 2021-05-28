@@ -10,6 +10,7 @@ SIDE NAVBAR
     left: 0;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s;
+    z-index: 10;
 }
 
 .page-content {
@@ -24,7 +25,8 @@ SIDE NAVBAR
 
 #content.active {
     width: 100%;
-    margin: 0;
+    margin: 0px;
+    /* overflow-x: hidden; */
 }
 
 .text-uppercase {
@@ -36,16 +38,19 @@ SIDE NAVBAR
 }
 
 .nav-link {
+    text-decoration: none;
     text-transform: capitalize;
 }
 
 .nav-link:hover {
-    background:#289672;
+    background-color:#289672;
+    color: white !important;
 }
 
-.text-primary {
-    color: #289672 !important;
+.text-main {
+    color: #289672;
 }
+
 
 @media (max-width: 768px) {
     #sidebar {
@@ -59,6 +64,7 @@ SIDE NAVBAR
     #content {
         width: 100%;
         margin: 0;
+        padding: 0 10px 0 10px;
     }
 
     #content.active {

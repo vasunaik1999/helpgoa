@@ -6,7 +6,7 @@
         <ul class="nav flex-column bg-white mb-0">
             <!-- <li class="nav-item">
                 <a href="#" class="nav-link text-dark bg-light">
-                    <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+                    <i class="fa fa-th-large mr-3 text-main fa-fw"></i>
                     Warriors
                 </a>
             </li> -->
@@ -14,7 +14,7 @@
             <li class="nav-item">
                 <div class="dropdown show">
                     <a class="btn dropdown-toggle text-dark" role="button" id="ddwarrior" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user-shield ml-2 mr-3 text-primary fa-fw"></i>Warriors
+                        <i class="fa fa-user-shield ml-2 mr-3 text-main fa-fw"></i>Warriors
                     </a>
                     <div class="dropdown-menu" aria-labelledby="ddwarrior">
                         <a class="dropdown-item nav-link text-dark" href="{{route('warrior.view')}}">View Warriors</a>
@@ -25,7 +25,7 @@
             <li class="nav-item">
                 <div class="dropdown show">
                     <a class="btn dropdown-toggle text-dark" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-users ml-2 mr-3 text-primary fa-fw"></i>Users
+                        <i class="fa fa-users ml-2 mr-3 text-main fa-fw"></i>Users
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item nav-link text-dark" href="{{route('user.view')}}">View Users</a>
@@ -36,7 +36,7 @@
             <li class="nav-item">
                 <div class="dropdown show">
                     <a class="btn dropdown-toggle text-dark" role="button" id="ddadmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-users-cog ml-2 mr-3 text-primary fa-fw"></i>Admins
+                        <i class="fa fa-users-cog ml-2 mr-3 text-main fa-fw"></i>Admins
                     </a>
                     <div class="dropdown-menu" aria-labelledby="ddadmin">
                         <a class="dropdown-item nav-link text-dark" href="{{route('admin.view')}}">View Admins</a>
@@ -47,7 +47,7 @@
             <li class="nav-item">
                 <div class="dropdown show">
                     <a class="btn dropdown-toggle text-dark" role="button" id="ddsadmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user-cog ml-2 mr-3 text-primary fa-fw"></i>Super Admins
+                        <i class="fa fa-user-cog ml-2 mr-3 text-main fa-fw"></i>Super Admins
                     </a>
                     <div class="dropdown-menu" aria-labelledby="ddsadmin">
                         <a class="dropdown-item nav-link text-dark" href="{{route('superadmin.view')}}">View Superadmins</a>
@@ -64,7 +64,7 @@
             <li class="nav-item">
                 <div class="dropdown show">
                     <a class="btn dropdown-toggle text-dark" role="button" id="ddrequest" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-address-card ml-2 mr-3 text-primary fa-fw"></i>Requests
+                        <i class="fa fa-address-card ml-2 mr-3 text-main fa-fw"></i>Requests
                     </a>
                     <div class="dropdown-menu" aria-labelledby="ddrequest">
                         <a class="dropdown-item nav-link text-dark" href="{{route('request.create')}}">Create Request</a>
@@ -75,19 +75,20 @@
                     </div>
                 </div>
             </li>
+
             @if(Auth::user()->hasRole('superadmin') || Auth::user()->hasRole('admin'))
             <li class="nav-item">
-                <a href="{{route('warrior.verifyindex')}}" class="nav-link text-dark">
-                    <i class="fa fa-user mr-3 text-primary fa-fw"></i>Verify Warriors
+                <a href="{{route('warrior.verifyindex')}}" class="nav-link ">
+                    <i class="fa fa-user mr-3 text-main fa-fw"></i>Verify Warriors
                 </a>
             </li>
             @endif
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="#" class="nav-link text-dark">
-                    <i class="fa fa-area-chart mr-3 text-primary fa-fw"></i>
+                    <i class="fa fa-area-chart mr-3 text-main fa-fw"></i>
                     Extra
                 </a>
-            </li>
+            </li> -->
         </ul>
     </div>
     <!-- End vertical navbar -->

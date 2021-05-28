@@ -25,31 +25,43 @@
     <script src="{{ asset('js/main.js') }}" defer></script>
 </head>
 
-<body class="font-sans antialiased" style="padding:0; margin:0; overflow-y:hidden;">
+<body class="font-sans antialiased" style="overflow-x: hidden;">
     <div class="min-h-screen bg-gray-100">
-
+        <!-- <div class="row sticky-top">
+            <div class="col"> -->
         @include('layouts.navigation')
+        <!-- </div>
+        </div> -->
         <!-- Page Heading -->
-        <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
+        <div class="row">
+            <div class=" col">
+                <header class="bg-white shadow" style="position:fixed; z-index:10; width:100%;">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
+                    </div>
+                </header>
             </div>
-        </header>
-
-        <main>
-            @include('layouts.sidebar')
-            <div class="page-content" id="content">
-                <div class="py-6">
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                        <div class="bg-white overflow-hidden shadow" style="border-radius: 30px;">
-                            <div class="card shadow" style="height: 70vh; overflow-y:auto;">
-                                {{ $card }}
+        </div>
+        <div class="row" style="margin-top:72px;">
+            <div class="col">
+                <main>
+                    @include('layouts.sidebar')
+                    <div class="page-content" id="content">
+                        <div class="py-6">
+                            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                                <div class="bg-white shadow" style="border-radius: 30px;">
+                                    <div class="card shadow">
+                                        <!-- style="height: 70vh; overflow-y:auto;" -->
+                                        {{ $card }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </main>
             </div>
-        </main>
+        </div>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
