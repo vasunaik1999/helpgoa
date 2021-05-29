@@ -21,7 +21,9 @@ Route::post('/requests', 'App\Http\Controllers\FrontendController@index')->name(
 Route::get('/you-are-banned', 'App\Http\Controllers\FrontendController@bannedpage');
 
 // Resources
-Route::get('/resources', 'App\Http\Controllers\ResourceController@index');
+Route::get('/resources', 'App\Http\Controllers\ResourceController@index')->name('resources.index');
+Route::get('/resources/doctor-consultant', 'App\Http\Controllers\ResourceDoctorController@frontendview');
+
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/request-create', 'App\Http\Controllers\FrontendController@createreq');
@@ -113,6 +115,16 @@ Route::group(['middleware' => ['auth', 'role:superadmin|admin']], function () {
     Route::post('/dashboard/verify-warrior/disagree', 'App\Http\Controllers\WarriorController@verifydisagree')->name('warrior.verifydisagree');
     Route::post('/dashboard/verify-warrior/accept', 'App\Http\Controllers\WarriorController@verifyaccept')->name('warrior.verifyaccept');
     Route::post('/dashboard/verify-warrior/reject', 'App\Http\Controllers\WarriorController@verifyreject')->name('warrior.verifyreject');
+
+    // Resources
+    Route::get('/dashboard/resources', 'App\Http\Controllers\ResourceController@dashboardview');
+
+    //doctor consultant
+    Route::get('/dashboard/resources/doctor-consultant', 'App\Http\Controllers\ResourceDoctorController@index');
+    Route::get('/dashboard/resources/doctor-consultant/create', 'App\Http\Controllers\ResourceDoctorController@create');
+    Route::post('/dashboard/resources/doctor-consultant/store', 'App\Http\Controllers\ResourceDoctorController@store')->name('resource.doctor.store');
+    Route::get('/dashboard/resources/doctor-consultant/{resourceDoctor}/edit', 'App\Http\Controllers\ResourceDoctorController@edit')->name('resource.doctor.edit');
+    Route::post('/dashboard/resources/doctor-consultant/update', 'App\Http\Controllers\ResourceDoctorController@update')->name('resource.doctor.update');
 });
 
 require __DIR__ . '/auth.php';

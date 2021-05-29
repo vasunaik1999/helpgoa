@@ -5,16 +5,27 @@ Home | Covid Help
 @endsection
 
 @section('content')
-<div class="card my-5 shadow " style="top: 35px; border-radius:30px;">
-    <div class="card-body">
-        <h1>Need Help?</h1>
-        <p>Don't worry, just create a request of items needed and our Goan warriors will help you</p>
+<style>
+    .card-style {
+        border-radius: 30px;
+        border: 1px solid lightgray !important;
+        background-color: #f6f6f6;
+    }
+</style>
+<div class="row" style="top: 35px;">
+    <div class="col">
+        <div class="card mt-5 card-style">
+            <div class="card-body">
+                <h1>Need Help?</h1>
+                <p>Don't worry, just create a request of items needed and our Goan warriors will help you</p>
 
-        <a class="btn btn-sm text-white shadow-sm" href="{{url('/request-create')}}" style="background-color: #00BFA6; border-radius:25px; padding:7px 12px;">Create Request</a>
+                <a class="btn btn-sm text-white shadow-sm" href="{{url('/request-create')}}" style="background-color: #00BFA6; border-radius:25px; padding:7px 12px;">Create Request</a>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="card mt-5 shadow" style="border-radius:30px;">
+<div class="card mt-4 card-style">
     <div class="card-header" style="background-color: white;">
         <div class="row">
             <div class="col-md-3" style="display:block; margin:auto;">
@@ -122,7 +133,6 @@ Home | Covid Help
 
                         @else
                         <strong>{{$req->name}} </strong> -
-
                         @endif
                         @endauth
                         <i class="fas fa-map-marker-alt mr-2"></i>{{$req->city}}, {{$req->taluka}}

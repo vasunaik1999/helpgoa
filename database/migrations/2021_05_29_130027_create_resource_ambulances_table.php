@@ -19,7 +19,7 @@ class CreateResourceAmbulancesTable extends Migration
             $table->string('ambulance_type');
             $table->string('service_location');
             $table->string('contact');
-            $table->added_by();
+            $table->unsignedBiginteger('added_by')->nullable();
             $table->foreign('added_by')->references('id')->on('users');
             $table->string('note')->nullable();
             $table->boolean('verified')->default(0);

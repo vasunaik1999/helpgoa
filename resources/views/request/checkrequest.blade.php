@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span> <a href="">Request Details</a>
+            <a href="{{url('/dashboard')}}">Dashboard</a><span> / <a href="{{url('/dashboard/show-request')}}">View Requests</a> / </span> <a href="">Request Details</a>
         </h2>
     </x-slot>
 
@@ -122,48 +122,48 @@
                 <div class="col-md-6">
                     <div class="card shadow-sm" style="border-radius:25px;  background-color:#F3F4F6;">
                         @if($user == NULL)
-                            <div class="card-body" style="margin:7px;">
-                                <p><strong><em>Note:-</em></strong>Please call and confirm on the number provided, before your accept any request. </p>
-                                <p class="mt-2"> <strong> Accept Request only if you will be able to deliver it.</strong></p>
-                            </div>
+                        <div class="card-body" style="margin:7px;">
+                            <p><strong><em>Note:-</em></strong>Please call and confirm on the number provided, before your accept any request. </p>
+                            <p class="mt-2"> <strong> Accept Request only if you will be able to deliver it.</strong></p>
+                        </div>
                         @else
                         @if($user->id == Auth::user()->id)
-                            <div class="card" style="border-radius:25px; margin:5px;">
-                                <div class="card-body">
-                                    <p><strong>If you want to decline this Request, please give reason for it</strong></p>
-                                    <div class="row mt-4">
-                                        <div class="col-md-12">
-                                            <form action="{{url('dashboard/'.$req->id.'/view-request/'.Auth::user()->id.'/decline')}}" method="post">
-                                                @csrf
-                                                <div class="form-group">
-                                                    <label for="reason">Reason for Declining this request</label>
-                                                    <input type="text" class="form-control" style="border-radius: 15px;" name="reason" id="reason" placeholder="Please enter reason....">
-                                                </div>
-                                                <button type="submit" class="btn text-white btn-sm" style="background-color: red; border-radius:30px; padding:7px 12px 7px 12px;">Decline Request</button>
-                                            </form>
-                                        </div>
+                        <div class="card" style="border-radius:25px; margin:5px;">
+                            <div class="card-body">
+                                <p><strong>If you want to decline this Request, please give reason for it</strong></p>
+                                <div class="row mt-4">
+                                    <div class="col-md-12">
+                                        <form action="{{url('dashboard/'.$req->id.'/view-request/'.Auth::user()->id.'/decline')}}" method="post">
+                                            @csrf
+                                            <div class="form-group">
+                                                <label for="reason">Reason for Declining this request</label>
+                                                <input type="text" class="form-control" style="border-radius: 15px;" name="reason" id="reason" placeholder="Please enter reason....">
+                                            </div>
+                                            <button type="submit" class="btn text-white btn-sm" style="background-color: red; border-radius:30px; padding:7px 12px 7px 12px;">Decline Request</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card mt-4" style="border-radius:25px; margin:5px;">
-                                <div class="card-body">
-                                    <p>Only mark as Completed if you have completed this request</p>
-                                    <form action="{{route('request.mark.completed')}}" method="post">
-                                        @csrf
-                                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                        <input type="hidden" name="req_id" value="{{$req->id}}">
-                                        <!-- <div class="form-group">
+                        </div>
+                        <div class="card mt-4" style="border-radius:25px; margin:5px;">
+                            <div class="card-body">
+                                <p>Only mark as Completed if you have completed this request</p>
+                                <form action="{{route('request.mark.completed')}}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                    <input type="hidden" name="req_id" value="{{$req->id}}">
+                                    <!-- <div class="form-group">
                                             <label for="reason">Reason</label>
                                             <input type="text" class="form-control rounded" name="reason" id="reason" placeholder="Please enter reason....">
                                         </div> -->
-                                        <button type="submit" class=" mt-2 btn text-white btn-sm" style="background-color:#00BFA6; border-radius:30px; padding:7px 12px 7px 12px;">Mark as Completed</button>
-                                    </form>
-                                </div>
+                                    <button type="submit" class=" mt-2 btn text-white btn-sm" style="background-color:#00BFA6; border-radius:30px; padding:7px 12px 7px 12px;">Mark as Completed</button>
+                                </form>
                             </div>
+                        </div>
                         @else
-                        
+
                         @endif
-                        
+
                         @endif
                     </div>
                 </div>

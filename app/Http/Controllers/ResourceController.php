@@ -10,4 +10,9 @@ class ResourceController extends Controller
     {
         return view('frontend.resources.resources');
     }
+
+    public function dashboardview()
+    {
+        return view('frontend.resources.dashResources');
+    }
 }
