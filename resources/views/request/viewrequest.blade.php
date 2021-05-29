@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span> <a href="">View Requests</a>
+            <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span> <a href="{{url('/dashboard/show-request')}}">View Requests</a>
         </h2>
     </x-slot>
 
@@ -161,9 +161,11 @@
                             <div class="row mt-2">
                                 <div class="col">
                                     @auth
+                                    @if($req->user_id != Auth::user()->id)
                                     <a href="{{url('dashboard/'.$req->id.'/view-request')}}" class="btn btn-sm btn-dark text-light float-right" style="font-weight: bold;">
                                         Approach
                                     </a>
+                                    @endif
                                     @endauth
                                 </div>
                             </div>

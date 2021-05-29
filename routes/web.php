@@ -22,6 +22,8 @@ Route::get('/you-are-banned', 'App\Http\Controllers\FrontendController@bannedpag
 
 // Resources
 Route::get('/resources', 'App\Http\Controllers\ResourceController@index');
+Route::get('/resources/doctor-consultant', 'App\Http\Controllers\DoctorConsultantController@frontend-view');
+
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/request-create', 'App\Http\Controllers\FrontendController@createreq');
