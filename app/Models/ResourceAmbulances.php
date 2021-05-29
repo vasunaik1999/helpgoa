@@ -10,5 +10,5 @@ class ResourceAmbulances extends Model
     use HasFactory;
     use SoftDeletes;
     protected $table = 'resource_ambulances';
-    protected $fillable = ['provider','ambulance_type','service_location','contact','note','verified'];
+    protected $fillable = ['provider','ambulance_type','service_location','contact','note','verified','visibility'];
 }

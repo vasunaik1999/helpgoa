@@ -23,6 +23,7 @@ class CreateResourceAmbulancesTable extends Migration
             $table->foreign('added_by')->references('id')->on('users');
             $table->string('note')->nullable();
             $table->boolean('verified')->default(0);
+            $table->boolean('visibility')->default(1);
             $table->softDeletes();
             $table->timestamps();
         });
