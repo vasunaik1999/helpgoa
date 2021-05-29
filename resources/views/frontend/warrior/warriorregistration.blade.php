@@ -82,7 +82,7 @@ Register Warrior | Covid Help
                 </div>
                 <div class="form-group col-md-4">
                     <label for="organization">Organization/NGO Name (Optional)</label>
-                    <input required type="text" class="form-control rounded" id="organization" placeholder="Enter Organization/NGO name..." name="organization">
+                    <input type="text" class="form-control rounded" id="organization" placeholder="Enter Organization/NGO name..." name="organization">
                 </div>
             </div>
             <hr>
