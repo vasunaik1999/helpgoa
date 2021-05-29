@@ -46,9 +46,12 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
+        $userdata = null;
         $userdata = User::where('phone', '=', $this->phone)->select('isBanned')->first();
-        // dd($userdata);
-        if ($userdata->isBanned == '1') {
+        //dd($userdata);
+
+
+        if ($userdata != null && $userdata->isBanned == '1') {
             // return redirect('/you-are-banned');
             return redirect()->back()->with('bannedMessage', 'Your account has been banned, Contact Support');
         } else {

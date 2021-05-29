@@ -2,6 +2,9 @@
 SIDE NAVBAR
 */
 
+.body{
+    overflow-x: hidden !important;
+}
 .vertical-nav {
     min-width: 17rem;
     width: 17rem;
@@ -10,6 +13,7 @@ SIDE NAVBAR
     left: 0;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s;
+    z-index: 10;
 }
 
 .page-content {
@@ -24,7 +28,8 @@ SIDE NAVBAR
 
 #content.active {
     width: 100%;
-    margin: 0;
+    margin: 0px;
+    /* overflow-x: hidden; */
 }
 
 .text-uppercase {
@@ -36,18 +41,29 @@ SIDE NAVBAR
 }
 
 .nav-link {
+    text-decoration: none;
     text-transform: capitalize;
 }
 
 .nav-link:hover {
-    background:#289672;
+    background-color:#289672;
+    color: white !important;
 }
 
-.text-primary {
+.text-main {
     color: #289672 !important;
 }
 
+
 @media (max-width: 768px) {
+    .body{
+        max-width: 100% !important;
+        width: 100%;
+        overflow-x: hidden !important;
+        margin: 0;
+        padding: 0;
+    }
+
     #sidebar {
         margin-left: -17rem;
     }
@@ -59,6 +75,7 @@ SIDE NAVBAR
     #content {
         width: 100%;
         margin: 0;
+        padding: 0 10px 0 10px;
     }
 
     #content.active {

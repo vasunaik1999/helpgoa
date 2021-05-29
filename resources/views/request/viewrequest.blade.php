@@ -8,12 +8,12 @@
     <x-slot name="card">
         <div class="card-header" style="background-color: white;">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3" style="display:block; margin:auto;">
                     <h5><strong>Recent Requests</strong></h5>
                 </div>
                 <div class="col-md-3 items-center">
                     <form mthod="post" action="{{route('request.viewrequestdashboard.search')}}">
-                        <div class="input-group">
+                        <div class="input-group my-3 my-md-0">
                             <select name="search" class="form-control" aria-placeholder="Enter Location">
                                 @if($search != null)
                                 <option value="{{$search}}">{{$search}}</option>
@@ -38,12 +38,12 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 mt-md-2 mt-2">
                     <div class="float-right">
-                    <button class="btn mx-2" style="background-color:#fb3640;"></button><span style="background-color: transparent;">Critical</span>
-                    <button class="btn mx-2" style="background-color:#fd6104"></button><span style="background-color: transparent;">Urgent</span>
-                    <button class="btn mx-2" style="background-color:#ffce03;"></button><span style="background-color: transparent;">Standard</span>
-                    <button class="btn mx-2" style="background-color:#fffe80;"></button><span style="background-color: transparent;">Casual</span>
+                        <button class="btn mx-2" style="background-color:#fb3640;"></button><span style="background-color: transparent;">Critical</span>
+                        <button class="btn mx-2" style="background-color:#fd6104"></button><span style="background-color: transparent;">Urgent</span>
+                        <button class="btn mx-2" style="background-color:#ffce03;"></button><span style="background-color: transparent;">Standard</span>
+                        <button class="btn mx-2" style="background-color:#fffe80;"></button><span style="background-color: transparent;">Casual</span>
                     </div>
                 </div>
             </div>
@@ -87,7 +87,7 @@
                         if ($dteStart > $dteEnd) {
                             echo "background-color:#fb3640;";
                             $status = "Critical";
-                        } elseif ($message == $dteDiff->format("%H Hours and %I Minutes")||$message == $dteDiff->format("%I Minutes")) {
+                        } elseif ($message == $dteDiff->format("%H Hours and %I Minutes") || $message == $dteDiff->format("%I Minutes")) {
                             if ($dteDiff->format("%H") <= 1) {
                                 echo "background-color:#fb3640;";
                                 $status = "Critical";
@@ -105,7 +105,7 @@
                             echo "background-color:#fffe80;";
                             $status = "Casual";
                         }
-                        ?>" class="card shadow-sm <?php if ($status == "Casual"|| $status=="Completed") echo "text-dark";
+                        ?>" class="card shadow-sm <?php if ($status == "Casual" || $status == "Completed") echo "text-dark";
                                                     else echo "text-light"; ?>">
                         <div class="card-body">
                             @auth
@@ -131,7 +131,7 @@
                                         echo "color:#ffce03;";
                                     elseif ($status == 'Casual')
                                         echo "color:#fffe80;";
-                                    else 
+                                    else
                                         echo "color:#28df99;"
 
                                     ?>">
@@ -160,7 +160,7 @@
                             </div>
                             <div class="row mt-2">
                                 <div class="col">
-                                    @auth 
+                                    @auth
                                     <a href="{{url('dashboard/'.$req->id.'/view-request')}}" class="btn btn-sm btn-dark text-light float-right" style="font-weight: bold;">
                                         Approach
                                     </a>

@@ -105,7 +105,7 @@ body {
     margin-bottom: 0;
   }
 
-  .carousel .carousel-indicators li {  
+  /* .carousel .carousel-indicators li {  
     background:rgba(40, 150, 114,0.4)
   }
 
@@ -116,24 +116,20 @@ body {
   .carousel-indicators{
     bottom: 7px;
     margin-bottom: 0;
-  }
+  } */
 
-  @media (max-width:767px) {
+  /* @media (max-width:767px) {
     #cards {
       display:none !important;
     }
-  }
+  } */
 
-  @media (min-width:768px) {
+  /* @media (min-width:768px) {
     
     #slider {
       display:none !important;
     }
-  }
-
-
-
-
+  } */
 
   .about .icon-box {
     margin-bottom: 20px;
