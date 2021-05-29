@@ -90,12 +90,19 @@ class HelpRequestController extends Controller
         if ($request->has('search')) {
             $search = $request->search;
             if ($search == 'All') {
-                $reqs = HelpRequest::all();
+                $reqs = HelpRequest::select('city','taluka','items','needed_by')
+                                        ->where('reqStatus', '<>', 'Completed')
+                                        ->get();
             } else {
-                $reqs = HelpRequest::where('taluka', '=', $search)->get();
+                $reqs = HelpRequest::select('city','taluka','items','needed_by')
+                                        ->where('reqStatus', '<>', 'Completed')
+                                        ->where('taluka', '=', $search)
+                                        ->get();
             }
         } else {
-            $reqs = HelpRequest::all();
+            $reqs = HelpRequest::select('city','taluka','items','needed_by')
+                                    ->where('reqStatus', '<>', 'Completed')
+                                    ->get();
             $search = null;
         }
         return view('request.viewrequest', compact('reqs', 'search'));
