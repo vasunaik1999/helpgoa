@@ -38,6 +38,9 @@
         <li class="nav-item active ml-3">
           <a class="text-white" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
         </li>
+        <li class="nav-item ml-3">
+          <a class="text-white" href="{{url('/resources')}}">Resources</a>
+        </li>
         @if (Route::has('login'))
         @auth
         <!-- @if(Auth::user()->hasRole('user'))

@@ -20,6 +20,9 @@ Route::get('/requests', 'App\Http\Controllers\FrontendController@index');
 Route::post('/requests', 'App\Http\Controllers\FrontendController@index')->name('request.viewrequestfrontend.search'); //search
 Route::get('/you-are-banned', 'App\Http\Controllers\FrontendController@bannedpage');
 
+// Resources
+Route::get('/resources', 'App\Http\Controllers\ResourceController@index');
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/request-create', 'App\Http\Controllers\FrontendController@createreq');
     Route::post('store-request', 'App\Http\Controllers\HelpRequestController@store')->name('request.store');
