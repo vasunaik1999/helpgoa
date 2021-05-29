@@ -56,7 +56,7 @@ Resources | Covid Help
             <div class="card-body">
                 <div class="row ">
                     <div class="col-md-3">
-                        <a href="#">
+                        <a href="https://goaonline.gov.in/beds">
                             <div class="card card-body res-card">
                                 <h1 class="text-center"><i class="fas fa-procedures"></i></h1>
                                 <h5 class="text-center mt-2"><strong>Covid Beds Availabilty</strong></h5>
@@ -64,10 +64,12 @@ Resources | Covid Help
                         </a>
                     </div>
                     <div class="col-md-3 mt-4 mt-md-0">
-                        <div class="card card-body res-card">
-                            <h1 class="text-center"><i class="fas fa-user-md"></i></h1>
-                            <h5 class="text-center mt-2"><strong>Doctors</strong></h5>
-                        </div>
+                        <a href="{{url('/resources/doctor-consultant')}}">
+                            <div class="card card-body res-card">
+                                <h1 class="text-center"><i class="fas fa-user-md"></i></h1>
+                                <h5 class="text-center mt-2"><strong>Doctors</strong></h5>
+                            </div>
+                        </a>
                     </div>
 
                     <div class="col-md-3 mt-4 mt-md-0">

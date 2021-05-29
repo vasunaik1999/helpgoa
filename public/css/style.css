@@ -5,6 +5,11 @@ SIDE NAVBAR
 .body{
     overflow-x: hidden !important;
 }
+
+.body a{
+    text-decoration: none;
+
+}
 .vertical-nav {
     min-width: 17rem;
     width: 17rem;
@@ -40,8 +45,9 @@ SIDE NAVBAR
     color: #aaa;
 }
 
-.nav-link {
+.nav-link{
     text-decoration: none;
+    color:black !important;
     text-transform: capitalize;
 }
 

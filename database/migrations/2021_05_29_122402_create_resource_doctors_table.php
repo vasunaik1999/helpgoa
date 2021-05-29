@@ -17,10 +17,10 @@ class CreateResourceDoctorsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('consultation_type');
-            $table->string('availability');
-            $table->string('contact');
-            $table->string('location');
-            $table->added_by();
+            $table->string('availability')->nullable();
+            $table->string('contact')->nullable();
+            $table->string('location')->nullable();
+            $table->unsignedBiginteger('added_by')->nullable();
             $table->foreign('added_by')->references('id')->on('users');
             $table->string('note')->nullable();
             $table->boolean('verified')->default(0);

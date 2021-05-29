@@ -7,14 +7,16 @@ use Illuminate\Http\Request;
 
 class ResourceDoctorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function frontendview()
+    {
+        $resources = ResourceDoctor::where('visibility', '=', '1')->get();
+        return view('frontend.resources.doctorconsultant.front-view', compact('resources'));
+    }
+
     public function index()
     {
-        //
+        $resources = ResourceDoctor::all();
+        return view('frontend.resources.doctorconsultant.index', compact('resources'));
     }
 
     /**
@@ -24,7 +26,7 @@ class ResourceDoctorController extends Controller
      */
     public function create()
     {
-        //
+        return view('frontend.resources.doctorconsultant.create');
     }
 
     /**
@@ -35,7 +37,23 @@ class ResourceDoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'contact' => 'nullable|digits:10',
+        ]);
+
+        $resource = new ResourceDoctor();
+        $resource->name = $request->name;
+        $resource->contact = $request->contact;
+        $resource->location = $request->location;
+        $resource->consultation_type = $request->consultation_type;
+        $resource->availability = $request->availability;
+        $resource->note = $request->note;
+        $resource->added_by = $request->user_id;
+        $resource->visibility = "1";
+        $resource->verified = "0";
+        $resource->save();
+        return redirect()->back()->with('status', 'Doctor Added Successfully');
     }
 
     /**
@@ -57,7 +75,8 @@ class ResourceDoctorController extends Controller
      */
     public function edit(ResourceDoctor $resourceDoctor)
     {
-        //
+        $resource = $resourceDoctor;
+        return view('frontend.resources.doctorconsultant.edit', compact('resource'));
     }
 
     /**
@@ -69,7 +88,25 @@ class ResourceDoctorController extends Controller
      */
     public function update(Request $request, ResourceDoctor $resourceDoctor)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'contact' => 'nullable|digits:10',
+        ]);
+
+        $resource = ResourceDoctor::find($request->r_id);
+        $resource->name = $request->name;
+        $resource->contact = $request->contact;
+        $resource->location = $request->location;
+        $resource->consultation_type = $request->consultation_type;
+        $resource->availability = $request->availability;
+        $resource->note = $request->note;
+        // $resource->added_by = $request->user_id;
+        $resource->visibility = $request->visibility;
+        $resource->verified = $request->verified;
+        // dd($resource);
+        $resource->update();
+
+        return redirect()->back()->with('status', 'Doctor Updated Successfully');
     }
 
     /**

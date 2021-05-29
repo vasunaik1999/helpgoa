@@ -27,10 +27,25 @@ Resources | Covid Help
                                     <th>Contact</th>
                                     <th>Note</th>
                                     <th>Verified</th>
-                                    <th></th>
                                 </thead>
                                 <tbody>
-
+                                    @foreach($resources as $key => $r)
+                                    <tr>
+                                        <td>{{$key+1}}</td>
+                                        <td>{{$r->name}}</td>
+                                        <td>{{$r->consultation_type}}</td>
+                                        <td>{{$r->availability}}</td>
+                                        <td>{{$r->contact}}</td>
+                                        <td>{{$r->note}}</td>
+                                        <td>
+                                            @if($r->verified == 1)
+                                            <p class="text-success">Verified</p>
+                                            @else
+                                            <p class="text-info">Not Verified</p>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

@@ -19,7 +19,7 @@ class CreateResourceMedicineSuppliersTable extends Migration
             $table->string('contact');
             $table->string('supplier_location');
             $table->string('delivery_status');
-            $table->added_by();
+            $table->unsignedBiginteger('added_by')->nullable();
             $table->foreign('added_by')->references('id')->on('users');
             $table->string('note')->nullable();
             $table->boolean('verified')->default(0);

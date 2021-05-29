@@ -61,7 +61,7 @@
         <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Requests</p>
 
         <ul class="nav flex-column bg-white mb-0">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <div class="dropdown show">
                     <a class="btn dropdown-toggle text-dark" role="button" id="ddrequest" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-address-card ml-2 mr-3 text-main fa-fw"></i>Requests
@@ -74,12 +74,32 @@
                         @endif
                     </div>
                 </div>
+            </li> -->
+            <li class="nav-item">
+                <a href="{{url('/dashboard/resources')}}" class="nav-link ">
+                    <i class="fa fa-info mr-3 text-main fa-fw"></i>Resources
+                </a>
             </li>
-
+            <li class="nav-item">
+                <a href="{{route('request.create')}}" class="nav-link ">
+                    <i class="fa fa-file-medical mr-3 text-main fa-fw"></i>Create Request
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('request.show')}}" class="nav-link ">
+                    <i class="fa fa-file-alt mr-3 text-main fa-fw"></i>View Request
+                </a>
+            </li>
             @if(Auth::user()->hasRole('superadmin') || Auth::user()->hasRole('admin'))
             <li class="nav-item">
+                <a href="{{route('request.manage')}}" class="nav-link ">
+                    <i class="fa fa-folder mr-3 text-main fa-fw"></i>Manage Request
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a href="{{route('warrior.verifyindex')}}" class="nav-link ">
-                    <i class="fa fa-user mr-3 text-main fa-fw"></i>Verify Warriors
+                    <i class="fa fa-id-card mr-3 text-main fa-fw"></i>Verify Warriors
                 </a>
             </li>
             @endif
