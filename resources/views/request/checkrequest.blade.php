@@ -116,7 +116,7 @@
                         </div>
                     </div>
                 </div>
-                @if($req->reqStatus == 'MarkedCompletedByWarrior' or $req->reqStatus == 'MarkedCompletedByUser')
+                @if($req->reqStatus == 'Completed')
 
                 @else
                 <div class="col-md-6">
@@ -152,10 +152,10 @@
                                     @csrf
                                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                     <input type="hidden" name="req_id" value="{{$req->id}}">
-                                    <!-- <div class="form-group">
-                                            <label for="reason">Reason</label>
-                                            <input type="text" class="form-control rounded" name="reason" id="reason" placeholder="Please enter reason....">
-                                        </div> -->
+                                        <div class="form-group">
+                                            <label for="reason">Order OTP</label>
+                                            <input type="text" class="form-control rounded" name="order_otp" id="order_otp" placeholder="Please enter the order OTP provided to the user" pattern="[1-9]{1}[0-9]{3}">
+                                        </div>
                                     <button type="submit" class=" mt-2 btn text-white btn-sm" style="background-color:#00BFA6; border-radius:30px; padding:7px 12px 7px 12px;">Mark as Completed</button>
                                 </form>
                             </div>
