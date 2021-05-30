@@ -30,77 +30,49 @@ Home | Covid Help
             <li><span class="fa-li" style="color:#00BFA6;"><i class="fas fa-medkit"></i></span>Use this platform to help those in need.</li>
             <li><span class="fa-li" style="color:#00BFA6;"><i class="fas fa-medkit"></i></span>Use this platform to volunteer and help those affected by covid.</li>
         </ul>
-        <a type="button" class="btn text-white justify-content-center" href="{{url('/request-create')}}" style="background-color:#00BFA6; display:block; margin:auto;">Create Request</a>
-    </div>
+        <a type="button" class="btn justify-content-center createreqbtn" href="{{url('/request-create')}}">Create Request</a>
+        @if (Route::has('login'))
+            @auth
+            @if(Auth::user()->hasRole('user'))
+            <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href="{{ url('/warrior-registration/'.Auth::user()->id) }}">
+            @else
+            <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href="{{ url('/dashboard') }}" >
+            @endif
+        @else
+            <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href=" {{ route('login') }}">
+            @endauth
+        @endif
+                Register as Warrior
+            </a>
 
-
-    <!-- Carousel
-    <div id="slider" class="section-title align-items-center" style="display:block; margin:auto; padding:0;">
-        <h2 style="margin:20px; padding:10px;">Crucial Information</h2>
     </div>
-    <div id="slider" class="carousel slide" data-ride="carousel" style="background: color #000; display:block; margin:auto;">
-        <ol class="carousel-indicators">
-            <li data-target="#slider" data-slide-to="0" class="active"></li>
-            <li data-target="#slider" data-slide-to="1"></li>
-            <li data-target="#slider" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner align-items-center">
-            <div class="carousel-item active">
-                <div class="card border-secondary text-center " style="width: 18rem; height: 18rem;">
-                    <img src="<?php echo asset('img/oxy.png') ?>" alt="">
-                </div>
-            </div>
-            <div class="carousel-item ">
-                <div class="card border-secondary text-center " style="width: 18rem; height: 18rem;">
-                    <img src="<?php echo asset('img/oxy.png') ?>" alt="">
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="card border-secondary text-center " style="width: 18rem; height: 18rem;">
-                    <img src="<?php echo asset('img/oxy.png') ?>" alt="">
-                </div>
-            </div>
-        </div>
-    </div> -->
 </header>
 <!-- End #header -->
-<div id="cards" class="section-title align-items-center" style="display:block; margin:auto; padding:0;">
-    <h2>Crucial Information</h2>
-</div>
-<!-- <div id="cards" class="row">
-        <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-            <div class="card border-secondary mb-5 text-center " style="width: 18rem; height: 18rem;">
-                <img src="<?php echo asset('img/oxy.png') ?>" alt="">
+
+    <div id="slider" class="section-title align-items-center" style="display:block; margin:auto; padding:0;">
+        <h2 style="padding:10px; font-size: 22px !important;">Crucial Information</h2>
+    </div>
+
+    <div id="cards" class="section-title align-items-center" style="display:block; margin:auto; padding:0;">
+        <h2>Crucial Information</h2>
+    </div>
+    <div id="crucial-info-carousel" class="owl-carousel owl-theme my-5">
+        <div>
+            <div class="card">
+                <div class="card-body"><img src="{{asset('/img/home-carousel/oxygen_level.png')}}" alt=""></div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-            <div class="card border-secondary mb-5 text-center " style="width: 18rem; height: 18rem;">
-                <img src="<?php echo asset('img/oxy.png') ?>" alt="">
+        <div>
+            <div class="card">
+                <div class="card-body"><img src="{{asset('/img/home-carousel/pulse_rate.png')}}" alt=""></div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-            <div class="card border-secondary mb-5 text-center " style="width: 18rem; height: 18rem;">
-                <img src="<?php echo asset('img/oxy.png') ?>" alt="">
+        <div>
+            <div class="card">
+                <div class="card-body"><img src="{{asset('/img/home-carousel/temperature.png')}}" alt=""></div>
             </div>
         </div>
-    </div> -->
-<div id="crucial-info-carousel" class="owl-carousel owl-theme my-5">
-    <div>
-        <div class="card">
-            <div class="card-body"><img src="{{asset('/img/home-carousel/oxygen_level.png')}}" alt=""></div>
-        </div>
     </div>
-    <div>
-        <div class="card">
-            <div class="card-body"><img src="{{asset('/img/home-carousel/pulse_rate.png')}}" alt=""></div>
-        </div>
-    </div>
-    <div>
-        <div class="card">
-            <div class="card-body"><img src="{{asset('/img/home-carousel/temperature.png')}}" alt=""></div>
-        </div>
-    </div>
-</div>
 
 </div>
 
@@ -120,15 +92,29 @@ Home | Covid Help
 
             <div class="row mt-2">
                 <div class="col-lg-4 col-md-6 icon-box">
-                    <h4 class="title"><a href="">Need help?</a></h4>
+                    <h4 class="title"><a href="{{url('/request-create')}}">Need help?</a></h4>
                     <p class="description">One who is in need of help can reach out to the volunteers through our portal. Verified volunteers will view and reach out to you via your registered Contact Information. </p>
                 </div>
                 <div class="col-lg-4 col-md-6 icon-box">
-                    <h4 class="title"><a href="">Want to Volunteer?</a></h4>
+                    <h4 class="title">
+                    @if (Route::has('login'))
+                        @auth
+                        @if(Auth::user()->hasRole('user'))
+                        <a href="{{url('/warrior-registration/'.Auth::user()->id)}}">
+                        @else
+                        <a href="{{ url('/dashboard') }}">
+                        @endif
+                    @else
+                        <a href=" {{ route('login') }}">
+                        @endauth
+                    @endif
+                        Want to Volunteer?
+                        </a>
+                    </h4>
                     <p class="description">Through all these tough times, we have witnessed warriors from our community come forth and be pillars of support to us. Use the "Register as Warrior" feature and use this portal to reach out to those in need. </p>
                 </div>
                 <div class="col-lg-4 col-md-6 icon-box">
-                    <h4 class="title"><a href="">Want to join hands in this endeavour?</a></h4>
+                    <h4 class="title"><a href="mailto:help.goa.breathe@gmail.com">Want to join hands in this endeavour?</a></h4>
                     <p class="description">We would be glad to collaborate with folks who wish to contribute in helping the society! Please reach out to us at <a href="mailto:help.goa.breathe@gmail.com">help.goa.breathe@gmail.com</a> !! </p>
                 </div>
             </div>

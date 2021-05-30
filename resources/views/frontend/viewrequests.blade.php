@@ -20,6 +20,7 @@ Home | Covid Help
                 <p>Don't worry, just create a request of items needed and our Goan warriors will help you</p>
 
                 <a class="btn btn-sm text-white shadow-sm" href="{{url('/request-create')}}" style="background-color: #00BFA6; border-radius:25px; padding:7px 12px;">Create Request</a>
+                <a class="btn btn-sm text-white shadow-sm" href="{{url('/completed')}}" style="background-color: #00BFA6; border-radius:25px; padding:7px 12px;">Completed Request</a>
             </div>
         </div>
     </div>
@@ -125,7 +126,7 @@ Home | Covid Help
                         echo "background-color:#fffe80;";
                         $status = "Casual";
                     }
-                    ?>" class="card shadow-sm <?php if ($status == "Casual" || $status == "Completed") echo "text-dark";
+                    ?>" class="card shadow-sm <?php if ($status == "Casual" || $status=="Standard") echo "text-dark";
                                                 else echo "text-light"; ?>">
                     <div class="card-body">
                         @auth
@@ -141,7 +142,7 @@ Home | Covid Help
                             @foreach( json_decode($req->items) as $item)
                             <span class="badge p-2 mt-2
                             <?php
-                            if ($status == "Casual") echo "bg-dark";
+                            if ($status == "Casual" || $status=="Standard") echo "bg-dark";
                             else echo "bg-light"; ?>" style="font-size:14px;
                                 <?php
                                 if ($status == 'Critical')

@@ -48,7 +48,7 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                                 </div>
                             </div>
                             <div class="col-md-6 text-center mt-4">
-                                <p class=""><strong>You don't have any Request</strong></p>
+                                <p class=""><strong>You haven't made any Request</strong></p>
                                 <a class="btn btn-sm text-white shadow-sm items-center" href="{{url('/request-create')}}" style="background-color: #00BFA6;">Create Request</a>
                             </div>
                         </div>
@@ -88,7 +88,7 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
             <div style="height:100%; 
                 <?php
                 $status = "";
-                if ($req->reqStatus == 'MarkedCompletedByWarrior' || $req->reqStatus == 'MarkedCompletedByUser') {
+                if ($req->reqStatus == 'Completed') {
                     echo "background-color:#28df99;";
                     $status="Completed";
                 } elseif($dteStart > $dteEnd) {
@@ -112,7 +112,7 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                     echo "background-color:#fffe80;";
                     $status = "Casual";
                 }
-                ?>" class="card shadow-sm <?php if ($status == "Casual" || $status=="Completed" ) echo "text-dark";
+                ?>" class="card shadow-sm <?php if ($status == "Casual" || $status=="Completed" || $status=="Standard" ) echo "text-dark";
                                             else echo "text-light"; ?>">
                 <div class="card-body">
                     @auth
@@ -127,7 +127,7 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                     <span class="badge badge-dark float-right"> <?php echo $status ?> </span><br>
                     <p class="mt-2"><strong> Need :-</strong>
                         @foreach( json_decode($req->items) as $item)
-                        <span class="badge <?php if ($status == "Casual"|| $status=="Completed") echo "bg-dark";
+                        <span class="badge <?php if ($status == "Casual"|| $status=="Completed" || $status=="Standard") echo "bg-dark";
                                             else echo "bg-light"; ?> p-2 mt-2" style="font-size:14px;
                             <?php
                             if ($status == 'Critical')
@@ -152,6 +152,9 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
 
                     <div class="row mt-2">
                         <div class="col">
+                            <span style="background-color: transparent;"><strong> Needed by :- </strong>{{$req->needed_by}}</span>
+                            <br>
+                            @if($req->reqStatus != 'Completed')
                             <span style="background-color: transparent;">
                                 <?php
                                 if ($dteStart < $dteEnd) {
@@ -159,11 +162,11 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                                 } elseif ($dteStart >= $dteEnd) {
                                     echo "<strong> Deadline :- </strong>$message ago";
                                 }
-
                                 ?>
                             </span>
-                            <br>
-                            <span style="background-color: transparent;"><strong> Needed by :- </strong>{{$req->needed_by}}</span>
+                            <br>                            
+                            <span style="background-color: transparent;"><strong> Order OTP :- </strong>{{$req->order_otp}}</span>
+                            @endif
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -181,13 +184,13 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                 <button type="submit" class="btn btn-sm btn-dark text-light float-right mr-2" style="font-weight: bold;">Update </button>
                             </form>
-                            @elseif($req->reqStatus == 'Accepted'|| $req->reqStatus == 'MarkedCompletedByWarrior' || $req->reqStatus == 'MarkedCompletedByUser' )
+                            @elseif($req->reqStatus == 'Accepted'|| $req->reqStatus == 'Completed')
                             <?php
                             $user = App\Models\User::find($req->vol_id);
                             ?>
                             <div class="row">
                                 <div class="col" style="background-color: black; border-radius: 5px; padding:5px; margin:5px 5px 0px 5px;">
-                                    @if($req->reqStatus == 'MarkedCompletedByWarrior' || $req->reqStatus == 'MarkedCompletedByUser')
+                                    @if($req->reqStatus == 'Completed')
                                     <span class="text-light" style="background-color: transparent; padding-left:6px; "><strong> Completed By :- </strong>{{$user->name}}</span>
                                     @else
                                     <span style="background-color: transparent; padding-left:6px; "><strong> Accepted By :- </strong>{{$user->name}}</span>

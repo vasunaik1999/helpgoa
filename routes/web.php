@@ -20,6 +20,9 @@ Route::get('/requests', 'App\Http\Controllers\FrontendController@index');
 Route::post('/requests', 'App\Http\Controllers\FrontendController@index')->name('request.viewrequestfrontend.search'); //search
 Route::get('/you-are-banned', 'App\Http\Controllers\FrontendController@bannedpage');
 
+Route::get('/completed', 'App\Http\Controllers\FrontendController@completed');
+Route::post('/completed', 'App\Http\Controllers\FrontendController@completed')->name('request.completedfrontend.search');
+
 // Resources
 Route::get('/resources', 'App\Http\Controllers\ResourceController@index')->name('resources.index');
 //Resources Types

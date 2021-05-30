@@ -56,11 +56,11 @@
         <li class="nav-item ml-3">
           <a class="text-white" href="{{url('/requests')}}">Requests</a>
         </li>
-        @if (\Route::current()->getName() == 'home')
+        <!-- @if (\Route::current()->getName() == 'home')
         <li class="nav-item ml-3">
           <a class="text-white" href="#about">About</a>
         </li>
-        @endif
+        @endif -->
         @if (Route::has('login'))
         @auth
         <li class="nav-item ml-3">
