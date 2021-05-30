@@ -60,7 +60,6 @@ class WarriorController extends Controller
         if ($request->has('warrior_reg_id')) {
             $request->validate([
                 'aadhaar_num' => 'required|digits:12|numeric',
-                'organization' => 'required',
             ]);
             $warrior = WarriorDetail::find($request->warrior_reg_id);
             $warrior->user_id = $request->user_id;

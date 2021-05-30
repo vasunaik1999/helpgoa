@@ -75,11 +75,13 @@
                     </div>
                 </div>
             </li> -->
+            @if(Auth::user()->hasRole('superadmin') || Auth::user()->hasRole('admin'))
             <li class="nav-item">
                 <a href="{{url('/dashboard/resources')}}" class="nav-link ">
                     <i class="fa fa-info mr-3 text-main fa-fw"></i>Resources
                 </a>
             </li>
+            @endif
             <li class="nav-item">
                 <a href="{{route('request.create')}}" class="nav-link ">
                     <i class="fa fa-file-medical mr-3 text-main fa-fw"></i>Create Request

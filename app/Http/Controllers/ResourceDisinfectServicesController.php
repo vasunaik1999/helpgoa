@@ -7,77 +7,74 @@ use Illuminate\Http\Request;
 
 class ResourceDisinfectServicesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function frontendview()
+    {
+        $resources = ResourceDisinfectServices::where('visibility', '=', '1')->get();
+        return view('frontend.resources.sanitization.front-view', compact('resources'));
+    }
+
     public function index()
     {
-        //
+        $resources = ResourceDisinfectServices::all();
+        return view('frontend.resources.sanitization.index', compact('resources'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('frontend.resources.sanitization.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            // 'name' => 'required',
+            // 'contact' => 'nullable|digits:10',
+        ]);
+
+        $resource = new ResourceDisinfectServices();
+        $resource->provider = $request->provider;
+        $resource->contact = $request->contact;
+        $resource->service_location = $request->service_location;
+        $resource->note = $request->note;
+        $resource->added_by = $request->user_id;
+        $resource->visibility = "1";
+        $resource->verified = "0";
+        $resource->save();
+        return redirect()->back()->with('status', 'Sanitization Service Added Successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\ResourceDisinfectServices  $resourceDisinfectServices
-     * @return \Illuminate\Http\Response
-     */
     public function show(ResourceDisinfectServices $resourceDisinfectServices)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\ResourceDisinfectServices  $resourceDisinfectServices
-     * @return \Illuminate\Http\Response
-     */
     public function edit(ResourceDisinfectServices $resourceDisinfectServices)
     {
-        //
+        $resource = $resourceDisinfectServices;
+        return view('frontend.resources.sanitization.edit', compact('resource'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ResourceDisinfectServices  $resourceDisinfectServices
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, ResourceDisinfectServices $resourceDisinfectServices)
     {
-        //
+        $request->validate([
+            // 'name' => 'required',
+            // 'contact' => 'nullable|digits:10',
+        ]);
+
+        $resource = ResourceDisinfectServices::find($request->r_id);
+        $resource->provider = $request->provider;
+        $resource->contact = $request->contact;
+        $resource->service_location = $request->service_location;
+        $resource->note = $request->note;
+        // $resource->added_by = $request->user_id;
+        $resource->visibility = $request->visibility;
+        $resource->verified = $request->verified;
+        // dd($resource);
+        $resource->update();
+
+        return redirect()->back()->with('status', 'Sanitization Service Details Updated Successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\ResourceDisinfectServices  $resourceDisinfectServices
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(ResourceDisinfectServices $resourceDisinfectServices)
     {
         //

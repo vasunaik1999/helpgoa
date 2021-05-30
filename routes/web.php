@@ -29,6 +29,9 @@ Route::get('/resources/oxygen', 'App\Http\Controllers\ResourceOxygenSuppliersCon
 Route::get('/resources/medicine', 'App\Http\Controllers\ResourceMedicineSupplierController@frontendview');
 Route::get('/resources/hospitals', 'App\Http\Controllers\ResourceHospitalController@frontendview');
 Route::get('/resources/food', 'App\Http\Controllers\ResourceFoodServicesController@frontendview');
+Route::get('/resources/caretaker', 'App\Http\Controllers\ResourceCaretakingServicesController@frontendview');
+Route::get('/resources/sanitization', 'App\Http\Controllers\ResourceDisinfectServicesController@frontendview');
+Route::get('/resources/isolation-center', 'App\Http\Controllers\ResourceIsolationCenterController@frontendview');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/request-create', 'App\Http\Controllers\FrontendController@createreq');
@@ -165,6 +168,27 @@ Route::group(['middleware' => ['auth', 'role:superadmin|admin']], function () {
     Route::post('/dashboard/resources/food/store', 'App\Http\Controllers\ResourceFoodServicesController@store')->name('resource.food.store');
     Route::get('/dashboard/resources/food/{resourceFoodServices}/edit', 'App\Http\Controllers\ResourceFoodServicesController@edit')->name('resource.food.edit');
     Route::post('/dashboard/resources/food/update', 'App\Http\Controllers\ResourceFoodServicesController@update')->name('resource.food.update');
+
+    //Care Taker
+    Route::get('/dashboard/resources/caretaker', 'App\Http\Controllers\ResourceCaretakingServicesController@index');
+    Route::get('/dashboard/resources/caretaker/create', 'App\Http\Controllers\ResourceCaretakingServicesController@create');
+    Route::post('/dashboard/resources/caretaker/store', 'App\Http\Controllers\ResourceCaretakingServicesController@store')->name('resource.caretaker.store');
+    Route::get('/dashboard/resources/caretaker/{resourceCaretakingServices}/edit', 'App\Http\Controllers\ResourceCaretakingServicesController@edit')->name('resource.caretaker.edit');
+    Route::post('/dashboard/resources/caretaker/update', 'App\Http\Controllers\ResourceCaretakingServicesController@update')->name('resource.caretaker.update');
+
+    //Disinfectant/Sanitization Service
+    Route::get('/dashboard/resources/sanitization', 'App\Http\Controllers\ResourceDisinfectServicesController@index');
+    Route::get('/dashboard/resources/sanitization/create', 'App\Http\Controllers\ResourceDisinfectServicesController@create');
+    Route::post('/dashboard/resources/sanitization/store', 'App\Http\Controllers\ResourceDisinfectServicesController@store')->name('resource.sanitization.store');
+    Route::get('/dashboard/resources/sanitization/{resourceDisinfectServices}/edit', 'App\Http\Controllers\ResourceDisinfectServicesController@edit')->name('resource.sanitization.edit');
+    Route::post('/dashboard/resources/sanitization/update', 'App\Http\Controllers\ResourceDisinfectServicesController@update')->name('resource.sanitization.update');
+
+    //Isolation Center
+    Route::get('/dashboard/resources/isolation-center', 'App\Http\Controllers\ResourceIsolationCenterController@index');
+    Route::get('/dashboard/resources/isolation-center/create', 'App\Http\Controllers\ResourceIsolationCenterController@create');
+    Route::post('/dashboard/resources/isolation-center/store', 'App\Http\Controllers\ResourceIsolationCenterController@store')->name('resource.isolation-center.store');
+    Route::get('/dashboard/resources/isolation-center/{resourceIsolationCenter}/edit', 'App\Http\Controllers\ResourceIsolationCenterController@edit')->name('resource.isolation-center.edit');
+    Route::post('/dashboard/resources/isolation-center/update', 'App\Http\Controllers\ResourceIsolationCenterController@update')->name('resource.isolation-center.update');
 });
 
 require __DIR__ . '/auth.php';
