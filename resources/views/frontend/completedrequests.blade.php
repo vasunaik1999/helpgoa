@@ -20,6 +20,7 @@ Home | Covid Help
                 <p>Don't worry, just create a request of items needed and our Goan warriors will help you</p>
 
                 <a class="btn btn-sm text-white shadow-sm" href="{{url('/request-create')}}" style="background-color: #00BFA6; border-radius:25px; padding:7px 12px;">Create Request</a>
+                <a class="btn btn-sm text-white shadow-sm" href="{{url('/requests')}}" style="background-color: #00BFA6; border-radius:25px; padding:7px 12px;">Recent Request</a>
             </div>
         </div>
     </div>
@@ -32,7 +33,7 @@ Home | Covid Help
                 <h5><strong>Completed Requests</strong></h5>
             </div>
             <div class="col-md-3 items-center">
-                <form mthod="post" action="{{route('request.viewrequestfrontend.search')}}">
+                <form mthod="post" action="{{route('request.completedfrontend.search')}}">
                     <div class="input-group my-3 my-md-0">
                         <select name="search" class="form-control" aria-placeholder="Enter Location">
                             @if($search != null)
@@ -69,7 +70,7 @@ Home | Covid Help
         <div class="row">
             @forelse($reqs as $req)
             <div class="col-md-6 pb-4">
-                <div style="height:100%; background-color:#28df99" class="card shadow-sm text-dark;">
+                <div style="height:100%; background-color:#28df99; color:#000;" class="card shadow-sm">
                     <div class="card-body">
                         <i class="fas fa-map-marker-alt mr-2"></i>{{$req->city}}, {{$req->taluka}}
                         <span class="badge badge-dark float-right">Completed</span><br>

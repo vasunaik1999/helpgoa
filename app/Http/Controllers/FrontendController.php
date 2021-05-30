@@ -87,4 +87,27 @@ class FrontendController extends Controller
         $helpRequest->update();
         return redirect('/myrequests')->with('status', 'Request Updated Successfully');
     }
+
+    public function completed(Request $request)
+    {
+        if ($request->has('search')) {
+            $search = $request->search;
+            if ($search == 'All') {
+                $reqs = HelpRequest::select('id', 'vol_id', 'city', 'taluka', 'items', 'needed_by')
+                    ->where('reqStatus', '=', 'Completed')
+                    ->get();
+            } else {
+                $reqs = HelpRequest::select('id', 'vol_id', 'city', 'taluka', 'items', 'needed_by')
+                    ->where('reqStatus', '=', 'Completed')
+                    ->where('taluka', '=', $search)
+                    ->get();
+            }
+        }else{    
+            $reqs = HelpRequest::select('id', 'vol_id', 'city', 'taluka', 'items', 'needed_by')
+                ->where('reqStatus', '=', 'Completed')
+                ->get();
+            $search = null;
+        }
+        return view('frontend.completedrequests', compact('reqs', 'search'));
+    }
 }
