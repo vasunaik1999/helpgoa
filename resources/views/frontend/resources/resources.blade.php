@@ -73,10 +73,12 @@ Resources | Covid Help
                     </div>
 
                     <div class="col-md-3 mt-4 mt-md-0">
-                        <div class="card card-body res-card">
-                            <h1 class="text-center"><i class="fas fa-ambulance"></i></h1>
-                            <h5 class="text-center mt-2"><strong>Ambulance</strong></h5>
-                        </div>
+                        <a href="{{url('/resources/ambulance')}}">
+                            <div class="card card-body res-card">
+                                <h1 class="text-center"><i class="fas fa-ambulance"></i></h1>
+                                <h5 class="text-center mt-2"><strong>Ambulance</strong></h5>
+                            </div>
+                        </a>
                     </div>
                     <div class="col-md-3 mt-4 mt-md-0">
                         <div class="card card-body res-card">

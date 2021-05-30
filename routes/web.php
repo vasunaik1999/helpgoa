@@ -22,7 +22,9 @@ Route::get('/you-are-banned', 'App\Http\Controllers\FrontendController@bannedpag
 
 // Resources
 Route::get('/resources', 'App\Http\Controllers\ResourceController@index')->name('resources.index');
+//Resources Types
 Route::get('/resources/doctor-consultant', 'App\Http\Controllers\ResourceDoctorController@frontendview');
+Route::get('/resources/ambulance  ', 'App\Http\Controllers\ResourceAmbulanceController@frontendview');
 
 
 Route::group(['middleware' => ['auth']], function () {
@@ -125,6 +127,13 @@ Route::group(['middleware' => ['auth', 'role:superadmin|admin']], function () {
     Route::post('/dashboard/resources/doctor-consultant/store', 'App\Http\Controllers\ResourceDoctorController@store')->name('resource.doctor.store');
     Route::get('/dashboard/resources/doctor-consultant/{resourceDoctor}/edit', 'App\Http\Controllers\ResourceDoctorController@edit')->name('resource.doctor.edit');
     Route::post('/dashboard/resources/doctor-consultant/update', 'App\Http\Controllers\ResourceDoctorController@update')->name('resource.doctor.update');
+
+    //doctor consultant
+    Route::get('/dashboard/resources/ambulance', 'App\Http\Controllers\ResourceAmbulanceController@index');
+    Route::get('/dashboard/resources/ambulance/create', 'App\Http\Controllers\ResourceAmbulanceController@create');
+    Route::post('/dashboard/resources/ambulance/store', 'App\Http\Controllers\ResourceAmbulanceController@store')->name('resource.ambulance.store');
+    Route::get('/dashboard/resources/ambulance/{resourceAmbulance}/edit', 'App\Http\Controllers\ResourceAmbulanceController@edit')->name('resource.ambulance.edit');
+    Route::post('/dashboard/resources/ambulance/update', 'App\Http\Controllers\ResourceAmbulanceController@update')->name('resource.ambulance.update');
 });
 
 require __DIR__ . '/auth.php';

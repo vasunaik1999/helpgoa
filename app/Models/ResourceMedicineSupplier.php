@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ResourceMedicineSuppliers extends Model
+class ResourceMedicineSupplier extends Model
 {
     use HasFactory;
     use HasFactory;
     use SoftDeletes;
     protected $table = 'resource_oxygen_suppliers';
-    protected $fillable = ['provider','contact','supplier_location','delivery_status','note','verified','visibility'];
+    protected $fillable = ['provider', 'contact', 'supplier_location', 'added_by', 'delivery_status', 'note', 'verified', 'visibility'];
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ResourceMedicineSuppliers;
+use App\Models\ResourceMedicineSupplier;
 use Illuminate\Http\Request;
 
-class ResourceMedicineSuppliersController extends Controller
+class ResourceMedicineSupplierController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -44,7 +44,7 @@ class ResourceMedicineSuppliersController extends Controller
      * @param  \App\Models\ResourceMedicineSuppliers  $resourceMedicineSuppliers
      * @return \Illuminate\Http\Response
      */
-    public function show(ResourceMedicineSuppliers $resourceMedicineSuppliers)
+    public function show(ResourceMedicineSupplier $resourceMedicineSupplier)
     {
         //
     }
@@ -55,7 +55,7 @@ class ResourceMedicineSuppliersController extends Controller
      * @param  \App\Models\ResourceMedicineSuppliers  $resourceMedicineSuppliers
      * @return \Illuminate\Http\Response
      */
-    public function edit(ResourceMedicineSuppliers $resourceMedicineSuppliers)
+    public function edit(ResourceMedicineSupplier $resourceMedicineSupplier)
     {
         //
     }
@@ -67,7 +67,7 @@ class ResourceMedicineSuppliersController extends Controller
      * @param  \App\Models\ResourceMedicineSuppliers  $resourceMedicineSuppliers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ResourceMedicineSuppliers $resourceMedicineSuppliers)
+    public function update(Request $request, ResourceMedicineSupplier $resourceMedicineSupplier)
     {
         //
     }
@@ -78,7 +78,7 @@ class ResourceMedicineSuppliersController extends Controller
      * @param  \App\Models\ResourceMedicineSuppliers  $resourceMedicineSuppliers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ResourceMedicineSuppliers $resourceMedicineSuppliers)
+    public function destroy(ResourceMedicineSupplier $resourceMedicineSupplier)
     {
         //
     }
