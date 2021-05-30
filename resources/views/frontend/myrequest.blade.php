@@ -152,6 +152,9 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
 
                     <div class="row mt-2">
                         <div class="col">
+                            <span style="background-color: transparent;"><strong> Needed by :- </strong>{{$req->needed_by}}</span>
+                            <br>
+                            @if($req->reqStatus != 'Completed')
                             <span style="background-color: transparent;">
                                 <?php
                                 if ($dteStart < $dteEnd) {
@@ -159,13 +162,11 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                                 } elseif ($dteStart >= $dteEnd) {
                                     echo "<strong> Deadline :- </strong>$message ago";
                                 }
-
                                 ?>
                             </span>
-                            <br>
-                            <span style="background-color: transparent;"><strong> Needed by :- </strong>{{$req->needed_by}}</span>
-                            <br>
+                            <br>                            
                             <span style="background-color: transparent;"><strong> Order OTP :- </strong>{{$req->order_otp}}</span>
+                            @endif
                         </div>
                     </div>
                     <div class="row mt-2">
