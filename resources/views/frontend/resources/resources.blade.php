@@ -14,6 +14,10 @@ Resources | Covid Help
         color: #289672;
     }
 
+    a:link {
+        color: inherit;
+    }
+
     .res-card {
         border-radius: 30px;
         border: 2px solid #289672;
@@ -126,8 +130,10 @@ Resources | Covid Help
                 <div class="row mt-4">
                     <div class="col-md-3">
                         <div class="card card-body res-card">
-                            <h1 class="text-center"><i class="fas fa-syringe"></i></h1>
-                            <h5 class="text-center mt-2"><strong>Vaccine Centers</strong></h5>
+                            <a href="{{url('https://www.cowin.gov.in')}}">
+                                <h1 class="text-center"><i class="fas fa-syringe"></i></h1>
+                                <h5 class="text-center mt-2"><strong>Vaccine Centers</strong></h5>
+                            </a>
                         </div>
                     </div>
                     <div class="col-md-3 mt-4 mt-md-0">
