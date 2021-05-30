@@ -26,6 +26,7 @@ class CreateRequestsTable extends Migration
             $table->string('special_instructions')->nullable();
             $table->string('order_otp');
             $table->dateTime('needed_by');
+            $table->boolean('isPaying')->nullable();
             $table->json('approached_by')->nullable();
             $table->unsignedBiginteger('vol_id')->nullable();
             $table->foreign('vol_id')->references('id')->on('users');

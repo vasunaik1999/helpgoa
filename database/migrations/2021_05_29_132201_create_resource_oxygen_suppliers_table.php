@@ -17,14 +17,14 @@ class CreateResourceOxygenSuppliersTable extends Migration
             $table->id();
             $table->string('provider');
             $table->string('contact');
-            $table->string('supply_type');
-            $table->string('service_location');
-            $table->string('supplier_address');
+            $table->string('supply_type')->nullable();
+            $table->string('service_location')->nullable();
+            $table->string('supplier_address')->nullable();
             $table->unsignedBiginteger('added_by')->nullable();
             $table->foreign('added_by')->references('id')->on('users');
             $table->string('note')->nullable();
             $table->boolean('verified')->default(0);
-            $table->boolean('visibility')->default(1);
+            $table->boolean('visibility')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

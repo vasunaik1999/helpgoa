@@ -14,16 +14,16 @@ class CreateResourceAmbulancesTable extends Migration
     public function up()
     {
         Schema::create('resource_ambulances', function (Blueprint $table) {
-            $table->id(); 
+            $table->id();
             $table->string('provider');
-            $table->string('ambulance_type');
+            $table->string('ambulance_type')->nullable();
             $table->string('service_location');
             $table->string('contact');
             $table->unsignedBiginteger('added_by')->nullable();
             $table->foreign('added_by')->references('id')->on('users');
             $table->string('note')->nullable();
             $table->boolean('verified')->default(0);
-            $table->boolean('visibility')->default(1);
+            $table->boolean('visibility')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

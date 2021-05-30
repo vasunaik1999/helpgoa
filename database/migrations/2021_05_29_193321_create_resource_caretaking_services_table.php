@@ -17,13 +17,13 @@ class CreateResourceCaretakingServicesTable extends Migration
             $table->id();
             $table->string('service_provider');
             $table->string('contact');
-            $table->string('service_genders');
-            $table->string('serviced_areas');
+            $table->string('service_genders')->nullable();
+            $table->string('serviced_areas')->nullable();
             $table->unsignedBiginteger('added_by')->nullable();
             $table->foreign('added_by')->references('id')->on('users');
             $table->string('note')->nullable();
             $table->boolean('verified')->default(0);
-            $table->boolean('visibility')->default(1);
+            $table->boolean('visibility')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });
