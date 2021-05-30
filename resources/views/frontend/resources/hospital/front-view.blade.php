@@ -9,7 +9,7 @@ Resources | Covid Help
     <div class="card-body">
         <div class="row">
             <div class="col">
-                <h1>Ambulance Details</h1>
+                <h1>Hospital Details</h1>
             </div>
         </div>
 
@@ -21,21 +21,31 @@ Resources | Covid Help
                             <table id="table" class="table table-striped">
                                 <thead>
                                     <th>#</th>
-                                    <th>Provider</th>
-                                    <th>Type</th>
-                                    <th>Service Location</th>
+                                    <th>Name</th>
+                                    <th>Bed Types</th>
+                                    <th>Location</th>
                                     <th>Contact</th>
                                     <!-- <th>Note</th> -->
+                                    <th>Nodal Officer</th>
                                     <th>Verified</th>
                                 </thead>
                                 <tbody>
                                     @foreach($resources as $key => $r)
                                     <tr>
                                         <td>{{$key+1}}</td>
-                                        <td>{{$r->provider}}</td>
-                                        <td>{{$r->ambulance_type}}</td>
-                                        <td>{{$r->availability}}</td>
+                                        <td>
+                                            {{$r->name}}<br>
+                                            {{$r->type}}
+                                        </td>
+                                        <td>{{$r->bed_types}}</td>
+                                        <td>{{$r->location}}<br>
+                                            {{$r->address}}
+                                        </td>
                                         <td>{{$r->contact}}</td>
+                                        <td>
+                                            {{$r->nodal_officer_name}} <br>
+                                            {{$r->nodal_officer_phone}}
+                                        </td>
                                         <!-- <td>{{$r->note}}</td> -->
                                         <td>
                                             @if($r->verified == 1)

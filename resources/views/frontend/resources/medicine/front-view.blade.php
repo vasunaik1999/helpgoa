@@ -22,10 +22,9 @@ Resources | Covid Help
                                 <thead>
                                     <th>#</th>
                                     <th>Provider</th>
-                                    <th>Type</th>
-                                    <th>Service Location</th>
+                                    <th>Location</th>
+                                    <th>Delivery Status</th>
                                     <th>Contact</th>
-                                    <!-- <th>Note</th> -->
                                     <th>Verified</th>
                                 </thead>
                                 <tbody>
@@ -33,10 +32,9 @@ Resources | Covid Help
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td>{{$r->provider}}</td>
-                                        <td>{{$r->ambulance_type}}</td>
-                                        <td>{{$r->availability}}</td>
+                                        <td>{{$r->supplier_location}}</td>
+                                        <td>{{$r->delivery_status}}</td>
                                         <td>{{$r->contact}}</td>
-                                        <!-- <td>{{$r->note}}</td> -->
                                         <td>
                                             @if($r->verified == 1)
                                             <p class="text-success">Verified</p>

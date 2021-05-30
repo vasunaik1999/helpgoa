@@ -9,7 +9,7 @@ Resources | Covid Help
     <div class="card-body">
         <div class="row">
             <div class="col">
-                <h1>Ambulance Details</h1>
+                <h1>Food Services</h1>
             </div>
         </div>
 
@@ -22,9 +22,9 @@ Resources | Covid Help
                                 <thead>
                                     <th>#</th>
                                     <th>Provider</th>
-                                    <th>Type</th>
-                                    <th>Service Location</th>
-                                    <th>Contact</th>
+                                    <th>Phone Number</th>
+                                    <th>Service Area</th>
+                                    <th>Food Type</th>
                                     <!-- <th>Note</th> -->
                                     <th>Verified</th>
                                 </thead>
@@ -33,9 +33,12 @@ Resources | Covid Help
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td>{{$r->provider}}</td>
-                                        <td>{{$r->ambulance_type}}</td>
-                                        <td>{{$r->availability}}</td>
                                         <td>{{$r->contact}}</td>
+                                        <td>{{$r->service_area}}</td>
+                                        <td>
+                                            {{$r->food_type}}<br>
+                                            {{$r->meal_type}}
+                                        </td>
                                         <!-- <td>{{$r->note}}</td> -->
                                         <td>
                                             @if($r->verified == 1)

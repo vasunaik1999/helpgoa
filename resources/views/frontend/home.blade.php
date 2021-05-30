@@ -154,8 +154,8 @@ Home | Covid Help
                     items: 1,
                     nav: true,
                 },
-                600: {
-                    items: 3,
+                769: {
+                    items: 1,
                     nav: false
                 },
                 1000: {

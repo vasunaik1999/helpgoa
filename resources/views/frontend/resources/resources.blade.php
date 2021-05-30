@@ -85,34 +85,40 @@ Resources | Covid Help
                         </a>
                     </div>
                     <div class="col-md-3 mt-4 mt-md-0">
-                        <div class="card card-body res-card">
-                            <h1 class="text-center"><i class="fas fa-hospital-alt"></i></h1>
-                            <h5 class="text-center mt-2"><strong>Hospitals</strong></h5>
-                        </div>
+                        <a href="{{url('/resources/hospitals')}}">
+                            <div class="card card-body res-card">
+                                <h1 class="text-center"><i class="fas fa-hospital-alt"></i></h1>
+                                <h5 class="text-center mt-2"><strong>Hospitals</strong></h5>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="row mt-4">
                     <div class="col-md-3">
-                        <div class="card card-body res-card" style="place-items: center center;">
-                            <h1>
-                                <svg id="Capa_1" class="svg-card text-center" enable-background="new 0 0 512 512" height="45" viewBox="0 0 512 512" width="45" xmlns="http://www.w3.org/2000/svg">
-                                    <g>
-                                        <path d="m256 225c0-5.136-.8-10.058-1.516-15h-206.968c-.716 4.942-1.516 9.864-1.516 15v196h210zm-105 166c-24.814 0-45-20.186-45-45s20.186-45 45-45 45 20.186 45 45-20.186 45-45 45zm30-121c-8.284 0-15-6.716-15-15 0-8.286 6.716-15 15-15s15 6.714 15 15c0 8.284-6.716 15-15 15z" />
-                                        <path d="m46 497c0 8.291 6.709 15 15 15h180c8.291 0 15-6.709 15-15v-46h-210z" />
-                                        <circle cx="151" cy="346" r="15" />
-                                        <path d="m361 451c41.353 0 75-33.647 75-75v-167.518c34.191-6.969 60-37.266 60-73.482 0-36.05-29.209-105-75-105s-75 68.95-75 105c0 36.216 25.809 66.513 60 73.482v167.518c0 24.814-20.186 45-45 45s-45-20.186-45-45v-241c0-41.353-33.647-75-75-75h-75v-30h15c8.291 0 15-6.709 15-15s-6.709-15-15-15h-60c-8.291 0-15 6.709-15 15s6.709 15 15 15h15v30h-32.763c-6.213-17.422-22.707-30-42.237-30-24.814 0-45 20.186-45 45s20.186 45 45 45c19.53 0 36.024-12.578 42.237-30h32.763v31.102c-35.191 5.107-64.614 27.872-79.468 58.898h188.936c-14.854-31.025-44.277-53.791-79.468-58.898v-31.102h75c24.814 0 45 20.186 45 45v241c0 41.353 33.647 75 75 75zm60-331c8.284 0 15 6.714 15 15 0 8.284-6.716 15-15 15s-15-6.716-15-15c0-8.286 6.716-15 15-15z" />
-                                    </g>
-                                </svg>
-                            </h1>
-                            <!-- <h1 class="text-center"><img src="{{asset('img/resources/oxygen-tank.svg')}}" style="height:44px; fill:#289672;"></img></h1> -->
-                            <h5 class="text-center mt-2"><strong>Oxygen</strong></h5>
-                        </div>
+                        <a href="{{url('/resources/oxygen')}}">
+                            <div class="card card-body res-card" style="place-items: center center !important;">
+                                <h1>
+                                    <svg id="Capa_1" class="svg-card text-center" enable-background="new 0 0 512 512" height="45" viewBox="0 0 512 512" width="45" xmlns="http://www.w3.org/2000/svg">
+                                        <g>
+                                            <path d="m256 225c0-5.136-.8-10.058-1.516-15h-206.968c-.716 4.942-1.516 9.864-1.516 15v196h210zm-105 166c-24.814 0-45-20.186-45-45s20.186-45 45-45 45 20.186 45 45-20.186 45-45 45zm30-121c-8.284 0-15-6.716-15-15 0-8.286 6.716-15 15-15s15 6.714 15 15c0 8.284-6.716 15-15 15z" />
+                                            <path d="m46 497c0 8.291 6.709 15 15 15h180c8.291 0 15-6.709 15-15v-46h-210z" />
+                                            <circle cx="151" cy="346" r="15" />
+                                            <path d="m361 451c41.353 0 75-33.647 75-75v-167.518c34.191-6.969 60-37.266 60-73.482 0-36.05-29.209-105-75-105s-75 68.95-75 105c0 36.216 25.809 66.513 60 73.482v167.518c0 24.814-20.186 45-45 45s-45-20.186-45-45v-241c0-41.353-33.647-75-75-75h-75v-30h15c8.291 0 15-6.709 15-15s-6.709-15-15-15h-60c-8.291 0-15 6.709-15 15s6.709 15 15 15h15v30h-32.763c-6.213-17.422-22.707-30-42.237-30-24.814 0-45 20.186-45 45s20.186 45 45 45c19.53 0 36.024-12.578 42.237-30h32.763v31.102c-35.191 5.107-64.614 27.872-79.468 58.898h188.936c-14.854-31.025-44.277-53.791-79.468-58.898v-31.102h75c24.814 0 45 20.186 45 45v241c0 41.353 33.647 75 75 75zm60-331c8.284 0 15 6.714 15 15 0 8.284-6.716 15-15 15s-15-6.716-15-15c0-8.286 6.716-15 15-15z" />
+                                        </g>
+                                    </svg>
+                                </h1>
+                                <!-- <h1 class="text-center"><img src="{{asset('img/resources/oxygen-tank.svg')}}" style="height:44px; fill:#289672;"></img></h1> -->
+                                <h5 class="text-center mt-2"><strong>Oxygen</strong></h5>
+                            </div>
+                        </a>
                     </div>
                     <div class="col-md-3 mt-4 mt-md-0">
-                        <div class="card card-body res-card">
-                            <h1 class="text-center"><i class="fas fa-first-aid"></i></h1>
-                            <h5 class="text-center mt-2"><strong>Pharmacy</strong></h5>
-                        </div>
+                        <a href="{{url('/resources/medicine')}}">
+                            <div class="card card-body res-card">
+                                <h1 class="text-center"><i class="fas fa-first-aid"></i></h1>
+                                <h5 class="text-center mt-2"><strong>Pharmacy</strong></h5>
+                            </div>
+                        </a>
                     </div>
                     <div class="col-md-3 mt-4 mt-md-0">
                         <div class="card card-body res-card">
@@ -121,10 +127,12 @@ Resources | Covid Help
                         </div>
                     </div>
                     <div class="col-md-3 mt-4 mt-md-0">
-                        <div class="card card-body res-card">
-                            <h1 class="text-center"><i class="fas fa-utensils"></i></h1>
-                            <h5 class="text-center mt-2"><strong>Food</strong></h5>
-                        </div>
+                        <a href="{{url('/resources/food')}}">
+                            <div class="card card-body res-card">
+                                <h1 class="text-center"><i class="fas fa-utensils"></i></h1>
+                                <h5 class="text-center mt-2"><strong>Food</strong></h5>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="row mt-4">

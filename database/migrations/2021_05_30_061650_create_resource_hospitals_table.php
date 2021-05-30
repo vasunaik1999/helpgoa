@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResourceFoodServicesTable extends Migration
+class CreateResourceHospitalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,17 @@ class CreateResourceFoodServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('resource_food_services', function (Blueprint $table) {
+        Schema::create('resource_hospitals', function (Blueprint $table) {
             $table->id();
-            $table->string('provider');
-            $table->string('food_type'); //veg|nonveg
-            $table->string('meal_type')->nullable(); //homecooked|restaurant|tiffinservice
-            $table->string('contact')->nullable();
-            $table->string('service_area')->nullable();
-            $table->string('delivery_to')->nullable();
-            $table->string('isPaid')->nullable();
+            $table->string('name');
+            $table->string('type');
+            $table->string('bed_types');
+            $table->string('location');
+            $table->string('contact');
+            $table->string('address');
+            $table->string('nodal_officer_name')->nullable();
+            $table->string('nodal_officer_phone')->nullable();
+            $table->longText('location_url');
             $table->unsignedBiginteger('added_by')->nullable();
             $table->foreign('added_by')->references('id')->on('users');
             $table->string('note')->nullable();
@@ -39,6 +41,6 @@ class CreateResourceFoodServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resource_food_services');
+        Schema::dropIfExists('resource_hospitals');
     }
 }

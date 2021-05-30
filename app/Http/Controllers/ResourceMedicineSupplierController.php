@@ -7,77 +7,74 @@ use Illuminate\Http\Request;
 
 class ResourceMedicineSupplierController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function frontendview()
+    {
+        $resources = ResourceMedicineSupplier::where('visibility', '=', '1')->get();
+        return view('frontend.resources.medicine.front-view', compact('resources'));
+    }
+
     public function index()
     {
-        //
+        $resources = ResourceMedicineSupplier::all();
+        return view('frontend.resources.medicine.index', compact('resources'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('frontend.resources.medicine.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'provider' => 'required',
+        ]);
+
+        $resource = new ResourceMedicineSupplier();
+        $resource->provider = $request->provider;
+        $resource->contact = $request->contact;
+        $resource->supplier_location = $request->supplier_location;
+        $resource->delivery_status = $request->delivery_status;
+        $resource->note = $request->note;
+        $resource->added_by = $request->user_id;
+        $resource->visibility = "1";
+        $resource->verified = "0";
+        $resource->save();
+        return redirect()->back()->with('status', 'Medicine Supplier Details Added Successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\ResourceMedicineSuppliers  $resourceMedicineSuppliers
-     * @return \Illuminate\Http\Response
-     */
     public function show(ResourceMedicineSupplier $resourceMedicineSupplier)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\ResourceMedicineSuppliers  $resourceMedicineSuppliers
-     * @return \Illuminate\Http\Response
-     */
     public function edit(ResourceMedicineSupplier $resourceMedicineSupplier)
     {
-        //
+        $resource = $resourceMedicineSupplier;
+        return view('frontend.resources.medicine.edit', compact('resource'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ResourceMedicineSuppliers  $resourceMedicineSuppliers
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, ResourceMedicineSupplier $resourceMedicineSupplier)
     {
-        //
-    }
+        $request->validate([
+            'provider' => 'required',
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\ResourceMedicineSuppliers  $resourceMedicineSuppliers
-     * @return \Illuminate\Http\Response
-     */
+        $resource = ResourceMedicineSupplier::find($request->r_id);
+        $resource->provider = $request->provider;
+        $resource->contact = $request->contact;
+        $resource->supplier_location = $request->supplier_location;
+        $resource->delivery_status = $request->delivery_status;
+        $resource->note = $request->note;
+        $resource->visibility = $request->visibility;
+        $resource->verified = $request->verified;
+        // dd($resource);
+        $resource->update();
+
+        return redirect()->back()->with('status', 'Medicine Supplier Details Updated Successfully');
+    }
+    
     public function destroy(ResourceMedicineSupplier $resourceMedicineSupplier)
     {
         //

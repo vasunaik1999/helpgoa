@@ -7,77 +7,79 @@ use Illuminate\Http\Request;
 
 class ResourceFoodServicesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function frontendview()
+    {
+        $resources = ResourceFoodServices::where('visibility', '=', '1')->get();
+        return view('frontend.resources.food.front-view', compact('resources'));
+    }
+
     public function index()
     {
-        //
+        $resources = ResourceFoodServices::all();
+        return view('frontend.resources.food.index', compact('resources'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('frontend.resources.food.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'provider' => 'required',
+        ]);
+
+        $resource = new ResourceFoodServices();
+        $resource->provider = $request->provider;
+        $resource->contact = $request->contact;
+        $resource->service_area = $request->service_area;
+        $resource->food_type = $request->food_type;
+        $resource->meal_type = $request->meal_type;
+        $resource->delivery_to = $request->delivery_to;
+        $resource->isPaid = $request->isPaid;
+        $resource->note = $request->note;
+        $resource->added_by = $request->user_id;
+        $resource->visibility = "0";
+        $resource->verified = "0";
+        $resource->save();
+        return redirect()->back()->with('status', 'Food Service Details Added Successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\ResourceFoodServices  $resourceFoodServices
-     * @return \Illuminate\Http\Response
-     */
     public function show(ResourceFoodServices $resourceFoodServices)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\ResourceFoodServices  $resourceFoodServices
-     * @return \Illuminate\Http\Response
-     */
     public function edit(ResourceFoodServices $resourceFoodServices)
     {
-        //
+        $resource = $resourceFoodServices;
+        return view('frontend.resources.food.edit', compact('resource'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ResourceFoodServices  $resourceFoodServices
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, ResourceFoodServices $resourceFoodServices)
     {
-        //
+        $request->validate([
+            'provider' => 'required',
+        ]);
+
+        $resource = ResourceFoodServices::find($request->r_id);
+        $resource->provider = $request->provider;
+        $resource->contact = $request->contact;
+        $resource->service_area = $request->service_area;
+        $resource->food_type = $request->food_type;
+        $resource->meal_type = $request->meal_type;
+        $resource->delivery_to = $request->delivery_to;
+        $resource->isPaid = $request->isPaid;
+        $resource->note = $request->note;
+        $resource->visibility = $request->visibility;
+        $resource->verified = $request->verified;
+        // dd($resource);
+        $resource->update();
+
+        return redirect()->back()->with('status', 'Food service Details Updated Successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\ResourceFoodServices  $resourceFoodServices
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(ResourceFoodServices $resourceFoodServices)
     {
         //
