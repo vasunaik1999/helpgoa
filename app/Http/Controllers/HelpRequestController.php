@@ -64,6 +64,7 @@ class HelpRequestController extends Controller
         $helpRequest->reqStatus = $request->input('reqStatus');
         $helpRequest->special_instructions = $request->input('special_instructions');
         $helpRequest->items = json_encode($request->input('items'));
+        $helpRequest->order_otp = rand ( 1000 , 9999 );
         //dd($helpRequest);
 
         $helpRequest->save();
@@ -163,11 +164,20 @@ class HelpRequestController extends Controller
 
     public function requestCompleted(Request $request)
     {
+        $request->validate([
+            'order_otp' => 'required',
+        ]);
+
         $req = HelpRequest::find($request->req_id);
-        $req->reqStatus = 'MarkedCompletedByWarrior';
-        $req->vol_id = $request->user_id;
-        $req->update();
-        return redirect()->back()->with('status', 'Congratulations!! You have completed this request, Stay Safe!');
+        if($req->order_otp == $request->order_otp){
+            $req->reqStatus = 'MarkedCompletedByWarrior';
+            $req->vol_id = $request->user_id;
+            $req->update();
+            return redirect()->back()->with('status', 'Congratulations!! You have completed this request, Stay Safe!');
+        }else{
+            return redirect()->with('Oops!! The OTP you entered does not match! \nPlease ask to user to confirm the OTP again.');
+        }
+        
     }
     /**
      * Show the form for editing the specified resource.
