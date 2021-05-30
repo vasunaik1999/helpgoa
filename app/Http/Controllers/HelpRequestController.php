@@ -170,12 +170,12 @@ class HelpRequestController extends Controller
 
         $req = HelpRequest::find($request->req_id);
         if($req->order_otp == $request->order_otp){
-            $req->reqStatus = 'MarkedCompletedByWarrior';
+            $req->reqStatus = 'Completed';
             $req->vol_id = $request->user_id;
             $req->update();
             return redirect()->back()->with('status', 'Congratulations!! You have completed this request, Stay Safe!');
         }else{
-            return redirect()->with('Oops!! The OTP you entered does not match! \nPlease ask to user to confirm the OTP again.');
+            return redirect()->back()->with('message','Oops!! The OTP you entered does not match! Please ask to user to confirm the OTP again.');
         }
         
     }

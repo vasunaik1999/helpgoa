@@ -116,7 +116,7 @@
                         </div>
                     </div>
                 </div>
-                @if($req->reqStatus == 'MarkedCompletedByWarrior' or $req->reqStatus == 'MarkedCompletedByUser')
+                @if($req->reqStatus == 'Completed')
 
                 @else
                 <div class="col-md-6">

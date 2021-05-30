@@ -88,7 +88,7 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
             <div style="height:100%; 
                 <?php
                 $status = "";
-                if ($req->reqStatus == 'MarkedCompletedByWarrior' || $req->reqStatus == 'MarkedCompletedByUser') {
+                if ($req->reqStatus == 'Completed') {
                     echo "background-color:#28df99;";
                     $status="Completed";
                 } elseif($dteStart > $dteEnd) {
@@ -164,6 +164,8 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                             </span>
                             <br>
                             <span style="background-color: transparent;"><strong> Needed by :- </strong>{{$req->needed_by}}</span>
+                            <br>
+                            <span style="background-color: transparent;"><strong> Order OTP :- </strong>{{$req->order_otp}}</span>
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -181,13 +183,13 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                 <button type="submit" class="btn btn-sm btn-dark text-light float-right mr-2" style="font-weight: bold;">Update </button>
                             </form>
-                            @elseif($req->reqStatus == 'Accepted'|| $req->reqStatus == 'MarkedCompletedByWarrior' || $req->reqStatus == 'MarkedCompletedByUser' )
+                            @elseif($req->reqStatus == 'Accepted'|| $req->reqStatus == 'Completed')
                             <?php
                             $user = App\Models\User::find($req->vol_id);
                             ?>
                             <div class="row">
                                 <div class="col" style="background-color: black; border-radius: 5px; padding:5px; margin:5px 5px 0px 5px;">
-                                    @if($req->reqStatus == 'MarkedCompletedByWarrior' || $req->reqStatus == 'MarkedCompletedByUser')
+                                    @if($req->reqStatus == 'Completed')
                                     <span class="text-light" style="background-color: transparent; padding-left:6px; "><strong> Completed By :- </strong>{{$user->name}}</span>
                                     @else
                                     <span style="background-color: transparent; padding-left:6px; "><strong> Accepted By :- </strong>{{$user->name}}</span>
