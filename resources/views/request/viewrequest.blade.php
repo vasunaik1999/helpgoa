@@ -105,7 +105,7 @@
                             echo "background-color:#fffe80;";
                             $status = "Casual";
                         }
-                        ?>" class="card shadow-sm <?php if ($status == "Casual" || $status == "Completed") echo "text-dark";
+                        ?>" class="card shadow-sm <?php if ($status == "Casual" || $status == "Standard") echo "text-dark";
                                                     else echo "text-light"; ?>">
                         <div class="card-body">
                             @auth
@@ -120,7 +120,7 @@
                             <span class="badge badge-dark float-right"> <?php echo $status ?> </span><br>
                             <p class="mt-2"><strong> Need :-</strong>
                                 @foreach( json_decode($req->items) as $item)
-                                <span class="badge <?php if ($status == "Casual") echo "bg-dark";
+                                <span class="badge <?php if ($status == "Casual"||$status == "Standard") echo "bg-dark";
                                                     else echo "bg-light"; ?> p-2 mt-2" style="font-size:14px;
                                     <?php
                                     if ($status == 'Critical')

@@ -48,7 +48,7 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                                 </div>
                             </div>
                             <div class="col-md-6 text-center mt-4">
-                                <p class=""><strong>You don't have any Request</strong></p>
+                                <p class=""><strong>You haven't made any Request</strong></p>
                                 <a class="btn btn-sm text-white shadow-sm items-center" href="{{url('/request-create')}}" style="background-color: #00BFA6;">Create Request</a>
                             </div>
                         </div>
@@ -112,7 +112,7 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                     echo "background-color:#fffe80;";
                     $status = "Casual";
                 }
-                ?>" class="card shadow-sm <?php if ($status == "Casual" || $status=="Completed" ) echo "text-dark";
+                ?>" class="card shadow-sm <?php if ($status == "Casual" || $status=="Completed" || $status=="Standard" ) echo "text-dark";
                                             else echo "text-light"; ?>">
                 <div class="card-body">
                     @auth
@@ -127,7 +127,7 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                     <span class="badge badge-dark float-right"> <?php echo $status ?> </span><br>
                     <p class="mt-2"><strong> Need :-</strong>
                         @foreach( json_decode($req->items) as $item)
-                        <span class="badge <?php if ($status == "Casual"|| $status=="Completed") echo "bg-dark";
+                        <span class="badge <?php if ($status == "Casual"|| $status=="Completed" || $status=="Standard") echo "bg-dark";
                                             else echo "bg-light"; ?> p-2 mt-2" style="font-size:14px;
                             <?php
                             if ($status == 'Critical')
