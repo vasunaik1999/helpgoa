@@ -20,6 +20,7 @@
                     <div class="card">
                         <div class="card-body">
                             <p style="font-size: 25px;"><strong>User Details</strong></p>
+                            <p class="mt-2"><strong>Id :-</strong> #{{$user->id}}</p>
                             <p class="mt-2"><strong>Name :-</strong> {{$user->name}}</p>
                             <p class="mt-2"><strong>Phone Number :-</strong> {{$user->phone}}</p>
                             <p class="mt-2"><strong>Secondary Phone :-</strong> {{$user->secondaryPhone}}</p>
@@ -72,8 +73,45 @@
                             </div>
                         </div>
                     </div>
+
+                    @if(Auth::user()->hasRole('superadmin'))
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p class="mb-2" style="font-size: 18px;"><strong>Do you want to make {{$user->name}} Admin?</strong></p>
+                                    <form method="post" action="{{route('user.make.admin')}}">
+                                        @csrf
+                                        <div class="form-group">
+                                            <input type="hidden" name="user_id" value="{{$user->id}}">
+                                            <p>I Accept, I want to make {{$user->name}} Admin</p>
+                                            <input type="checkbox" name="makeAdminCheck" id="makeAdminCheck" onchange="activateAdminBtn(this)">
+                                        </div>
+                                        <button type=" submit" class="btn btn-danger" id="makeAdminBtn">Make Admin</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
     </x-slot>
+
+    @section('script')
+    <script>
+        // function disableAdminBtn() {}
+        document.getElementById("makeAdminBtn").disabled = true;
+
+        function activateAdminBtn(element) {
+            if (element.checked) {
+                document.getElementById("makeAdminBtn").disabled = false;
+            } else {
+                document.getElementById("makeAdminBtn").disabled = true;
+            }
+
+        }
+    </script>
+    @endsection
 </x-app-layout>

@@ -196,4 +196,15 @@ class WarriorController extends Controller
 
         return redirect()->back()->with('status', 'Updated Successfully');
     }
+
+    public function makeAdmin(Request $request)
+    {
+        $user = User::find($request->user_id);
+        if ($user->hasRole('warrior')) {
+            $user->detachRole('warrior');
+            $user->attachRole('admin');
+        }
+
+        return redirect()->back()->with('status', 'Assigned Admin Role to the User Successfully');
+    }
 }

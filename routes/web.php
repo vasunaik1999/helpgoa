@@ -96,6 +96,7 @@ Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
     Route::post('/dashboard/add-admin', 'App\Http\Controllers\AdminController@store')->name('admin.store');
     Route::get('/dashboard/view-admin/{user}/more-details', 'App\Http\Controllers\AdminController@moredetails')->name('admin.moredetails');
     Route::post('/dashboard/admin-ban', 'App\Http\Controllers\AdminController@banuser')->name('admin.ban');
+    Route::post('/dashboard/admin-make-user', 'App\Http\Controllers\AdminController@admintouser')->name('admin.make.user');
 
     //View and Add Warrior
     Route::get('/dashboard/view-warrior', 'App\Http\Controllers\WarriorController@index')->name('warrior.view');
@@ -103,6 +104,7 @@ Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
     Route::post('/dashboard/add-warrior', 'App\Http\Controllers\WarriorController@store')->name('warrior.store');
     Route::get('/dashboard/view-warrior/{user}/more-details', 'App\Http\Controllers\WarriorController@moredetails')->name('warrior.moredetails');
     Route::post('/dashboard/warrior-ban', 'App\Http\Controllers\WarriorController@banuser')->name('warrior.ban');
+    Route::post('/dashboard/warrior-make-admin', 'App\Http\Controllers\WarriorController@makeadmin')->name('warrior.make.admin');
 
     //View and Add User
     Route::get('/dashboard/view-user', 'App\Http\Controllers\UserController@index')->name('user.view');
@@ -110,6 +112,7 @@ Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
     Route::post('/dashboard/add-user', 'App\Http\Controllers\UserController@store')->name('user.store');
     Route::get('/dashboard/view-user/{user}/more-details', 'App\Http\Controllers\UserController@moredetails')->name('user.moredetails');
     Route::post('/dashboard/user-ban', 'App\Http\Controllers\UserController@banuser')->name('user.ban');
+    Route::post('/dashboard/user-make-admin', 'App\Http\Controllers\UserController@makeadmin')->name('user.make.admin');
 });
 
 //For SuperAdmin | Admin 
