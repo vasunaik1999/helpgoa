@@ -25,6 +25,7 @@ Resources | Covid Help
                                     <th>Phone Number</th>
                                     <th>Service Area</th>
                                     <th>Food Type</th>
+                                    <th>Delivery To</th>
                                     <!-- <th>Note</th> -->
                                     <th>Verified</th>
                                 </thead>
@@ -39,6 +40,7 @@ Resources | Covid Help
                                             {{$r->food_type}}<br>
                                             {{$r->meal_type}}
                                         </td>
+                                        <td>{{$r->delivery_to}}</td>
                                         <!-- <td>{{$r->note}}</td> -->
                                         <td>
                                             @if($r->verified == 1)
