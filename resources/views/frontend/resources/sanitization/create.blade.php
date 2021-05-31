@@ -10,7 +10,7 @@
         </h2>
     </x-slot>
 
-    <x-slot name=" card">
+    <x-slot name="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
