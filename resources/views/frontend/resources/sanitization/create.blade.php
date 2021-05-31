@@ -10,7 +10,7 @@
         </h2>
     </x-slot>
 
-    <x-slot name="card">
+    <x-slot name=" card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
@@ -53,6 +53,17 @@
                                             <div class="form-group col-md-4">
                                                 <label for="service_location">Service Location</label>
                                                 <input required type="text" class="form-control rounded" id="service_location" placeholder="Enter Service Location..." name="service_location">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="form-group col-md-4">
+                                                <label for="type">Sanitization Type</label>
+                                                <input type="text" class="form-control rounded" id="type" placeholder="Enter Phone no..." name="type">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="extra_info">Extra Info</label>
+                                                <input type="text" class="form-control rounded" id="extra_info" placeholder="Enter Info..." name="extra_info">
                                             </div>
                                         </div>
                                         <hr>

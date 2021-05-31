@@ -30,6 +30,7 @@
                                         <th>Provider</th>
                                         <th>Type</th>
                                         <th>Service Location</th>
+                                        <th>Delivery</th>
                                         <th>Contact</th>
                                         <!-- <th>Note</th> -->
                                         <th>Verified</th>
@@ -45,6 +46,7 @@
                                             <td>{{$r->service_location}}<br>
                                                 {{$r->supplier_address}}
                                             </td>
+                                            <td>{{$r->delivery_status}}</td>
                                             <td>{{$r->contact}}</td>
                                             <!-- <td>{{$r->note}}</td> -->
                                             <td>

@@ -35,6 +35,8 @@ class ResourceDisinfectServicesController extends Controller
         $resource->provider = $request->provider;
         $resource->contact = $request->contact;
         $resource->service_location = $request->service_location;
+        $resource->extra_info = $request->extra_info;
+        $resource->type = $request->type;
         $resource->note = $request->note;
         $resource->added_by = $request->user_id;
         $resource->visibility = "1";
@@ -66,6 +68,8 @@ class ResourceDisinfectServicesController extends Controller
         $resource->contact = $request->contact;
         $resource->service_location = $request->service_location;
         $resource->note = $request->note;
+        $resource->extra_info = $request->extra_info;
+        $resource->type = $request->type;
         // $resource->added_by = $request->user_id;
         $resource->visibility = $request->visibility;
         $resource->verified = $request->verified;

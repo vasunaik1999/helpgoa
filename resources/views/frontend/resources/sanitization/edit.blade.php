@@ -57,6 +57,17 @@
                                     </div>
                                 </div>
                                 <hr>
+                                <div class="row">
+                                    <div class="form-group col-md-4">
+                                        <label for="type">Sanitization Type</label>
+                                        <input type="text" class="form-control rounded" id="type" placeholder="Enter Phone no..." name="type" value="{{$resource->type}}">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="extra_info">Extra Info</label>
+                                        <input type="text" class="form-control rounded" id="extra_info" placeholder="Enter Info..." name="extra_info" value="{{$resource->extra_info}}">
+                                    </div>
+                                </div>
+                                <hr>
                                 <div class="row mt-3">
                                     <div class="form-group col-md-4">
                                         <label for="visibility">Visibility</label>

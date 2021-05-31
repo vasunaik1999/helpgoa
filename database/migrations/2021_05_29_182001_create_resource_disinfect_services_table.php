@@ -17,7 +17,9 @@ class CreateResourceDisinfectServicesTable extends Migration
             $table->id();
             $table->string('provider');
             $table->string('contact');
-            $table->string('service_location');
+            $table->string('service_location')->nullable();
+            $table->string('type')->nullable();
+            $table->string('extra_info')->nullable();
             $table->unsignedBiginteger('added_by')->nullable();
             $table->foreign('added_by')->references('id')->on('users');
             $table->string('note')->nullable();

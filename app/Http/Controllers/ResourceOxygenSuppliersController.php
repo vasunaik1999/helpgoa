@@ -37,6 +37,7 @@ class ResourceOxygenSuppliersController extends Controller
         $resource->supply_type = $request->supply_type;
         $resource->supplier_address = $request->supplier_address;
         $resource->note = $request->note;
+        $resource->delivery_status = $resource->delivery_status;
         $resource->added_by = $request->user_id;
         $resource->visibility = "1";
         $resource->verified = "0";
@@ -67,6 +68,7 @@ class ResourceOxygenSuppliersController extends Controller
         $resource->service_location = $request->service_location;
         $resource->supply_type = $request->supply_type;
         $resource->supplier_address = $request->supplier_address;
+        $resource->delivery_status = $resource->delivery_status;
         $resource->note = $request->note;
         $resource->visibility = $request->visibility;
         $resource->verified = $request->verified;

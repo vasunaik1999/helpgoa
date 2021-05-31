@@ -11,5 +11,5 @@ class ResourceDisinfectServices extends Model
     use HasFactory;
     use SoftDeletes;
     protected $table = 'resource_disinfect_services';
-    protected $fillable = ['provider', 'contact', 'service_location', 'note', 'verified', 'visibility'];
+    protected $fillable = ['provider', 'contact', 'service_location', 'extra_info', 'type', 'note', 'verified', 'visibility'];
 }

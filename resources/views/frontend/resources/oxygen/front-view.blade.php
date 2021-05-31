@@ -24,6 +24,7 @@ Resources | Covid Help
                                     <th>Provider</th>
                                     <th>Type</th>
                                     <th>Service Location</th>
+                                    <th>Delivery</th>
                                     <th>Contact</th>
                                     <th>Verified</th>
                                 </thead>
@@ -36,6 +37,7 @@ Resources | Covid Help
                                         <td>{{$r->service_location}}
                                             <br>{{$r->supplier_address}}
                                         </td>
+                                        <td>{{$r->delivery_status}}</td>
                                         <td>{{$r->contact}}</td>
                                         <td>
                                             @if($r->verified == 1)

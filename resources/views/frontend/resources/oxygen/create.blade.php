@@ -67,6 +67,10 @@
                                         <label for="service_location">Service Location</label>
                                         <input required type="text" class="form-control rounded" id="service_location" placeholder="Enter Service Location..." name="service_location">
                                     </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="delivery_status">Delivery Status</label>
+                                        <input type="text" class="form-control rounded" id="delivery_status" placeholder="Enter Delivery Status..." name="delivery_status">
+                                    </div>
                                 </div>
                                 <hr>
                                 <div class="row mt-3">
