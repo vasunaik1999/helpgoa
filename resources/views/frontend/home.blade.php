@@ -34,16 +34,14 @@ Home | Covid Help
         @if (Route::has('login'))
             @auth
             @if(Auth::user()->hasRole('user'))
-            <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href="{{ url('/warrior-registration/'.Auth::user()->id) }}">
+            <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href="{{ url('/warrior-registration/'.Auth::user()->id) }}">Register as Warrior</a>
             @else
-            <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href="{{ url('/dashboard') }}" >
+            <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href="{{ url('/dashboard') }}" >View Dashboard</a>
             @endif
         @else
-            <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href=" {{ route('login') }}">
+            <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href=" {{ route('login') }}">Register as Warrior</a>
             @endauth
         @endif
-                Register as Warrior
-            </a>
 
     </div>
 </header>
