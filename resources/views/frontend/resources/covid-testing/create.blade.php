@@ -1,27 +1,31 @@
 <x-app-layout>
+
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span> <a href="{{url('/dashboard/resources/covid-testing')}}">Covid Testing</a> / <a href="">Add</a>
+        </h2>
+    </x-slot>
     <style>
         .form-control {
             border: 1px solid lightgrey !important;
         }
     </style>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span> <a href="{{url('/dashboard/resources/oxygen')}}">Oxygen Suppliers</a> / <a href="">Add</a>
-        </h2>
-    </x-slot>
 
+    <x-slot name=" extra">
+        <!-- put this bcoz it was giving error -->
+    </x-slot>
     <x-slot name="card">
         <div class="card-body">
             <div class="row">
                 <div class="col">
-                    <h3>Add Oxygen Suppliers details here</h3>
+                    <h3>Add Covid Testing Center details here</h3>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col">
                     <div class="card" style="background-color: #f6f6f6;">
                         <div class="card-body">
-                            <form method="POST" action="{{ route('resource.oxygen.store') }}">
+                            <form method="POST" action="{{ route('resource.covid-testing.store') }}">
                                 @csrf
                                 @if (session('status'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -43,33 +47,38 @@
                                 <div class="row">
                                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                     <div class="form-group col-md-4">
-                                        <label for="provider">Provider Name</label>
-                                        <input required type="text" class="form-control rounded" id="provider" placeholder="Enter Provider Name..." name="provider">
+                                        <label for="name">Center Name</label>
+                                        <input required type="text" class="form-control rounded" id="name" placeholder="Enter Name..." name="name">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="contact">Phone Number</label>
                                         <input required type="text" class="form-control rounded" id="contact" placeholder="Enter Phone no..." name="contact">
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="supplier_address">Address</label>
-                                        <input required type="text" class="form-control rounded" id="supplier_address" placeholder="Enter Supplier Address..." name="supplier_address">
+                                        <label for="location">Location</label>
+                                        <input type="text" class="form-control rounded" id="location" placeholder="Enter Location..." name="location">
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row mt-3">
                                     <div class="form-group col-md-4">
-                                        <label for="supply_type">Supply Type</label>
-                                        <input required type="text" class="form-control rounded" id="supply_type" list="oxygenList" placeholder="Enter Supply Type..." name="supply_type">
-                                        <datalist id="oxygenList">
-                                        </datalist>
+                                        <label for="type">Testing Type</label>
+                                        <input type="text" class="form-control rounded" id="type" placeholder="Enter Testing Type..." name="type">
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="service_location">Service Location</label>
-                                        <input required type="text" class="form-control rounded" id="service_location" placeholder="Enter Service Location..." name="service_location">
+                                        <label for="collection">Collection Type</label>
+                                        <input type="text" class="form-control rounded" id="collection" placeholder="Enter Collection Type..." name="collection">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row mt-3">
+                                    <div class="form-group col-md-4">
+                                        <label for="time">Testing Time</label>
+                                        <input type="text" class="form-control rounded" id="time" placeholder="Enter Testing Time..." name="time">
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="delivery_status">Delivery Status</label>
-                                        <input type="text" class="form-control rounded" id="delivery_status" placeholder="Enter Delivery Status..." name="delivery_status">
+                                        <label for="working_days">Working Days</label>
+                                        <input type="text" class="form-control rounded" id="working_days" placeholder="Enter Working Days..." name="working_days">
                                     </div>
                                 </div>
                                 <hr>
@@ -89,8 +98,4 @@
     </x-slot>
 
 
-
-
-    @section('script')
-    @endsection
 </x-app-layout>

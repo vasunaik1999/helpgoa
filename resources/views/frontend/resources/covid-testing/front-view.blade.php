@@ -7,9 +7,9 @@ Resources | Covid Help
 @section('content')
 <div class="card" style="margin-top:9%;">
     <div class="card-body">
-        <div class="row">
+        <div class="row mt-2 mt-md-0">
             <div class="col">
-                <h1>Hospital Details</h1>
+                <h1>Covid Testing Centers</h1>
             </div>
         </div>
 
@@ -21,36 +21,31 @@ Resources | Covid Help
                     <table id="table" class="table table-striped table-bordered">
                         <thead>
                             <th>#</th>
-                            <th>Name</th>
-                            <th>Bed Types</th>
                             <th>Location</th>
-                            <th>Contact</th>
+                            <th>Name</th>
+                            <th>Phone Number</th>
+                            <th>Type</th>
+                            <th>Timing</th>
                             <!-- <th>Note</th> -->
-                            <th>Nodal Officer</th>
                             <th>Verified</th>
                         </thead>
                         <tbody>
                             @foreach($resources as $key => $r)
                             <tr>
                                 <td>{{$key+1}}</td>
+                                <td>{{$r->location}}</td>
+                                <td>{{$r->name}}</td>
                                 <td>
-                                    {{$r->name}}<br>
-                                    {{$r->type}}
-                                </td>
-                                <td>{{$r->bed_types}}</td>
-                                <td>{{$r->location}}<br>
-                                    {{$r->address}}
-                                </td>
-                                <td>
-                                    <?php $nos = explode("/", $r->contact);
-                                    ?>
+                                    <?php $nos = explode("/", $r->contact); ?>
                                     @foreach ($nos as $no)
                                     {{$no}} <br>
                                     @endforeach
                                 </td>
-                                <td>
-                                    {{$r->nodal_officer_name}} <br>
-                                    {{$r->nodal_officer_phone}}
+                                <td>{{$r->type}} <br>
+                                    {{$r->collection}}
+                                </td>
+                                <td>{{$r->time}} <br>
+                                    {{$r->working_days}}
                                 </td>
                                 <!-- <td>{{$r->note}}</td> -->
                                 <td>

@@ -39,7 +39,7 @@ class ResourceCaretakingServicesController extends Controller
         $resource->note = $request->note;
         $resource->added_by = $request->user_id;
         $resource->visibility = "1";
-        $resource->verified = "0";
+        $resource->verified = "1";
         $resource->save();
         return redirect()->back()->with('status', 'Caretaker Added Successfully');
     }

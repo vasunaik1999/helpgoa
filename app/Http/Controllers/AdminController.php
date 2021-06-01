@@ -58,4 +58,15 @@ class AdminController extends Controller
 
         return redirect()->back()->with('status', 'Updated Successfully');
     }
+
+    public function admintouser(Request $request)
+    {
+        $user = User::find($request->user_id);
+        if ($user->hasRole('admin')) {
+            $user->detachRole('admin');
+            $user->attachRole('user');
+        }
+
+        return redirect()->back()->with('status', 'Removed Admin Role to the User Successfully');
+    }
 }

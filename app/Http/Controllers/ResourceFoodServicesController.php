@@ -40,8 +40,8 @@ class ResourceFoodServicesController extends Controller
         $resource->isPaid = $request->isPaid;
         $resource->note = $request->note;
         $resource->added_by = $request->user_id;
-        $resource->visibility = "0";
-        $resource->verified = "0";
+        $resource->visibility = "1";
+        $resource->verified = "1";
         $resource->save();
         return redirect()->back()->with('status', 'Food Service Details Added Successfully');
     }

@@ -63,4 +63,15 @@ class UserController extends Controller
     {
         return view('frontend.banned');
     }
+
+    public function makeAdmin(Request $request)
+    {
+        $user = User::find($request->user_id);
+        if ($user->hasRole('user')) {
+            $user->detachRole('user');
+            $user->attachRole('admin');
+        }
+
+        return redirect()->back()->with('status', 'Assigned Admin Role to the User Successfully');
+    }
 }

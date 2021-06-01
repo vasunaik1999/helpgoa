@@ -14,7 +14,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col">
-                    <h3>Edit Supplier details here</h3>
+                    <h3>Edit Medicine Supplier details here</h3>
                 </div>
             </div>
             <div class="row mt-4">
@@ -83,7 +83,6 @@
                                         <textarea name="note" class="form-control rounded" rows="3" placeholder="Enter note if any...">{{$resource->note}}</textarea>
                                     </div>
                                 </div>
-                                <hr>
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>

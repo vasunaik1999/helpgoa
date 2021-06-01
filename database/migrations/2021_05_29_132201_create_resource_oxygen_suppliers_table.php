@@ -22,6 +22,7 @@ class CreateResourceOxygenSuppliersTable extends Migration
             $table->string('supplier_address')->nullable();
             $table->unsignedBiginteger('added_by')->nullable();
             $table->foreign('added_by')->references('id')->on('users');
+            $table->string('delivery_status')->nullable();
             $table->string('note')->nullable();
             $table->boolean('verified')->default(0);
             $table->boolean('visibility')->default(0);

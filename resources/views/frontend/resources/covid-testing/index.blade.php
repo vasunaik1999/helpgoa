@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="row">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span><a href="{{url('/dashboard/resources')}}">Resources</a> / <a href="">Isolation Center</a>
+                <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span> <a href="{{url('/dashboard/resources')}}">Resources</a> / <a href="">Covid Testing</a>
             </h2>
         </div>
     </x-slot>
@@ -11,10 +11,10 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6 my-auto">
-                    <h4>Isolation Centers</h4>
+                    <h4>Covid Testing</h4>
                 </div>
                 <div class="col-md-6 my-auto">
-                    <a href="{{url('/dashboard/resources/isolation-center/create')}}" class="btn btn-primary float-sm-center float-md-right">Create</a>
+                    <a href="{{url('/dashboard/resources/covid-testing/create')}}" class="btn btn-primary float-sm-center float-md-right">Create</a>
                 </div>
             </div>
 
@@ -27,10 +27,10 @@
                                     <thead>
                                         <th>#</th>
                                         <th>Name</th>
-                                        <th>Location</th>
-                                        <th>For</th>
                                         <th>Phone Number</th>
+                                        <th>Location</th>
                                         <th>Type</th>
+                                        <th>Timing</th>
                                         <!-- <th>Note</th> -->
                                         <th>Verified</th>
                                         <th>Status</th>
@@ -41,19 +41,19 @@
                                         <tr>
                                             <td>{{$key+1}}</td>
                                             <td>{{$r->name}}</td>
-                                            <td>
-                                                {{$r->location}}<br>
-                                                {{$r->address}}
-                                            </td>
-                                            <td>{{$r->type}}</td>
-                                            <td>
-                                                <?php $nos = explode("/", $r->contact);
+                                            <td><?php $nos = explode("/", $r->contact);
                                                 ?>
                                                 @foreach ($nos as $no)
                                                 {{$no}} <br>
                                                 @endforeach
                                             </td>
-                                            <td>{{$r->isPaid}}</td>
+                                            <td>{{$r->location}}</td>
+                                            <td>{{$r->type}} <br>
+                                                {{$r->collection}}
+                                            </td>
+                                            <td>{{$r->time}} <br>
+                                                {{$r->working_days}}
+                                            </td>
                                             <!-- <td>{{$r->note}}</td> -->
                                             <td>
                                                 @if($r->verified == 1)
@@ -74,7 +74,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{url('/dashboard/resources/isolation-center/'.$r->id.'/edit')}}" class="btn btn-primary btn-sm">Edit</a>
+                                                <a href="{{url('/dashboard/resources/covid-testing/'.$r->id.'/edit')}}" class="btn btn-primary btn-sm">Edit</a>
                                                 <!-- <a href="" class="btn btn-danger btn-sm">Delete</a> -->
                                             </td>
                                         </tr>

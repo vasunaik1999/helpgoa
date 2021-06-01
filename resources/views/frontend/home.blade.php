@@ -47,30 +47,30 @@ Home | Covid Help
 </header>
 <!-- End #header -->
 
-    <div id="slider" class="section-title align-items-center" style="display:block; margin:auto; padding:0;">
-        <h2 style="padding:10px; font-size: 22px !important;">Crucial Information</h2>
-    </div>
+<div id="slider" class="section-title align-items-center" style="display:block; margin:auto; padding:0;">
+    <h2 style="padding:10px; font-size: 22px !important;">Crucial Information</h2>
+</div>
 
-    <div id="cards" class="section-title align-items-center" style="display:block; margin:auto; padding:0;">
-        <h2>Crucial Information</h2>
-    </div>
-    <div id="crucial-info-carousel" class="owl-carousel owl-theme my-5">
-        <div>
-            <div class="card">
-                <div class="card-body"><img src="{{asset('/img/home-carousel/oxygen_level.png')}}" alt=""></div>
-            </div>
-        </div>
-        <div>
-            <div class="card">
-                <div class="card-body"><img src="{{asset('/img/home-carousel/pulse_rate.png')}}" alt=""></div>
-            </div>
-        </div>
-        <div>
-            <div class="card">
-                <div class="card-body"><img src="{{asset('/img/home-carousel/temperature.png')}}" alt=""></div>
-            </div>
+<div id="cards" class="section-title align-items-center" style="display:block; margin:auto; padding:0;">
+    <h2>Crucial Information</h2>
+</div>
+<div id="crucial-info-carousel" class="owl-carousel owl-theme my-5">
+    <div>
+        <div class="card">
+            <div class="card-body"><img src="{{asset('/img/home-carousel/oxygen_level.png')}}" alt=""></div>
         </div>
     </div>
+    <div>
+        <div class="card">
+            <div class="card-body"><img src="{{asset('/img/home-carousel/pulse_rate.png')}}" alt=""></div>
+        </div>
+    </div>
+    <div>
+        <div class="card">
+            <div class="card-body"><img src="{{asset('/img/home-carousel/temperature.png')}}" alt=""></div>
+        </div>
+    </div>
+</div>
 
 </div>
 
@@ -95,19 +95,19 @@ Home | Covid Help
                 </div>
                 <div class="col-lg-4 col-md-6 icon-box">
                     <h4 class="title">
-                    @if (Route::has('login'))
+                        @if (Route::has('login'))
                         @auth
                         @if(Auth::user()->hasRole('user'))
                         <a href="{{url('/warrior-registration/'.Auth::user()->id)}}">
-                        @else
-                        <a href="{{ url('/dashboard') }}">
-                        @endif
-                    @else
-                        <a href=" {{ route('login') }}">
-                        @endauth
-                    @endif
-                        Want to Volunteer?
-                        </a>
+                            @else
+                            <a href="{{ url('/dashboard') }}">
+                                @endif
+                                @else
+                                <a href=" {{ route('login') }}">
+                                    @endauth
+                                    @endif
+                                    Want to Volunteer?
+                                </a>
                     </h4>
                     <p class="description">Through all these tough times, we have witnessed warriors from our community come forth and be pillars of support to us. Use the "Register as Warrior" feature and use this portal to reach out to those in need. </p>
                 </div>
