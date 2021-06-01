@@ -42,8 +42,8 @@ class ResourceHospitalController extends Controller
         $resource->nodal_officer_phone = $request->nodal_officer_phone;
         $resource->note = $request->note;
         $resource->added_by = $request->user_id;
-        $resource->visibility = "0";
-        $resource->verified = "0";
+        $resource->visibility = "1";
+        $resource->verified = "1";
         $resource->save();
         return redirect()->back()->with('status', 'Hospital Details Added Successfully');
     }

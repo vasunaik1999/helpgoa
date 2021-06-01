@@ -40,7 +40,7 @@ class ResourceOxygenSuppliersController extends Controller
         $resource->note = $request->note;
         $resource->added_by = $request->user_id;
         $resource->visibility = "1";
-        $resource->verified = "0";
+        $resource->verified = "1";
         // dd($resource);
         $resource->save();
         return redirect()->back()->with('status', 'Oxygen Suppliers Details Added Successfully');
