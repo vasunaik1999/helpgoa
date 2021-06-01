@@ -2,20 +2,19 @@
     <x-slot name="header">
         <div class="row">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span> <a href="">Medicine Suppliers</a>
+                <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span> <a href="{{url('/dashboard/resources')}}">Resources</a> / <a href="">Covid Testing</a>
             </h2>
         </div>
     </x-slot>
-
 
     <x-slot name="card">
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6 my-auto">
-                    <h4>Medicine Suppliers Details</h4>
+                    <h4>Covid Testing</h4>
                 </div>
                 <div class="col-md-6 my-auto">
-                    <a href="{{url('/dashboard/resources/medicine/create')}}" class="btn btn-primary float-sm-center float-md-right">Create</a>
+                    <a href="{{url('/dashboard/resources/covid-testing/create')}}" class="btn btn-primary float-sm-center float-md-right">Create</a>
                 </div>
             </div>
 
@@ -27,10 +26,11 @@
                                 <table id="table" class="table table-striped">
                                     <thead>
                                         <th>#</th>
-                                        <th>Provider</th>
+                                        <th>Name</th>
+                                        <th>Phone Number</th>
                                         <th>Location</th>
-                                        <th>Delivery Status</th>
-                                        <th>Contact</th>
+                                        <th>Type</th>
+                                        <th>Timing</th>
                                         <!-- <th>Note</th> -->
                                         <th>Verified</th>
                                         <th>Status</th>
@@ -40,10 +40,15 @@
                                         @foreach($resources as $key => $r)
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                            <td>{{$r->provider}}</td>
-                                            <td>{{$r->supplier_location}}</td>
-                                            <td>{{$r->delivery_status}}</td>
+                                            <td>{{$r->name}}</td>
                                             <td>{{$r->contact}}</td>
+                                            <td>{{$r->location}}</td>
+                                            <td>{{$r->type}} <br>
+                                                {{$r->collection}}
+                                            </td>
+                                            <td>{{$r->time}} <br>
+                                                {{$r->working_days}}
+                                            </td>
                                             <!-- <td>{{$r->note}}</td> -->
                                             <td>
                                                 @if($r->verified == 1)
@@ -60,7 +65,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{url('/dashboard/resources/medicine/'.$r->id.'/edit')}}" class="btn btn-primary btn-sm">Edit</a>
+                                                <a href="{{url('/dashboard/resources/covid-testing/'.$r->id.'/edit')}}" class="btn btn-primary btn-sm">Edit</a>
                                                 <!-- <a href="" class="btn btn-danger btn-sm">Delete</a> -->
                                             </td>
                                         </tr>

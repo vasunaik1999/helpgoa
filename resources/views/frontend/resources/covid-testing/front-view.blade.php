@@ -9,7 +9,7 @@ Resources | Covid Help
     <div class="card-body">
         <div class="row">
             <div class="col">
-                <h1>Oxygen Details</h1>
+                <h1>Caretaker Service</h1>
             </div>
         </div>
 
@@ -21,25 +21,28 @@ Resources | Covid Help
                             <table id="table" class="table table-striped">
                                 <thead>
                                     <th>#</th>
-                                    <th>Provider</th>
+                                    <th>Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Location</th>
                                     <th>Type</th>
-                                    <th>Service Location</th>
-                                    <th>Delivery</th>
-                                    <th>Contact</th>
+                                    <th>Timing</th>
+                                    <!-- <th>Note</th> -->
                                     <th>Verified</th>
                                 </thead>
                                 <tbody>
                                     @foreach($resources as $key => $r)
                                     <tr>
                                         <td>{{$key+1}}</td>
-                                        <td>{{$r->provider}}</td>
-                                        <td>{{$r->supply_type}}</td>
-                                        <td>{{$r->service_location}}
+                                        <td>{{$r->name}}</td>
+                                        <td>{{$r->contact}}</td>
+                                        <td>{{$r->location}}</td>
+                                        <td>{{$r->type}} <br>
+                                            {{$r->collection}}
                                         </td>
-                                        <td>{{$r->delivery_status}}</td>
-                                        <td>{{$r->contact}}
-                                            <br> {{$r->supplier_address}}
+                                        <td>{{$r->time}} <br>
+                                            {{$r->working_days}}
                                         </td>
+                                        <!-- <td>{{$r->note}}</td> -->
                                         <td>
                                             @if($r->verified == 1)
                                             <p class="text-success">Verified</p>

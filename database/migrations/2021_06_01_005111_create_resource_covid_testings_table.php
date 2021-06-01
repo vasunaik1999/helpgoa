@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResourceOxygenSuppliersTable extends Migration
+class CreateResourceCovidTestingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateResourceOxygenSuppliersTable extends Migration
      */
     public function up()
     {
-        Schema::create('resource_oxygen_suppliers', function (Blueprint $table) {
+        Schema::create('resource_covid_testings', function (Blueprint $table) {
             $table->id();
-            $table->string('provider');
+            $table->string('name');
+            $table->string('location')->nullable();
             $table->string('contact');
-            $table->string('supply_type')->nullable();
-            $table->string('service_location')->nullable();
-            $table->string('supplier_address')->nullable();
+            $table->string('type');
+            $table->string('time')->nullable();
+            $table->string('working_days')->nullable();
+            $table->string('collection')->nullable();
             $table->unsignedBiginteger('added_by')->nullable();
             $table->foreign('added_by')->references('id')->on('users');
-            $table->string('delivery_status')->nullable();
             $table->string('note')->nullable();
             $table->boolean('verified')->default(0);
             $table->boolean('visibility')->default(0);
@@ -38,6 +39,6 @@ class CreateResourceOxygenSuppliersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resource_oxygen_suppliers');
+        Schema::dropIfExists('resource_covid_testings');
     }
 }

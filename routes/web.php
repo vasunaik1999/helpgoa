@@ -35,6 +35,7 @@ Route::get('/resources/food', 'App\Http\Controllers\ResourceFoodServicesControll
 Route::get('/resources/caretaker', 'App\Http\Controllers\ResourceCaretakingServicesController@frontendview');
 Route::get('/resources/sanitization', 'App\Http\Controllers\ResourceDisinfectServicesController@frontendview');
 Route::get('/resources/isolation-center', 'App\Http\Controllers\ResourceIsolationCenterController@frontendview');
+Route::get('/resources/covid-testing', 'App\Http\Controllers\ResourceCovidTestingController@frontendview');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/request-create', 'App\Http\Controllers\FrontendController@createreq');
@@ -195,6 +196,13 @@ Route::group(['middleware' => ['auth', 'role:superadmin|admin']], function () {
     Route::post('/dashboard/resources/isolation-center/store', 'App\Http\Controllers\ResourceIsolationCenterController@store')->name('resource.isolation-center.store');
     Route::get('/dashboard/resources/isolation-center/{resourceIsolationCenter}/edit', 'App\Http\Controllers\ResourceIsolationCenterController@edit')->name('resource.isolation-center.edit');
     Route::post('/dashboard/resources/isolation-center/update', 'App\Http\Controllers\ResourceIsolationCenterController@update')->name('resource.isolation-center.update');
+
+    //Covid Testing
+    Route::get('/dashboard/resources/covid-testing', 'App\Http\Controllers\ResourceCovidTestingController@index');
+    Route::get('/dashboard/resources/covid-testing/create', 'App\Http\Controllers\ResourceCovidTestingController@create');
+    Route::post('/dashboard/resources/covid-testing/store', 'App\Http\Controllers\ResourceCovidTestingController@store')->name('resource.covid-testing.store');
+    Route::get('/dashboard/resources/covid-testing/{resourceCovidTesting}/edit', 'App\Http\Controllers\ResourceCovidTestingController@edit')->name('resource.covid-testing.edit');
+    Route::post('/dashboard/resources/covid-testing/update', 'App\Http\Controllers\ResourceCovidTestingController@update')->name('resource.covid-testing.update');
 });
 
 require __DIR__ . '/auth.php';

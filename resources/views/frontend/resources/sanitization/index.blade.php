@@ -41,7 +41,7 @@
                                         <tr>
                                             <td>{{$key+1}}</td>
                                             <td>{{$r->provider}}</td>
-                                            <td>{{$r->type}}}</td>
+                                            <td>{{$r->type}}</td>
                                             <td>{{$r->contact}}</td>
                                             <td>{{$r->service_location}}</td>
                                             <td>{{$r->extra_info}}</td>
