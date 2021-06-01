@@ -6,7 +6,7 @@
     </style>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span> <a href="{{url('/dashboard/resources/doctor-consultant')}}">Ambulance Details</a> / <a href="">Add</a>
+            <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span> <a href="{{url('/dashboard/resources/ambulance')}}">Ambulance Details</a> / <a href="">Add</a>
         </h2>
     </x-slot>
 
@@ -43,7 +43,7 @@
                                 <div class="row">
                                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                     <div class="form-group col-md-4">
-                                        <label for="provider">Provider Name</label>
+                                        <label for="provider">Provider Name</label>        
                                         <input required type="text" class="form-control rounded" id="provider" placeholder="Enter Provider Name..." name="provider">
                                     </div>
                                     <div class="form-group col-md-4">

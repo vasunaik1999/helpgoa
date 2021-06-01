@@ -83,7 +83,6 @@
                                         <textarea name="note" class="form-control rounded" rows="3" placeholder="Enter note if any...">{{$resource->note}}</textarea>
                                     </div>
                                 </div>
-                                <hr>
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>

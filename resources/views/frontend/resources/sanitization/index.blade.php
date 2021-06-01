@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="row">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span> <a href="">Sanitization</a>
+                <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span><a href="{{url('/dashboard/resources')}}">Resources</a> / <a href="">Sanitization</a>
             </h2>
         </div>
     </x-slot>
@@ -42,22 +42,31 @@
                                             <td>{{$key+1}}</td>
                                             <td>{{$r->provider}}</td>
                                             <td>{{$r->type}}</td>
-                                            <td>{{$r->contact}}</td>
+                                            <td><?php $nos = explode("/", $r->contact);
+                                                ?>
+                                                @foreach ($nos as $no)
+                                                {{$no}} <br>
+                                                @endforeach
+                                            </td>
                                             <td>{{$r->service_location}}</td>
                                             <td>{{$r->extra_info}}</td>
                                             <!-- <td>{{$r->note}}</td> -->
                                             <td>
                                                 @if($r->verified == 1)
-                                                <p class="text-success">Verified</p>
+                                                <p class="badge badge-success p-2">Verified</p>
                                                 @else
-                                                <p class="text-info">Not Verified</p>
+                                                <p class="badge badge-warning p-2">Not Verified</p>
                                                 @endif
+                                                <?php
+                                                $user = App\Models\User::select('name')->where('id', '=', $r->added_by)->first();
+                                                ?>
+                                                <p class="text-success">Added By<strong> {{$user->name}}</strong></p>
                                             </td>
                                             <td>
                                                 @if($r->visibility == 1)
-                                                <p class="text-success">Visible</p>
+                                                <p class="badge badge-success p-2">Visible</p>
                                                 @else
-                                                <p class="text-danger">Hidden</p>
+                                                <p class="badge badge-danger p-2">Hidden</p>
                                                 @endif
                                             </td>
                                             <td>

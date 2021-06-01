@@ -2,7 +2,7 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span> <a href="{{url('/dashboard/resources/sanitization')}}>Sanitization Services</a> / <a href="">Add</a>
+            <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span> <a href="{{url('/dashboard/resources/sanitization')}}">Sanitization Services</a> / <a href="">Add</a>
         </h2>
     </x-slot>
     <style>
@@ -12,7 +12,7 @@
     </style>
 
     <x-slot name=" extra">
-                <!-- put this bcoz it was giving error -->
+        <!-- put this bcoz it was giving error -->
     </x-slot>
     <x-slot name="card">
         <div class="card-body">
