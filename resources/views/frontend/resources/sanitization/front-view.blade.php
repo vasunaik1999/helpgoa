@@ -9,7 +9,7 @@ Resources | Covid Help
     <div class="card-body">
         <div class="row">
             <div class="col">
-                <h1>Caretaker Service</h1>
+                <h1>Sanitization Service</h1>
             </div>
         </div>
 

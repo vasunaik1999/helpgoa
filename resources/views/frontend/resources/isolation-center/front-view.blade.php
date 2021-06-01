@@ -9,7 +9,7 @@ Resources | Covid Help
     <div class="card-body">
         <div class="row">
             <div class="col">
-                <h1>Food Services</h1>
+                <h1>Isolation Centers</h1>
             </div>
         </div>
 

@@ -14,7 +14,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col">
-                    <h3>Edit Supplier details here</h3>
+                    <h3>Edit Medicine Supplier details here</h3>
                 </div>
             </div>
             <div class="row mt-4">

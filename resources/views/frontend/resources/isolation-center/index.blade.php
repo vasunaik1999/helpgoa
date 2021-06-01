@@ -11,7 +11,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6 my-auto">
-                    <h4>Isolation Center</h4>
+                    <h4>Isolation Centers</h4>
                 </div>
                 <div class="col-md-6 my-auto">
                     <a href="{{url('/dashboard/resources/isolation-center/create')}}" class="btn btn-primary float-sm-center float-md-right">Create</a>

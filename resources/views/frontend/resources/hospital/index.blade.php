@@ -12,7 +12,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6 my-auto">
-                    <h4>Medicine Suppliers Details</h4>
+                    <h4>Hospital Details</h4>
                 </div>
                 <div class="col-md-6 my-auto">
                     <a href="{{url('/dashboard/resources/hospital/create')}}" class="btn btn-primary float-sm-center float-md-right">Create</a>

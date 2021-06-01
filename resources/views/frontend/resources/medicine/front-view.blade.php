@@ -9,7 +9,7 @@ Resources | Covid Help
     <div class="card-body">
         <div class="row">
             <div class="col">
-                <h1>Ambulance Details</h1>
+                <h1>Medicine Suppplier Details</h1>
             </div>
         </div>
 
