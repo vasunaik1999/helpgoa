@@ -22,10 +22,10 @@ Resources | Covid Help
                         <thead>
                             <th>#</th>
                             <th>Provider</th>
+                            <th>Service Location</th>
                             <th>Type</th>
                             <th>Phone Number</th>
-                            <th>Service Location</th>
-                            <th>Extra Info</th>
+                            <!-- <th>Extra Info</th> -->
                             <!-- <th>Note</th> -->
                             <th>Verified</th>
                         </thead>
@@ -34,6 +34,7 @@ Resources | Covid Help
                             <tr>
                                 <td>{{$key+1}}</td>
                                 <td>{{$r->provider}}</td>
+                                <td>{{$r->service_location}}</td>
                                 <td>{{$r->type}}</td>
                                 <td><?php $nos = explode("/", $r->contact);
                                     ?>
@@ -41,8 +42,7 @@ Resources | Covid Help
                                     {{$no}} <br>
                                     @endforeach
                                 </td>
-                                <td>{{$r->service_location}}</td>
-                                <td>{{$r->extra_info}}</td>
+                                <!-- <td>{{$r->extra_info}}</td> -->
                                 <!-- <td>{{$r->note}}</td> -->
                                 <td>
                                     @if($r->verified == 1)

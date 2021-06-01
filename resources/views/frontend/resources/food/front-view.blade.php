@@ -22,8 +22,8 @@ Resources | Covid Help
                         <thead>
                             <th>#</th>
                             <th>Provider</th>
-                            <th>Phone Number</th>
                             <th>Service Area</th>
+                            <th>Phone Number</th>
                             <th>Food Type</th>
                             <th>Delivery To</th>
                             <!-- <th>Note</th> -->
@@ -34,13 +34,13 @@ Resources | Covid Help
                             <tr>
                                 <td>{{$key+1}}</td>
                                 <td>{{$r->provider}}</td>
+                                <td>{{$r->service_area}}</td>
                                 <td><?php $nos = explode("/", $r->contact);
                                     ?>
                                     @foreach ($nos as $no)
                                     {{$no}} <br>
                                     @endforeach
                                 </td>
-                                <td>{{$r->service_area}}</td>
                                 <td>
                                     {{$r->food_type}}<br>
                                     {{$r->meal_type}}

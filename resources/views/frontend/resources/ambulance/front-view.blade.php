@@ -26,9 +26,9 @@ Resources | Covid Help
                     <table id="table" class="table table-striped table-bordered">
                         <thead>
                             <th>#</th>
-                            <th>Provider</th>
-                            <th>Type</th>
                             <th>Service Location</th>
+                            <th>Type</th>
+                            <th>Provider</th>
                             <th>Contact</th>
                             <!-- <th>Note</th> #2196F3-->
                             <th>Verified</th>
@@ -37,10 +37,9 @@ Resources | Covid Help
                             @foreach($resources as $key => $r)
                             <tr>
                                 <td>{{$key+1}}</td>
-                                <td>{{$r->provider}}
-                                </td>
-                                <td>{{$r->ambulance_type}}</td>
                                 <td>{{$r->service_location}}</td>
+                                <td>{{$r->ambulance_type}}</td>
+                                <td>{{$r->provider}}</td>
                                 <td>
                                     <?php $nos = explode("/", $r->contact);
                                     ?>

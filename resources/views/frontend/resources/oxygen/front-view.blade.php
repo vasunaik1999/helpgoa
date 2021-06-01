@@ -23,27 +23,27 @@ Resources | Covid Help
                         <th>#</th>
                         <th>Provider</th>
                         <th>Type</th>
-                        <th>Service Location</th>
                         <th>Delivery</th>
                         <th>Contact</th>
+                        <th>Address</th>
                         <th>Verified</th>
                     </thead>
                     <tbody>
                         @foreach($resources as $key => $r)
                         <tr>
                             <td>{{$key+1}}</td>
-                            <td>{{$r->provider}}</td>
-                            <td>{{$r->supply_type}}</td>
-                            <td>{{$r->service_location}}
+                            <td>{{$r->provider}} <br>
+                                {{$r->service_location}}
                             </td>
+                            <td>{{$r->supply_type}}</td>
                             <td>{{$r->delivery_status}}</td>
                             <td><?php $nos = explode("/", $r->contact);
                                 ?>
                                 @foreach ($nos as $no)
                                 {{$no}} <br>
                                 @endforeach
-                                {{$r->supplier_address}}
                             </td>
+                            <td>{{$r->supplier_address}}</td>
                             <td>
                                 @if($r->verified == 1)
                                 <p class="text-primary">Verified

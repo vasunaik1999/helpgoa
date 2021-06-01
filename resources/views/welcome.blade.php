@@ -140,6 +140,7 @@
         responsive: true,
         autoWidth: false,
         colReorder: true,
+        "paging": false,
         // rowReorder: true,
 
 

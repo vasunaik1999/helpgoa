@@ -25,7 +25,6 @@ Resources | Covid Help
                             <th>Consultation</th>
                             <th>Availability</th>
                             <th>Contact</th>
-                            <th>Note</th>
                             <th>Verified</th>
                         </thead>
                         <tbody>
@@ -41,7 +40,6 @@ Resources | Covid Help
                                     {{$no}} <br>
                                     @endforeach
                                 </td>
-                                <td>{{$r->note}}</td>
                                 <td>
                                     @if($r->verified == 1)
                                     <p class="text-primary">Verified

@@ -75,7 +75,6 @@ class ResourceCovidTestingController extends Controller
         $resource->time = $request->time;
         $resource->working_days = $request->working_days;
         $resource->note = $request->note;
-        // $resource->added_by = $request->user_id;
         $resource->visibility = $request->visibility;
         $resource->verified = $request->verified;
         // dd($resource);

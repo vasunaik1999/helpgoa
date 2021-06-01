@@ -21,9 +21,9 @@ Resources | Covid Help
                     <table id="table" class="table table-striped table-bordered">
                         <thead>
                             <th>#</th>
+                            <th>Location</th>
                             <th>Name</th>
                             <th>Phone Number</th>
-                            <th>Location</th>
                             <th>Type</th>
                             <th>Timing</th>
                             <!-- <th>Note</th> -->
@@ -33,14 +33,14 @@ Resources | Covid Help
                             @foreach($resources as $key => $r)
                             <tr>
                                 <td>{{$key+1}}</td>
+                                <td>{{$r->location}}</td>
                                 <td>{{$r->name}}</td>
-                                <td><?php $nos = explode("/", $r->contact);
-                                    ?>
+                                <td>
+                                    <?php $nos = explode("/", $r->contact); ?>
                                     @foreach ($nos as $no)
                                     {{$no}} <br>
                                     @endforeach
                                 </td>
-                                <td>{{$r->location}}</td>
                                 <td>{{$r->type}} <br>
                                     {{$r->collection}}
                                 </td>
