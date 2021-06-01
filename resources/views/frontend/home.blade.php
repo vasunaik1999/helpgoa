@@ -32,18 +32,16 @@ Home | Covid Help
         </ul>
         <a type="button" class="btn justify-content-center createreqbtn" href="{{url('/request-create')}}">Create Request</a>
         @if (Route::has('login'))
-        @auth
-        @if(Auth::user()->hasRole('user'))
-        <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href="{{ url('/warrior-registration/'.Auth::user()->id) }}">
+            @auth
+            @if(Auth::user()->hasRole('user'))
+            <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href="{{ url('/warrior-registration/'.Auth::user()->id) }}">Register as Warrior</a>
             @else
-            <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href="{{ url('/dashboard') }}">
-                @endif
-                @else
-                <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href=" {{ route('login') }}">
-                    @endauth
-                    @endif
-                    Register as Warrior
-                </a>
+            <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href="{{ url('/dashboard') }}" >View Dashboard</a>
+            @endif
+        @else
+            <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href=" {{ route('login') }}">Register as Warrior</a>
+            @endauth
+        @endif
 
     </div>
 </header>

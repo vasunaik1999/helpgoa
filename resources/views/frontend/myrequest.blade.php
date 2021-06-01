@@ -165,7 +165,15 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                                 ?>
                             </span>
                             <br>                            
-                            <span style="background-color: transparent;"><strong> Order OTP :- </strong>{{$req->order_otp}}</span>
+                            <span style="background-color: transparent;">
+                                <strong> Order OTP :- </strong>{{$req->order_otp}}
+                            </span>
+                            <p style="font-size:12px; line-height:14px;">
+                                <br>
+                                <b>*Please share this OTP, with the volunteer after your request has been fulfilled.</b><br>
+                                DO NOT share any other OTP with any volunteer or support personnel!<br>
+                                We do not ask for these details.
+                            </p>
                             @endif
                         </div>
                     </div>
