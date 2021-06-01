@@ -24,6 +24,11 @@
   <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
   <script src="{{ asset('js/welcome.js') }}" defer></script>
 
+  <style>
+    a:link {
+      text-decoration: none !important;
+    }
+  </style>
 </head>
 
 <body>
