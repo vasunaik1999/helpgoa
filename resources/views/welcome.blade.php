@@ -147,7 +147,9 @@
         colReorder: true,
         "paging": false,
         // rowReorder: true,
-
+        language: {
+          searchPlaceholder: "Search records"
+        }
 
         //BUTTONS TO DOWNLOAD
         // dom: 'Bfrtip',
