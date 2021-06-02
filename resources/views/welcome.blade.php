@@ -76,7 +76,7 @@
         @endif
         <li class="nav-item ml-3">
           <!--LOCKED FEATURE <a class="text-white" href="{{url('/requests')}}">Requests</a> -->
-          <a class="text-white locked" data-toggle="tooltip" data-placement="bottom" title="Requests is Currently Locked! There are less warriors, will open on 3rd June">Requests</a>
+          <a class="text-white locked" data-toggle="tooltip" data-placement="bottom" title="Requests is Currently Locked! There are less warriors, will open on 5th June">Requests</a>
         </li>
         <!-- @if (\Route::current()->getName() == 'home')
         <li class="nav-item ml-3">
@@ -95,7 +95,7 @@
         </li>
         <li class="nav-item ml-3">
           <!--LOCKED FEATURE <a class="text-white" href="{{url('/myrequests')}}">My Request</a> -->
-          <a class="text-white locked" data-toggle="tooltip" data-placement="bottom" title="Requests is Currently Locked! will open on 3rd June">My Request</a>
+          <a class="text-white locked" data-toggle="tooltip" data-placement="bottom" title="Requests is Currently Locked! will open on 5th June">My Request</a>
         </li>
         
         @if(Auth::user()->hasRole('user'))

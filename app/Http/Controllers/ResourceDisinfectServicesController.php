@@ -27,7 +27,7 @@ class ResourceDisinfectServicesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            // 'name' => 'required',
+            // 'name' => 'required', 
             // 'contact' => 'nullable|digits:10',
         ]);
 
