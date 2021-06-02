@@ -145,7 +145,8 @@
         responsive: true,
         autoWidth: false,
         colReorder: true,
-        "paging": false,
+        "pageLength": 25,
+        "paging": true,
         // rowReorder: true,
         language: {
           searchPlaceholder: "Search records"
