@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="row">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span><a href="{{url('/dashboard/resources')}}">Resources</a> / <a href="">Medicine Suppliers</a>
+                <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span><a href="{{url('/dashboard/resources')}}">Resources</a> / <a href="">Hospitals</a>
             </h2>
         </div>
     </x-slot>
