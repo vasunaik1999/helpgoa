@@ -30,7 +30,7 @@ Home | Covid Help
             <li><span class="fa-li" style="color:#00BFA6;"><i class="fas fa-medkit"></i></span>Use this platform to help those in need.</li>
             <li><span class="fa-li" style="color:#00BFA6;"><i class="fas fa-medkit"></i></span>Use this platform to volunteer and help those affected by covid.</li>
         </ul>
-        <a type="button" class="btn justify-content-center createreqbtn" href="{{url('/request-create')}}">Create Request</a>
+        <a type="button" class="btn justify-content-center createreqbtn" href="{{url('/resources')}}">Covid Resources</a>
         @if (Route::has('login'))
         @auth
         @if(Auth::user()->hasRole('user'))

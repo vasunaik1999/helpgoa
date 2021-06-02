@@ -28,6 +28,10 @@
     a:link {
       text-decoration: none !important;
     }
+
+    #floatbtn:visited {
+      color: white;
+    }
   </style>
 </head>
 
