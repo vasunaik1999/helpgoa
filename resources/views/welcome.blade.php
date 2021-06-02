@@ -25,12 +25,19 @@
   <script src="{{ asset('js/welcome.js') }}" defer></script>
 
   <style>
+
     a:link {
       text-decoration: none !important;
     }
 
     #floatbtn:visited {
       color: white;
+
+    .locked {
+      cursor: default;
+    }
+
+   
     }
   </style>
 </head>
@@ -68,7 +75,8 @@
         @endauth
         @endif
         <li class="nav-item ml-3">
-          <a class="text-white" href="{{url('/requests')}}">Requests</a>
+          <!--LOCKED FEATURE <a class="text-white" href="{{url('/requests')}}">Requests</a> -->
+          <a class="text-white locked" data-toggle="tooltip" data-placement="bottom" title="Requests is Currently Locked! There are less warriors, will open on 3rd June">Requests</a>
         </li>
         <!-- @if (\Route::current()->getName() == 'home')
         <li class="nav-item ml-3">
@@ -81,7 +89,8 @@
           <a class="text-white" href="{{url('/myprofile')}}">My Profile</a>
         </li>
         <li class="nav-item ml-3">
-          <a class="text-white" href="{{url('/myrequests')}}">My Request</a>
+          <!--LOCKED FEATURE <a class="text-white" href="{{url('/myrequests')}}">My Request</a> -->
+          <a class="text-white locked" data-toggle="tooltip" data-placement="bottom" title="Requests is Currently Locked! will open on 3rd June">My Request</a>
         </li>
         @if(Auth::user()->hasRole('user'))
         <!-- Authentication -->
@@ -167,6 +176,10 @@
         //   'copy', 'csv', 'excel', 'pdf', 'print'
         // ]
 
+      });
+
+      $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
       });
 
     });
