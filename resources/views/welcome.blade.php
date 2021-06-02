@@ -33,6 +33,11 @@
 
 <body>
 
+  <!-- Float button code begins here -->
+  <a href="{{url('/request-create')}}" class="float" id="floatbtn">
+    <i class="fa fa-plus my-float"></i>
+  </a>
+
   <!-- #289672 -->
   <!-- #00BFA6 -->
   <!-- Navigation Bar -->
