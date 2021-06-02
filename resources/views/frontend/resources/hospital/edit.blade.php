@@ -6,7 +6,7 @@
     </style>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span> <a href="{{url('/dashboard/resources/medicine')}}">Medicine Supplier</a> / <a href="">Edit</a>
+            <a href="{{url('/dashboard')}}">Dashboard</a><span> / </span> <a href="{{url('/dashboard/resources/hospital')}}">Hospitals</a> / <a href="">Edit</a>
         </h2>
     </x-slot>
 

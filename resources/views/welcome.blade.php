@@ -25,17 +25,29 @@
   <script src="{{ asset('js/welcome.js') }}" defer></script>
 
   <style>
+
+    a:link {
+      text-decoration: none !important;
+    }
+
+    #floatbtn:visited {
+      color: white;
+
     .locked {
       cursor: default;
     }
 
-    a:link {
-      text-decoration: none !important;
+   
     }
   </style>
 </head>
 
 <body>
+
+  <!-- Float button code begins here -->
+  <a href="{{url('/request-create')}}" class="float" id="floatbtn">
+    <i class="fa fa-plus my-float"></i>
+  </a>
 
   <!-- #289672 -->
   <!-- #00BFA6 -->
@@ -151,9 +163,12 @@
         responsive: true,
         autoWidth: false,
         colReorder: true,
-        "paging": false,
+        "pageLength": 25,
+        "paging": true,
         // rowReorder: true,
-
+        language: {
+          searchPlaceholder: "Search records"
+        }
 
         //BUTTONS TO DOWNLOAD
         // dom: 'Bfrtip',

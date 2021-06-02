@@ -59,7 +59,7 @@ class FrontendController extends Controller
     public function updatemyrequest(Request $request)
     {
         // dd($request);
-        //dd($request);
+        // //dd($request);
         // $request->validate([
         //     'name' => 'required',
         //     'phone' => 'required',
@@ -69,7 +69,6 @@ class FrontendController extends Controller
         //     'pincode' => 'nullable',
         //     'needed_by' => 'required',
         //     'special_instructions' => 'nullable',
-        //     'reqStatus' => 'required',
         // ]);
 
         $helpRequest = HelpRequest::find($request->req_id);
@@ -102,7 +101,7 @@ class FrontendController extends Controller
                     ->where('taluka', '=', $search)
                     ->get();
             }
-        }else{    
+        } else {
             $reqs = HelpRequest::select('id', 'vol_id', 'city', 'taluka', 'items', 'needed_by')
                 ->where('reqStatus', '=', 'Completed')
                 ->get();
