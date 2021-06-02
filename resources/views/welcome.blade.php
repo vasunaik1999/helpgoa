@@ -83,6 +83,11 @@
           <a class="text-white" href="#about">About</a>
         </li>
         @endif -->
+        @guest
+        <li class="nav-item ml-3">
+          <a class="text-white" href="{{url('/warrior-registration')}}">Register as Warrior</a>
+        </li>
+        @endguest
         @if (Route::has('login'))
         @auth
         <li class="nav-item ml-3">
@@ -92,11 +97,12 @@
           <!--LOCKED FEATURE <a class="text-white" href="{{url('/myrequests')}}">My Request</a> -->
           <a class="text-white locked" data-toggle="tooltip" data-placement="bottom" title="Requests is Currently Locked! will open on 3rd June">My Request</a>
         </li>
+        
         @if(Auth::user()->hasRole('user'))
-        <!-- Authentication -->
         <li class="nav-item ml-3">
           <a class="text-white" href="{{url('/warrior-registration/'.Auth::user()->id)}}">Register as Warrior</a>
         </li>
+        <!-- Authentication -->
         <form method="POST" style="right: 5%; position: absolute;" action="{{ route('logout') }}">
           @csrf
 

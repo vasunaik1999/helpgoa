@@ -25,6 +25,7 @@ class WarriorController extends Controller
         return view('warrior.addwarrior');
     }
 
+
     public function store(Request $request)
     {
         $request->validate([
@@ -206,5 +207,13 @@ class WarriorController extends Controller
         }
 
         return redirect()->back()->with('status', 'Assigned Admin Role to the User Successfully');
+    }
+
+    public function displaylogin()
+    {
+        $id = Auth::user()->id;
+        $warrior = WarriorDetail::where('user_id', '=', $id)->orderBy('id', 'desc')->first();
+        // dd($warrior);
+        return view('frontend.warrior.warriorregistration',compact('warrior'));
     }
 }
