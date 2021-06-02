@@ -34,7 +34,7 @@ Home | Covid Help
         <a type="button" class="btn justify-content-center createreqbtn" href="{{url('/resources')}}">Covid Resources</a>
 
         <!--LOCKED FEATURE <a type="button" class="btn justify-content-center createreqbtn" href="{{url('/request-create')}}">Create Request</a> -->
-        <a type="button" class="btn justify-content-center createreqbtn text-white locked" data-toggle="tooltip" data-placement="bottom" title="Create Request is Locked">Create Request</a>
+        <!-- <a type="button" class="btn justify-content-center createreqbtn text-white locked" data-toggle="tooltip" data-placement="bottom" title="Create Request is Locked">Create Request</a> -->
 
         @if (Route::has('login'))
         @auth

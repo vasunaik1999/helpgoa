@@ -25,19 +25,16 @@
   <script src="{{ asset('js/welcome.js') }}" defer></script>
 
   <style>
-
     a:link {
       text-decoration: none !important;
     }
 
     #floatbtn:visited {
       color: white;
+    }
 
     .locked {
       cursor: default;
-    }
-
-   
     }
   </style>
 </head>
@@ -45,7 +42,10 @@
 <body>
 
   <!-- Float button code begins here -->
-  <a href="{{url('/request-create')}}" class="float" id="floatbtn">
+  <!--LOCKED FEATURE <a href="{{url('/request-create')}}" class="float" id="floatbtn">
+    <i class="fa fa-plus my-float"></i>
+  </a> -->
+  <a class="float locked text-white" id="floatbtn" data-toggle="tooltip" data-placement="left" title="Create Request is Locked">
     <i class="fa fa-plus my-float"></i>
   </a>
 
