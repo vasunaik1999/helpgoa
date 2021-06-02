@@ -35,7 +35,7 @@ My Request - Update | Covid Help
                 </div>
                 <div class="form-group col-md-4">
                     <label for="phone">Phone Number</label>
-                    <input required  type="text" class="form-control rounded" id="phone" placeholder="Enter Phone no..." value="{{$req->phone}}" name="phone" pattern="[1-9]{1}[0-9]{9}">
+                    <input required type="text" class="form-control rounded" id="phone" placeholder="Enter Phone no..." value="{{$req->phone}}" name="phone" pattern="[1-9]{1}[0-9]{9}">
                 </div>
             </div>
             <hr>
@@ -59,8 +59,8 @@ My Request - Update | Covid Help
                     </datalist>
                 </div>
                 <div class="form-group col-md-4">
-                    <label required for="city">City</label>
-                    <input type="text" class="form-control rounded" id="city" placeholder="Enter City..." name="city" value="{{$req->city}}">
+                    <label for="city">City</label>
+                    <input required type="text" class="form-control rounded" id="city" placeholder="Enter City..." name="city" value="{{$req->city}}">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="address">Address</label>
@@ -76,12 +76,10 @@ My Request - Update | Covid Help
                 <div class="form-group col-md-4">
                     <?php
                     $need_by = new DateTime($req->needed_by);
-                    
-
                     ?>
                     <label for="needed_by">Need by</label>
 
-                    <input required type="datetime-local" value="<?php echo $need_by->format("Y-m-d")."T".$need_by->format("H:i") ?>" class="form-control rounded" id="needed_by" placeholder="Enter Date..." name="needed_by">
+                    <input required type="datetime-local" value="<?php echo $need_by->format("Y-m-d") . "T" . $need_by->format("H:i") ?>" class="form-control rounded" id="needed_by" placeholder="Enter Date..." name="needed_by">
                 </div>
             </div>
             <hr>

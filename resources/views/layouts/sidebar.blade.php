@@ -105,6 +105,11 @@
                 </a>
             </li>
             @endif
+            <li class="nav-item">
+                <a href="{{route('contactform.index')}}" class="nav-link ">
+                    <i class="fa fa-id-card mr-3 text-main fa-fw"></i>Contact Form
+                </a>
+            </li>
             <!-- <li class="nav-item">
                 <a href="#" class="nav-link text-dark">
                     <i class="fa fa-area-chart mr-3 text-main fa-fw"></i>

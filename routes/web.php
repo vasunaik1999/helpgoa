@@ -37,6 +37,9 @@ Route::get('/resources/sanitization', 'App\Http\Controllers\ResourceDisinfectSer
 Route::get('/resources/isolation-center', 'App\Http\Controllers\ResourceIsolationCenterController@frontendview');
 Route::get('/resources/covid-testing', 'App\Http\Controllers\ResourceCovidTestingController@frontendview');
 
+//Contact Form
+Route::post('/contactform/submit', 'App\Http\Controllers\ContactFormController@store')->name('contactform.store');
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/request-create', 'App\Http\Controllers\FrontendController@createreq');
     Route::post('store-request', 'App\Http\Controllers\HelpRequestController@store')->name('request.store');
@@ -46,10 +49,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('myprofile/store', 'App\Http\Controllers\ProfileController@store')->name('myprofile.store');
 
     //My Requests
-    Route::get('myrequests', 'App\Http\Controllers\FrontendController@myrequests')->name('frontend.myrequest');
-    Route::post('myrequests-delete', 'App\Http\Controllers\FrontendController@deletemyrequest')->name('frontend.deletemyrequest');
-    Route::post('myrequests-edit', 'App\Http\Controllers\FrontendController@editmyrequest')->name('frontend.editmyrequest');
-    Route::put('myrequests-update', 'App\Http\Controllers\FrontendController@updatemyrequest')->name('frontend.updatemyrequest');
+    Route::get('/myrequests', 'App\Http\Controllers\FrontendController@myrequests')->name('frontend.myrequest');
+    Route::post('/myrequests-delete', 'App\Http\Controllers\FrontendController@deletemyrequest')->name('frontend.deletemyrequest');
+    Route::post('/myrequests-edit', 'App\Http\Controllers\FrontendController@editmyrequest')->name('frontend.editmyrequest');
+    Route::put('/myrequests-update', 'App\Http\Controllers\FrontendController@updatemyrequest')->name('frontend.updatemyrequest');
 });
 
 //Auth Route for Warrior | Admin | Superadmin
@@ -114,6 +117,10 @@ Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
     Route::get('/dashboard/view-user/{user}/more-details', 'App\Http\Controllers\UserController@moredetails')->name('user.moredetails');
     Route::post('/dashboard/user-ban', 'App\Http\Controllers\UserController@banuser')->name('user.ban');
     Route::post('/dashboard/user-make-admin', 'App\Http\Controllers\UserController@makeadmin')->name('user.make.admin');
+
+    //Contact form
+    Route::get('/dashboard/contactform-responses', 'App\Http\Controllers\ContactFormController@index')->name('contactform.index');
+    Route::post('/dashboard/contactform-responses/status', 'App\Http\Controllers\ContactFormController@updatestatus')->name('contactform.update.status');
 });
 
 //For SuperAdmin | Admin 

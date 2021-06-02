@@ -32,15 +32,15 @@ Home | Covid Help
         </ul>
         <a type="button" class="btn justify-content-center createreqbtn" href="{{url('/request-create')}}">Create Request</a>
         @if (Route::has('login'))
-            @auth
-            @if(Auth::user()->hasRole('user'))
-            <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href="{{ url('/warrior-registration/'.Auth::user()->id) }}">Register as Warrior</a>
-            @else
-            <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href="{{ url('/dashboard') }}" >View Dashboard</a>
-            @endif
+        @auth
+        @if(Auth::user()->hasRole('user'))
+        <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href="{{ url('/warrior-registration/'.Auth::user()->id) }}">Register as Warrior</a>
         @else
-            <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href=" {{ route('login') }}">Register as Warrior</a>
-            @endauth
+        <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href="{{ url('/dashboard') }}">View Dashboard</a>
+        @endif
+        @else
+        <a type="button" id="registerbtn" class="btn mt-2 justify-content-center registerbtn" href=" {{ route('login') }}">Register as Warrior</a>
+        @endauth
         @endif
 
     </div>
@@ -119,6 +119,63 @@ Home | Covid Help
 
         </div>
     </section><!-- End About Us Section -->
+
+    <section id="contactform">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    @if (session('contactmessage'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('contactmessage') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
+                    <div class="card" style="background-color: #f6f6f6;">
+                        <div class="card-body">
+                            <form method="post" action="{{route('contactform.store')}}">
+                                @csrf
+                                <div class="row">
+                                    <input type="hidden" name="user_id" @auth value="{{Auth::user()->id}}" @endauth>
+                                    <div class="form-group col-md-4">
+                                        <label for="name">Name</label>
+                                        <input required type="text" class="form-control rounded" id="name" placeholder="Enter Name..." name="name" @auth value="{{Auth::user()->name}}" @endauth>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="phone">Phone Number</label>
+                                        <input required type="text" class="form-control rounded" id="phone" placeholder="Enter Phone no..." name="phone" @auth value="{{Auth::user()->phone}}" @endauth>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="category">Category</label>
+                                        <select required class="form-control" id="category" name="category">
+                                            <option value="General">General</option>
+                                            <option value="Request">Request</option>
+                                            <option value="Request">Resource</option>
+                                            <option value="Warrior">Warrior</option>
+                                            <option value="Account">Account</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="form-group col-md-12">
+                                        <label for="message">Message</label>
+                                        <textarea required name="message" class="form-control" id="message" rows="4" placeholder="Enter you message"></textarea>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn text-white mt-3" style="background-color:#00BFA6">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </main><!-- End #main -->
 @endsection
