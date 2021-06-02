@@ -50,10 +50,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     //My Requests
 
-    Route::get('/myrequests', 'App\Http\Controllers\FrontendController@myrequests')->name('frontend.myrequest');
-    Route::post('/myrequests-delete', 'App\Http\Controllers\FrontendController@deletemyrequest')->name('frontend.deletemyrequest');
-    Route::post('/myrequests-edit', 'App\Http\Controllers\FrontendController@editmyrequest')->name('frontend.editmyrequest');
-    Route::put('/myrequests-update', 'App\Http\Controllers\FrontendController@updatemyrequest')->name('frontend.updatemyrequest');
+     // LOCKED FEATURE //Route::get('/myrequests', 'App\Http\Controllers\FrontendController@myrequests')->name('frontend.myrequest');
+     // LOCKED FEATURE //Route::post('/myrequests-delete', 'App\Http\Controllers\FrontendController@deletemyrequest')->name('frontend.deletemyrequest');
+     // LOCKED FEATURE //Route::post('/myrequests-edit', 'App\Http\Controllers\FrontendController@editmyrequest')->name('frontend.editmyrequest');
+     // LOCKED FEATURE //Route::put('/myrequests-update', 'App\Http\Controllers\FrontendController@updatemyrequest')->name('frontend.updatemyrequest');
 
 });
 
