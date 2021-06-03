@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\VisitorTracker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,8 @@ class DashboardController extends Controller
         } else if (Auth::user()->hasRole('admin')) {
             return view('dashboard.admindashboard');
         } else if (Auth::user()->hasRole('superadmin')) {
-            return view('dashboard.superadmindashboard');
+            $visitors = VisitorTracker::all();
+            return view('dashboard.superadmindashboard', compact('visitors'));
         }
     }
 

@@ -13,9 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.home');
-})->name('home');
+// Route::get('/', function () {
+//     return view('frontend.home');
+// })->name('home');
+
+//Home Route
+Route::get('/', 'App\Http\Controllers\VisitorTrackerController@index')->name('home');
+
+
+
 // LOCKED FEATURE // Route::get('/requests', 'App\Http\Controllers\FrontendController@index');
 // LOCKED FEATURE //Route::post('/requests', 'App\Http\Controllers\FrontendController@index')->name('request.viewrequestfrontend.search'); //search
 Route::get('/you-are-banned', 'App\Http\Controllers\FrontendController@bannedpage');
@@ -50,10 +56,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     //My Requests
 
-     // LOCKED FEATURE //Route::get('/myrequests', 'App\Http\Controllers\FrontendController@myrequests')->name('frontend.myrequest');
-     // LOCKED FEATURE //Route::post('/myrequests-delete', 'App\Http\Controllers\FrontendController@deletemyrequest')->name('frontend.deletemyrequest');
-     // LOCKED FEATURE //Route::post('/myrequests-edit', 'App\Http\Controllers\FrontendController@editmyrequest')->name('frontend.editmyrequest');
-     // LOCKED FEATURE //Route::put('/myrequests-update', 'App\Http\Controllers\FrontendController@updatemyrequest')->name('frontend.updatemyrequest');
+    // LOCKED FEATURE //Route::get('/myrequests', 'App\Http\Controllers\FrontendController@myrequests')->name('frontend.myrequest');
+    // LOCKED FEATURE //Route::post('/myrequests-delete', 'App\Http\Controllers\FrontendController@deletemyrequest')->name('frontend.deletemyrequest');
+    // LOCKED FEATURE //Route::post('/myrequests-edit', 'App\Http\Controllers\FrontendController@editmyrequest')->name('frontend.editmyrequest');
+    // LOCKED FEATURE //Route::put('/myrequests-update', 'App\Http\Controllers\FrontendController@updatemyrequest')->name('frontend.updatemyrequest');
 
 });
 
@@ -75,7 +81,7 @@ Route::group(['middleware' => ['auth', 'role:warrior|admin|superadmin']], functi
 //for users
 Route::group(['middleware' => ['auth', 'role:user']], function () {
     //Warrior Registration
-    
+
     Route::post('/warrior-registration/store', 'App\Http\Controllers\WarriorController@storewarrior')->name('warriorregistration.store');
 });
 
