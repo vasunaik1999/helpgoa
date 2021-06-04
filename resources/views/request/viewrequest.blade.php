@@ -18,6 +18,7 @@
                                 @if($search != null)
                                 <option value="{{$search}}">{{$search}}</option>
                                 @endif
+                                <option value="My Areas">My Areas</option>
                                 <option value="All">All</option>
                                 <option value="Bardez">Bardez</option>
                                 <option value="Bicholim">Bicholim</option>
@@ -33,7 +34,7 @@
                                 <option value="Dharbandora">Dharbandora</option>
                             </select>
                             <div class="input-group-append">
-                                <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search mr-2"></i>Search</button>
+                                <button type="submit" class="btn btn-sm text-white" style="background-color: #00BFA6;"><i class="fa fa-search mr-2"></i>Search</button>
                             </div>
                         </div>
                     </form>
@@ -120,7 +121,7 @@
                             <span class="badge badge-dark float-right"> <?php echo $status ?> </span><br>
                             <p class="mt-2"><strong> Need :-</strong>
                                 @foreach( json_decode($req->items) as $item)
-                                <span class="badge <?php if ($status == "Casual"||$status == "Standard") echo "bg-dark";
+                                <span class="badge <?php if ($status == "Casual" || $status == "Standard") echo "bg-dark";
                                                     else echo "bg-light"; ?> p-2 mt-2" style="font-size:14px;
                                     <?php
                                     if ($status == 'Critical')

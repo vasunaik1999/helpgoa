@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\HelpRequest;
 use App\Models\Reason;
 use App\Models\User;
+use App\Models\WarriorDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\Types\Null_;
 use PhpParser\Node\Stmt\Else_;
 
@@ -64,7 +67,7 @@ class HelpRequestController extends Controller
         $helpRequest->reqStatus = $request->input('reqStatus');
         $helpRequest->special_instructions = $request->input('special_instructions');
         $helpRequest->items = json_encode($request->input('items'));
-        $helpRequest->order_otp = rand ( 1000 , 9999 );
+        $helpRequest->order_otp = rand(1000, 9999);
         //dd($helpRequest);
 
         $helpRequest->save();
@@ -87,13 +90,15 @@ class HelpRequestController extends Controller
 
     public function show(Request $request)
     {
-
+        $flag = 0;
         if ($request->has('search')) {
             $search = $request->search;
             if ($search == 'All') {
                 $reqs = HelpRequest::select('id', 'user_id', 'name', 'city', 'taluka', 'items', 'needed_by')
                     ->where('reqStatus', '<>', 'Completed')
                     ->get();
+            } elseif ($search == 'My Areas') {
+                $flag = 1;
             } else {
                 $reqs = HelpRequest::select('id', 'user_id', 'name', 'city', 'taluka', 'items', 'needed_by')
                     ->where('reqStatus', '<>', 'Completed')
@@ -101,10 +106,32 @@ class HelpRequestController extends Controller
                     ->get();
             }
         } else {
-            $reqs = HelpRequest::select('id', 'name', 'user_id', 'city', 'taluka', 'items', 'needed_by')
-                ->where('reqStatus', '<>', 'Completed')
-                ->get();
-            $search = null;
+            $flag = 1;
+            // $reqs = HelpRequest::select('id', 'name', 'user_id', 'city', 'taluka', 'items', 'needed_by')
+            //     ->where('reqStatus', '<>', 'Completed')
+            //     ->get();
+        }
+
+        if ($flag == 1) {
+            //Start
+            $user_id = Auth::user()->id;
+            $w_loc = WarriorDetail::select('serviceAreas')->where('user_id', '=', $user_id)->first();
+
+            $count = 0;
+            $requests = array();
+            foreach (json_decode($w_loc->serviceAreas) as $taluka) {
+                $requests[$count++] = HelpRequest::where('taluka', '=', $taluka)
+                    ->where('reqStatus', '<>', 'Completed')
+                    ->get();
+            }
+            $reqs = array();
+            foreach ($requests as $req) {
+                foreach ($req as $r) {
+                    $reqs[] = $r;
+                }
+            }
+            $search = 'My Areas';
+            //End
         }
         return view('request.viewrequest', compact('reqs', 'search'));
     }
@@ -169,15 +196,14 @@ class HelpRequestController extends Controller
         ]);
 
         $req = HelpRequest::find($request->req_id);
-        if($req->order_otp == $request->order_otp){
+        if ($req->order_otp == $request->order_otp) {
             $req->reqStatus = 'Completed';
             $req->vol_id = $request->user_id;
             $req->update();
             return redirect()->back()->with('status', 'Congratulations!! You have completed this request, Stay Safe!');
-        }else{
-            return redirect()->back()->with('message','Oops!! The OTP you entered does not match! Please ask to user to confirm the OTP again.');
+        } else {
+            return redirect()->back()->with('message', 'Oops!! The OTP you entered does not match! Please ask to user to confirm the OTP again.');
         }
-        
     }
     /**
      * Show the form for editing the specified resource.
