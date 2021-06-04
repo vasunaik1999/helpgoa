@@ -63,11 +63,11 @@
                                 <div class="row mt-3">
                                     <div class="form-group col-md-4">
                                         <label for="contact">Contact</label>
-                                        <input type="text" class="form-control rounded" placeholder="Enter Contact..." name="contact">
+                                        <input required type="text" class="form-control rounded" placeholder="Enter Contact..." name="contact">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="location">Location</label>
-                                        <input type="text" class="form-control rounded" placeholder="Enter Location..." name="location">
+                                        <input required type="text" class="form-control rounded" placeholder="Enter Location..." name="location">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="location_url">Location URL</label>

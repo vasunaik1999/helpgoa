@@ -32,13 +32,20 @@
     #floatbtn:visited {
       color: white;
     }
+
+    .locked {
+      cursor: default;
+    }
   </style>
 </head>
 
 <body>
 
   <!-- Float button code begins here -->
-  <a href="{{url('/request-create')}}" class="float" id="floatbtn">
+  <!--LOCKED FEATURE <a href="{{url('/request-create')}}" class="float" id="floatbtn">
+    <i class="fa fa-plus my-float"></i>
+  </a> -->
+  <a class="float locked text-white" id="floatbtn" data-toggle="tooltip" data-placement="left" title="Create Request is Locked">
     <i class="fa fa-plus my-float"></i>
   </a>
 
@@ -68,26 +75,34 @@
         @endauth
         @endif
         <li class="nav-item ml-3">
-          <a class="text-white" href="{{url('/requests')}}">Requests</a>
+          <!--LOCKED FEATURE <a class="text-white" href="{{url('/requests')}}">Requests</a> -->
+          <a class="text-white locked" data-toggle="tooltip" data-placement="bottom" title="Requests is Currently Locked! There are less warriors, will open on 5th June">Requests</a>
         </li>
         <!-- @if (\Route::current()->getName() == 'home')
         <li class="nav-item ml-3">
           <a class="text-white" href="#about">About</a>
         </li>
         @endif -->
+        @guest
+        <li class="nav-item ml-3">
+          <a class="text-white" href="{{url('/warrior-registration')}}">Register as Warrior</a>
+        </li>
+        @endguest
         @if (Route::has('login'))
         @auth
         <li class="nav-item ml-3">
           <a class="text-white" href="{{url('/myprofile')}}">My Profile</a>
         </li>
         <li class="nav-item ml-3">
-          <a class="text-white" href="{{url('/myrequests')}}">My Request</a>
+          <!--LOCKED FEATURE <a class="text-white" href="{{url('/myrequests')}}">My Request</a> -->
+          <a class="text-white locked" data-toggle="tooltip" data-placement="bottom" title="Requests is Currently Locked! will open on 5th June">My Request</a>
         </li>
+        
         @if(Auth::user()->hasRole('user'))
-        <!-- Authentication -->
         <li class="nav-item ml-3">
           <a class="text-white" href="{{url('/warrior-registration/'.Auth::user()->id)}}">Register as Warrior</a>
         </li>
+        <!-- Authentication -->
         <form method="POST" style="right: 5%; position: absolute;" action="{{ route('logout') }}">
           @csrf
 
@@ -167,6 +182,10 @@
         //   'copy', 'csv', 'excel', 'pdf', 'print'
         // ]
 
+      });
+
+      $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
       });
 
     });

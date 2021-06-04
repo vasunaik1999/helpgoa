@@ -59,22 +59,9 @@
         @endif
 
         <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Requests</p>
+        <p class="text-center text-gray">Currently Requests are locked</p>
 
         <ul class="nav flex-column bg-white mb-0">
-            <!-- <li class="nav-item">
-                <div class="dropdown show">
-                    <a class="btn dropdown-toggle text-dark" role="button" id="ddrequest" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-address-card ml-2 mr-3 text-main fa-fw"></i>Requests
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="ddrequest">
-                        <a class="dropdown-item nav-link text-dark" href="{{route('request.create')}}">Create Request</a>
-                        <a class="dropdown-item nav-link text-dark" href="{{route('request.show')}}">View Request</a>
-                        @if(Auth::user()->hasRole('superadmin') || Auth::user()->hasRole('admin'))
-                        <a class="dropdown-item nav-link text-dark" href="{{route('request.manage')}}">Manage Requests</a>
-                        @endif
-                    </div>
-                </div>
-            </li> -->
             @if(Auth::user()->hasRole('superadmin') || Auth::user()->hasRole('admin'))
             <li class="nav-item">
                 <a href="{{url('/dashboard/resources')}}" class="nav-link ">
@@ -82,22 +69,23 @@
                 </a>
             </li>
             @endif
-            <li class="nav-item">
-                <a href="{{route('request.create')}}" class="nav-link ">
+            <!-- NEED TO CORRECT ROUTE LATER -->
+            <!-- <li class="nav-item"> 'request.create'
+                <a href="" class="nav-link ">
                     <i class="fa fa-file-medical mr-3 text-main fa-fw"></i>Create Request
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{route('request.show')}}" class="nav-link ">
+            <li class="nav-item"> 'request.show'
+                <a href="" class="nav-link ">
                     <i class="fa fa-file-alt mr-3 text-main fa-fw"></i>View Request
                 </a>
-            </li>
+            </li> -->
             @if(Auth::user()->hasRole('superadmin') || Auth::user()->hasRole('admin'))
-            <li class="nav-item">
-                <a href="{{route('request.manage')}}" class="nav-link ">
+            <!-- <li class="nav-item"> 'request.manage'
+                <a href="" class="nav-link ">
                     <i class="fa fa-folder mr-3 text-main fa-fw"></i>Manage Request
                 </a>
-            </li>
+            </li> -->
 
             <li class="nav-item">
                 <a href="{{route('warrior.verifyindex')}}" class="nav-link ">
@@ -105,11 +93,13 @@
                 </a>
             </li>
             @endif
+            @if(Auth::user()->hasRole('superadmin'))
             <li class="nav-item">
                 <a href="{{route('contactform.index')}}" class="nav-link ">
                     <i class="fa fa-id-card mr-3 text-main fa-fw"></i>Contact Form
                 </a>
             </li>
+            @endif
             <!-- <li class="nav-item">
                 <a href="#" class="nav-link text-dark">
                     <i class="fa fa-area-chart mr-3 text-main fa-fw"></i>
