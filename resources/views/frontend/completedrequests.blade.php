@@ -86,7 +86,7 @@ Home | Covid Help
 
                         <div class="row mt-2">
                             <div class="col">
-                                <span style="background-color: transparent;"><strong> Needed by :- </strong>{{$req->needed_by}}</span>
+                                <span style="background-color: transparent;"><strong> Completed on :- </strong>{{$req->updated_at}}</span>
                             </div>
                         </div>
 

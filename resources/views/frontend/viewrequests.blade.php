@@ -19,7 +19,7 @@ Home | Covid Help
                 <p>Don't worry, just create a request of items needed and our Goan warriors will help you</p>
 
                 <a class="btn btn-sm text-white shadow-sm mr-2" href="{{url('/request-create')}}" style="background-color: #00BFA6; border-radius:25px; padding:7px 12px;">Create Request</a>
-                <a class="btn btn-sm text-white shadow-sm mt-2 mt-md-0" href="{{url('/completed')}}" style="background-color: #00BFA6; border-radius:25px; padding:7px 12px;">Completed Request</a>
+                <a class="btn btn-sm text-white shadow-sm mt-2 mt-sm-0 mt-md-0" href="{{url('/completed')}}" style="background-color: #00BFA6; border-radius:25px; padding:7px 12px;">Completed Request</a>
             </div>
         </div>
     </div>

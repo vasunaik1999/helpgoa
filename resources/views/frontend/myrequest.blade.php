@@ -15,15 +15,16 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
 <div class="card" style="top:30px; border-radius:30px;">
     <div class="card-header" style="border-radius:30px; border:0.5px solid lightgray;">
         <div class="row">
-            <div class="col-md-6 my-2">
+            <div class="col-md-4 my-2">
                 <h5 class="my-auto"><strong>My Requests</strong></h5>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="float-right my-2">
                     <button class="btn mx-2" style="background-color:#fb3640;"></button><span style="background-color: transparent;">Critical</span>
-                    <button class="btn mx-2" style="background-color:#fd6104"></button><span style="background-color: transparent;">Urgent</span>
+                    <button class="btn mx-2" style="background-color:#fd6104;"></button><span style="background-color: transparent;">Urgent</span>
                     <button class="btn mx-2" style="background-color:#ffce03;"></button><span style="background-color: transparent;">Standard</span>
                     <button class="btn mx-2" style="background-color:#fffe80;"></button><span style="background-color: transparent;">Casual</span>
+                    <button class="btn mx-2" style="background-color:#28df99;"></button><span style="background-color: transparent;">Completed</span>
                 </div>
             </div>
         </div>
