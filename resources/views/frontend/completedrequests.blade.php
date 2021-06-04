@@ -86,7 +86,8 @@ Home | Covid Help
 
                         <div class="row mt-2">
                             <div class="col">
-                                <span style="background-color: transparent;"><strong> Completed on :- </strong>{{$req->updated_at}}</span>
+                                <?php $newtime =  date("Y-m-d H:i:s", strtotime($req->updated_at) + (19800)); ?>
+                                <span style="background-color: transparent;"><strong> Completed on :- </strong>{{$newtime}}</span>
                             </div>
                         </div>
 

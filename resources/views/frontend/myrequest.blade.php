@@ -156,7 +156,8 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                             @if($req->reqStatus != 'Completed')
                             <span style="background-color: transparent;"><strong> Needed by :- </strong>{{$req->needed_by}}</span>
                             @elseif($req->reqStatus == 'Completed')
-                            <span style="background-color: transparent;"><strong> Completed on :- </strong>{{$req->updated_at}}</span>
+                            <?php $newtime =  date("Y-m-d H:i:s", strtotime($req->updated_at) + (19800)); ?>
+                            <span style="background-color: transparent;"><strong> Completed on :- </strong>{{$newtime}}</span>
                             @endif
                             <br>
                             @if($req->reqStatus != 'Completed')
@@ -206,8 +207,8 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                                     @if($req->reqStatus == 'Completed')
                                     <span class="text-light" style="background-color: transparent; padding-left:6px; "><strong> Completed By :- </strong>{{$user->name}}</span>
                                     @else
-                                    <span style="background-color: transparent; padding-left:6px; "><strong> Accepted By :- </strong>{{$user->name}}</span>
-                                    <br> <span style="background-color: transparent; padding-left:6px; "><strong> Contact :- </strong>{{$user->phone}}</span>
+                                    <span style="color:#ffffff; background-color: transparent; padding-left:6px; "><strong> Accepted By :- </strong>{{$user->name}}</span>
+                                    <br> <span style="color:#ffffff; background-color: transparent; padding-left:6px; "><strong> Contact :- </strong>{{$user->phone}}</span>
                                     @endif
                                 </div>
                             </div>
