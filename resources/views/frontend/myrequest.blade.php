@@ -153,7 +153,11 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
 
                     <div class="row mt-2">
                         <div class="col">
+                            @if($req->reqStatus != 'Completed')
                             <span style="background-color: transparent;"><strong> Needed by :- </strong>{{$req->needed_by}}</span>
+                            @elseif($req->reqStatus == 'Completed')
+                            <span style="background-color: transparent;"><strong> Completed on :- </strong>{{$req->updated_at}}</span>
+                            @endif
                             <br>
                             @if($req->reqStatus != 'Completed')
                             <span style="background-color: transparent;">

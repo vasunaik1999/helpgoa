@@ -92,17 +92,17 @@ class FrontendController extends Controller
         if ($request->has('search')) {
             $search = $request->search;
             if ($search == 'All') {
-                $reqs = HelpRequest::select('id', 'vol_id', 'city', 'taluka', 'items', 'needed_by')
+                $reqs = HelpRequest::select('id', 'vol_id', 'city', 'taluka', 'items', 'needed_by', 'updated_at')
                     ->where('reqStatus', '=', 'Completed')
                     ->get();
             } else {
-                $reqs = HelpRequest::select('id', 'vol_id', 'city', 'taluka', 'items', 'needed_by')
+                $reqs = HelpRequest::select('id', 'vol_id', 'city', 'taluka', 'items', 'needed_by', 'updated_at')
                     ->where('reqStatus', '=', 'Completed')
                     ->where('taluka', '=', $search)
                     ->get();
             }
         } else {
-            $reqs = HelpRequest::select('id', 'vol_id', 'city', 'taluka', 'items', 'needed_by')
+            $reqs = HelpRequest::select('id', 'vol_id', 'city', 'taluka', 'items', 'needed_by', 'updated_at')
                 ->where('reqStatus', '=', 'Completed')
                 ->get();
             $search = null;
