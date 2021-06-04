@@ -30,11 +30,4 @@ class VisitorTrackerController extends Controller
         } else {
         }
     }
-
-    public function remover()
-    {
-        $req = HelpRequest::get()->last();
-        $req->delete();
-        dd($req);
-    }
 }
