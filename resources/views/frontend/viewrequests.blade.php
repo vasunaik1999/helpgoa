@@ -9,7 +9,6 @@ Home | Covid Help
     .card-style {
         border-radius: 30px;
         border: 1px solid lightgray !important;
-        background-color: #f6f6f6;
     }
 </style>
 <div class="row" style="top: 35px;">
@@ -19,23 +18,23 @@ Home | Covid Help
                 <h1>Need Help?</h1>
                 <p>Don't worry, just create a request of items needed and our Goan warriors will help you</p>
 
-                <a class="btn btn-sm text-white shadow-sm" href="{{url('/request-create')}}" style="background-color: #00BFA6; border-radius:25px; padding:7px 12px;">Create Request</a>
-                <a class="btn btn-sm text-white shadow-sm" href="{{url('/completed')}}" style="background-color: #00BFA6; border-radius:25px; padding:7px 12px;">Completed Request</a>
+                <a class="btn btn-sm text-white shadow-sm mr-2" href="{{url('/request-create')}}" style="background-color: #00BFA6; border-radius:25px; padding:7px 12px;">Create Request</a>
+                <a class="btn btn-sm text-white shadow-sm mt-2 mt-md-0" href="{{url('/completed')}}" style="background-color: #00BFA6; border-radius:25px; padding:7px 12px;">Completed Request</a>
             </div>
         </div>
     </div>
 </div>
 
 <div class="card mt-4 card-style">
-    <div class="card-header" style="background-color: white;">
+    <div class="card-header" style="border-radius:30px">
         <div class="row">
             <div class="col-md-3" style="display:block; margin:auto;">
-                <h5><strong>Recent Requests</strong></h5>
+                <h5 class="my-auto ml-0 ml-md-2"><strong>Recent Requests</strong></h5>
             </div>
-            <div class="col-md-3 items-center">
+            <div class="col-md-4 col-sm-3 items-center">
                 <form mthod="post" action="{{route('request.viewrequestfrontend.search')}}">
                     <div class="input-group my-3 my-md-0">
-                        <select name="search" class="form-control" aria-placeholder="Enter Location">
+                        <select name="search" class="form-control px-3" aria-placeholder="Enter Location" style="border-radius: 30px 0 0 30px;">
                             @if($search != null)
                             <option value="{{$search}}">{{$search}}</option>
                             @endif
@@ -54,15 +53,15 @@ Home | Covid Help
                             <option value="Dharbandora">Dharbandora</option>
                         </select>
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-sm text-white" style="background-color: #00BFA6;"><i class="fa fa-search mr-2"></i>Search</button>
+                            <button type="submit" class="btn btn-sm text-white px-3" style="background-color: #00BFA6; border-radius:0 30px 30px 0;"><i class="fa fa-search mr-2"></i>Search</button>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="col-md-6 mt-md-2 mt-2">
+            <div class="col-md-5 mt-md-2 mt-2">
                 <div class="float-right">
                     <button class="btn mx-2" style="background-color:#fb3640;"></button><span style="background-color: transparent;">Critical</span>
-                    <button class="btn mx-2" style="background-color:#fd6104"></button><span style="background-color: transparent;">Urgent</span>
+                    <button class="btn mx-2" style="background-color:#fd6104;"></button><span style="background-color: transparent;">Urgent</span>
                     <button class="btn mx-2" style="background-color:#ffce03;"></button><span style="background-color: transparent;">Standard</span>
                     <button class="btn mx-2" style="background-color:#fffe80;"></button><span style="background-color: transparent;">Casual</span>
                 </div>
@@ -98,7 +97,7 @@ Home | Covid Help
             }
             ?>
             <div class="col-md-6 pb-4">
-                <div style="height:100%; 
+                <div style="height:100%; border-radius:25px; 
                     <?php
                     $status = "";
                     // if ($req->reqStatus == 'MarkedCompletedByWarrior' || $req->reqStatus == 'MarkedCompletedByUser') {
@@ -203,7 +202,7 @@ Home | Covid Help
             </div>
             @empty
             <div class="col-12">
-                <div class="card">
+                <div class="card card-style">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4">

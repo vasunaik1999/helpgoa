@@ -100,7 +100,7 @@
                             <tbody>
                                 <tr>
                                     <td><input required type="text" name="items[]" class="form-control rounded" required></td>
-                                    <td style="text-align:center;"><a style="color:white;" class="btn btn-danger btn-sm remove">- Remove</a></td>
+                                    <td style="text-align:center;"><a style="color:white;" class="btn btn-danger btn-sm">- Remove</a></td>
                                 </tr>
                             </tbody>
                         </table>

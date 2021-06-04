@@ -12,14 +12,14 @@ $reqs = NULL;
 $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
 ?>
 
-<div class="card shadow" style="top:30px;">
-    <div class="card-header" style="background-color: white;">
+<div class="card" style="top:30px; border-radius:30px;">
+    <div class="card-header" style="border-radius:30px; border:0.5px solid lightgray;">
         <div class="row">
-            <div class="col-md-6">
-                <h5><strong>My Requests</strong></h5>
+            <div class="col-md-6 my-2">
+                <h5 class="my-auto"><strong>My Requests</strong></h5>
             </div>
             <div class="col-md-6">
-                <div class="float-right">
+                <div class="float-right my-2">
                     <button class="btn mx-2" style="background-color:#fb3640;"></button><span style="background-color: transparent;">Critical</span>
                     <button class="btn mx-2" style="background-color:#fd6104"></button><span style="background-color: transparent;">Urgent</span>
                     <button class="btn mx-2" style="background-color:#ffce03;"></button><span style="background-color: transparent;">Standard</span>
@@ -39,7 +39,7 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
         @endif
         <div class="row">
             @if(count($reqs) < 1) <div class="col-md-12">
-                <div class="card">
+                <div class="card" style="border-radius: 30px;">
                     <div class="card-body">
                         <div class="row mt-4">
                             <div class="col-md-6">
@@ -85,16 +85,16 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
         }
         ?>
         <div class="col-md-6 pb-4">
-            <div style="height:100%; 
+            <div style="height:100%; border-radius:25px !important; border: 1px solid lightgray;
                 <?php
                 $status = "";
                 if ($req->reqStatus == 'Completed') {
                     echo "background-color:#28df99;";
-                    $status="Completed";
-                } elseif($dteStart > $dteEnd) {
+                    $status = "Completed";
+                } elseif ($dteStart > $dteEnd) {
                     echo "background-color:#fb3640;";
                     $status = "Critical";
-                } elseif ($message == $dteDiff->format("%H Hours and %I Minutes")||$message == $dteDiff->format("%I Minutes")) {
+                } elseif ($message == $dteDiff->format("%H Hours and %I Minutes") || $message == $dteDiff->format("%I Minutes")) {
                     if ($dteDiff->format("%H") <= 1) {
                         echo "background-color:#fb3640;";
                         $status = "Critical";
@@ -112,7 +112,7 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                     echo "background-color:#fffe80;";
                     $status = "Casual";
                 }
-                ?>" class="card shadow-sm <?php if ($status == "Casual" || $status=="Completed" || $status=="Standard" ) echo "text-dark";
+                ?>" class="card shadow-sm <?php if ($status == "Casual" || $status == "Completed" || $status == "Standard") echo "text-dark";
                                             else echo "text-light"; ?>">
                 <div class="card-body">
                     @auth
@@ -127,7 +127,7 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                     <span class="badge badge-dark float-right"> <?php echo $status ?> </span><br>
                     <p class="mt-2"><strong> Need :-</strong>
                         @foreach( json_decode($req->items) as $item)
-                        <span class="badge <?php if ($status == "Casual"|| $status=="Completed" || $status=="Standard") echo "bg-dark";
+                        <span class="badge <?php if ($status == "Casual" || $status == "Completed" || $status == "Standard") echo "bg-dark";
                                             else echo "bg-light"; ?> p-2 mt-2" style="font-size:14px;
                             <?php
                             if ($status == 'Critical')
@@ -138,7 +138,7 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                                 echo "color:#ffce03;";
                             elseif ($status == 'Casual')
                                 echo "color:#fffe80;";
-                            else 
+                            else
                                 echo "color:#28df99;"
 
                             ?>">
@@ -164,7 +164,7 @@ $reqs = App\Models\HelpRequest::where('user_id', '=', Auth::user()->id)->get();
                                 }
                                 ?>
                             </span>
-                            <br>                            
+                            <br>
                             <span style="background-color: transparent;">
                                 <strong> Order OTP :- </strong>{{$req->order_otp}}
                             </span>

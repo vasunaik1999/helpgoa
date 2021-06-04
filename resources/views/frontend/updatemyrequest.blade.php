@@ -101,10 +101,12 @@ My Request - Update | Covid Help
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $counter = 0; ?>
                             @foreach( json_decode($req->items) as $item)
                             <tr>
                                 <td><input required type="text" name="items[]" class="form-control rounded" value="{{$item}}" required></td>
-                                <td style="text-align:center;"><a style="color:white;" class="btn btn-danger btn-sm remove">- Remove</a></td>
+                                <td style="text-align:center;"><a style="color:white;" class="btn btn-danger btn-sm @if($counter == 0) @else remove @endif">- Remove</a></td>
+                                <?php $counter++ ?>
                             </tr>
                             @endforeach
                         </tbody>
