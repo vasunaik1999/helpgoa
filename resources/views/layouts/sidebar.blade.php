@@ -59,6 +59,7 @@
         @endif
 
         <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Requests</p>
+        <p class="text-center text-gray">Currently Requests are locked</p>
 
         <ul class="nav flex-column bg-white mb-0">
             @if(Auth::user()->hasRole('superadmin') || Auth::user()->hasRole('admin'))
@@ -92,11 +93,13 @@
                 </a>
             </li>
             @endif
+            @if(Auth::user()->hasRole('superadmin'))
             <li class="nav-item">
                 <a href="{{route('contactform.index')}}" class="nav-link ">
                     <i class="fa fa-id-card mr-3 text-main fa-fw"></i>Contact Form
                 </a>
             </li>
+            @endif
             <!-- <li class="nav-item">
                 <a href="#" class="nav-link text-dark">
                     <i class="fa fa-area-chart mr-3 text-main fa-fw"></i>

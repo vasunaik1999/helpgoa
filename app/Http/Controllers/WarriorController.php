@@ -73,7 +73,6 @@ class WarriorController extends Controller
         } else {
             $request->validate([
                 'aadhaar_num' => 'required|digits:12|numeric|unique:volunteer_details',
-                'organization' => 'required',
             ]);
             $warrior = new WarriorDetail();
             $warrior->user_id = $request->user_id;
@@ -214,6 +213,6 @@ class WarriorController extends Controller
         $id = Auth::user()->id;
         $warrior = WarriorDetail::where('user_id', '=', $id)->orderBy('id', 'desc')->first();
         // dd($warrior);
-        return view('frontend.warrior.warriorregistration',compact('warrior'));
+        return view('frontend.warrior.warriorregistration', compact('warrior'));
     }
 }
