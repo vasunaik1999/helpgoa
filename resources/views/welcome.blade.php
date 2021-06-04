@@ -33,19 +33,16 @@
       color: white;
     }
 
-    .locked {
+    /* .locked {
       cursor: default;
-    }
+    } */
   </style>
 </head>
 
 <body>
 
   <!-- Float button code begins here -->
-  <!--LOCKED FEATURE <a href="{{url('/request-create')}}" class="float" id="floatbtn">
-    <i class="fa fa-plus my-float"></i>
-  </a> -->
-  <a class="float locked text-white" id="floatbtn" data-toggle="tooltip" data-placement="left" title="Create Request is Locked">
+  <a href="{{url('/request-create')}}" class="float text-white" id="floatbtn">
     <i class="fa fa-plus my-float"></i>
   </a>
 
@@ -75,8 +72,8 @@
         @endauth
         @endif
         <li class="nav-item ml-3">
-          <!--LOCKED FEATURE <a class="text-white" href="{{url('/requests')}}">Requests</a> -->
-          <a class="text-white locked" data-toggle="tooltip" data-placement="bottom" title="Requests is Currently Locked! There are less warriors, will open on 5th June">Requests</a>
+          <a class="text-white" href="{{url('/requests')}}">Requests</a>
+          <!--LOCKED BUTTON <a class="text-white locked" data-toggle="tooltip" data-placement="bottom" title="Requests is Currently Locked! There are less warriors, will open on 5th June">Requests</a> -->
         </li>
         <!-- @if (\Route::current()->getName() == 'home')
         <li class="nav-item ml-3">
@@ -94,10 +91,10 @@
           <a class="text-white" href="{{url('/myprofile')}}">My Profile</a>
         </li>
         <li class="nav-item ml-3">
-          <!--LOCKED FEATURE <a class="text-white" href="{{url('/myrequests')}}">My Request</a> -->
-          <a class="text-white locked" data-toggle="tooltip" data-placement="bottom" title="Requests is Currently Locked! will open on 5th June">My Request</a>
+          <a class="text-white" href="{{url('/myrequests')}}">My Request</a>
+          <!-- <a class="text-white locked" data-toggle="tooltip" data-placement="bottom" title="Requests is Currently Locked! will open on 5th June">My Request</a> -->
         </li>
-        
+
         @if(Auth::user()->hasRole('user'))
         <li class="nav-item ml-3">
           <a class="text-white" href="{{url('/warrior-registration/'.Auth::user()->id)}}">Register as Warrior</a>

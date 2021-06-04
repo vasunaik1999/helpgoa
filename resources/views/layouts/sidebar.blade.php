@@ -59,7 +59,6 @@
         @endif
 
         <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Requests</p>
-        <p class="text-center text-gray">Currently Requests are locked</p>
 
         <ul class="nav flex-column bg-white mb-0">
             @if(Auth::user()->hasRole('superadmin') || Auth::user()->hasRole('admin'))
@@ -70,22 +69,22 @@
             </li>
             @endif
             <!-- NEED TO CORRECT ROUTE LATER -->
-            <!-- <li class="nav-item"> 'request.create'
-                <a href="" class="nav-link ">
+            <li class="nav-item">
+                <a href="{{route('request.create')}}" class="nav-link ">
                     <i class="fa fa-file-medical mr-3 text-main fa-fw"></i>Create Request
                 </a>
             </li>
-            <li class="nav-item"> 'request.show'
-                <a href="" class="nav-link ">
+            <li class="nav-item">
+                <a href="{{route('request.show')}}" class="nav-link ">
                     <i class="fa fa-file-alt mr-3 text-main fa-fw"></i>View Request
                 </a>
-            </li> -->
+            </li>
             @if(Auth::user()->hasRole('superadmin') || Auth::user()->hasRole('admin'))
-            <!-- <li class="nav-item"> 'request.manage'
-                <a href="" class="nav-link ">
+            <li class="nav-item">
+                <a href="{{route('request.manage')}}" class="nav-link ">
                     <i class="fa fa-folder mr-3 text-main fa-fw"></i>Manage Request
                 </a>
-            </li> -->
+            </li>
 
             <li class="nav-item">
                 <a href="{{route('warrior.verifyindex')}}" class="nav-link ">

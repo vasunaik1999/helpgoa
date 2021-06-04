@@ -54,7 +54,7 @@ Home | Covid Help
                             <option value="Dharbandora">Dharbandora</option>
                         </select>
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search mr-2"></i>Search</button>
+                            <button type="submit" class="btn btn-sm text-white" style="background-color: #00BFA6;"><i class="fa fa-search mr-2"></i>Search</button>
                         </div>
                     </div>
                 </form>
@@ -126,7 +126,7 @@ Home | Covid Help
                         echo "background-color:#fffe80;";
                         $status = "Casual";
                     }
-                    ?>" class="card shadow-sm <?php if ($status == "Casual" || $status=="Standard") echo "text-dark";
+                    ?>" class="card shadow-sm <?php if ($status == "Casual" || $status == "Standard") echo "text-dark";
                                                 else echo "text-light"; ?>">
                     <div class="card-body">
                         @auth
@@ -142,7 +142,7 @@ Home | Covid Help
                             @foreach( json_decode($req->items) as $item)
                             <span class="badge p-2 mt-2
                             <?php
-                            if ($status == "Casual" || $status=="Standard") echo "bg-dark";
+                            if ($status == "Casual" || $status == "Standard") echo "bg-dark";
                             else echo "bg-light"; ?>" style="font-size:14px;
                                 <?php
                                 if ($status == 'Critical')

@@ -22,12 +22,12 @@ Route::get('/', 'App\Http\Controllers\VisitorTrackerController@index')->name('ho
 
 
 
-// LOCKED FEATURE // Route::get('/requests', 'App\Http\Controllers\FrontendController@index');
-// LOCKED FEATURE //Route::post('/requests', 'App\Http\Controllers\FrontendController@index')->name('request.viewrequestfrontend.search'); //search
+Route::get('/requests', 'App\Http\Controllers\FrontendController@index');
+Route::post('/requests', 'App\Http\Controllers\FrontendController@index')->name('request.viewrequestfrontend.search'); //search
 Route::get('/you-are-banned', 'App\Http\Controllers\FrontendController@bannedpage');
 
-// LOCKED FEATURE //Route::get('/completed', 'App\Http\Controllers\FrontendController@completed');
-// LOCKED FEATURE //Route::post('/completed', 'App\Http\Controllers\FrontendController@completed')->name('request.completedfrontend.search');
+Route::get('/completed', 'App\Http\Controllers\FrontendController@completed');
+Route::post('/completed', 'App\Http\Controllers\FrontendController@completed')->name('request.completedfrontend.search');
 
 // Resources
 Route::get('/resources', 'App\Http\Controllers\ResourceController@index')->name('resources.index');
@@ -47,20 +47,18 @@ Route::get('/resources/covid-testing', 'App\Http\Controllers\ResourceCovidTestin
 Route::post('/contactform/submit', 'App\Http\Controllers\ContactFormController@store')->name('contactform.store');
 
 Route::group(['middleware' => ['auth']], function () {
-    // LOCKED FEATURE //Route::get('/request-create', 'App\Http\Controllers\FrontendController@createreq');
-    // LOCKED FEATURE //Route::post('store-request', 'App\Http\Controllers\HelpRequestController@store')->name('request.store');
+    Route::get('/request-create', 'App\Http\Controllers\FrontendController@createreq');
+    Route::post('store-request', 'App\Http\Controllers\HelpRequestController@store')->name('request.store');
 
     //Profile
     Route::get('myprofile', 'App\Http\Controllers\ProfileController@index')->name('myprofile.index');
     Route::post('myprofile/store', 'App\Http\Controllers\ProfileController@store')->name('myprofile.store');
 
     //My Requests
-
-    // LOCKED FEATURE //Route::get('/myrequests', 'App\Http\Controllers\FrontendController@myrequests')->name('frontend.myrequest');
-    // LOCKED FEATURE //Route::post('/myrequests-delete', 'App\Http\Controllers\FrontendController@deletemyrequest')->name('frontend.deletemyrequest');
-    // LOCKED FEATURE //Route::post('/myrequests-edit', 'App\Http\Controllers\FrontendController@editmyrequest')->name('frontend.editmyrequest');
-    // LOCKED FEATURE //Route::put('/myrequests-update', 'App\Http\Controllers\FrontendController@updatemyrequest')->name('frontend.updatemyrequest');
-
+    Route::get('/myrequests', 'App\Http\Controllers\FrontendController@myrequests')->name('frontend.myrequest');
+    Route::post('/myrequests-delete', 'App\Http\Controllers\FrontendController@deletemyrequest')->name('frontend.deletemyrequest');
+    Route::post('/myrequests-edit', 'App\Http\Controllers\FrontendController@editmyrequest')->name('frontend.editmyrequest');
+    Route::put('/myrequests-update', 'App\Http\Controllers\FrontendController@updatemyrequest')->name('frontend.updatemyrequest');
 });
 
 //Auth Route for Warrior | Admin | Superadmin
@@ -68,13 +66,13 @@ Route::group(['middleware' => ['auth', 'role:warrior|admin|superadmin']], functi
     Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
 
     //Requests from dashboard
-    // LOCKED FEATURE //Route::get('/dashboard/create-request', 'App\Http\Controllers\HelpRequestController@index')->name('request.create');
-    // LOCKED FEATURE //Route::get('/dashboard/show-request', 'App\Http\Controllers\HelpRequestController@show')->name('request.show');
-    // LOCKED FEATURE //Route::get('/dashboard/{helpRequest}/view-request', 'App\Http\Controllers\HelpRequestController@view')->name('request.view');
-    // LOCKED FEATURE //Route::get('/dashboard/{helpRequest}/view-request/{user}/accept', 'App\Http\Controllers\HelpRequestController@acceptRequest');
-    // LOCKED FEATURE //Route::post('/dashboard/{helpRequest}/view-request/{user}/decline', 'App\Http\Controllers\HelpRequestController@declineRequest');
-    // LOCKED FEATURE //Route::post('/dashboard/view-request/completed', 'App\Http\Controllers\HelpRequestController@requestCompleted')->name('request.mark.completed');
-    // LOCKED FEATURE //Route::post('/dashboard/show-request', 'App\Http\Controllers\HelpRequestController@show')->name('request.viewrequestdashboard.search');
+    Route::get('/dashboard/create-request', 'App\Http\Controllers\HelpRequestController@index')->name('request.create');
+    Route::get('/dashboard/show-request', 'App\Http\Controllers\HelpRequestController@show')->name('request.show');
+    Route::get('/dashboard/{helpRequest}/view-request', 'App\Http\Controllers\HelpRequestController@view')->name('request.view');
+    Route::get('/dashboard/{helpRequest}/view-request/{user}/accept', 'App\Http\Controllers\HelpRequestController@acceptRequest');
+    Route::post('/dashboard/{helpRequest}/view-request/{user}/decline', 'App\Http\Controllers\HelpRequestController@declineRequest');
+    Route::post('/dashboard/view-request/completed', 'App\Http\Controllers\HelpRequestController@requestCompleted')->name('request.mark.completed');
+    Route::post('/dashboard/show-request', 'App\Http\Controllers\HelpRequestController@show')->name('request.viewrequestdashboard.search');
 });
 
 
