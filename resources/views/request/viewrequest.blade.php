@@ -18,7 +18,9 @@
                                 @if($search != null)
                                 <option value="{{$search}}">{{$search}}</option>
                                 @endif
+                                @if(Auth::user()->hasRole('warrior'))
                                 <option value="My Areas">My Areas</option>
+                                @endif
                                 <option value="All">All</option>
                                 <option value="Bardez">Bardez</option>
                                 <option value="Bicholim">Bicholim</option>

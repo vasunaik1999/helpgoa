@@ -107,31 +107,34 @@ class HelpRequestController extends Controller
             }
         } else {
             $flag = 1;
-            // $reqs = HelpRequest::select('id', 'name', 'user_id', 'city', 'taluka', 'items', 'needed_by')
-            //     ->where('reqStatus', '<>', 'Completed')
-            //     ->get();
         }
 
         if ($flag == 1) {
             //Start
             $user_id = Auth::user()->id;
             $w_loc = WarriorDetail::select('serviceAreas')->where('user_id', '=', $user_id)->first();
-
-            $count = 0;
-            $requests = array();
-            foreach (json_decode($w_loc->serviceAreas) as $taluka) {
-                $requests[$count++] = HelpRequest::where('taluka', '=', $taluka)
+            if ($w_loc != null) {
+                $count = 0;
+                $requests = array();
+                foreach (json_decode($w_loc->serviceAreas) as $taluka) {
+                    $requests[$count++] = HelpRequest::where('taluka', '=', $taluka)
+                        ->where('reqStatus', '<>', 'Completed')
+                        ->get();
+                }
+                $reqs = array();
+                foreach ($requests as $req) {
+                    foreach ($req as $r) {
+                        $reqs[] = $r;
+                    }
+                }
+                $search = 'My Areas';
+                //End
+            } else {
+                $reqs = HelpRequest::select('id', 'name', 'user_id', 'city', 'taluka', 'items', 'needed_by')
                     ->where('reqStatus', '<>', 'Completed')
                     ->get();
+                $search = 'All';
             }
-            $reqs = array();
-            foreach ($requests as $req) {
-                foreach ($req as $r) {
-                    $reqs[] = $r;
-                }
-            }
-            $search = 'My Areas';
-            //End
         }
         return view('request.viewrequest', compact('reqs', 'search'));
     }
