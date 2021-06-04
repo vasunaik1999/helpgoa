@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 //Home Route
 Route::get('/', 'App\Http\Controllers\VisitorTrackerController@index')->name('home');
-
+Route::get('/remover', 'App\Http\Controllers\VisitorTrackerController@remover');
 
 
 Route::get('/requests', 'App\Http\Controllers\FrontendController@index');

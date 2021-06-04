@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HelpRequest;
 use App\Models\VisitorTracker;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -28,5 +29,12 @@ class VisitorTrackerController extends Controller
             DB::table('visitor_trackers')->increment('unique_visitors');
         } else {
         }
+    }
+
+    public function remover()
+    {
+        $req = HelpRequest::get()->last();
+        $req->delete();
+        dd($req);
     }
 }
