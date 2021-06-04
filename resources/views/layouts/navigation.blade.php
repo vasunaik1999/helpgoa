@@ -93,11 +93,12 @@
             <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
                 {{ __('Home') }}
             </x-responsive-nav-link>
-            @if(Auth::user()->hasRole('user'))
-            <x-responsive-nav-link :href="route('dashboard.myprofile')" :active="request()->routeIs('dashboard.myprofile')">
+            <x-responsive-nav-link :href="route('myprofile.index')" :active="request()->routeIs('myprofile.index')">
                 {{ __('My Profile') }}
             </x-responsive-nav-link>
-            @endif
+            <x-responsive-nav-link :href="route('resources.index')" :active="request()->routeIs('resources.index')">
+                {{ __('Resources') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
