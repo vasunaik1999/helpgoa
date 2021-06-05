@@ -109,4 +109,9 @@ class FrontendController extends Controller
         }
         return view('frontend.completedrequests', compact('reqs', 'search'));
     }
+
+    public function displayteam()
+    {
+        return view('frontend.team.index');
+    }
 }
