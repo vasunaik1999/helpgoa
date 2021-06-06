@@ -60,6 +60,9 @@
           <a class="text-white" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item ml-3">
+          <a class="text-white" href="{{url('/team')}}">Team</a>
+        </li>
+        <li class="nav-item ml-3">
           <a class="text-white" href="{{url('/resources')}}">Resources</a>
         </li>
         @if (Route::has('login'))

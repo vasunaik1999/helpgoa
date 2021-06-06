@@ -54,21 +54,16 @@ Home | Covid Help
 
 
 <!-- Blog Section -->
-<section>
+<!-- <section>
     <div class="section-title">
-        <!-- Section heading -->
         <h2 class="h1-responsive font-weight-bold">Doctor's Thoughts</h2>
-        <!-- Section description -->
         <p class="dark-grey-text w-responsive mx-auto mb-5">Today, information is spread through multiple channels. And unfortunately, most of this information is unverified and might be misleading.<br>So let us educate ourselves and hear from the experts regarding the most common queries most of us have. </p>
     </div>
 
-    <!-- Grid row -->
     <div class="row" style="display:block; margin:auto;">
 
-    <!-- Grid column -->
     <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
 
-        <!-- Featured image -->
         <div class="view overlay rounded z-depth-2 mb-4">
         <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/81.jpg" alt="Sample image">
         <a>
@@ -76,26 +71,25 @@ Home | Covid Help
         </a>
         </div>
 
-        <!-- Category -->
         <a href="#!" class="pink-text">
         <h6 class="font-weight-bold mb-3"><i class="fas fa-map pr-2"></i>Adventure</h6>
         </a>
-        <!-- Post title -->
+
         <h4 class="font-weight-bold mb-3"><strong>Title of the new article</strong></h4>
-        <!-- Post data -->
+
         <p>by <a class="font-weight-bold">Billy Forester</a>, 15/07/2018</p>
-        <!-- Excerpt -->
+
         <p class="dark-grey-text">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
         quo minus id quod maxime placeat facere possimus voluptas.</p>
-        <!-- Read more button -->
+
         <a class="btn text-light" style="background-color:#00BFA6;">Read more</a>
 
     </div>
-    <!-- Grid column -->
+
 
     </div>
-    <!-- Grid row -->
-</section>
+
+</section> -->
 <!-- Blog Section -->
 
 <div id="slider" class="section-title align-items-center" style="display:block; margin:auto; padding:0;">
