@@ -27,6 +27,9 @@ Route::get('/you-are-banned', 'App\Http\Controllers\FrontendController@bannedpag
 Route::get('/completed', 'App\Http\Controllers\FrontendController@completed');
 Route::post('/completed', 'App\Http\Controllers\FrontendController@completed')->name('request.completedfrontend.search');
 
+//TEAM
+Route::get('/team', 'App\Http\Controllers\FrontendController@displayteam');
+
 // Resources
 Route::get('/resources', 'App\Http\Controllers\ResourceController@index')->name('resources.index');
 //Resources Types
