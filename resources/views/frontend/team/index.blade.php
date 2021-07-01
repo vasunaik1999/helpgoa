@@ -282,7 +282,7 @@ Team | Covid Help
                             <div class="row" style="display:flex; justify-content:center;">
                                 <!-- <div class="col"> -->
                                 <div class="circle mx-2">
-                                    <a href="https://www.instagram.com/nycto.philiac._.skn?r=nametag">
+                                    <a href="https://www.instagram.com/sejalnaik0231?r=nametag">
                                         <i class="fab fa-instagram"></i>
                                     </a>
                                 </div>
